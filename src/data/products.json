@@ -1,4 +1,4 @@
-const response = {
+{
   "products": [
     {
       "id": 1,
@@ -555,5 +555,3 @@ const response = {
   "skip": 0,
   "limit": 30
 }
-
-export default response

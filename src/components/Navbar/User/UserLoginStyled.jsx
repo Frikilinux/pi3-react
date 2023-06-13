@@ -4,12 +4,14 @@ export const UserContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 0 10px;
+  height: 80%;
 `
 
 export const UswrImgContainer = styled.div`
+border: 2px solid var(--red);
   border-radius: 5px;
-  height: 50px;
-  width: 50px;
+  height: 100%;
+  /* width: 50px; */
   background-color: var(--dark);
 `
 
@@ -21,7 +23,8 @@ export const UserNameData = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  height: 100%;
   & p{
     padding: 0 10px;
     color: var(--white);

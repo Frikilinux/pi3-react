@@ -4,6 +4,7 @@ import { mailRegex, passwordRegex } from '../constants/regexs'
 export const loginValidationSchema = yup.object({
   email: yup
     .string()
+    .trim()
     .matches(mailRegex, 'Mail no válido')
     .required('Campo requerido'),
   password: yup
@@ -12,6 +13,6 @@ export const loginValidationSchema = yup.object({
     .required('Campo requerido')
     .matches(
       passwordRegex,
-      'Al menos una minúscula, mayuscula, numero y caracter especial'
+      'Al menos una minúscula, mayuscula, número y caracter especial'
     ),
 })

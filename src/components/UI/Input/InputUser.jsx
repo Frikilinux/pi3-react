@@ -6,18 +6,32 @@ import {
   InputStd,
 } from './InputUserStd'
 import { Icons } from '../../../constants/icons'
+import { ErrorMessage, Field } from 'formik'
 
-const InputUser = ({ value, errorMsg, inputIcon, placeholder, type, id, label}) => {
+const InputUser = ({ inputIcon, placeholder, type, name }) => {
   const Icon = Icons[inputIcon]
 
   return (
-    <InputComponent>
-      <InputContainer>
-        <Icon size='1.5rem' />
-        <InputStd {...value} placeholder={placeholder}/>
-      </InputContainer>
-      <ErrorMsg>{errorMsg}</ErrorMsg>
-    </InputComponent>
+    <Field name={name}>
+      {({ field, form: { errors, touched }}) => {
+        return (
+          <InputComponent>
+            <InputContainer>
+              <Icon size='30px' />
+              <InputStd
+                name={name}
+                placeholder={placeholder}
+                type={type}
+                {...field}
+              />
+            </InputContainer>
+            <ErrorMessage name={field.name}>
+              {(message) => <ErrorMsg>{message}</ErrorMsg>}
+            </ErrorMessage>
+          </InputComponent>
+        )
+      }}
+    </Field>
   )
 }
 

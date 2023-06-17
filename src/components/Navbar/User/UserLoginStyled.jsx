@@ -12,7 +12,8 @@ border: 2px solid var(--red);
   border-radius: 5px;
   height: 100%;
   /* width: 50px; */
-  background-color: var(--dark);
+  background: rgb(98,231,220);
+background: radial-gradient(circle, rgba(98,231,220,1) 0%, rgba(106,0,255,1) 100%); 
 `
 
 export const UserImg = styled.img`

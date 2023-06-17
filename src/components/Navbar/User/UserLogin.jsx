@@ -5,8 +5,11 @@ import {
   UserNameData,
   UswrImgContainer,
 } from './UserLoginStyled'
+import { useDispatch } from 'react-redux'
+import { logOut } from '../../../redux/user/userSlice'
 
 const UserLogin = ({ image, firstName, lastName, username }) => {
+  const dispatch = useDispatch()
   return (
     <UserContainer>
       <UswrImgContainer>
@@ -16,9 +19,10 @@ const UserLogin = ({ image, firstName, lastName, username }) => {
         />
       </UswrImgContainer>
       <UserNameData>
-        <p>Hi!, {firstName}</p>
+        <p>Hola, {firstName}</p>
         <p>@{username}</p>
       </UserNameData>
+      <button onClick={() => dispatch(logOut()) }>Logout</button>
     </UserContainer>
   )
 }

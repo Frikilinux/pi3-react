@@ -3,7 +3,7 @@ import { DUMMY_JSON } from '../constants/apiUrls'
 import { useDispatch } from 'react-redux'
 import { isError, isLogin, loggedUser } from '../redux/user/userSlice'
 
-export const useAxios = () => {
+export const useUser = () => {
   const dispatch = useDispatch()
 
   const loginUser = async ({ email, password }) => {

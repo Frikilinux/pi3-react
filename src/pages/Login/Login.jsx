@@ -4,10 +4,10 @@ import { FormContainer } from '../../components/UI/Input/InputUserStd'
 import { Form, Formik } from 'formik'
 import { loginInitialValues } from '../../formik/initialValues'
 import { loginValidationSchema } from '../../formik/validationSchema'
-import { useAxios } from '../../hooks/useAxios'
+import { useUser } from '../../hooks/useUser'
 
 const Login = () => {
-  const { user, loginUser } = useAxios()
+  const { loginUser } = useUser()
 
   return (
     <Formik

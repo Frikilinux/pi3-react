@@ -10,9 +10,15 @@ export const loginValidationSchema = yup.object({
   password: yup
     .string()
     // .min(8, 'Mínimo de 8 caracteres')
-    .required('Campo requerido')
-    // .matches(
-    //   passwordRegex,
-    //   'Permitidos 0-9, a-z, A-Z, !@#$%^&*'
-    // ),
+    .required('Campo requerido'),
+  // .matches(
+  //   passwordRegex,
+  //   'Permitidos 0-9, a-z, A-Z, !@#$%^&*'
+  // ),
+})
+
+export const signInValization = yup.object({
+  username: '',
+  email: '',
+  password: '',
 })

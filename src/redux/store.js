@@ -1,9 +1,22 @@
-import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from 'redux-persist'
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+  persistReducer,
+  persistStore,
+} from 'redux-persist'
 import userReducer from './user/userSlice'
+import productsReducer from './products/productsSlice'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
 
-const rootReducer = combineReducers({ user: userReducer })
+const rootReducer = combineReducers({
+  user: userReducer,
+  products: productsReducer,
+})
 
 const persistConfig = {
   key: 'root',

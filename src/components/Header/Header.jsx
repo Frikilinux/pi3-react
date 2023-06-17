@@ -1,13 +1,14 @@
 import React from 'react'
-import UserLogin from '../Navbar/User/UserLogin'
-import { HeaderStyled } from './HeaderStld'
+import { HeaderStyled } from './HeaderStd'
 import { useSelector } from 'react-redux'
+import UserLoggedOut from '../Navbar/User/UseLoggedOut'
+import UserLoggedIn from '../Navbar/User/UserLoggedIn'
 
 export const Header = () => {
   const { user } = useSelector((state) => state.user)
   return (
     <HeaderStyled>
-      {user ? <UserLogin {...user} /> : 'PLEASE LOGIN'}
+      {user ? <UserLoggedIn {...user} /> : <UserLoggedOut />}
     </HeaderStyled>
   )
 }

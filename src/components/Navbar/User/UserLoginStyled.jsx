@@ -1,13 +1,14 @@
+import { motion } from 'framer-motion'
 import { styled } from 'styled-components'
 
-export const UserContainer = styled.div`
+export const UserContainer = styled(motion.div)`
   display: flex;
   align-items: center;
   padding: 0 10px;
   height: 80%;
 `
 
-export const UswrImgContainer = styled.div`
+export const UserImgContainer = styled.div`
 border: 2px solid var(--red);
   border-radius: 5px;
   height: 100%;

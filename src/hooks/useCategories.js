@@ -13,13 +13,13 @@ export const useCategories = () => {
   const fetchCategories = async () => {
     try {
       dispatch(isFetching())
-      const res = await axios.get(
+      const {data} = await axios.get(
         `${DUMMY_JSON.ROOT}${DUMMY_JSON.PRODUCTS}${DUMMY_JSON.CATEGORIES}`
       )
 
-      console.log('RESPONSE DE AXIOS CATEGORIES', res)
+      console.log('AXIOS CATEGORIES', data)
 
-      dispatch(getCategories(res.data))
+      dispatch(getCategories(data))
     } catch (error) {
       // const msg = error.response.data.message
       dispatch(isError(error))

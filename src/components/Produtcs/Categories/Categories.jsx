@@ -11,8 +11,8 @@ const Categories = () => {
 
   const { categories } = useSelector((state) => state.categories)
   useEffect(() => {
-    fetchCategories()
-    // dispatch(getCategories(categorias))
+    // fetchCategories()
+    dispatch(getCategories(categorias))
   }, [])
 
   return (

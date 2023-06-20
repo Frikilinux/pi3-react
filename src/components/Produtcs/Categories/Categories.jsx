@@ -4,10 +4,12 @@ import categorias from '../../../data/categories.json'
 import { getCategories } from '../../../redux/categories/categoriesSlice'
 import { CategoriesContainer, Category } from './CategoriesStd'
 import { useCategories } from '../../../hooks/useCategories'
+import { useProducts } from '../../../hooks/useProducts'
 
 const Categories = () => {
   const dispatch = useDispatch()
   const {fetchCategories} = useCategories()
+  const {fetchProductsCategory} = useProducts()
 
   const { categories } = useSelector((state) => state.categories)
   useEffect(() => {
@@ -19,7 +21,7 @@ const Categories = () => {
     <CategoriesContainer>
       {categories?.map((category) => {
         const newCat = category.split('-').join(' ')
-        return <Category key={category}>{newCat}</Category>
+        return <Category onClick={() => fetchProductsCategory(category)} key={category}>{newCat}</Category>
       })}
     </CategoriesContainer>
   )

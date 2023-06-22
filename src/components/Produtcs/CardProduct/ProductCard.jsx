@@ -8,13 +8,14 @@ import {
 } from './ProductCardStd'
 
 const ProductCard = ({ id, title, images, price, stock, description }) => {
+  const noImg = 'https://cloud.ztec.ml/s/Y7G3JX4FxE5zKaz/download'
   return (
     <CardContainer id={id}>
       <ImagesContainer>
-        <MainImg imgsrc={images[0]}/>
+        <MainImg imgsrc={images[0]??noImg}/>
         <SecondaryImgsContainer>
-          <SecondaryImg imgsrc={images[1]} />
-          <SecondaryImg imgsrc={images[2]} />
+          <SecondaryImg imgsrc={images[1]??noImg} />
+          <SecondaryImg imgsrc={images[2]??noImg} />
         </SecondaryImgsContainer>
       </ImagesContainer>
       <h2>{title}</h2>

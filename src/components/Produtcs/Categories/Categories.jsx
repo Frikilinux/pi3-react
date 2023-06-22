@@ -8,8 +8,8 @@ import { useProducts } from '../../../hooks/useProducts'
 
 const Categories = () => {
   const dispatch = useDispatch()
-  const {fetchCategories} = useCategories()
-  const {fetchProductsCategory} = useProducts()
+  const { fetchCategories } = useCategories()
+  const { fetchProductsCategory, fetchProducts } = useProducts()
 
   const { categories } = useSelector((state) => state.categories)
   useEffect(() => {
@@ -19,9 +19,17 @@ const Categories = () => {
 
   return (
     <CategoriesContainer>
+      <Category onClick={() => fetchProducts()}>Todas</Category>
       {categories?.map((category) => {
         const newCat = category.split('-').join(' ')
-        return <Category onClick={() => fetchProductsCategory(category)} key={category}>{newCat}</Category>
+        return (
+          <Category
+            onClick={() => fetchProductsCategory(category)}
+            key={category}
+          >
+            {newCat}
+          </Category>
+        )
       })}
     </CategoriesContainer>
   )

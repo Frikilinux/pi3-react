@@ -1,12 +1,12 @@
 import React from 'react'
 import Products from '../../components/Produtcs/Poducts'
-import Categories from '../../components/Produtcs/Categories/Categories'
+import Genres from '../../components/Produtcs/Categories/Genres'
 
 export const Home = () => {
   return (
     <>
       <div>PAGE HOME</div>
-      <Categories />
+      <Genres />
       <Products>PRODUCTS</Products>
     </>
   )

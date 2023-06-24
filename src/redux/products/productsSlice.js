@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   products: [],
   isFetching: false,
   isError: null,
+  next: null,
 }
 
 const productsSlice = createSlice({
@@ -13,7 +14,8 @@ const productsSlice = createSlice({
     getProducts: (state, action) => {
       return {
         ...state,
-        products: [...action.payload] ,
+        products: [...action.payload.data] ,
+        next: action.payload.next,
         isFetching: false,
         isError: null,
       }

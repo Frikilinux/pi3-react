@@ -13,3 +13,12 @@ export const NUCBAZ_API = {
   LOGIN: '/auth/login',
   ORDERS: '/orders',
 }
+
+export const DEEZER_API = {
+  API_PROXY: 'https://cors.systec.ar:10300/',
+  ROOT: 'https://api.deezer.com',
+  GENRES: '/genre',
+  ALBUM: '/album',
+  ARTIST: '/artist',
+  CHART: '/chart'
+}

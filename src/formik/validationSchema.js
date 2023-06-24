@@ -1,5 +1,5 @@
 import * as yup from 'yup'
-import { mailRegex, passwordRegex } from '../constants/regexs'
+// import { mailRegex, passwordRegex } from '../constants/regexs'
 
 export const loginValidationSchema = yup.object({
   email: yup
@@ -18,7 +18,7 @@ export const loginValidationSchema = yup.object({
 })
 
 export const signInValization = yup.object({
-  username: '',
+    username: '',
   email: '',
   password: '',
 })

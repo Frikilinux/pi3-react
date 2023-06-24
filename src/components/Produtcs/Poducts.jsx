@@ -5,17 +5,20 @@ import { getProducts } from '../../redux/products/productsSlice'
 import productos from '../../data/products.json'
 import ProductCard from './CardProduct/ProductCard'
 import { ProductsSection } from './ProductsStd'
+import { useAlbums } from '../../hooks/useAlbums'
 
 const Products = () => {
   const { products } = useSelector((state) => state.products)
   const dispatch = useDispatch()
   console.log('PRODUCTS IN JSX', products)
 
-  const { fetchProducts } = useProducts()
+  // const { fetchProducts } = useProducts()
+  const { fetchAlbums } = useAlbums()
 
   useEffect(() => {
+    fetchAlbums()
     // fetchProducts()
-    dispatch(getProducts(productos.products))
+    // dispatch(getProducts(productos.products))
   }, [])
 
   return (

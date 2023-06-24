@@ -7,21 +7,20 @@ import {
   SecondaryImgsContainer,
 } from './ProductCardStd'
 
-const ProductCard = ({ id, title, images, price, stock, description }) => {
+const ProductCard = ({ id, title, cover_small, cover_medium , cover_big, position, artist }) => {
   const noImg = 'https://cloud.ztec.ml/s/Y7G3JX4FxE5zKaz/download'
   return (
     <CardContainer id={id}>
       <ImagesContainer>
-        <MainImg imgsrc={images[0]??noImg}/>
+        <MainImg imgsrc={cover_big??noImg}/>
         <SecondaryImgsContainer>
-          <SecondaryImg imgsrc={images[1]??noImg} />
-          <SecondaryImg imgsrc={images[2]??noImg} />
+          <SecondaryImg imgsrc={cover_small??noImg} />
+          <SecondaryImg imgsrc={cover_medium??noImg} />
         </SecondaryImgsContainer>
       </ImagesContainer>
       <h2>{title}</h2>
-      <h3>$ {price}</h3>
-      <h4>{description}</h4>
-      <h3>En stock: {stock}</h3>
+      <h3># {position}</h3>
+      <h4>{artist.name}</h4>
       <div>
         <button>Buy</button> <button>ADD TO CART</button>
       </div>

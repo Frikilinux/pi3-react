@@ -5,29 +5,30 @@ import { getCategories } from '../../../redux/categories/categoriesSlice'
 import { CategoriesContainer, Category } from './CategoriesStd'
 import { useCategories } from '../../../hooks/useCategories'
 import { useProducts } from '../../../hooks/useProducts'
+import { useGenres } from '../../../hooks/useGenres'
 
 const Categories = () => {
   const dispatch = useDispatch()
-  const { fetchCategories } = useCategories()
+  const {fetchGenres} = useGenres()
   const { fetchProductsCategory, fetchProducts } = useProducts()
 
   const { categories } = useSelector((state) => state.categories)
   useEffect(() => {
-    // fetchCategories()
-    dispatch(getCategories(categorias))
+    fetchGenres()
+    // dispatch(getCategories(categorias))
   }, [])
 
   return (
     <CategoriesContainer>
       <Category onClick={() => fetchProducts()}>Todas</Category>
-      {categories?.map((category) => {
-        const newCat = category.split('-').join(' ')
+      {categories?.map(({id, name, picture}) => {
+        // const newCat = category.split('-').join(' ')
         return (
-          <Category
+          <Category id={id}
             onClick={() => fetchProductsCategory(category)}
-            key={category}
+            key={id}
           >
-            {newCat}
+            {name}
           </Category>
         )
       })}

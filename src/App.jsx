@@ -3,11 +3,17 @@ import { Header } from './components/Header/Header'
 import Routes from './routes/Routes'
 
 function App() {
-  return <>
-  <Header />
-  <h1>REACT APP</h1>
-  <Routes/>
-  </>
+  const test = () => {
+    console.log('Test')
+  }
+
+  return (
+    <>
+      <Header />
+      <h1 onClick={() => test()}>REACT APP</h1>
+      <Routes />
+    </>
+  )
 }
 
 export default App

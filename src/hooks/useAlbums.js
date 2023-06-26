@@ -23,23 +23,36 @@ export const useAlbums = () => {
         }`
       )
 
-      // const data = await fetch('https://api.deezer.com/chart/0/albums', {
-      //   mode: 'no-cors',
-      // }).then((data) => {
-
-      // })
-      // const { data } = await res.json()
-
       console.log('FETCH ALBUMS', data)
+      // Fetch de los albums con más datos
+      const albumsIds = await data.data.map((album) => album.id)
 
-      dispatch(getProducts(data))
+      const albumsData = await Promise.all(
+        albumsIds.map(async (id) => {
+          const { data } = await axios.get(
+            `${
+              DEEZER_API.API_PROXY +
+              DEEZER_API.ROOT +
+              DEEZER_API.ALBUM +
+              '/' +
+              id
+            }`
+          )
+          return data
+        })
+      )
+
+      console.log('ALBUMS AXIOS', albumsData)
+
+      dispatch(getProducts(albumsData))
     } catch (error) {
       console.log(error)
-      const msg = error.response.data.message
-      dispatch(isError(msg))
+      // const msg = error.response.data.message
+      dispatch(isError(error))
     }
   }
-  const fetchAlbumsGenre = async ({genreId, index = 0}) => {
+
+  const fetchAlbumsGenre = async ({ genreId, index = 0 }) => {
     try {
       dispatch(isFetching())
       const { data } = await axios.get(

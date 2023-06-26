@@ -13,9 +13,10 @@ export const ImagesContainer = styled.div`
 
 export const MainImg = styled.div`
   background: #ffffff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
-  width: 215px;
-  height: 215px;
-  border-radius: 5px;
+  width: 300px;
+  height: 300px;
+  
+  /* border-radius: 5px; */
 `
 
 export const SecondaryImgsContainer = styled.div`

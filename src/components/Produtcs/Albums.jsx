@@ -3,11 +3,12 @@ import { useProducts } from '../../hooks/useProducts'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../redux/products/productsSlice'
 import productos from '../../data/products.json'
-import ProductCard from './CardProduct/ProductCard'
-import { ProductsSection } from './ProductsStd'
+import ProductCard from './CardProduct/AlbumCard'
+import { ProductsSection } from './AlbumsStd'
 import { useAlbums } from '../../hooks/useAlbums'
+import AlbumCard from './CardProduct/AlbumCard'
 
-const Products = () => {
+const Albums = () => {
   const { products } = useSelector((state) => state.products)
   const dispatch = useDispatch()
   console.log('PRODUCTS IN JSX', products)
@@ -24,10 +25,10 @@ const Products = () => {
   return (
     <ProductsSection>
       {products?.map((product) => {
-        return <ProductCard key={product.id} {...product} />
+        return <AlbumCard key={product.id} {...product} />
       })}
     </ProductsSection>
   )
 }
 
-export default Products
+export default Albums

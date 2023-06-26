@@ -5,14 +5,12 @@ import {
   MainImg,
   SecondaryImg,
   SecondaryImgsContainer,
-} from './ProductCardStd'
+} from './AlbumCardStd'
 
-const ProductCard = ({
+const AlbumCard = ({
   id,
   title,
-  cover_small,
-  cover_medium,
-  cover_big,
+  cover_big: coverBig,
   release_date: releaseDate,
   artist,
 }) => {
@@ -20,11 +18,7 @@ const ProductCard = ({
   return (
     <CardContainer id={id}>
       <ImagesContainer>
-        <MainImg imgsrc={cover_big ?? noImg} />
-        <SecondaryImgsContainer>
-          <SecondaryImg imgsrc={cover_small ?? noImg} />
-          <SecondaryImg imgsrc={cover_medium ?? noImg} />
-        </SecondaryImgsContainer>
+        <MainImg imgsrc={coverBig ?? noImg} />
       </ImagesContainer>
       <h2>{title}</h2>
       <h3>{artist.name}</h3>
@@ -36,4 +30,4 @@ const ProductCard = ({
   )
 }
 
-export default ProductCard
+export default AlbumCard

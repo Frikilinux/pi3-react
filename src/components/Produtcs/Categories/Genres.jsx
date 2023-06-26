@@ -24,8 +24,8 @@ const Genres = () => {
       {categories?.map(({ id, name, picture_small: pictureSmall }) => {
         return (
           <Genre id={id} onClick={() => {fetchAlbumsGenre({genreId: id})}} key={id}>
-            <p>{name}</p>
             <GenreImg src={pictureSmall} />
+            <p>{name}</p>
           </Genre>
         )
       })}

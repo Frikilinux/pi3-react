@@ -28,9 +28,7 @@ const ProductCard = ({
       </ImagesContainer>
       <h2>{title}</h2>
       <h3>{artist.name}</h3>
-      <h5>
-        {`Release: ${releaseDate.split('-').reverse().join('/')}`}
-      </h5>
+      <h5>{`Release: ${releaseDate.split('-').reverse().join('/')}`}</h5>
       <div>
         <button>Buy</button> <button>ADD TO CART</button>
       </div>

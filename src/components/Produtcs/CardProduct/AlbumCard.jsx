@@ -1,11 +1,11 @@
 import React from 'react'
 import {
   CardContainer,
+  ExplicitFrame,
   ImagesContainer,
   InfoContainer,
   MainImg,
-  SecondaryImg,
-  SecondaryImgsContainer,
+  TitleContainer,
 } from './AlbumCardStd'
 import formatTime from '../../../utils/fomatedTime'
 
@@ -17,21 +17,23 @@ const AlbumCard = ({
   artist,
   tracks,
   explicit_lyrics: explicit,
-  duration
+  duration,
 }) => {
   const noImg = 'https://cloud.ztec.ml/s/Y7G3JX4FxE5zKaz/download'
   return (
     <CardContainer id={id}>
+      <TitleContainer>
+        <p>{title}</p>
+        <p>{artist.name}</p>
+      </TitleContainer>
       <ImagesContainer>
         <MainImg imgsrc={coverBig ?? noImg} />
+        {explicit && <ExplicitFrame>EXPLICIT</ExplicitFrame>}
       </ImagesContainer>
       <InfoContainer>
         <p>{`Release: ${releaseDate.split('-').reverse().join('/')}`}</p>
         <p>{`Tracks ${tracks.data.length}`}</p>
         <p>Duration {formatTime(duration)}</p>
-        {
-          explicit && <div>EXPLICIT</div>
-        }
         {/* <div>
           <button>Buy</button> <button>ADD TO CART</button>
         </div> */}

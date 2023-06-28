@@ -11,7 +11,7 @@ const Genres = () => {
   // const dispatch = useDispatch()
   const { fetchGenres } = useGenres()
   // const { fetchProductsCategory, fetchProducts } = useProducts()
-  const {fetchAlbumsGenre} = useAlbums()
+  const { fetchAlbums } = useAlbums()
 
   const { categories } = useSelector((state) => state.categories)
   useEffect(() => {
@@ -23,7 +23,13 @@ const Genres = () => {
     <GenresContainer>
       {categories?.map(({ id, name, picture_small: pictureSmall }) => {
         return (
-          <Genre id={id} onClick={() => {fetchAlbumsGenre({genreId: id})}} key={id}>
+          <Genre
+            id={id}
+            onClick={() => {
+              fetchAlbums({ genreId: id })
+            }}
+            key={id}
+          >
             <GenreImg src={pictureSmall} />
             <p>{name}</p>
           </Genre>

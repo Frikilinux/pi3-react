@@ -14,7 +14,7 @@ const productsSlice = createSlice({
     getProducts: (state, action) => {
       return {
         ...state,
-        products: [...action.payload] ,
+        products: [...action.payload.albums],
         next: action.payload.next,
         isFetching: false,
         isError: null,

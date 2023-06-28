@@ -17,7 +17,7 @@ const Albums = () => {
   const { fetchAlbums } = useAlbums()
 
   useEffect(() => {
-    fetchAlbums()
+    fetchAlbums({})
     // fetchProducts()
     // dispatch(getProducts(productos.products))
   }, [])

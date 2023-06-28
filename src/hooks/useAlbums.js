@@ -5,6 +5,7 @@ import {
   getProducts,
   isError,
   isFetching,
+  nextAlbumsPage,
 } from '../redux/products/productsSlice'
 import { DEEZER_API } from '../constants/apiUrls'
 
@@ -46,14 +47,15 @@ export const useAlbums = () => {
 
       console.log('ALBUMS AXIOS', albumsData)
 
-      dispatch(
-        getProducts({
-          total: data.total,
-          albums: albumsData,
-          next: data.next,
-          currentGenre: genreId,
-        })
-      )
+      const payload = {
+        total: data.total,
+        albums: albumsData,
+        next: data.next,
+        currentGenre: genreId,
+      }
+      
+      next ? dispatch(nextAlbumsPage(payload)) : dispatch(getProducts(payload)) 
+
     } catch (error) {
       console.log(error)
       // const msg = error.response.data.message

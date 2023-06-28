@@ -5,7 +5,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   /* background-color: #f0ffff29; */
-  width: 300px;
+  width: 250px;
   position: relative;
 `
 
@@ -21,9 +21,8 @@ export const ImagesContainer = styled.div`
 export const MainImg = styled.div`
   border-radius: 0 0 10px 10px;
   background: #ffffff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
-  width: 300px;
-  height: 300px;
-
+  height: 250px;
+  width: 250px;
   /* border-radius: 5px; */
 `
 export const TitleContainer = styled.div`
@@ -32,7 +31,7 @@ export const TitleContainer = styled.div`
   z-index: 3;
   background-color: #252425;
   backdrop-filter: blur(10px);
-  width: 300px;
+  width: 100%;
   border-radius: 5px 5px 0 0;
   & :first-child {
     width: 100%;
@@ -53,7 +52,7 @@ export const InfoContainer = styled.div`
   font-size: 0.8rem;
   font-weight: 300;
   height: 50px;
-  width: 280px;
+  width: 90%;
   background-color: #c2bebe;
   background: linear-gradient(
     -45deg,

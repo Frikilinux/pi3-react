@@ -12,7 +12,7 @@ import formatTime from '../../../utils/fomatedTime'
 const AlbumCard = ({
   id,
   title,
-  cover_big: coverBig,
+  cover_medium: coverMedium,
   release_date: releaseDate,
   artist,
   tracks,
@@ -27,7 +27,7 @@ const AlbumCard = ({
         <p>{artist.name}</p>
       </TitleContainer>
       <ImagesContainer>
-        <MainImg imgsrc={coverBig ?? noImg} />
+        <MainImg imgsrc={coverMedium ?? noImg} />
         {explicit && <ExplicitFrame>EXPLICIT</ExplicitFrame>}
       </ImagesContainer>
       <InfoContainer>

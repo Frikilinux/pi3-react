@@ -25,6 +25,18 @@ const productsSlice = createSlice({
         isError: null,
       }
     },
+    nextAlbumsPage: (state, { payload }) => {
+      const { albums, next, currentGenre, total } = payload
+      return {
+        ...state,
+        products: [...state.products, ...albums],
+        next,
+        currentGenre,
+        total,
+        isFetching: false,
+        isError: null,
+      }
+    },
     isFetching: (state) => {
       return {
         ...state,
@@ -40,6 +52,6 @@ const productsSlice = createSlice({
   },
 })
 
-export const { isFetching, isError, getProducts } = productsSlice.actions
+export const { isFetching, isError, getProducts, nextAlbumsPage } = productsSlice.actions
 
 export default productsSlice.reducer

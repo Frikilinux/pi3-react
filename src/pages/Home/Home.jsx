@@ -1,14 +1,13 @@
 import React from 'react'
 import Genres from '../../components/Produtcs/Categories/Genres'
 import Albums from '../../components/Produtcs/Albums'
+import SectionWrapper from '../../components/UI/SectionWrapper/SectionWrapper'
 
 export const Home = () => {
   return (
-    <>
-      <img src={'./src/assets/react.svg'} alt='LOGOGOGOGOG' srcSet='' />
-      <div>PAGE HOME</div>
+    <SectionWrapper bg='red'>
       <Genres />
       <Albums>PRODUCTS</Albums>
-    </>
+    </SectionWrapper>
   )
 }

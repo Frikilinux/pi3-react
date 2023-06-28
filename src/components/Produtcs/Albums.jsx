@@ -9,7 +9,9 @@ import { useAlbums } from '../../hooks/useAlbums'
 import AlbumCard from './CardProduct/AlbumCard'
 
 const Albums = () => {
-  const { products } = useSelector((state) => state.products)
+  const { products, next, currentGenre } = useSelector(
+    (state) => state.products
+  )
   const dispatch = useDispatch()
   console.log('PRODUCTS IN JSX', products)
 
@@ -27,6 +29,13 @@ const Albums = () => {
       {products?.map((product) => {
         return <AlbumCard key={product.id} {...product} />
       })}
+      <button
+        onClick={() => {
+          fetchAlbums({ next })
+        }}
+      >
+        NEXT
+      </button>
     </ProductsSection>
   )
 }

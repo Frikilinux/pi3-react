@@ -7,7 +7,7 @@ export const Home = () => {
   return (
     <SectionWrapper bg='red'>
       <Genres />
-      <Albums>PRODUCTS</Albums>
+      <Albums />
     </SectionWrapper>
   )
 }

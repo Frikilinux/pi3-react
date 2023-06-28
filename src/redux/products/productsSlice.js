@@ -5,17 +5,22 @@ const INITIAL_STATE = {
   isFetching: false,
   isError: null,
   next: null,
+  currentGenre: null,
+  total: null,
 }
 
 const productsSlice = createSlice({
   name: 'products',
   initialState: INITIAL_STATE,
   reducers: {
-    getProducts: (state, action) => {
+    getProducts: (state, { payload }) => {
+      const { albums, next, currentGenre, total } = payload
       return {
         ...state,
-        products: [...action.payload.albums],
-        next: action.payload.next,
+        products: [...albums],
+        next,
+        currentGenre,
+        total,
         isFetching: false,
         isError: null,
       }

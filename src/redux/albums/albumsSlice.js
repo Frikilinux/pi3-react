@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const INITIAL_STATE = {
-  products: [],
+  albums: [],
   isFetching: false,
   isError: null,
   next: null,
@@ -9,15 +9,15 @@ const INITIAL_STATE = {
   total: null,
 }
 
-const productsSlice = createSlice({
-  name: 'products',
+const albumsSlice = createSlice({
+  name: 'albums',
   initialState: INITIAL_STATE,
   reducers: {
-    getProducts: (state, { payload }) => {
+    setAlbums: (state, { payload }) => {
       const { albums, next, currentGenre, total } = payload
       return {
         ...state,
-        products: [...albums],
+        albums: [...albums],
         next,
         currentGenre,
         total,
@@ -29,7 +29,7 @@ const productsSlice = createSlice({
       const { albums, next, currentGenre, total } = payload
       return {
         ...state,
-        products: [...state.products, ...albums],
+        albums: [...state.albums, ...albums],
         next,
         currentGenre,
         total,
@@ -52,6 +52,6 @@ const productsSlice = createSlice({
   },
 })
 
-export const { isFetching, isError, getProducts, nextAlbumsPage } = productsSlice.actions
+export const { isFetching, isError, setAlbums, nextAlbumsPage } = albumsSlice.actions
 
-export default productsSlice.reducer
+export default albumsSlice.reducer

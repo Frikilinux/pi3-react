@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCategories } from '../../../redux/categories/categoriesSlice'
 import { Genre, GenreImg, GenresContainer } from './GenresStd'
 import { useCategories } from '../../../hooks/useCategories'
-import { useProducts } from '../../../hooks/useProducts'
 import { useGenres } from '../../../hooks/useGenres'
 import { useAlbums } from '../../../hooks/useAlbums'
 

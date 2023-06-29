@@ -2,11 +2,11 @@ import axios from 'axios'
 // import { DUMMY_JSON } from '../constants/apiUrls'
 import { useDispatch } from 'react-redux'
 import {
-  getProducts,
   isError,
   isFetching,
   nextAlbumsPage,
-} from '../redux/products/productsSlice'
+  setAlbums,
+} from '../redux/albums/albumsSlice'
 import { DEEZER_API } from '../constants/apiUrls'
 
 export const useAlbums = () => {
@@ -53,9 +53,8 @@ export const useAlbums = () => {
         next: data.next,
         currentGenre: genreId,
       }
-      
-      next ? dispatch(nextAlbumsPage(payload)) : dispatch(getProducts(payload)) 
 
+      next ? dispatch(nextAlbumsPage(payload)) : dispatch(setAlbums(payload))
     } catch (error) {
       console.log(error)
       // const msg = error.response.data.message
@@ -79,7 +78,7 @@ export const useAlbums = () => {
 
       console.log('AXIOS CATEGORIES PRODUTCS', data.products)
 
-      dispatch(getProducts(data))
+      dispatch(setAlbums(data))
     } catch (error) {
       const msg = error.response.data.message
       dispatch(isError(msg))

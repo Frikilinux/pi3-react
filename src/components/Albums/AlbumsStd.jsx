@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const ProductsSection = styled.section`
+export const AlbumsContainer = styled.div`
   padding: 20px;
   display: flex;
   flex-wrap: wrap;

@@ -59,6 +59,9 @@ export const InfoContainer = styled.div`
     rgba(228, 225, 225, 0.514),
     rgba(255, 255, 255, 0.678)
   );
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   border-radius: 0 0 5px 5px;
   padding: 5px;
 `
@@ -70,10 +73,20 @@ export const ExplicitFrame = styled.div`
   right: 10px;
   z-index: 3;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 500;
   padding: 0 5px;
-  color: var(--fg);
-  background: var(--dark);
-  border: 1px solid #fff;
+  color: var(--dark);
+  background: #f8d405;
+  border: 1px solid var(--dark);
   border-radius: 3px;
+`
+
+export const NextButton = styled.div`
+  cursor: pointer;
+  text-align: center;
+  background-color: #991658;
+  width: 60%;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: 700;
 `

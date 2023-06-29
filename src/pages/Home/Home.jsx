@@ -1,13 +1,14 @@
 import React from 'react'
-import Genres from '../../components/Produtcs/Categories/Genres'
-import Albums from '../../components/Produtcs/Albums'
+import Genres from '../../components/Albums/Categories/Genres'
+import Albums from '../../components/Albums/Albums'
 import SectionWrapper from '../../components/UI/SectionWrapper/SectionWrapper'
+import { AlbumsSection } from '../../components/Albums/AlbumsSection/AlbumsSection'
 
 export const Home = () => {
   return (
-    <SectionWrapper bg='red'>
+    <SectionWrapper id='albums'>
       <Genres />
-      <Albums />
+      <AlbumsSection />
     </SectionWrapper>
   )
 }

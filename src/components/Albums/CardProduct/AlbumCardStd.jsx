@@ -67,7 +67,7 @@ export const InfoContainer = styled.div`
 `
 
 export const ExplicitFrame = styled.div`
-  opacity: 0.6;
+  opacity: 0.8;
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -75,9 +75,9 @@ export const ExplicitFrame = styled.div`
   font-size: 0.8rem;
   font-weight: 500;
   padding: 0 5px;
-  color: var(--dark);
-  background: #f8d405;
-  border: 1px solid var(--dark);
+  color: yellow;
+  background: #f80505;
+  border: 1px solid yellow;
   border-radius: 3px;
 `
 

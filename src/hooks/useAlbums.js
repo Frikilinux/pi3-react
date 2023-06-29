@@ -12,18 +12,17 @@ import { DEEZER_API } from '../constants/apiUrls'
 export const useAlbums = () => {
   const dispatch = useDispatch()
 
-  const fetchAlbumFullInfo = async (ids) => {
-    const albumsFullData = await Promise.all(
-      ids.map(async (id) => {
-        const { data } = await axios.get(
-          `${
-            DEEZER_API.API_PROXY + DEEZER_API.ROOT + DEEZER_API.ALBUM + '/' + id
-          }`
-        )
-        return data
-      })
+  const fetchAlbumsFullInfo = (ids) => {
+    return Promise.all(
+      ids.map(fetchAlbumById)
     )
-    return albumsFullData
+  }
+
+  const fetchAlbumById = async (id) => {
+    const { data } = await axios.get(
+      `${DEEZER_API.API_PROXY + DEEZER_API.ROOT + DEEZER_API.ALBUM + '/' + id}`
+    )
+    return data
   }
 
   const fetchAlbums = async ({ genreId = '0', next }) => {
@@ -42,8 +41,8 @@ export const useAlbums = () => {
 
       console.log('FETCH ALBUMS', data)
       // Fetch de los albums con más datos
-      const albumsIds = await data.data.map((album) => album.id)
-      const albumsData = await fetchAlbumFullInfo(albumsIds)
+      const albumsIds = data.data.map((album) => album.id)
+      const albumsData = await fetchAlbumsFullInfo(albumsIds)
 
       console.log('ALBUMS AXIOS', albumsData)
 
@@ -57,6 +56,7 @@ export const useAlbums = () => {
       next ? dispatch(nextAlbumsPage(payload)) : dispatch(setAlbums(payload))
     } catch (error) {
       console.log(error)
+      console.log(error);
       // const msg = error.response.data.message
       dispatch(isError(error))
     }

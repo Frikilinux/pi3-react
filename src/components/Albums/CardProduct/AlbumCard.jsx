@@ -28,18 +28,13 @@ const AlbumCard = ({
       </TitleContainer>
       <ImagesContainer>
         <MainImg imgsrc={coverMedium ?? noImg} />
-        {explicit && <ExplicitFrame>EXPLICIT</ExplicitFrame>}
+        {explicit && <ExplicitFrame>E</ExplicitFrame>}
       </ImagesContainer>
       <InfoContainer>
         <p>{`Release: ${releaseDate.split('-').reverse().join('/')}`}</p>
         <p>{`Tracks ${tracks.data.length}`}</p>
         <p>Duration {formatTime(duration)}</p>
-        {/* <div>
-          <button>Buy</button> <button>ADD TO CART</button>
-        </div> */}
       </InfoContainer>
-      {/* <h2>{title}</h2>
-      <h3>{artist.name}</h3> */}
     </CardContainer>
   )
 }

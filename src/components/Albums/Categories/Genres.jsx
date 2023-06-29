@@ -1,21 +1,16 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCategories } from '../../../redux/categories/categoriesSlice'
+import { useSelector } from 'react-redux'
 import { Genre, GenreImg, GenresContainer } from './GenresStd'
-import { useCategories } from '../../../hooks/useCategories'
 import { useGenres } from '../../../hooks/useGenres'
 import { useAlbums } from '../../../hooks/useAlbums'
 
 const Genres = () => {
-  // const dispatch = useDispatch()
   const { fetchGenres } = useGenres()
-  // const { fetchProductsCategory, fetchProducts } = useProducts()
   const { fetchAlbums } = useAlbums()
 
   const { categories } = useSelector((state) => state.categories)
   useEffect(() => {
     fetchGenres()
-    // dispatch(getCategories(categorias))
   }, [])
 
   return (

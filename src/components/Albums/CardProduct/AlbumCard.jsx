@@ -18,6 +18,7 @@ const AlbumCard = ({
   tracks,
   explicit_lyrics: explicit,
   duration,
+  price
 }) => {
   const noImg = 'https://cloud.ztec.ml/s/Y7G3JX4FxE5zKaz/download'
   return (
@@ -34,6 +35,7 @@ const AlbumCard = ({
         <p>{`Release: ${releaseDate.split('-').reverse().join('/')}`}</p>
         <p>{`Tracks ${tracks.data.length}`}</p>
         <p>Duration {formatTime(duration)}</p>
+        <p>$ {price} </p>
       </InfoContainer>
     </CardContainer>
   )

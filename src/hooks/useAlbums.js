@@ -8,14 +8,13 @@ import {
   setAlbums,
 } from '../redux/albums/albumsSlice'
 import { DEEZER_API } from '../constants/apiUrls'
+import createPrice from '../utils/createPrice'
 
 export const useAlbums = () => {
   const dispatch = useDispatch()
 
   const fetchAlbumsFullInfo = (ids) => {
-    return Promise.all(
-      ids.map(fetchAlbumById)
-    )
+    return Promise.all(ids.map(fetchAlbumById))
   }
 
   const fetchAlbumById = async (id) => {
@@ -48,7 +47,9 @@ export const useAlbums = () => {
 
       const payload = {
         total: data.total,
-        albums: albumsData,
+        albums: albumsData.map((album) => {
+          return { ...album, price: createPrice(album.id) }
+        }),
         next: data.next,
         currentGenre: genreId,
       }
@@ -56,7 +57,7 @@ export const useAlbums = () => {
       next ? dispatch(nextAlbumsPage(payload)) : dispatch(setAlbums(payload))
     } catch (error) {
       console.log(error)
-      console.log(error);
+      console.log(error)
       // const msg = error.response.data.message
       dispatch(isError(error))
     }

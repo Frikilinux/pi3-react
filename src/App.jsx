@@ -4,14 +4,34 @@ import Routes from './routes/Routes'
 import Layout from './components/Layout/Layout'
 import Cart from './components/Cart/Cart'
 import { CartModal } from './components/Cart/CartStd'
+import { AnimatePresence } from 'framer-motion'
+import { useSelector } from 'react-redux'
 
 function App() {
+  const isHidden = useSelector(({ cart }) => cart.hidden)
+
   return (
     <Layout>
       <Header />
-      <CartModal>
-        <Cart />
-      </CartModal>
+      <AnimatePresence>
+        {isHidden && (
+          <CartModal
+            initial={{ translateX: 550, opacity: 0 }}
+            animate={{ translateX: 0, opacity: 1 }}
+            exit={{ translateX: 550 }}
+            transition={{
+              type: 'spring',
+              damping: 10,
+              stiffness: 100,
+              restDelta: 0.005,
+            }}
+            key='cart'
+          >
+            <Cart />
+          </CartModal>
+        )}
+      </AnimatePresence>
+
       <Routes />
     </Layout>
   )

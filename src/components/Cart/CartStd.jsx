@@ -1,7 +1,8 @@
+import { motion } from 'framer-motion'
 import { styled } from 'styled-components'
 
 // Tranformarlo a motion frmer
-export const CartModal = styled.div`
+export const CartModal = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;

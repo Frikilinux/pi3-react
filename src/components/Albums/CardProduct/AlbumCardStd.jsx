@@ -1,6 +1,7 @@
 import { styled } from 'styled-components'
 
 export const CardContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,28 +12,44 @@ export const CardContainer = styled.div`
 
 export const ImagesContainer = styled.div`
   position: relative;
-  /* z-index: 1; */
+  z-index: 5;
   display: flex;
   gap: 10px;
-  border-radius: 0 0 10px 10px;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-radius: 10px;
 `
 
 export const MainImg = styled.div`
-  border-radius: 0 0 10px 10px;
+  box-shadow: 0px 0px 29px 2px rgba(0, 0, 0, 0.55);
+  position: relative;
+  z-index: 4;
+  border-radius: 10px;
   background: #ffffff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
   height: 250px;
   width: 250px;
+  &:hover {
+    border: 2px solid red;
+    box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+    transform: scale(0.99)
+  }
   /* border-radius: 5px; */
 `
 export const TitleContainer = styled.div`
   padding: 5px;
+  color: var(--dark);
   /* position: absolute; */
-  z-index: 3;
-  background-color: #252425;
+  /* z-index: 3; */
   backdrop-filter: blur(10px);
-  width: 100%;
+  width: 90%;
   border-radius: 5px 5px 0 0;
+  background: linear-gradient(
+    -45deg,
+    rgba(228, 225, 225, 0.514),
+    rgba(255, 255, 255, 0.678)
+  );
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   & :first-child {
     width: 100%;
     font-weight: 700;

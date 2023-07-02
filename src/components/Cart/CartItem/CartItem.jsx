@@ -8,8 +8,13 @@ import {
   QtyContainer,
 } from './CartItemStd'
 import formatTime from '../../../utils/fomatedTime'
+import { useDispatch } from 'react-redux'
+import { addToCart, removeAlbum, removeFromCart } from '../../../redux/cart/cartSlice'
 
-export const CartItem = ({ title, cover_medium: cover, artist, duration,label, price }) => {
+export const CartItem = (props) => {
+  const { title, cover_medium: cover, artist, duration,label, price, id, qty } = props
+  const dispatch = useDispatch()
+
   return (
     <ItemContainer>
       <ImgContainer>
@@ -24,11 +29,11 @@ export const CartItem = ({ title, cover_medium: cover, artist, duration,label, p
       </ItemInfoConatainer>
         <QtyContainer>
           <QtyBtns>
-            <div>+</div>
-            <div>5</div>
-            <div>-</div>
+            <div onClick={() => dispatch(addToCart(props))}>+</div>
+            <div>{qty}</div>
+            <div onClick={() => dispatch(removeFromCart(id))}>-</div>
           </QtyBtns>
-          <DeleteItem>bor</DeleteItem>
+          <DeleteItem onClick={() => dispatch(removeAlbum(id))}>bor</DeleteItem>
         </QtyContainer>
     </ItemContainer>
   )

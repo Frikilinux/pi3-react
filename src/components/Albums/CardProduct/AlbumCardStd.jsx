@@ -26,13 +26,13 @@ export const MainImg = styled.div`
   background: #ffffff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
   height: 250px;
   width: 250px;
-  &:hover {
-    border: 2px solid red;
+  &:active {
     box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.55);
-    cursor: pointer;
-    transform: scale(0.99)
+    transform: scale(0.99);
   }
-  /* border-radius: 5px; */
+  &:hover {
+    cursor: pointer;
+  }
 `
 export const TitleContainer = styled.div`
   padding: 5px;

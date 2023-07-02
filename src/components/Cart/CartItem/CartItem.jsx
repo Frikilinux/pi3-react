@@ -7,24 +7,26 @@ import {
   QtyBtns,
   QtyContainer,
 } from './CartItemStd'
+import formatTime from '../../../utils/fomatedTime'
 
-export const CartItem = ({ img, title }) => {
+export const CartItem = ({ title, cover_medium: cover, artist, duration,label, price }) => {
   return (
     <ItemContainer>
       <ImgContainer>
-        <img src={img} alt={title} />
+        <img src={cover} alt={title} />
       </ImgContainer>
       <ItemInfoConatainer>
-        <p>ALBUM TITLE</p>
-        <p>ARTIST NAME</p>
-        <p>DURATION</p>
-        <p>LABEL</p>
+        <p>{title}</p>
+        <p>{artist.name}</p>
+        <p>{formatTime(duration)}</p>
+        <p>{label}</p>
+        <p>$ {price}</p>
       </ItemInfoConatainer>
         <QtyContainer>
           <QtyBtns>
-            <div>-</div>
-            <div>5</div>
             <div>+</div>
+            <div>5</div>
+            <div>-</div>
           </QtyBtns>
           <DeleteItem>bor</DeleteItem>
         </QtyContainer>

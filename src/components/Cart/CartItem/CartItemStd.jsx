@@ -13,9 +13,12 @@ export const ItemContainer = styled.div`
 `
 
 export const ImgContainer = styled.div`
-  background-color: #00800075;
+  /* background-color: #00800075; */
   height: 110px;
   min-width: 110px;
+  & img {
+    width: 110px;
+  }
 `
 
 export const ItemInfoConatainer = styled.div`

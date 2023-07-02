@@ -1,15 +1,15 @@
 const formatTime = (time) => {
-  const h = Math.floor(time / 3600)
-    .toString()
-    .padStart(2, '0')
-  const m = Math.floor((time % 3600) / 60)
+  // const h = Math.floor(time / 3600)
+  //   .toString()
+  //   .padStart(2, '0')
+  const m = Math.floor(time / 60)
     .toString()
     .padStart(2, '0')
   const s = Math.floor(time % 60)
     .toString()
     .padStart(2, '0')
 
-  return `${h !== '00' ? `${h}:` : ''}${m}:${s}`
+  return `${m}:${s}`
 }
 
 export default formatTime

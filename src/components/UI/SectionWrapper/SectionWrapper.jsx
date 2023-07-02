@@ -3,7 +3,7 @@ import { Section, SectionContainer } from './SectionWrapperStd'
 
 const SectionWrapper = ({ children }) => {
   return (
-    <SectionContainer bg={'grey'}>
+    <SectionContainer >
       <Section>{children}</Section>
     </SectionContainer>
   )

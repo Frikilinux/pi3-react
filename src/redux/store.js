@@ -10,6 +10,7 @@ import {
 } from 'redux-persist'
 import userReducer from './user/userSlice'
 import albumsReducer from './albums/albumsSlice'
+import cartReducer from './cart/cartSlice'
 import categoriesReducer from './categories/categoriesSlice'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
@@ -18,12 +19,13 @@ const rootReducer = combineReducers({
   user: userReducer,
   albums: albumsReducer,
   categories: categoriesReducer,
+  cart: cartReducer,
 })
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user'],
+  whitelist: ['user', 'albums', 'cart'],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

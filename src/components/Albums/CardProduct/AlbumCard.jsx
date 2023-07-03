@@ -5,6 +5,7 @@ import {
   ImagesContainer,
   InfoContainer,
   MainImg,
+  SingleFrame,
   TitleContainer,
 } from './AlbumCardStd'
 import formatTime from '../../../utils/fomatedTime'
@@ -22,6 +23,7 @@ const AlbumCard = (props) => {
     explicit_lyrics: explicit,
     duration,
     price,
+    record_type: recordType
   } = props
   const noImg = 'https://cloud.ztec.ml/s/Y7G3JX4FxE5zKaz/download'
   const dispatch = useDispatch()
@@ -34,15 +36,27 @@ const AlbumCard = (props) => {
       </TitleContainer>
       <ImagesContainer>
         <MainImg imgsrc={coverMedium ?? noImg} />
+        {recordType === 'single' && <SingleFrame>S</SingleFrame>} 
         {explicit && <ExplicitFrame>E</ExplicitFrame>}
       </ImagesContainer>
       <InfoContainer>
-        <p>{`Re ${releaseDate.split('-').reverse().join('/')}`}</p>
-        <p>{`Tr ${tracks.data.length}`}</p>
-        <p>Dur {formatTime(duration)}</p>
-        <p>$ {price} </p>
+        <div>
+          <p>{`${releaseDate.split('-').reverse().join('/')}`}</p>
+          <p>{`${tracks.data.length}`} tracks</p>
+          <p>{formatTime(duration)} mins</p>
+        </div>
+        <div>
+          <p>$ {price} </p>
+          <button
+            onClick={() => {
+              dispatch(addToCart(props))
+            }}
+          >
+            buy
+          </button>
+        </div>
+
         {console.log({ props })}
-        <button onClick={() => {dispatch(addToCart(props))}}>buy</button>
       </InfoContainer>
     </CardContainer>
   )

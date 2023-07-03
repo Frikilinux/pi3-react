@@ -35,11 +35,9 @@ export const MainImg = styled.div`
   }
 `
 export const TitleContainer = styled.div`
+  font-family: 'Yanone Kaffeesatz';
   padding: 5px;
   color: var(--dark);
-  /* position: absolute; */
-  /* z-index: 3; */
-  backdrop-filter: blur(10px);
   width: 90%;
   border-radius: 5px 5px 0 0;
   background: linear-gradient(
@@ -50,22 +48,27 @@ export const TitleContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
     rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
     rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-  & :first-child {
+  & p {
     width: 100%;
-    font-weight: 700;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
   }
+  & :first-child {
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
   & :last-child {
     font-weight: 500;
-    font-size: 0.8rem;
   }
 `
 
 export const InfoContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   color: var(--dark);
+  font-family: 'Yanone Kaffeesatz';
   font-size: 0.8rem;
   font-weight: 300;
   height: 50px;
@@ -81,6 +84,22 @@ export const InfoContainer = styled.div`
     rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   border-radius: 0 0 5px 5px;
   padding: 5px;
+  & div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  & :first-child {
+    font-weight: 500;
+  }
+  & :last-child {
+    & p {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    justify-content: space-around;
+  }
 `
 
 export const ExplicitFrame = styled.div`
@@ -88,14 +107,20 @@ export const ExplicitFrame = styled.div`
   position: absolute;
   bottom: 10px;
   right: 10px;
-  z-index: 3;
+  z-index: 6;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0 5px;
   color: yellow;
   background: #f80505;
   border: 1px solid yellow;
   border-radius: 3px;
+`
+export const SingleFrame = styled(ExplicitFrame)`
+  right: 40px;
+  color: #dddddb;
+  background: #0546f8;
+  border: 1px solid white;
 `
 
 export const NextButton = styled.div`

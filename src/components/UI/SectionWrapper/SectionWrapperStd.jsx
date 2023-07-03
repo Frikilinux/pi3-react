@@ -4,7 +4,7 @@ export const SectionContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   background-color: ${({ bg }) => bg ?? 'var(--blue)'};
 `
 

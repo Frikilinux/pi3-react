@@ -11,6 +11,7 @@ import {
 import formatTime from '../../../utils/fomatedTime'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../../redux/cart/cartSlice'
+import { Button } from '../../UI/Button/Button'
 
 const AlbumCard = (props) => {
   const {
@@ -23,7 +24,7 @@ const AlbumCard = (props) => {
     explicit_lyrics: explicit,
     duration,
     price,
-    record_type: recordType
+    record_type: recordType,
   } = props
   const noImg = 'https://cloud.ztec.ml/s/Y7G3JX4FxE5zKaz/download'
   const dispatch = useDispatch()
@@ -36,7 +37,7 @@ const AlbumCard = (props) => {
       </TitleContainer>
       <ImagesContainer>
         <MainImg imgsrc={coverMedium ?? noImg} />
-        {recordType === 'single' && <SingleFrame>S</SingleFrame>} 
+        {recordType === 'single' && <SingleFrame>S</SingleFrame>}
         {explicit && <ExplicitFrame>E</ExplicitFrame>}
       </ImagesContainer>
       <InfoContainer>
@@ -47,13 +48,13 @@ const AlbumCard = (props) => {
         </div>
         <div>
           <p>$ {price} </p>
-          <button
+          <Button
             onClick={() => {
               dispatch(addToCart(props))
             }}
           >
-            buy
-          </button>
+            CART
+          </Button>
         </div>
 
         {console.log({ props })}

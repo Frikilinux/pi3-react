@@ -6,5 +6,5 @@ export const AlbumsContainer = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 35px;
 `

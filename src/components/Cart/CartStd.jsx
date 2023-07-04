@@ -14,7 +14,7 @@ export const CartModal = styled(motion.div)`
   width: 100%;
   max-width: 500px;
   min-width: 320px;
-  background-color: #1919b944;
+  background-color: #454b5fee;
   top: 70px;
   right: 0;
   padding: 15px;
@@ -25,7 +25,7 @@ export const CartContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  background-color: #ffa60058;
+  /* background-color: #ffa60058; */
   height: 100%;
   width: 100%;
 `

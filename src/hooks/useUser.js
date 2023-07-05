@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { DUMMY_JSON } from '../constants/apiUrls'
+import { DUMMY_JSON, NUCBAZ_API } from '../constants/apiUrls'
 import { useDispatch } from 'react-redux'
 import { isError, isLogin, loggedUser } from '../redux/user/userSlice'
 
@@ -15,14 +15,27 @@ export const useUser = () => {
       })
 
       dispatch(loggedUser(res.data))
-
     } catch (error) {
-
       const msg = error.response.data.message
       dispatch(isError(msg))
-
     }
   }
 
-  return { loginUser }
+  const registerUser = async ({ name, email, password }) => {
+    const { ROOT, REGISTER } = NUCBAZ_API
+    try {
+      const res = await axios.post(ROOT + REGISTER, {
+        nombre: name,
+        email,
+        password,
+      })
+
+      console.log('RESPONSE OF REGISTER', res)
+      return {}
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  return { loginUser, registerUser }
 }

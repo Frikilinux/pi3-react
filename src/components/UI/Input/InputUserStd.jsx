@@ -5,16 +5,16 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 50px;
   width: 90%;
   max-width: 600px;
 `
 
 export const InputComponent = styled.div`
-display: flex;
-flex-direction: column;
-
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  height: 100px ;
 `
 
 export const InputContainer = styled.div`
@@ -27,15 +27,15 @@ export const InputContainer = styled.div`
 `
 
 export const InputStd = styled.input`
-width: 100%;
-font-size: 1.3rem;
-color: var(--white);
+  width: 100%;
+  font-size: 1.3rem;
+  color: var(--white);
   background-color: transparent;
 `
 
 export const ErrorMsg = styled.div`
-padding: 0 10px;
+  padding: 0 10px;
   color: var(--red);
-  height: 1rem;
+  height: 20px;
   font-size: 0.8rem;
 `

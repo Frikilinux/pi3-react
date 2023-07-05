@@ -30,6 +30,8 @@ const InputUser = ({ inputIcon, placeholder, type, name }) => {
                 <Eye size='30px' onClick={() => setShowPass(!showPass)} />
               )}
             </InputContainer>
+            {console.log('ERRORS', field)}
+            {/* <ErrorMsg>{errors}</ErrorMsg> */}
             <ErrorMessage name={field.name}>
               {(message) => <ErrorMsg>{message}</ErrorMsg>}
             </ErrorMessage>

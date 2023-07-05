@@ -6,11 +6,11 @@ import UserLoggedIn from '../Navbar/User/UserLoggedIn'
 import { hideCart } from '../../redux/cart/cartSlice'
 
 export const Header = () => {
-  const dispatch = useDispatch()
   const { user } = useSelector((state) => state.user)
+  const dispatch = useDispatch()
   return (
     <HeaderStyled>
-      {user ? <UserLoggedIn {...user} /> : <UserLoggedOut />}
+      {user ? <UserLoggedIn /> : <UserLoggedOut />}
       <button onClick={() => dispatch(hideCart())}>CART</button>
     </HeaderStyled>
   )

@@ -6,15 +6,19 @@ import InputUser from '../../components/UI/Input/InputUser'
 import { MainWrapper } from '../../components/UI/MainWrapper/MainWrapperStd'
 import { useUser } from '../../hooks/useUser'
 import { registerValidationSchema } from '../../formik/validationSchema'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
   const { registerUser } = useUser()
+  const navigate = useNavigate()
   return (
     <MainWrapper>
       <Formik
         initialValues={registerInitialValues}
         validationSchema={registerValidationSchema}
-        onSubmit={(values) => registerUser(values)}
+        onSubmit={async (values) =>
+          (await registerUser(values)) && navigate('/login')
+        }
       >
         <FormContainer>
           <Form>

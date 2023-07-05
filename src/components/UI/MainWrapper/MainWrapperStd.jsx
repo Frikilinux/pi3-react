@@ -6,5 +6,5 @@ export const MainWrapper = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
 `

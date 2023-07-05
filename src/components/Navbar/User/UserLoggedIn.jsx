@@ -5,10 +5,11 @@ import {
   UserImgContainer,
   UserNameData,
 } from './UserLoginStyled'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logOut } from '../../../redux/user/userSlice'
 
-const UserLoggedIn = ({ image, firstName, lastName, username }) => {
+const UserLoggedIn = () => {
+  const { nombre } = useSelector((state) => state.user.user)
   const dispatch = useDispatch()
   return (
     <UserContainer
@@ -18,13 +19,13 @@ const UserLoggedIn = ({ image, firstName, lastName, username }) => {
     >
       <UserImgContainer>
         <UserImg
-          src={`https://robohash.org/${username}?set=set3`}
-          alt={`Foto del usuario ${firstName} ${lastName}`}
+          src={`https://robohash.org/${nombre}?set=set3`}
+          alt={`Foto del usuario ${nombre}`}
         />
       </UserImgContainer>
       <UserNameData>
-        <p>Hola, {firstName}</p>
-        <p>@{username}</p>
+        <p>Hola, {nombre}</p>
+        <p>@{nombre}</p>
       </UserNameData>
       <button onClick={() => dispatch(logOut())}>Logout</button>
     </UserContainer>

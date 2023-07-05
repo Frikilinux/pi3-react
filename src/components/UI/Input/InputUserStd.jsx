@@ -14,7 +14,7 @@ export const InputComponent = styled.div`
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
-  height: 100px ;
+  height: 90px ;
 `
 
 export const InputContainer = styled.div`

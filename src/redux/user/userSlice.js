@@ -13,7 +13,7 @@ const userSlice = createSlice({
     loggedUser: (state, action) => {
       return {
         ...state,
-        user: { ...action.payload },
+        user: { ...action.payload.usuario, token: action.payload.token },
         isLogin: false,
         isError: null,
       }

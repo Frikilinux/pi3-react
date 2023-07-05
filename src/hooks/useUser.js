@@ -7,14 +7,16 @@ export const useUser = () => {
   const dispatch = useDispatch()
 
   const loginUser = async ({ email, password }) => {
+    const { ROOT, LOGIN } = NUCBAZ_API
     try {
       dispatch(isLogin())
-      const res = await axios.post(`${DUMMY_JSON.ROOT}${DUMMY_JSON.LOGIN}`, {
-        username: email,
+      const res = await axios.post(ROOT + LOGIN, {
+        email,
         password,
       })
-
+      console.log(res);
       dispatch(loggedUser(res.data))
+      return (res.data)
     } catch (error) {
       const msg = error.response.data.message
       dispatch(isError(msg))

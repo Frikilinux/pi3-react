@@ -15,7 +15,7 @@ function App() {
 
   return (
     <Layout>
-      <PreviewPlayer {...albumPrviewData} />
+      {/* <PreviewPlayer {...albumPrviewData} /> */}
       <Header />
       <AnimatePresence>
         {isHidden && (

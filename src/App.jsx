@@ -6,12 +6,16 @@ import Cart from './components/Cart/Cart'
 import { CartModal } from './components/Cart/CartStd'
 import { AnimatePresence } from 'framer-motion'
 import { useSelector } from 'react-redux'
+import PreviewPlayer from './components/PreviewPlayer/PreviewPlayer'
+
+import albumPrviewData from './data/albumProtoTest.json'
 
 function App() {
   const isHidden = useSelector(({ cart }) => cart.hidden)
 
   return (
     <Layout>
+      <PreviewPlayer {...albumPrviewData} />
       <Header />
       <AnimatePresence>
         {isHidden && (

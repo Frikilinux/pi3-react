@@ -30,6 +30,8 @@ export const useUser = () => {
         nombre: name,
         email,
         password,
+        // como para probar
+        img: `https://robohash.org/${name}?set=set3`
       })
 
       console.log('RESPONSE OF REGISTER', res)

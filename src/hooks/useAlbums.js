@@ -9,6 +9,7 @@ import {
 } from '../redux/albums/albumsSlice'
 import { DEEZER_API } from '../constants/apiUrls'
 import createPrice from '../utils/createPrice'
+import { fetchingPreview, setAlbumPreview } from '../redux/previewPlayer/previewPlayerSlice'
 
 export const useAlbums = () => {
   const dispatch = useDispatch()
@@ -18,10 +19,19 @@ export const useAlbums = () => {
   }
 
   const fetchAlbumById = async (id) => {
-    const { data } = await axios.get(
-      `${DEEZER_API.API_PROXY + DEEZER_API.ROOT + DEEZER_API.ALBUM + '/' + id}`
-    )
-    return data
+    try {
+      dispatch(fetchingPreview())
+      const { data } = await axios.get(
+        `${
+          DEEZER_API.API_PROXY + DEEZER_API.ROOT + DEEZER_API.ALBUM + '/' + id
+        }`
+      )
+      console.log('DATA IN LBUM BY ID', data);
+      dispatch(setAlbumPreview(data))
+
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const fetchAlbums = async ({ genreId = '0', next }) => {
@@ -40,14 +50,14 @@ export const useAlbums = () => {
 
       console.log('FETCH ALBUMS', data)
       // Fetch de los albums con más datos
-      const albumsIds = data.data.map((album) => album.id)
-      const albumsData = await fetchAlbumsFullInfo(albumsIds)
+      // const albumsIds = data.data.map((album) => album.id)
+      // const albumsData = await fetchAlbumsFullInfo(albumsIds)
 
-      console.log('ALBUMS AXIOS', albumsData)
+      // console.log('ALBUMS AXIOS', albumsData)
 
       const payload = {
         total: data.total,
-        albums: albumsData.map((album) => {
+        albums: data.data.map((album) => {
           return { ...album, price: createPrice(album.id) }
         }),
         next: data.next,
@@ -86,5 +96,5 @@ export const useAlbums = () => {
     }
   }
 
-  return { fetchAlbums, fetchAlbumsGenre }
+  return { fetchAlbums, fetchAlbumsGenre, fetchAlbumById }
 }

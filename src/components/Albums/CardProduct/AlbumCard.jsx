@@ -1,17 +1,15 @@
 import React from 'react'
 import {
   CardContainer,
-  ExplicitFrame,
   ImagesContainer,
   InfoContainer,
   MainImg,
-  SingleFrame,
   TitleContainer,
 } from './AlbumCardStd'
-import formatTime from '../../../utils/fomatedTime'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../../redux/cart/cartSlice'
 import { Button } from '../../UI/Button/Button'
+import { useAlbums } from '../../../hooks/useAlbums'
 
 const AlbumCard = (props) => {
   const {
@@ -20,14 +18,11 @@ const AlbumCard = (props) => {
     cover_medium: coverMedium,
     release_date: releaseDate,
     artist,
-    tracks,
-    explicit_lyrics: explicit,
-    duration,
     price,
-    record_type: recordType,
   } = props
   const noImg = 'https://cloud.ztec.ml/s/Y7G3JX4FxE5zKaz/download'
   const dispatch = useDispatch()
+  const { fetchAlbumById } = useAlbums()
 
   return (
     <CardContainer id={id}>
@@ -35,16 +30,16 @@ const AlbumCard = (props) => {
         <p>{title}</p>
         <p>{artist.name}</p>
       </TitleContainer>
-      <ImagesContainer>
+      <ImagesContainer onClick={() => fetchAlbumById(id)}>
         <MainImg imgsrc={coverMedium ?? noImg} />
-        {recordType === 'single' && <SingleFrame>S</SingleFrame>}
-        {explicit && <ExplicitFrame>E</ExplicitFrame>}
+        {/* {recordType === 'single' && <SingleFrame>S</SingleFrame>} */}
+        {/* {explicit && <ExplicitFrame>E</ExplicitFrame>} */}
       </ImagesContainer>
       <InfoContainer>
         <div>
           <p>{`${releaseDate.split('-').reverse().join('/')}`}</p>
-          <p>{`${tracks.data.length}`} tracks</p>
-          <p>{formatTime(duration)} mins</p>
+          {/* <p>{`${tracks.data.length}`} tracks</p> */}
+          {/* <p>{formatTime(duration)} mins</p> */}
         </div>
         <div>
           <p>$ {price} </p>

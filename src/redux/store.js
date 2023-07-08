@@ -12,6 +12,7 @@ import userReducer from './user/userSlice'
 import albumsReducer from './albums/albumsSlice'
 import cartReducer from './cart/cartSlice'
 import categoriesReducer from './categories/categoriesSlice'
+import previewPlayerReducer from './previewPlayer/previewPlayerSlice'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
 
@@ -20,12 +21,13 @@ const rootReducer = combineReducers({
   albums: albumsReducer,
   categories: categoriesReducer,
   cart: cartReducer,
+  previewPlayer: previewPlayerReducer
 })
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'albums', 'cart'],
+  whitelist: ['user', 'albums', 'cart', 'previewPlayer'],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

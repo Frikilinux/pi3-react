@@ -12,10 +12,14 @@ import albumPrviewData from './data/albumProtoTest.json'
 
 function App() {
   const isHidden = useSelector(({ cart }) => cart.hidden)
+  const isPreviewHidden = useSelector(
+    ({ previewPlayer }) => previewPlayer.isHidden
+  )
 
   return (
     <Layout>
-      {/* <PreviewPlayer {...albumPrviewData} /> */}
+      {!isPreviewHidden && <PreviewPlayer {...albumPrviewData} />}
+
       <Header />
       <AnimatePresence>
         {isHidden && (

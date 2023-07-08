@@ -18,7 +18,8 @@ export const useUser = () => {
       dispatch(loggedUser(res.data))
       return (res.data)
     } catch (error) {
-      const msg = error.response.data.message
+      const {msg} = error.response.data
+      console.log(msg);
       dispatch(isError(msg))
     }
   }

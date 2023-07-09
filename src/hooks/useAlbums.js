@@ -9,10 +9,14 @@ import {
 } from '../redux/albums/albumsSlice'
 import { DEEZER_API } from '../constants/apiUrls'
 import createPrice from '../utils/createPrice'
-import { fetchingPreview, setAlbumPreview } from '../redux/previewPlayer/previewPlayerSlice'
+import {
+  fetchingPreview,
+  setAlbumPreview,
+} from '../redux/previewPlayer/previewPlayerSlice'
 
 export const useAlbums = () => {
   const dispatch = useDispatch()
+  const { ROOT, ALBUM, API_PROXY } = DEEZER_API
 
   const fetchAlbumsFullInfo = (ids) => {
     return Promise.all(ids.map(fetchAlbumById))
@@ -21,29 +25,20 @@ export const useAlbums = () => {
   const fetchAlbumById = async (id) => {
     try {
       dispatch(fetchingPreview())
-      const { data } = await axios.get(
-        `${
-          DEEZER_API.API_PROXY + DEEZER_API.ROOT + DEEZER_API.ALBUM + '/' + id
-        }`
-      )
-      console.log('DATA IN LBUM BY ID', data);
-      dispatch(setAlbumPreview(data))
+      const { data } = await axios.get(`${API_PROXY + ROOT + ALBUM + '/' + id}`)
 
+      console.log('DATA IN LBUM BY ID', data)
+
+      dispatch(setAlbumPreview(data))
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
   const fetchAlbums = async ({ genreId = '0', next }) => {
     const url = next
-      ? `${DEEZER_API.API_PROXY + next}`
-      : `${
-          DEEZER_API.API_PROXY +
-          DEEZER_API.ROOT +
-          '/editorial/' +
-          genreId +
-          '/releases?index=0'
-        }`
+      ? `${API_PROXY + next}`
+      : `${API_PROXY + ROOT + '/editorial/' + genreId + '/releases'}`
     try {
       dispatch(isFetching())
       const { data } = await axios.get(url)
@@ -67,27 +62,19 @@ export const useAlbums = () => {
       next ? dispatch(nextAlbumsPage(payload)) : dispatch(setAlbums(payload))
     } catch (error) {
       console.log(error)
-      console.log(error)
       // const msg = error.response.data.message
       dispatch(isError(error))
     }
   }
 
-  const fetchAlbumsGenre = async ({ genreId, index = 0 }) => {
+  const fetchAlbumsGenre = async ({ genreId }) => {
     try {
       dispatch(isFetching())
       const { data } = await axios.get(
-        `${
-          DEEZER_API.API_PROXY +
-          DEEZER_API.ROOT +
-          '/editorial/' +
-          genreId +
-          '/releases?index=' +
-          index
-        }`
+        `${API_PROXY + ROOT + '/editorial/' + genreId + '/releases?index=0'}`
       )
 
-      console.log('AXIOS CATEGORIES PRODUTCS', data.products)
+      // console.log('AXIOS CATEGORIES PRODUTCS', data.products)
 
       dispatch(setAlbums(data))
     } catch (error) {

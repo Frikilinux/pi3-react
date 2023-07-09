@@ -20,9 +20,9 @@ export const PreviewContainer = styled.div`
 `
 
 export const AlbumHeaders = styled.div`
-display: flex;
-align-items: center;
-gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
   /* height: 200px; */
   background-color: #189ba099;
   @media (max-width: 576px) {
@@ -37,20 +37,27 @@ export const AlbumImg = styled.img`
   height: 200px;
   width: auto;
   /* background: #ffffff url(${({ imgsrc }) =>
-  `${imgsrc}`}) center/cover no-repeat; */
+    `${imgsrc}`}) center/cover no-repeat; */
   @media (max-width: 576px) {
     align-self: flex-start;
     height: 150px;
     /* border-radius: 0; */
   }
-  `
+`
 export const AlbumInfoContainer = styled.div`
-background-color: #e673737d;
-width: 100%;
-height: 200px;
-@media (max-width: 576px) {
-  height: 100px;
-}
+  background-color: #e673737d;
+  width: 100%;
+  height: 200px;
+  @media (max-width: 576px) {
+    height: 100px;
+  }
 `
 
-export const AlbumTracksContainer = styled.div``
+export const AlbumTracksContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+
+  height: 40vh;
+`

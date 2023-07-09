@@ -1,12 +1,29 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { TrackContainer } from './TrackStd'
 import formatTime from '../../../utils/fomatedTime'
+import { useDispatch, useSelector } from 'react-redux'
+import { setPlaying } from '../../../redux/previewPlayer/previewPlayerSlice'
+import { current } from '@reduxjs/toolkit'
 
-const Track = ({ title, preview, duration }) => {
+const Track = ({ id, title, preview, duration }) => {
   const songElement = useRef()
+  const dispatch = useDispatch()
+  const { isPlaying, currentTrack } = useSelector(
+    ({ previewPlayer }) => previewPlayer
+  )
+
+  const handleClick = (id) => {
+    dispatch(setPlaying(id))
+  }
+
+  useEffect(() => {
+    isPlaying && id === currentTrack
+      ? songElement.current.play()
+      : songElement.current.pause()
+  }, [currentTrack, isPlaying, id])
 
   return (
-    <TrackContainer onClick={() => songElement.current.play()}>
+    <TrackContainer id={id} onClick={() => handleClick(id)}>
       <p>
         {title} {formatTime(duration)}
       </p>

@@ -8,7 +8,8 @@ export const ButtonStyled = styled(motion.button)`
   font-weight: 600;
   border-radius: 5px;
   padding: 2px 10px;
-  background-color: #55d185;
+  color: var(--white);
+  background-color: var(--blue);
   &:hover {
     cursor: pointer;
   }

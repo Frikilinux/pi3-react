@@ -8,8 +8,8 @@ import {
 } from './AlbumCardStd'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../../redux/cart/cartSlice'
-import { Button } from '../../UI/Button/Button'
 import { useAlbums } from '../../../hooks/useAlbums'
+import ButtonPrimary from '../../UI/Button/ButtonPrimary'
 
 const AlbumCard = (props) => {
   const {
@@ -43,13 +43,13 @@ const AlbumCard = (props) => {
         </div>
         <div>
           <p>$ {price} </p>
-          <Button
+          <ButtonPrimary
             onClick={() => {
               dispatch(addToCart(props))
             }}
           >
             CART
-          </Button>
+          </ButtonPrimary>
         </div>
 
         {console.log({ props })}

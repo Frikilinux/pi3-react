@@ -2,11 +2,14 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    --blue: #0a2463;
-    --celeste: #3e92cc;
-    --white: #fffaff;
-    --red: #d8315b;
-    --dark: #1e1b18;
+    --blue: #0055ff;
+    --celeste: #3db8f6;
+    --aqua: #17d2e0;
+    --white: #fefefe;
+    --red: #ff5353;
+    --dark: #201e20;
+    --lightDark: #2c2d31;
+    --grey: #989898;
   }
 
   html{

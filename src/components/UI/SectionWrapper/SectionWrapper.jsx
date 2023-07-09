@@ -1,9 +1,9 @@
 import React from 'react'
 import { Section, SectionContainer } from './SectionWrapperStd'
 
-const SectionWrapper = ({ children }) => {
+const SectionWrapper = ({ children, bg} ) => {
   return (
-    <SectionContainer bg='#8eadc4'>
+    <SectionContainer bg={bg}>
       <Section>{children}</Section>
     </SectionContainer>
   )

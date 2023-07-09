@@ -1,7 +1,7 @@
 import React from 'react'
-import { ButtonStyled } from './ButtonStd'
+import { ButtonStyled } from './ButtonPrimaryStd'
 
-export const Button = (props) => {
+const ButtonPrimary = (props) => {
   return (
     <ButtonStyled
       onClick={props.onClick}
@@ -12,3 +12,5 @@ export const Button = (props) => {
     </ButtonStyled>
   )
 }
+
+export default ButtonPrimary

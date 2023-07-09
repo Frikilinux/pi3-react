@@ -23,7 +23,7 @@ export const MainImg = styled.div`
   position: relative;
   z-index: 4;
   border-radius: 10px;
-  background: #ffffff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
+  background: var(--grey) url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
   height: 250px;
   width: 250px;
   &:active {
@@ -102,26 +102,7 @@ export const InfoContainer = styled.div`
   }
 `
 
-export const ExplicitFrame = styled.div`
-  opacity: 0.8;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  z-index: 6;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0 5px;
-  color: yellow;
-  background: #f80505;
-  border: 1px solid yellow;
-  border-radius: 3px;
-`
-export const SingleFrame = styled(ExplicitFrame)`
-  right: 40px;
-  color: #dddddb;
-  background: #0546f8;
-  border: 1px solid white;
-`
+
 
 export const NextButton = styled.div`
   cursor: pointer;

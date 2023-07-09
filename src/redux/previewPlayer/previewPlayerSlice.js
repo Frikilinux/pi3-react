@@ -22,7 +22,7 @@ const previewPlayerSlice = createSlice({
       }
     },
     fetchingPreview: (state) => ({ ...state, fetchingPreview: true }),
-    hidePreview: (state, action) => ({ ...state, isHidden: action.payload }),
+    hidePreview: (state, action) => ({ ...state, isHidden: action.payload, isPlaying: false }),
     setPlaying: (state, action) => ({
       ...state,
       currentTrack: action.payload,

@@ -22,7 +22,7 @@ function App() {
 
       <Header />
       <AnimatePresence>
-        {isHidden && (
+        {!isHidden && (
           <CartModal
             initial={{ translateX: 550, opacity: 0 }}
             animate={{ translateX: 0, opacity: 1 }}

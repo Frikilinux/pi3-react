@@ -6,10 +6,21 @@ export const PreviewContainer = styled.div`
   position: fixed;
   width: 70%;
   height: 70vh;
+  background: #ffffff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
   background-color: #17179c81;
-  backdrop-filter: blur(5px);
   z-index: 10;
   border-radius: 15px;
+  &::after {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+    background-color: #2b2d428d;
+  }
   @media (max-width: 576px) {
     padding: 10px;
     border-radius: 0;

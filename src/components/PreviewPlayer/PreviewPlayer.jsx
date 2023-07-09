@@ -11,14 +11,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { hidePreview } from '../../redux/previewPlayer/previewPlayerSlice'
 
 const PreviewPlayer = () => {
-  const {album, isHidden} = useSelector((state) => state.previewPlayer)
-  console.log('ALBUM IN PLAYER', album);
-  const {cover_medium: cover, tracks } = album
+  const { album, isHidden } = useSelector((state) => state.previewPlayer)
+  console.log('ALBUM IN PLAYER', album)
+  const { cover_medium: cover, tracks, artist } = album
   const distpatch = useDispatch()
 
   return (
-
-    <PreviewContainer>
+    <PreviewContainer imgsrc={artist.picture_xl}>
       <button onClick={() => distpatch(hidePreview(true))}>CERRAR</button>
       <AlbumHeaders>
         <AlbumImg src={cover} />
@@ -26,10 +25,9 @@ const PreviewPlayer = () => {
       </AlbumHeaders>
 
       <AlbumTracksContainer>
-        {
-          tracks?.data.map((track) => <Track key={track.id} {...track} />
-          )
-        }
+        {tracks?.data.map((track) => (
+          <Track key={track.id} {...track} />
+        ))}
       </AlbumTracksContainer>
     </PreviewContainer>
   )

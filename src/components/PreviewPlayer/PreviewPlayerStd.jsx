@@ -100,9 +100,11 @@ export const AlbumTracksContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+  border-radius: 5px;
   overflow-y: scroll;
   width: 100%;
+  padding: 10px 0;
   height: 40vh;
 `
 

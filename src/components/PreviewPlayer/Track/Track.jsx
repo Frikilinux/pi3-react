@@ -1,9 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { TrackContainer } from './TrackStd'
-import formatTime from '../../../utils/fomatedTime'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPlaying } from '../../../redux/previewPlayer/previewPlayerSlice'
-import { current } from '@reduxjs/toolkit'
 
 const Track = ({ id, title, preview, duration, readable, number }) => {
   const songElement = useRef()

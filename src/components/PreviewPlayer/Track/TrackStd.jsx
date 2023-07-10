@@ -9,7 +9,7 @@ export const TrackContainer = styled.div`
   width: 98%;
   font-size: 1rem;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-  /* border: ${({playing}) => playing ? '3px solid var(--celeste)' : 'none'}; */
+  border: ${({playing}) => playing ? '3px solid var(--celeste)' : 'none'};
   &:hover {
     cursor: pointer;
   }

@@ -52,7 +52,7 @@ const AlbumCard = (props) => {
           </ButtonPrimary>
         </div>
 
-        {console.log({ props })}
+        {/* {console.log({ props })} */}
       </InfoContainer>
     </CardContainer>
   )

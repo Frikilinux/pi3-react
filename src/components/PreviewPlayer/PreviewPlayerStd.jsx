@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion';
 import { styled } from 'styled-components'
 
-export const PreviewContainer = styled.div`
+export const PreviewContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,6 +15,7 @@ export const PreviewContainer = styled.div`
   z-index: 10;
   border-radius: 15px;
   gap: 10px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 80px 4px;
   &::after {
     content: '';
     top: 0;
@@ -97,6 +99,7 @@ export const SingleFrame = styled(ExplicitFrame)`
 export const AlbumTracksContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   overflow-y: scroll;
   width: 100%;

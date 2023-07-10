@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setPlaying } from '../../../redux/previewPlayer/previewPlayerSlice'
 import { current } from '@reduxjs/toolkit'
 
-const Track = ({ id, title, preview, duration, readable }) => {
+const Track = ({ id, title, preview, duration, readable, number }) => {
   const songElement = useRef()
   const dispatch = useDispatch()
   const { isPlaying, currentTrack } = useSelector(
@@ -23,9 +23,10 @@ const Track = ({ id, title, preview, duration, readable }) => {
   }, [currentTrack, isPlaying, id])
 
   return (
-    <TrackContainer id={id} onClick={() => handleClick(id)}>
+    <TrackContainer id={id} onClick={() => handleClick(id)} playing={currentTrack === id}>
       <p>
-        {title} {formatTime(duration) } {!readable && '! No available for playing'}
+        {number.toString().padStart(2, '0')} {' - '}{title}
+        {!readable && '! No available for playing'}
       </p>
       <audio ref={songElement} src={preview}></audio>
     </TrackContainer>

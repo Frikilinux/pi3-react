@@ -18,29 +18,27 @@ function App() {
 
   return (
     <Layout>
-      {!isPreviewHidden && <PreviewPlayer {...albumPrviewData} />}
-
-      <Header />
       <AnimatePresence>
+        {!isPreviewHidden && (
+          <PreviewPlayer {...albumPrviewData}>poo</PreviewPlayer>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        <Header />
         {!isHidden && (
           <CartModal
-            initial={{ translateX: 550, opacity: 0 }}
-            animate={{ translateX: 0, opacity: 1 }}
-            exit={{ translateX: 550 }}
-            transition={{
-              type: 'spring',
-              damping: 10,
-              stiffness: 100,
-              restDelta: 0.005,
-            }}
+            initial={{ translateX: 600 }}
+            animate={{ translateX: 0 }}
+            exit={{ translateX: 600 }}
+            transition={{ type: 'spring', damping: 18, duration: 0.1 }}
             key='cart'
           >
             <Cart />
           </CartModal>
         )}
-      </AnimatePresence>
 
-      <Routes />
+        <Routes />
+      </AnimatePresence>
     </Layout>
   )
 }

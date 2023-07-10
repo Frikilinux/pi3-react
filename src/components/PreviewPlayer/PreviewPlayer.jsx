@@ -15,19 +15,29 @@ import ButtonPrimary from '../UI/Button/ButtonPrimary'
 const PreviewPlayer = () => {
   const { album, isHidden } = useSelector((state) => state.previewPlayer)
   console.log('ALBUM IN PLAYER', album)
-  const { cover_medium: cover, tracks, artist } = album
+  const { cover_medium: cover, tracks, artist, id } = album
   const distpatch = useDispatch()
 
   return (
-    <PreviewContainer imgsrc={artist.picture_xl}>
+    <PreviewContainer
+      imgsrc={artist.picture_xl}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{opacity: 0, scale: 0.8 }}
+      transition={{
+        duration: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+      key='preview'
+    >
       <AlbumHeaders>
         <AlbumImg src={cover} />
         <AlbumInfoContainer></AlbumInfoContainer>
       </AlbumHeaders>
 
       <AlbumTracksContainer>
-        {tracks?.data.map((track) => (
-          <Track key={track.id} {...track} />
+        {tracks?.data.map((track, i) => (
+          <Track key={track.id} {...track} number={i + 1} />
         ))}
       </AlbumTracksContainer>
       <ButtonsContainer>

@@ -36,11 +36,11 @@ const AlbumCard = (props) => {
         {/* {explicit && <ExplicitFrame>E</ExplicitFrame>} */}
       </ImagesContainer>
       <InfoContainer>
-        <div>
-          <p>{`${releaseDate.split('-').reverse().join('/')}`}</p>
+        {/* <div> */}
+          {/* <p>{`${releaseDate.split('-').reverse().join('/')}`}</p> */}
           {/* <p>{`${tracks.data.length}`} tracks</p> */}
           {/* <p>{formatTime(duration)} mins</p> */}
-        </div>
+        {/* </div> */}
         <div>
           <p>$ {price} </p>
           <ButtonPrimary
@@ -48,7 +48,7 @@ const AlbumCard = (props) => {
               dispatch(addToCart(props))
             }}
           >
-            CART
+            Add to cart
           </ButtonPrimary>
         </div>
 

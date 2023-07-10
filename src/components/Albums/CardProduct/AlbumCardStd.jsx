@@ -66,7 +66,7 @@ export const TitleContainer = styled.div`
 export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   color: var(--dark);
   font-family: 'Yanone Kaffeesatz';
   font-size: 0.8rem;
@@ -95,7 +95,7 @@ export const InfoContainer = styled.div`
   }
   & :last-child {
     & p {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       font-weight: 600;
     }
     justify-content: space-around;

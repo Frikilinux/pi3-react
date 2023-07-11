@@ -22,7 +22,7 @@ const Albums = () => {
 
   return (
     <AlbumsContainer>
-      {albums?.map((album) => {
+      {albums.map((album) => {
         return <AlbumCard key={album.id} {...album} />
       })}
     </AlbumsContainer>

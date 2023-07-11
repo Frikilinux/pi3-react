@@ -26,20 +26,20 @@ const AlbumCard = (props) => {
 
   return (
     <CardContainer id={id}>
-      <TitleContainer>
-        <p>{title}</p>
-        <p>{artist.name}</p>
-      </TitleContainer>
       <ImagesContainer onClick={() => fetchAlbumById(id)}>
+        <TitleContainer>
+          <p>{title}</p>
+          <p>{artist.name}</p>
+        </TitleContainer>
         <MainImg imgsrc={coverMedium ?? noImg} />
         {/* {recordType === 'single' && <SingleFrame>S</SingleFrame>} */}
         {/* {explicit && <ExplicitFrame>E</ExplicitFrame>} */}
       </ImagesContainer>
       <InfoContainer>
         {/* <div> */}
-          {/* <p>{`${releaseDate.split('-').reverse().join('/')}`}</p> */}
-          {/* <p>{`${tracks.data.length}`} tracks</p> */}
-          {/* <p>{formatTime(duration)} mins</p> */}
+        {/* <p>{`${releaseDate.split('-').reverse().join('/')}`}</p> */}
+        {/* <p>{`${tracks.data.length}`} tracks</p> */}
+        {/* <p>{formatTime(duration)} mins</p> */}
         {/* </div> */}
         <div>
           <p>$ {price} </p>
@@ -48,7 +48,7 @@ const AlbumCard = (props) => {
               dispatch(addToCart(props))
             }}
           >
-            Add to cart
+            Add
           </ButtonPrimary>
         </div>
 

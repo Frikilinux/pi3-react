@@ -7,7 +7,7 @@ import Main from '../../components/UI/MainWrapper/MainWrapper'
 export const Home = () => {
   return (
     <Main>
-      <SectionWrapper bg='var(--dark)' id='albums'>
+      <SectionWrapper bg='var(--lightDark)' id='albums'>
         <Genres />
         <AlbumsSection />
       </SectionWrapper>

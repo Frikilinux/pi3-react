@@ -18,11 +18,9 @@ function App() {
 
   return (
     <Layout>
-      <AnimatePresence>
-        {!isPreviewHidden && (
-          <PreviewPlayer {...albumPrviewData}>poo</PreviewPlayer>
-        )}
-      </AnimatePresence>
+      {/* <AnimatePresence> */}
+        {!isPreviewHidden && <PreviewPlayer {...albumPrviewData} />}
+      {/* </AnimatePresence> */}
       <AnimatePresence>
         <Header />
         {!isHidden && (

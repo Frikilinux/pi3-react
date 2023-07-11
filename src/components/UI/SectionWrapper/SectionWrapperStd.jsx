@@ -14,4 +14,7 @@ export const Section = styled.div`
   align-items: center;
   width: 90%;
   max-width: 1300px;
+  @media(max-width: 576px){
+    width: 100%;
+  }
 `

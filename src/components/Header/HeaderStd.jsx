@@ -5,7 +5,7 @@ export const HeaderStyled = styled.header`
   position: fixed;
   display: flex;
   align-items: center;
-  background-color: var(--lightDark);
+  background-color: var(--dark);
   width: 100%;
   height: 70px;
 `

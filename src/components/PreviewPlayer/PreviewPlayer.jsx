@@ -42,7 +42,7 @@ const PreviewPlayer = () => {
         duration: 0.5,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      key='preview'
+      // key='preview'
     >
       <AlbumHeaders>
         <AlbumImg src={cover} />
@@ -60,7 +60,7 @@ const PreviewPlayer = () => {
       </AlbumHeaders>
 
       <AlbumTracksContainer>
-        {tracks?.data.map((track, i) => (
+        {tracks.data?.map((track, i) => (
           <Track key={track.id} {...track} number={i + 1} />
         ))}
       </AlbumTracksContainer>

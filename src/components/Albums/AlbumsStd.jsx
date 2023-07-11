@@ -6,5 +6,11 @@ export const AlbumsContainer = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 35px;
+  gap: 30px;
+  @media(max-width: 576px){
+    gap: 22px;
+    width: 98%;
+    padding: 0;
+  }
+  
 `

@@ -21,7 +21,7 @@ const Track = ({ id, title, preview, duration, readable, number }) => {
   }, [currentTrack, isPlaying, id])
 
   return (
-    <TrackContainer id={id} onClick={() => handleClick(id)} playing={currentTrack === id}>
+    <TrackContainer id={id} onClick={() => handleClick(id)} playing={currentTrack === id ? 1 : 0}>
       <p>
         {number.toString().padStart(2, '0')} {' - '}{title}
         {!readable && '! No available for playing'}

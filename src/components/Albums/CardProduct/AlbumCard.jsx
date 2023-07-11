@@ -4,6 +4,7 @@ import {
   ImagesContainer,
   InfoContainer,
   MainImg,
+  OverlayPreview,
   TitleContainer,
 } from './AlbumCardStd'
 import { useDispatch } from 'react-redux'
@@ -25,8 +26,18 @@ const AlbumCard = (props) => {
   const { fetchAlbumById } = useAlbums()
 
   return (
-    <CardContainer id={id}>
-      <ImagesContainer onClick={() => fetchAlbumById(id)}>
+    <CardContainer
+      id={id}
+      // whileHover={{ scale: 1.01, transition: { duration: 0.05 } }}
+    >
+      <ImagesContainer>
+        <OverlayPreview
+          onClick={() => fetchAlbumById(id)}
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1, transition: { duration: 0.5 } }}
+        >
+          Preview
+        </OverlayPreview>
         <TitleContainer>
           <p>{title}</p>
           <p>{artist.name}</p>
@@ -36,14 +47,10 @@ const AlbumCard = (props) => {
         {/* {explicit && <ExplicitFrame>E</ExplicitFrame>} */}
       </ImagesContainer>
       <InfoContainer>
-        {/* <div> */}
-        {/* <p>{`${releaseDate.split('-').reverse().join('/')}`}</p> */}
-        {/* <p>{`${tracks.data.length}`} tracks</p> */}
-        {/* <p>{formatTime(duration)} mins</p> */}
-        {/* </div> */}
         <div>
           <p>$ {price} </p>
           <ButtonPrimary
+            size='1.2'
             onClick={() => {
               dispatch(addToCart(props))
             }}
@@ -51,8 +58,6 @@ const AlbumCard = (props) => {
             Add
           </ButtonPrimary>
         </div>
-
-        {/* {console.log({ props })} */}
       </InfoContainer>
     </CardContainer>
   )

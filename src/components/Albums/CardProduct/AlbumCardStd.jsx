@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion'
 import { styled } from 'styled-components'
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -38,20 +39,15 @@ export const MainImg = styled.div`
     box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.55);
     transform: scale(0.99);
   } */
-  &:hover {
-    cursor: pointer;
-  }
 `
 export const TitleContainer = styled.div`
   position: absolute;
   z-index: 1;
   backdrop-filter: blur(3px);
-  font-family: 'Yanone Kaffeesatz';
+  font-family: 'Barlow Condensed';
   padding: 3px 5px;
   color: var(--white);
   width: 100%;
-  /* height: 0px; */
-  /* border-radius: 5px 5px 0 0; */
   background-color: #201e20b2;
 
   & p {
@@ -62,16 +58,16 @@ export const TitleContainer = styled.div`
   }
   & :first-child {
     font-weight: 500;
-    font-size: 1.4rem;
-    @media (max-width: 576px) {
-      font-size: 1.1rem;
-    }
-  }
-  & :last-child {
-    font-weight: 500;
     font-size: 1.2rem;
     @media (max-width: 576px) {
       font-size: 1rem;
+    }
+  }
+  & :last-child {
+    font-weight: 400;
+    font-size: 1rem;
+    @media (max-width: 576px) {
+      font-size: 0.8rem;
     }
   }
 `
@@ -80,7 +76,6 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Yanone Kaffeesatz';
   font-size: 0.8rem;
   font-weight: 300;
   height: 50px;
@@ -92,18 +87,32 @@ export const InfoContainer = styled.div`
   & div {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     gap: 10px;
-  }
-  & :first-child {
-    font-weight: 500;
-  }
-  & :last-child {
     & p {
+      font-family: 'Montserrat';
       font-size: 1.5rem;
       font-weight: 600;
     }
-    justify-content: space-around;
+  }
+`
+
+export const OverlayPreview = styled(motion.div)`
+  position: absolute;
+  z-index: 5;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  background-color: #201e20b2;
+  &:hover {
+    cursor: pointer;
+    visibility: visible;
+    opacity: 1;
+    /* display: flex; */
   }
 `
 

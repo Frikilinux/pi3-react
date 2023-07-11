@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { styled } from 'styled-components'
 
 export const ButtonStyled = styled(motion.button)`
-/* font-size: 1rem; */
+  font-size: ${({ size }) => `${size ?? '1'}rem`};
   display: flex;
   align-items: center;
   border: none;
@@ -14,4 +14,7 @@ export const ButtonStyled = styled(motion.button)`
   &:hover {
     cursor: pointer;
   }
+  @media (max-width: 576px) {
+      font-size: 0.8rem;
+    }
 `

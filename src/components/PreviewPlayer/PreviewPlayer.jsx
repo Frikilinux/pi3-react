@@ -51,8 +51,12 @@ const PreviewPlayer = () => {
       }}
       // key='preview'
     >
+      <ExtraInfoContainer>
+        {explicitLyrics && <ExplicitFrame>Explicit</ExplicitFrame>}
+        <SingleFrame>{recordType}</SingleFrame>
+        <div>Likes {fans}</div>
+      </ExtraInfoContainer>
       <AlbumHeaders>
-        <AlbumImg src={cover} />
         <AlbumInfoContainer>
           <InfoTitle>{title}</InfoTitle>
           <InfoArtist>{artist.name}</InfoArtist>
@@ -62,12 +66,8 @@ const PreviewPlayer = () => {
           </div>
           <div></div>
           <div>{day + '-' + month + '-' + year} </div>
-          <ExtraInfoContainer>
-            {explicitLyrics && <ExplicitFrame>Explicit</ExplicitFrame>}
-            <SingleFrame>{recordType}</SingleFrame>
-            <div>Likes {fans}</div>
-          </ExtraInfoContainer>
         </AlbumInfoContainer>
+        <AlbumImg src={cover} />
       </AlbumHeaders>
 
       <AlbumTracksContainer>

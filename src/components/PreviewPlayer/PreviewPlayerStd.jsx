@@ -44,10 +44,11 @@ export const AlbumHeaders = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
 
   @media (max-width: 576px) {
-    gap: 5px;
+    gap: 1px;
   }
 `
 
@@ -55,11 +56,13 @@ export const AlbumImg = styled.img`
   border-radius: 5px;
   opacity: 0.8;
   width: 20%;
+  min-width: 150px;
   height: auto;
   /* background: #ffffff url(${({ imgsrc }) =>
     `${imgsrc}`}) center/cover no-repeat; */
   @media (max-width: 576px) {
-    align-self: flex-start;
+    min-width: 80px
+    /* align-self: flex-start; */
     /* height: 150px; */
     /* border-radius: 0; */
   }
@@ -71,21 +74,27 @@ export const AlbumInfoContainer = styled.div`
   justify-content: space-between;
   /* align-items: center; */
 
-  width: 100%;
+  width: 70%;
   height: 200px;
   @media (max-width: 576px) {
+    /* width: 70%; */
     height: 100px;
+  }
+  @media (max-width: 380px) {
+    width: 72%;
+    /* height: 100px; */
   }
 `
 
 export const InfoTitle = styled.div`
   font-family: 'Barlow Condensed';
-  width: 70%;
+  width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   font-size: 3.4rem;
   @media (max-width: 576px) {
+    width: 90%;
     font-size: 1.5rem;
   }
 `
@@ -99,13 +108,13 @@ export const InfoArtist = styled(InfoTitle)`
 
 export const ExtraInfoContainer = styled.div`
 padding-right: 5%;
-  justify-self: flex-end;
-  font-weight: 600;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 20px;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: flex-end;
+gap: 20px;
+font-weight: 600;
+font-size: 0.8rem;
 `
 
 export const ExplicitFrame = styled.div`

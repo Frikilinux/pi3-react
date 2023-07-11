@@ -3,7 +3,6 @@ import { styled } from 'styled-components'
 export const TrackContainer = styled.div`
   font-weight: 500;
   padding: 5px;
-  backdrop-filter: blur(2px);
   background-color: #6b6a6a6e;
   border-radius: 5px;
   width: 98%;

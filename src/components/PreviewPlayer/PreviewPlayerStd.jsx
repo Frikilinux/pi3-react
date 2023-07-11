@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 import { styled } from 'styled-components'
 
 export const PreviewContainer = styled(motion.div)`
@@ -6,10 +6,11 @@ export const PreviewContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  top: 15vh;
+  top: 10vh;
   position: fixed;
-  width: 70%;
-  height: 70vh;
+  width: 100%;
+  max-width: 1000px;
+  height: 80vh;
   background: #fff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
   background-color: #201e20;
   z-index: 10;
@@ -35,7 +36,6 @@ export const PreviewContainer = styled(motion.div)`
     padding: 10px;
     border-radius: 0;
     top: 70px;
-    width: 100%;
     height: calc(100vh - 70px);
   }
 `
@@ -45,29 +45,32 @@ export const AlbumHeaders = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-  /* height: 200px; */
-  /* background-color: #189ba099; */
+
   @media (max-width: 576px) {
     gap: 5px;
-    flex-direction: column;
   }
 `
 
 export const AlbumImg = styled.img`
   border-radius: 5px;
   opacity: 0.8;
-  height: 200px;
-  width: auto;
+  width: 20%;
+  height: auto;
   /* background: #ffffff url(${({ imgsrc }) =>
     `${imgsrc}`}) center/cover no-repeat; */
   @media (max-width: 576px) {
     align-self: flex-start;
-    height: 150px;
+    /* height: 150px; */
     /* border-radius: 0; */
   }
 `
 export const AlbumInfoContainer = styled.div`
   /* background-color: #e673737d; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
+
   width: 100%;
   height: 200px;
   @media (max-width: 576px) {
@@ -75,25 +78,52 @@ export const AlbumInfoContainer = styled.div`
   }
 `
 
+export const InfoTitle = styled.div`
+  font-family: 'Barlow Condensed';
+  width: 70%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 3.4rem;
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+  }
+`
+
+export const InfoArtist = styled(InfoTitle)`
+  font-size: 1.8rem;
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
+`
+
+export const ExtraInfoContainer = styled.div`
+padding-right: 5%;
+  justify-self: flex-end;
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+`
+
 export const ExplicitFrame = styled.div`
   opacity: 0.8;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  z-index: 6;
   font-size: 0.8rem;
   font-weight: 600;
   padding: 0 5px;
-  color: yellow;
-  background: #f80505;
+  color: var(--grey);
+  background: var(--dark);
   border: 1px solid yellow;
-  border-radius: 3px;
+  /* border-radius: 5px; */
+  text-transform: capitalize;
+  border: 1px solid var(--grey);
 `
 export const SingleFrame = styled(ExplicitFrame)`
   right: 40px;
-  color: #dddddb;
-  background: #0546f8;
-  border: 1px solid white;
+  /* color: #dddddb; */
+  /* background: #0546f8; */
 `
 
 export const AlbumTracksContainer = styled.div`
@@ -105,7 +135,7 @@ export const AlbumTracksContainer = styled.div`
   overflow-y: scroll;
   width: 100%;
   padding: 10px 0;
-  height: 40vh;
+  height: 100%;
 `
 
 export const ButtonsContainer = styled.div`

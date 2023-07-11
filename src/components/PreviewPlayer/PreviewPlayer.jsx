@@ -5,7 +5,12 @@ import {
   AlbumInfoContainer,
   AlbumTracksContainer,
   ButtonsContainer,
+  ExplicitFrame,
+  ExtraInfoContainer,
+  InfoArtist,
+  InfoTitle,
   PreviewContainer,
+  SingleFrame,
 } from './PreviewPlayerStd'
 import Track from './Track/Track'
 import { useDispatch, useSelector } from 'react-redux'
@@ -27,6 +32,8 @@ const PreviewPlayer = () => {
     duration,
     release_date: release,
     fans,
+    record_type: recordType,
+    explicit_lyrics: explicitLyrics,
   } = album
   const distpatch = useDispatch()
   const { h, m, s } = formatTime(duration)
@@ -47,15 +54,19 @@ const PreviewPlayer = () => {
       <AlbumHeaders>
         <AlbumImg src={cover} />
         <AlbumInfoContainer>
-          <div>{title}</div>
-          <div>{artist.name}</div>
+          <InfoTitle>{title}</InfoTitle>
+          <InfoArtist>{artist.name}</InfoArtist>
           <div>{label}</div>
-          <div>{nbTracks} tracks</div>
           <div>
-            {h > 0 ? `${h} hr ` : null} {`${m} min`}{' '}
+            {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`}{' '}
           </div>
-          <div>{day + '-' + month + '-' + year}</div>
-          <div>Likes {fans}</div>
+          <div></div>
+          <div>{day + '-' + month + '-' + year} </div>
+          <ExtraInfoContainer>
+            {explicitLyrics && <ExplicitFrame>Explicit</ExplicitFrame>}
+            <SingleFrame>{recordType}</SingleFrame>
+            <div>Likes {fans}</div>
+          </ExtraInfoContainer>
         </AlbumInfoContainer>
       </AlbumHeaders>
 

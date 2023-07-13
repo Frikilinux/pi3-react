@@ -98,6 +98,9 @@ export const InfoContainer = styled.div`
 `
 
 export const OverlayPreview = styled(motion.div)`
+font-size: 3rem;
+font-weight: 400;
+color: var(--grey);
   position: absolute;
   z-index: 5;
   opacity: 0;
@@ -106,7 +109,7 @@ export const OverlayPreview = styled(motion.div)`
   place-items: center;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(4px);
   background-color: #201e20b2;
   &:hover {
     cursor: pointer;

@@ -9,7 +9,7 @@ export const PreviewContainer = styled(motion.div)`
   top: 10vh;
   position: fixed;
   width: 100%;
-  max-width: 1000px;
+  max-width: 900px;
   height: 80vh;
   background: #fff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
   background-color: #201e20;
@@ -41,7 +41,7 @@ export const PreviewContainer = styled(motion.div)`
 `
 
 export const AlbumHeaders = styled.div`
-  width: 100%;
+  width: 97%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,7 +61,7 @@ export const AlbumImg = styled.img`
   /* background: #ffffff url(${({ imgsrc }) =>
     `${imgsrc}`}) center/cover no-repeat; */
   @media (max-width: 576px) {
-    min-width: 80px
+    min-width: 80px;
     /* align-self: flex-start; */
     /* height: 150px; */
     /* border-radius: 0; */
@@ -107,33 +107,46 @@ export const InfoArtist = styled(InfoTitle)`
 `
 
 export const ExtraInfoContainer = styled.div`
-padding-right: 5%;
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: flex-end;
-gap: 20px;
-font-weight: 600;
-font-size: 0.8rem;
+color: var(--grey);
+  width: 97%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 0.8rem;
 `
 
-export const ExplicitFrame = styled.div`
+export const ExtraInfo = styled.div`
+  display: flex;
+  gap: 20px;
+`
+
+export const InfoFrame = styled.div`
   opacity: 0.8;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 500;
   padding: 0 5px;
-  color: var(--grey);
-  background: var(--dark);
-  border: 1px solid yellow;
-  /* border-radius: 5px; */
+  color: var(--dark);
+  background: var(--grey);
+  /* border: 1px solid yellow; */
+  border-radius: 2px;
   text-transform: capitalize;
-  border: 1px solid var(--grey);
+  /* border: 1px solid var(--grey); */
+  `
+
+export const GenreFrame = styled(InfoFrame)`
+  &:hover {
+    cursor: pointer;
+    color: var(--dark);
+    background-color: var(--red);
+    /* border: 1px solid var(--dark); */
+  }
 `
-export const SingleFrame = styled(ExplicitFrame)`
-  right: 40px;
-  /* color: #dddddb; */
-  /* background: #0546f8; */
-`
+// export const SingleFrame = styled(ExplicitFrame)`
+//   right: 40px;
+//   /* color: #dddddb; */
+//   /* background: #0546f8; */
+// `
 
 export const AlbumTracksContainer = styled.div`
   display: flex;
@@ -142,7 +155,7 @@ export const AlbumTracksContainer = styled.div`
   gap: 15px;
   border-radius: 5px;
   overflow-y: scroll;
-  width: 100%;
+  width: 98%;
   padding: 10px 0;
   height: 100%;
 `

@@ -5,12 +5,13 @@ import {
   AlbumInfoContainer,
   AlbumTracksContainer,
   ButtonsContainer,
-  ExplicitFrame,
+  ExtraInfo,
   ExtraInfoContainer,
+  GenreFrame,
   InfoArtist,
+  InfoFrame,
   InfoTitle,
   PreviewContainer,
-  SingleFrame,
 } from './PreviewPlayerStd'
 import Track from './Track/Track'
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,8 +19,12 @@ import { hidePreview } from '../../redux/previewPlayer/previewPlayerSlice'
 import ButtonPrimary from '../UI/Button/ButtonPrimary'
 import formatTime from '../../utils/fomatedTime'
 import formatedDate from '../../utils/formatedDate'
+import { addToCart } from '../../redux/cart/cartSlice'
+import { useAlbums } from '../../hooks/useAlbums'
 
-const PreviewPlayer = () => {
+const PreviewPlayer = (props) => {
+  const { fetchAlbums } = useAlbums()
+  const dispatch = useDispatch()
   const { album } = useSelector((state) => state.previewPlayer)
   const {
     cover_medium: cover,
@@ -34,6 +39,7 @@ const PreviewPlayer = () => {
     fans,
     record_type: recordType,
     explicit_lyrics: explicitLyrics,
+    genres,
   } = album
   const distpatch = useDispatch()
   const { h, m, s } = formatTime(duration)
@@ -52,9 +58,27 @@ const PreviewPlayer = () => {
       // key='preview'
     >
       <ExtraInfoContainer>
-        {explicitLyrics && <ExplicitFrame>Explicit</ExplicitFrame>}
-        <SingleFrame>{recordType}</SingleFrame>
-        <div>Likes {fans}</div>
+
+        <ButtonPrimary onClick={() => distpatch(hidePreview(true))}>
+          ←
+        </ButtonPrimary>
+        <ExtraInfo>
+          {console.log('GENRES TRAKS', genres)}
+          {explicitLyrics && <InfoFrame>Explicit</InfoFrame>}
+          <InfoFrame>{recordType}</InfoFrame>
+          {genres.data?.map(({ name, id }) => (
+            <GenreFrame
+              key={id}
+              onClick={() => {
+                fetchAlbums({ genreId: id })
+                distpatch(hidePreview(true))
+              }}
+            >
+              {name}
+            </GenreFrame>
+          ))}
+          <div>♥ {fans}</div>
+        </ExtraInfo>
       </ExtraInfoContainer>
       <AlbumHeaders>
         <AlbumInfoContainer>
@@ -62,10 +86,9 @@ const PreviewPlayer = () => {
           <InfoArtist>{artist.name}</InfoArtist>
           <div>{label}</div>
           <div>
-            {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`}{' '}
+            {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`} - {day + '-' + month + '-' + year}
           </div>
-          <div></div>
-          <div>{day + '-' + month + '-' + year} </div>
+          
         </AlbumInfoContainer>
         <AlbumImg src={cover} />
       </AlbumHeaders>
@@ -76,8 +99,13 @@ const PreviewPlayer = () => {
         ))}
       </AlbumTracksContainer>
       <ButtonsContainer>
-        <ButtonPrimary onClick={() => distpatch(hidePreview(true))}>
-          CERRAR
+        <ButtonPrimary
+          size='1.2'
+          onClick={() => {
+            dispatch(addToCart(album))
+          }}
+        >
+          Add
         </ButtonPrimary>
       </ButtonsContainer>
     </PreviewContainer>

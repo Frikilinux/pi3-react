@@ -18,10 +18,6 @@ export const useAlbums = () => {
   const dispatch = useDispatch()
   const { ROOT, ALBUM, API_PROXY } = DEEZER_API
 
-  const fetchAlbumsFullInfo = (ids) => {
-    return Promise.all(ids.map(fetchAlbumById))
-  }
-
   const fetchAlbumById = async (id) => {
     try {
       dispatch(fetchingPreview())
@@ -29,7 +25,7 @@ export const useAlbums = () => {
 
       console.log('DATA IN LBUM BY ID', data)
 
-      dispatch(setAlbumPreview(data))
+      dispatch(setAlbumPreview({...data, price: createPrice(data.id)}))
     } catch (error) {
       console.log(error)
     }

@@ -36,7 +36,7 @@ const AlbumCard = (props) => {
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1, transition: { duration: 0.5 } }}
         >
-          Preview
+          🛈
         </OverlayPreview>
         <TitleContainer>
           <p>{title}</p>

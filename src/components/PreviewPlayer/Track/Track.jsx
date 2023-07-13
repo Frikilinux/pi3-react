@@ -1,5 +1,10 @@
 import React, { useRef, useEffect } from 'react'
-import { ExplicitTrack, TrackContainer } from './TrackStd'
+import {
+  ExplicitTrack,
+  TrackArtist,
+  TrackContainer,
+  TrackTitle,
+} from './TrackStd'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPlaying } from '../../../redux/previewPlayer/previewPlayerSlice'
 
@@ -12,7 +17,8 @@ const Track = ({
   number,
   contributors,
   explicit_content_lyrics: explicitLyrics,
-  explicit_lyrics: explicit
+  explicit_lyrics: explicit,
+  artist,
 }) => {
   const songElement = useRef()
   const dispatch = useDispatch()
@@ -36,18 +42,16 @@ const Track = ({
       onClick={() => handleClick(id)}
       playing={currentTrack === id ? 1 : 0}
     >
-      <p>
-      {(explicitLyrics > 2 || explicit) && <ExplicitTrack>E</ExplicitTrack>}
+      <TrackTitle>
         {/* {number.toString().padStart(2, '0')}
          {' - '} */}
         {title}
         {!readable && '! No available for playing'}
-      </p>
-      <p>
-        {contributors?.map(({ id, name }) => {
-          return <p key={id}>{name} </p>
-        })}
-      </p>
+      </TrackTitle>
+      <TrackArtist>
+        {(explicitLyrics > 2 || explicit) && <ExplicitTrack>E</ExplicitTrack>}
+        {artist.name}
+      </TrackArtist>
       <audio ref={songElement} src={preview}></audio>
     </TrackContainer>
   )

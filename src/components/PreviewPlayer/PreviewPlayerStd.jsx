@@ -100,14 +100,23 @@ export const InfoTitle = styled.div`
 `
 
 export const InfoArtist = styled(InfoTitle)`
+  display: flex;
+  gap: 0px 10px;
+  align-items: center;
   font-size: 1.8rem;
   @media (max-width: 576px) {
     font-size: 1rem;
   }
 `
 
+export const InfoContrib = styled(InfoArtist)`
+flex-wrap: wrap;
+  font-size: 1rem;
+  cursor: pointer;
+`
+
 export const ExtraInfoContainer = styled.div`
-color: var(--grey);
+  color: var(--grey);
   width: 97%;
   display: flex;
   align-items: center;
@@ -132,7 +141,7 @@ export const InfoFrame = styled.div`
   border-radius: 2px;
   text-transform: capitalize;
   /* border: 1px solid var(--grey); */
-  `
+`
 
 export const GenreFrame = styled(InfoFrame)`
   &:hover {

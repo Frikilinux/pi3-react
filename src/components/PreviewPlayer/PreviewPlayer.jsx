@@ -9,6 +9,7 @@ import {
   ExtraInfoContainer,
   GenreFrame,
   InfoArtist,
+  InfoContrib,
   InfoFrame,
   InfoTitle,
   PreviewContainer,
@@ -40,6 +41,7 @@ const PreviewPlayer = (props) => {
     record_type: recordType,
     explicit_lyrics: explicitLyrics,
     genres,
+    contributors
   } = album
   const distpatch = useDispatch()
   const { h, m, s } = formatTime(duration)
@@ -83,10 +85,15 @@ const PreviewPlayer = (props) => {
       <AlbumHeaders>
         <AlbumInfoContainer>
           <InfoTitle>{title}</InfoTitle>
-          <InfoArtist>{artist.name}</InfoArtist>
-          <div>{label}</div>
+          <InfoArtist>
+            {artist.name}
+            </InfoArtist>
+            <InfoContrib>{
+              contributors?.slice(1).map(({name,id}) => (<p key={id}>{name}</p>) )
+            }</InfoContrib>
+          <div></div>
           <div>
-            {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`} - {day + '-' + month + '-' + year}
+            {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`} - {day + '-' + month + '-' + year} - © {label}
           </div>
           
         </AlbumInfoContainer>

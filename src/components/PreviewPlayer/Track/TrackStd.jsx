@@ -15,15 +15,23 @@ export const TrackContainer = styled.div`
   &:hover {
     cursor: pointer;
   }
-  & p {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
+`
+
+export const TrackTitle = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`
+
+export const TrackArtist = styled(TrackTitle)`
+  font-size: 0.9rem;
+  color: var(--grey);
 `
 
 export const ExplicitTrack = styled.div`
+  font-size: 0.9rem;
+  color: var(--dark);
   background-color: var(--grey);
-  padding: 1px 5px;
+  padding: 0px 5px;
   border-radius: 2px;
 `

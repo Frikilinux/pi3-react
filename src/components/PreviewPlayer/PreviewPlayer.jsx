@@ -22,11 +22,13 @@ import formatTime from '../../utils/fomatedTime'
 import formatedDate from '../../utils/formatedDate'
 import { addToCart } from '../../redux/cart/cartSlice'
 import { useAlbums } from '../../hooks/useAlbums'
+import { useNavigate } from 'react-router-dom'
 
 const PreviewPlayer = (props) => {
   const { fetchAlbums } = useAlbums()
   const dispatch = useDispatch()
   const { album } = useSelector((state) => state.previewPlayer)
+  const navigate = useNavigate()
   const {
     cover_medium: cover,
     tracks,
@@ -41,7 +43,7 @@ const PreviewPlayer = (props) => {
     record_type: recordType,
     explicit_lyrics: explicitLyrics,
     genres,
-    contributors
+    contributors,
   } = album
   const distpatch = useDispatch()
   const { h, m, s } = formatTime(duration)
@@ -60,7 +62,6 @@ const PreviewPlayer = (props) => {
       // key='preview'
     >
       <ExtraInfoContainer>
-
         <ButtonPrimary onClick={() => distpatch(hidePreview(true))}>
           ←
         </ButtonPrimary>
@@ -85,17 +86,21 @@ const PreviewPlayer = (props) => {
       <AlbumHeaders>
         <AlbumInfoContainer>
           <InfoTitle>{title}</InfoTitle>
-          <InfoArtist>
+          <InfoArtist onClick={() => navigate(`/artist/${artist.id}`)}>
             {artist.name}
-            </InfoArtist>
-            <InfoContrib>{
-              contributors?.slice(1).map(({name,id}) => (<p key={id}>{name}</p>) )
-            }</InfoContrib>
+          </InfoArtist>
+          <InfoContrib>
+            {contributors?.slice(1).map(({ name, id }) => (
+              <p key={id} onClick={() => navigate(`/artist/${artist.id}`)}>
+                {name}
+              </p>
+            ))}
+          </InfoContrib>
           <div></div>
           <div>
-            {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`} - {day + '-' + month + '-' + year} - © {label}
+            {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`} -{' '}
+            {day + '-' + month + '-' + year} - © {label}
           </div>
-          
         </AlbumInfoContainer>
         <AlbumImg src={cover} />
       </AlbumHeaders>

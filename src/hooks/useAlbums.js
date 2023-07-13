@@ -25,26 +25,35 @@ export const useAlbums = () => {
 
       console.log('DATA IN LBUM BY ID', data)
 
-      dispatch(setAlbumPreview({...data, price: createPrice(data.id)}))
+      dispatch(setAlbumPreview({ ...data, price: createPrice(data.id) }))
     } catch (error) {
       console.log(error)
     }
   }
 
-  const fetchAlbums = async ({ genreId = '0', next }) => {
-    const url = next
-      ? `${API_PROXY + next}`
-      : `${API_PROXY + ROOT + '/editorial/' + genreId + '/releases'}`
+  const getArtistAlbums = ({ artistId, next }) => {
+    fetchAlbums({
+      url: `${API_PROXY + ROOT + '/artist/' + artistId + '/albums?limit=20'}`,
+      next,
+    })
+  }
+
+  const getAlbumsByGenre = ({ genreId = '0', next }) => {
+    fetchAlbums({
+      url: `${
+        API_PROXY + ROOT + '/editorial/' + genreId + '/releases?limit=20'
+      }`,
+      next, genreId
+    })
+  }
+
+  const fetchAlbums = async ({ url, next, genreId }) => {
+    const endpointUrl = next ? `${API_PROXY + next}` : url
     try {
       dispatch(isFetching())
-      const { data } = await axios.get(url)
+      const { data } = await axios.get(endpointUrl)
 
       console.log('FETCH ALBUMS', data)
-      // Fetch de los albums con más datos
-      // const albumsIds = data.data.map((album) => album.id)
-      // const albumsData = await fetchAlbumsFullInfo(albumsIds)
-
-      // console.log('ALBUMS AXIOS', albumsData)
 
       const payload = {
         total: data.total,
@@ -79,5 +88,5 @@ export const useAlbums = () => {
     }
   }
 
-  return { fetchAlbums, fetchAlbumsGenre, fetchAlbumById }
+  return { fetchAlbumsGenre, fetchAlbumById, getAlbumsByGenre, getArtistAlbums }
 }

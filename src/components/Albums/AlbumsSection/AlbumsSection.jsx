@@ -7,14 +7,14 @@ import { useSelector } from 'react-redux'
 
 export const AlbumsSection = () => {
   const { next, isFetching } = useSelector((state) => state.albums)
-  const { fetchAlbums } = useAlbums()
+  const { getAlbumsByGenre } = useAlbums()
   return (
     <Section>
       <Albums />
       {next && (
         <NextButton
           onClick={() => {
-            fetchAlbums({ next })
+            getAlbumsByGenre({ next })
           }}
         >
           {isFetching ? 'Cargando...' : 'NEXT'}

@@ -6,7 +6,7 @@ import { useAlbums } from '../../../hooks/useAlbums'
 
 const Genres = () => {
   const { fetchGenres } = useGenres()
-  const { fetchAlbums } = useAlbums()
+  const { getAlbumsByGenre } = useAlbums()
 
   const { categories } = useSelector((state) => state.categories)
   useEffect(() => {
@@ -20,7 +20,7 @@ const Genres = () => {
           <Genre
             id={id}
             onClick={() => {
-              fetchAlbums({ genreId: id })
+              getAlbumsByGenre({ genreId: id })
             }}
             key={id}
           >

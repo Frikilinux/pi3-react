@@ -40,7 +40,7 @@ const AlbumCard = (props) => {
         </OverlayPreview>
         <TitleContainer>
           <p>{title}</p>
-          <p>{artist.name}</p>
+          <p>{artist?.name}</p>
         </TitleContainer>
         <MainImg imgsrc={coverMedium ?? noImg} />
         {/* {recordType === 'single' && <SingleFrame>S</SingleFrame>} */}

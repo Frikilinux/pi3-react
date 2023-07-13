@@ -6,25 +6,26 @@ import { useAlbums } from '../../hooks/useAlbums'
 import AlbumCard from './CardProduct/AlbumCard'
 
 const Albums = () => {
-  const { albums, next, currentGenre } = useSelector(
+  const { albums, next, currentGenre, isFetching } = useSelector(
     (state) => state.albums
   )
   console.log('PRODUCTS IN JSX', albums)
 
   // const { fetchProducts } = useProducts()
-  const { fetchAlbums } = useAlbums()
+  const { getAlbumsByGenre } = useAlbums()
 
   useEffect(() => {
-    fetchAlbums({})
+    getAlbumsByGenre({})
     // fetchProducts()
     // dispatch(getProducts(productos.products))
   }, [])
 
   return (
     <AlbumsContainer>
-      {albums.map((album) => {
-        return <AlbumCard key={album.id} {...album} />
-      })}
+      {!isFetching &&
+        albums.map((album) => {
+          return <AlbumCard key={album.id} {...album} />
+        })}
     </AlbumsContainer>
   )
 }

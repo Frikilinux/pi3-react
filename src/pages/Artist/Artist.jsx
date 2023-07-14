@@ -23,10 +23,11 @@ const Artist = () => {
   return (
     <Main>
       <ArtistInfoContainer imgsrc={pictureXl}>
-        <div>        <ArtistInfoName>{name}</ArtistInfoName>
-        <p>{nbFan} Followers </p></div>
+        <div>
+          <ArtistInfoName>{name}</ArtistInfoName>
+          <p>{nbFan} Followers </p>
+        </div>
         <ArtistImg src={pictureXl} />
-
       </ArtistInfoContainer>
 
       <SectionWrapper bg='var(--lightDark)' id='Artits'>

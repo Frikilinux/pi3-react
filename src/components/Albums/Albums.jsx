@@ -15,17 +15,16 @@ const Albums = () => {
   const { getAlbumsByGenre } = useAlbums()
 
   useEffect(() => {
-    getAlbumsByGenre({})
+    // getAlbumsByGenre({})
     // fetchProducts()
     // dispatch(getProducts(productos.products))
   }, [])
 
   return (
     <AlbumsContainer>
-      {!isFetching &&
-        albums.map((album) => {
-          return <AlbumCard key={album.id} {...album} />
-        })}
+      {albums.map((album) => {
+        return <AlbumCard key={album.id} {...album} />
+      })}
     </AlbumsContainer>
   )
 }

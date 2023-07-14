@@ -25,7 +25,7 @@ import { useAlbums } from '../../hooks/useAlbums'
 import { useNavigate } from 'react-router-dom'
 
 const PreviewPlayer = (props) => {
-  const { fetchAlbums } = useAlbums()
+  const { getAlbumsByGenre } = useAlbums()
   const dispatch = useDispatch()
   const { album } = useSelector((state) => state.previewPlayer)
   const navigate = useNavigate()
@@ -73,8 +73,9 @@ const PreviewPlayer = (props) => {
             <GenreFrame
               key={id}
               onClick={() => {
-                fetchAlbums({ genreId: id })
+                getAlbumsByGenre({ genreId: id })
                 distpatch(hidePreview(true))
+                navigate('/')
               }}
             >
               {name}
@@ -86,12 +87,23 @@ const PreviewPlayer = (props) => {
       <AlbumHeaders>
         <AlbumInfoContainer>
           <InfoTitle>{title}</InfoTitle>
-          <InfoArtist onClick={() => navigate(`/artist/${artist.id}`)}>
+          <InfoArtist
+            onClick={() => {
+              navigate(`/artist/${artist.id}`)
+              distpatch(hidePreview(true))
+            }}
+          >
             {artist.name}
           </InfoArtist>
           <InfoContrib>
             {contributors?.slice(1).map(({ name, id }) => (
-              <p key={id} onClick={() => navigate(`/artist/${artist.id}`)}>
+              <p
+                key={id}
+                onClick={() => {
+                  navigate(`/artist/${id}`)
+                  distpatch(hidePreview(true))
+                }}
+              >
                 {name}
               </p>
             ))}

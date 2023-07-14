@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   isFetching: false,
   isError: null,
   next: null,
-  currentGenre: null,
+  currentGenre: 0,
   total: null,
 }
 

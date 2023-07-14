@@ -107,12 +107,26 @@ export const InfoArtist = styled(InfoTitle)`
   @media (max-width: 576px) {
     font-size: 1rem;
   }
+  &:hover {
+    cursor: pointer;
+    color: var(--red);
+    cursor: pointer;
+  }
 `
 
 export const InfoContrib = styled(InfoArtist)`
-flex-wrap: wrap;
+  flex-wrap: wrap;
   font-size: 1rem;
-  cursor: pointer;
+  &:hover {
+    cursor: unset;
+    color: inherit;
+  }
+  & P {
+    &:hover {
+      cursor: pointer;
+      color: var(--red);
+    }
+  }
 `
 
 export const ExtraInfoContainer = styled.div`

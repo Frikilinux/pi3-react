@@ -4,7 +4,7 @@ import { Section, SectionContainer } from './SectionWrapperStd'
 const SectionWrapper = ({ children, bg} ) => {
   return (
     <SectionContainer bg={bg}>
-      <Section>{children}</Section>
+      {children}
     </SectionContainer>
   )
 }

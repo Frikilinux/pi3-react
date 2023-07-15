@@ -37,7 +37,7 @@ export const CartItem = (props) => {
       <AlbumImage src={cover} alt={title} />
       <ItemInfoConatainer>
         <AlbumTitle>{title}</AlbumTitle>
-        <AlbumArtist>{artist.name}</AlbumArtist>
+        <AlbumArtist>{artist?.name}</AlbumArtist>
         <AlbumData>
           {/* <p>{formatTime(duration)} min</p> */}
           <p>{label}</p>

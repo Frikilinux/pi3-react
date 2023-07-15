@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  UserButtonsContainer,
   UserContainer,
   UserImg,
   UserImgContainer,
@@ -7,8 +8,12 @@ import {
 } from './UserLoginStyled'
 import { useDispatch, useSelector } from 'react-redux'
 import { logOut } from '../../../redux/user/userSlice'
+import { hideCart, toggleCart } from '../../../redux/cart/cartSlice'
+import ButtonPrimary from '../../UI/Button/ButtonPrimary'
+import Icons from '../../../constants/icons'
 
 const UserLoggedIn = () => {
+  const { Logout, Cart } = Icons
   const { nombre } = useSelector((state) => state.user.user)
   const dispatch = useDispatch()
   return (
@@ -27,7 +32,19 @@ const UserLoggedIn = () => {
         <p>Hola, {nombre}</p>
         <p>@{nombre}</p>
       </UserNameData>
-      <button onClick={() => dispatch(logOut())}>Logout</button>
+      <UserButtonsContainer>
+        <ButtonPrimary
+          onClick={() => {
+            dispatch(logOut())
+            dispatch(hideCart())
+          }}
+        >
+          <Logout />
+        </ButtonPrimary>
+        <ButtonPrimary onClick={() => dispatch(toggleCart())}>
+          <Cart />
+        </ButtonPrimary>
+      </UserButtonsContainer>
     </UserContainer>
   )
 }

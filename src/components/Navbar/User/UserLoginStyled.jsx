@@ -9,12 +9,16 @@ export const UserContainer = styled(motion.div)`
 `
 
 export const UserImgContainer = styled.div`
-border: 2px solid var(--red);
+  border: 2px solid var(--red);
   border-radius: 5px;
   height: 100%;
   /* width: 50px; */
-  background: rgb(98,231,220);
-background: radial-gradient(circle, rgba(98,231,220,1) 0%, rgba(106,0,255,1) 100%); 
+  background: rgb(98, 231, 220);
+  background: radial-gradient(
+    circle,
+    rgba(98, 231, 220, 1) 0%,
+    rgba(106, 0, 255, 1) 100%
+  );
 `
 
 export const UserImg = styled.img`
@@ -27,14 +31,21 @@ export const UserNameData = styled.div`
   align-items: start;
   justify-content: space-evenly;
   height: 100%;
-  & p{
+  & p {
     padding: 0 10px;
     color: var(--white);
     font-size: 20px;
   }
   & p:last-child {
-    opacity: 0.6;
+    color: var(--grey);
     font-weight: 700;
     font-size: 15px;
   }
+`
+
+export const UserButtonsContainer = styled.div`
+  width: 500px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `

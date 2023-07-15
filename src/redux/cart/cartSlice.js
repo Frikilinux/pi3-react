@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   items: [],
   totalPrice: 0,
   discount: 0,
-  hidden: true,
+  cartHidden: true,
 }
 
 const cartSlice = createSlice({
@@ -31,10 +31,11 @@ const cartSlice = createSlice({
       }
     },
     cleanCart: (state) => (state = INITIAL_STATE),
-    hideCart: (state) => ({ ...state, hidden: !state.hidden }),
+    hideCart: (state) => ({ ...state, cartHidden: true }),
+    toggleCart: (state) => ({ ...state, cartHidden: !state.cartHidden }),
   },
 })
 
-export const { addToCart, removeFromCart, removeAlbum, cleanCart, hideCart } =
+export const { addToCart, removeFromCart, removeAlbum, cleanCart, hideCart, toggleCart } =
   cartSlice.actions
 export default cartSlice.reducer

@@ -5,7 +5,7 @@ import {
   InputContainer,
   InputStd,
 } from './InputUserStd'
-import { Icons } from '../../../constants/icons'
+import Icons from '../../../constants/icons'
 import { ErrorMessage, Field } from 'formik'
 
 const InputUser = ({ inputIcon, placeholder, type, name }) => {

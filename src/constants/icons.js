@@ -2,15 +2,17 @@ import {
   MdOutlineMail,
   MdOutlinePauseCircle,
   MdOutlinePlayCircle,
+  MdOutlineShoppingCart,
   MdPassword,
 } from 'react-icons/md'
 import {
   AiOutlineEye,
   AiOutlineEyeInvisible,
+  AiOutlineLogout,
   AiOutlineUser,
 } from 'react-icons/ai'
 
-export const Icons = {
+const Icons = {
   mail: MdOutlineMail,
   password: MdPassword,
   showPass: AiOutlineEye,
@@ -18,4 +20,8 @@ export const Icons = {
   name: AiOutlineUser,
   play: MdOutlinePlayCircle,
   pause: MdOutlinePauseCircle,
+  Logout: AiOutlineLogout,
+  Cart: MdOutlineShoppingCart
 }
+
+export default Icons

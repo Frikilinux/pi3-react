@@ -23,17 +23,6 @@ function App() {
       </AnimatePresence>
       <AnimatePresence>
         <Header />
-        {!isHidden && (
-          <CartModal
-            initial={{ translateX: 600 }}
-            animate={{ translateX: 0 }}
-            exit={{ translateX: 600 }}
-            transition={{ type: 'spring', damping: 18, duration: 0.1 }}
-            key='cart'
-          >
-            <Cart />
-          </CartModal>
-        )}
 
         <Routes />
       </AnimatePresence>

@@ -12,7 +12,7 @@ import {
   hidePreview,
   setPlaying,
 } from '../../../redux/previewPlayer/previewPlayerSlice'
-import { Icons } from '../../../constants/icons'
+import Icons from '../../../constants/icons'
 import { useNavigate } from 'react-router-dom'
 
 const Track = ({

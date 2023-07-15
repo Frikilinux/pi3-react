@@ -1,12 +1,19 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import {
   ExplicitTrack,
   TrackArtist,
   TrackContainer,
+  TrackData,
+  TrackNumber,
   TrackTitle,
 } from './TrackStd'
 import { useDispatch, useSelector } from 'react-redux'
-import { setPlaying } from '../../../redux/previewPlayer/previewPlayerSlice'
+import {
+  hidePreview,
+  setPlaying,
+} from '../../../redux/previewPlayer/previewPlayerSlice'
+import { Icons } from '../../../constants/icons'
+import { useNavigate } from 'react-router-dom'
 
 const Track = ({
   id,
@@ -21,38 +28,83 @@ const Track = ({
   artist,
 }) => {
   const songElement = useRef()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { isPlaying, currentTrack } = useSelector(
-    ({ previewPlayer }) => previewPlayer
-  )
+  const { currentTrack } = useSelector(({ previewPlayer }) => previewPlayer)
+  const [mouseHover, setMouseOver] = useState(false)
+  const [trackPlaying, setTrackPlaying] = useState(false)
+  const [paused, setPaused] = useState(false)
+  const Play = Icons[trackPlaying || mouseHover ? 'play' : 'pause']
 
   const handleClick = (id) => {
-    readable && dispatch(setPlaying(id))
+    if (readable) {
+      dispatch(setPlaying(id))
+      !trackPlaying ? songElement.current.play() : songElement.current.pause()
+    }
   }
 
   useEffect(() => {
-    isPlaying && id === currentTrack
-      ? songElement.current.play()
-      : songElement.current.pause()
-  }, [currentTrack, isPlaying, id])
+    if (currentTrack !== id) {
+      songElement.current.pause()
+      songElement.current.currentTime = 0
+    }
+  }, [currentTrack, id])
+
+  // console.log('IS PLAYING???', songElement.current)
 
   return (
     <TrackContainer
       id={id}
-      onClick={() => handleClick(id)}
       playing={currentTrack === id ? 1 : 0}
+      onMouseOver={() => setMouseOver(true)}
+      onMouseOut={() => setMouseOver(false)}
     >
-      <TrackTitle>
-        {/* {number.toString().padStart(2, '0')}
-         {' - '} */}
-        {title}
-        {!readable && '! No available for playing'}
-      </TrackTitle>
-      <TrackArtist>
-        {(explicitLyrics > 2 || explicit) && <ExplicitTrack>E</ExplicitTrack>}
-        {artist.name}
-      </TrackArtist>
-      <audio ref={songElement} src={preview}></audio>
+      <TrackNumber>
+        {mouseHover || (currentTrack === id && (trackPlaying || paused)) ? (
+          <Play
+            onClick={() => handleClick(id)}
+            size='2em'
+            color='var(--grey)'
+          />
+        ) : (
+          <div>{number}</div>
+        )}
+      </TrackNumber>
+      <TrackData>
+        <TrackTitle
+          onClick={() => handleClick(id)}
+          playing={currentTrack === id ? 1 : 0}
+        >
+          {title}
+          {!readable && '! No available for playing'}
+        </TrackTitle>
+        <TrackArtist
+          onClick={() => {
+            navigate(`/artist/${artist.id}`)
+            dispatch(hidePreview(true))
+          }}
+        >
+          {(explicitLyrics > 2 || explicit) && <ExplicitTrack>E</ExplicitTrack>}
+          {artist.name}
+        </TrackArtist>
+      </TrackData>
+
+      <audio
+        onPlaying={() => {
+          setTrackPlaying(true)
+          setPaused(false)
+        }}
+        onPause={() => {
+          setPaused(true)
+          setTrackPlaying(false)
+        }}
+        onEnded={() => {
+          setPlaying(false)
+          setPaused(false)
+        }}
+        ref={songElement}
+        src={preview}
+      ></audio>
     </TrackContainer>
   )
 }

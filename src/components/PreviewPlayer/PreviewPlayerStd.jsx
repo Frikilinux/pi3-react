@@ -142,19 +142,25 @@ export const ExtraInfoContainer = styled.div`
 export const ExtraInfo = styled.div`
   display: flex;
   gap: 20px;
+  @media (max-width: 576px) {
+    gap: 5px;
+  }
 `
 
 export const InfoFrame = styled.div`
+  display: flex;
+  align-items: center;
   opacity: 0.8;
   font-size: 0.8rem;
   font-weight: 500;
   padding: 0 5px;
   color: var(--dark);
   background: var(--grey);
-  /* border: 1px solid yellow; */
   border-radius: 2px;
   text-transform: capitalize;
-  /* border: 1px solid var(--grey); */
+  @media (max-width: 576px) {
+    font-size: 0.6rem;
+  }
 `
 
 export const GenreFrame = styled(InfoFrame)`

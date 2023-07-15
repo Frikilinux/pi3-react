@@ -74,7 +74,7 @@ const PreviewPlayer = (props) => {
               key={id}
               onClick={() => {
                 getAlbumsByGenre({ genreId: id })
-                distpatch(hidePreview(true))
+                dispatch(hidePreview(true))
                 navigate('/')
               }}
             >
@@ -96,6 +96,8 @@ const PreviewPlayer = (props) => {
             {artist.name}
           </InfoArtist>
           <InfoContrib>
+            {contributors.length > 2 && 'Feat.'}
+
             {contributors?.slice(1).map(({ name, id }) => (
               <p
                 key={id}
@@ -109,10 +111,6 @@ const PreviewPlayer = (props) => {
             ))}
           </InfoContrib>
           <div></div>
-          <div>
-            {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`} -{' '}
-            {day + '-' + month + '-' + year} - © {label}
-          </div>
         </AlbumInfoContainer>
         <AlbumImg src={cover} />
       </AlbumHeaders>
@@ -123,6 +121,10 @@ const PreviewPlayer = (props) => {
         ))}
       </AlbumTracksContainer>
       <ButtonsContainer>
+        <div>
+          {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`} -{' '}
+          {day + '-' + month + '-' + year} - © {label}
+        </div>
         <ButtonPrimary
           size='1.2'
           onClick={() => {

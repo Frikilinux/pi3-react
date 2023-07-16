@@ -12,6 +12,7 @@ import { addToCart } from '../../../redux/cart/cartSlice'
 import { useAlbums } from '../../../hooks/useAlbums'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
 import { toast } from 'react-toastify'
+import useButtons from '../../../hooks/useButtons'
 
 const AlbumCard = (props) => {
   const {
@@ -26,12 +27,8 @@ const AlbumCard = (props) => {
   const dispatch = useDispatch()
   const { fetchAlbumById } = useAlbums()
   const { user } = useSelector(({ user }) => user)
+  const {handleAddToCart} = useButtons()
 
-  const handleAddToCart = () => {
-    if (!user) return
-    dispatch(addToCart(props))
-    toast.error(`Album added`)
-  }
 
   return (
     <CardContainer
@@ -57,7 +54,7 @@ const AlbumCard = (props) => {
       <InfoContainer>
         <div>
           <p>$ {price} </p>
-          <ButtonPrimary disabled={!user} size='1.2' onClick={handleAddToCart}>
+          <ButtonPrimary notLoggedIn={!user} size='1.2' onClick={() => handleAddToCart(props)}>
             Add
           </ButtonPrimary>
         </div>

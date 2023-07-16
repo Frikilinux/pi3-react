@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import {
   ExplicitTrack,
+  NaTrack,
   TrackArtist,
   TrackContainer,
   TrackData,
@@ -59,10 +60,10 @@ const Track = ({
       onMouseOver={() => setMouseOver(true)}
       onMouseOut={() => setMouseOver(false)}
     >
-      <TrackNumber>
+      <TrackNumber onClick={() => handleClick(id)}>
         {mouseHover || (currentTrack === id && (trackPlaying || paused)) ? (
           <Play
-            onClick={() => handleClick(id)}
+            
             size='2em'
             color='var(--grey)'
           />
@@ -75,8 +76,10 @@ const Track = ({
           onClick={() => handleClick(id)}
           playing={currentTrack === id ? 1 : 0}
         >
-          {title}
-          {!readable && '! No available for playing'}
+          <p>{title}</p>
+          <NaTrack>{!readable && 'N/A'}</NaTrack>
+          
+          
         </TrackTitle>
         <TrackArtist
           onClick={() => {

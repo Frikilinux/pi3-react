@@ -24,6 +24,7 @@ import { addToCart } from '../../redux/cart/cartSlice'
 import { useAlbums } from '../../hooks/useAlbums'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import useButtons from '../../hooks/useButtons'
 
 const PreviewPlayer = (props) => {
   const { getAlbumsByGenre } = useAlbums()
@@ -51,11 +52,7 @@ const PreviewPlayer = (props) => {
   const { day, month, year } = formatedDate(release)
   const { user } = useSelector(({ user }) => user)
 
-  const handleAddToCart = () => {
-    if (!user) return
-    dispatch(addToCart(props))
-    toast.error(`Album added`)
-  }
+  const {handleAddToCart} = useButtons()
 
   return (
     <PreviewContainer
@@ -104,7 +101,7 @@ const PreviewPlayer = (props) => {
             {artist.name}
           </InfoArtist>
           <InfoContrib>
-            {contributors.length > 2 && 'Feat.'}
+            {contributors.length > 2 && 'Feat:'}
 
             {contributors?.slice(1).map(({ name, id }) => (
               <p
@@ -133,7 +130,7 @@ const PreviewPlayer = (props) => {
           {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`} -{' '}
           {day + '-' + month + '-' + year} - © {label}
         </div>
-        <ButtonPrimary disabled={!user} size='1.2' onClick={handleAddToCart}>
+        <ButtonPrimary notLoggedIn={!user} size='1.2' onClick={() => handleAddToCart(props)}>
           Add
         </ButtonPrimary>
       </ButtonsContainer>

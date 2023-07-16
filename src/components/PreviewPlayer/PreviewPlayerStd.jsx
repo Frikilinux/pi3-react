@@ -36,7 +36,7 @@ export const PreviewContainer = styled(motion.div)`
     padding: 10px;
     border-radius: 0;
     top: 50px;
-    width:100%;
+    width: 100%;
     height: calc(100vh - 50px);
   }
 `
@@ -72,13 +72,13 @@ export const AlbumInfoContainer = styled.div`
   /* background-color: #e673737d; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   /* align-items: center; */
 
   width: 70%;
   height: 200px;
   @media (max-width: 576px) {
-    /* width: 70%; */
+    width: 78%;
     height: 100px;
   }
   @media (max-width: 380px) {
@@ -95,7 +95,7 @@ export const InfoTitle = styled.div`
   white-space: nowrap;
   font-size: 3.4rem;
   @media (max-width: 576px) {
-    width: 90%;
+    width: 98%;
     font-size: 1.5rem;
   }
 `
@@ -104,7 +104,7 @@ export const InfoArtist = styled(InfoTitle)`
   display: flex;
   gap: 0px 10px;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: 2rem;
   @media (max-width: 576px) {
     font-size: 1rem;
   }
@@ -127,6 +127,9 @@ export const InfoContrib = styled(InfoArtist)`
       cursor: pointer;
       color: var(--red);
     }
+  }
+  @media (max-width: 576px) {
+    font-size: 0.6rem;
   }
 `
 
@@ -151,7 +154,7 @@ export const ExtraInfo = styled.div`
 `
 
 export const InfoFrame = styled.div`
-height: 18px;
+  height: 18px;
   display: flex;
   align-items: center;
   opacity: 0.8;
@@ -192,6 +195,9 @@ export const AlbumTracksContainer = styled.div`
   width: 98%;
   padding: 10px 0;
   height: 100%;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 export const ButtonsContainer = styled.div`

@@ -10,11 +10,12 @@ export const ButtonStyled = styled(motion.button)`
   border-radius: 5px;
   padding: 2px 10px;
   color: var(--lightDark);
-  background-color: var(--red);
+  background-color: ${({ notLoggedIn}) =>
+    notLoggedIn ? 'var(--grey)' : 'var(--red)'};
   &:hover {
     cursor: pointer;
   }
   @media (max-width: 576px) {
-      font-size: 0.8rem;
-    }
+    font-size: 0.8rem;
+  }
 `

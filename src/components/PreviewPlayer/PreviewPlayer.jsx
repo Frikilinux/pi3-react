@@ -49,6 +49,13 @@ const PreviewPlayer = (props) => {
   const distpatch = useDispatch()
   const { h, m, s } = formatTime(duration)
   const { day, month, year } = formatedDate(release)
+  const { user } = useSelector(({ user }) => user)
+
+  const handleAddToCart = () => {
+    if (!user) return
+    dispatch(addToCart(props))
+    toast.error(`Album added`)
+  }
 
   return (
     <PreviewContainer
@@ -126,13 +133,7 @@ const PreviewPlayer = (props) => {
           {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`} -{' '}
           {day + '-' + month + '-' + year} - © {label}
         </div>
-        <ButtonPrimary
-          size='1.2'
-          onClick={() => {
-            dispatch(addToCart(album))
-            toast.success(`Album added`)
-          }}
-        >
+        <ButtonPrimary disabled={!user} size='1.2' onClick={handleAddToCart}>
           Add
         </ButtonPrimary>
       </ButtonsContainer>

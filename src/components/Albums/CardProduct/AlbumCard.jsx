@@ -11,6 +11,9 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../../../redux/cart/cartSlice'
 import { useAlbums } from '../../../hooks/useAlbums'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
+import { useInfoModal } from '../../../hooks/useInfoModal'
+import { AnimatePresence } from 'framer-motion'
+import { toast } from 'react-toastify'
 
 const AlbumCard = (props) => {
   const {
@@ -24,42 +27,50 @@ const AlbumCard = (props) => {
   const noImg = 'https://cloud.ztec.ml/s/Y7G3JX4FxE5zKaz/download'
   const dispatch = useDispatch()
   const { fetchAlbumById } = useAlbums()
+  const { showInfoModal, Modal, setMsg } = useInfoModal()
 
   return (
-    <CardContainer
-      id={id}
-      // whileHover={{ scale: 1.01, transition: { duration: 0.05 } }}
-    >
-      <ImagesContainer>
-        <OverlayPreview
-          onClick={() => fetchAlbumById(id)}
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1, transition: { duration: 0.5 } }}
-        >
-          🛈
-        </OverlayPreview>
-        <TitleContainer>
-          <p>{title}</p>
-          <p>{artist?.name}</p>
-        </TitleContainer>
-        <MainImg imgsrc={coverMedium ?? noImg} />
-        {/* {recordType === 'single' && <SingleFrame>S</SingleFrame>} */}
-        {/* {explicit && <ExplicitFrame>E</ExplicitFrame>} */}
-      </ImagesContainer>
-      <InfoContainer>
-        <div>
-          <p>$ {price} </p>
-          <ButtonPrimary
-            size='1.2'
-            onClick={() => {
-              dispatch(addToCart(props))
-            }}
+    <>
+      <Modal />
+
+      <CardContainer
+        id={id}
+        // whileHover={{ scale: 1.01, transition: { duration: 0.05 } }}
+      >
+        <ImagesContainer>
+          <OverlayPreview
+            onClick={() => fetchAlbumById(id)}
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1, transition: { duration: 0.5 } }}
           >
-            Add
-          </ButtonPrimary>
-        </div>
-      </InfoContainer>
-    </CardContainer>
+            🛈
+          </OverlayPreview>
+          <TitleContainer>
+            <p>{title}</p>
+            <p>{artist?.name}</p>
+          </TitleContainer>
+          <MainImg imgsrc={coverMedium ?? noImg} />
+          {/* {recordType === 'single' && <SingleFrame>S</SingleFrame>} */}
+          {/* {explicit && <ExplicitFrame>E</ExplicitFrame>} */}
+        </ImagesContainer>
+        <InfoContainer>
+          <div>
+            <p>$ {price} </p>
+            <ButtonPrimary
+              size='1.2'
+              onClick={() => {
+                dispatch(addToCart(props))
+                // showInfoModal(2500)
+                // setMsg('Album added')
+                toast.error(`Album added`)
+              }}
+            >
+              Add
+            </ButtonPrimary>
+          </div>
+        </InfoContainer>
+      </CardContainer>
+    </>
   )
 }
 

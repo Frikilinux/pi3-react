@@ -5,10 +5,14 @@ import { AlbumsSection } from '../../components/Albums/AlbumsSection/AlbumsSecti
 import Main from '../../components/UI/MainWrapper/MainWrapper'
 import { useAlbums } from '../../hooks/useAlbums'
 import { useSelector } from 'react-redux'
+import InfoModal from '../../components/InfoModal/InfoModal'
+import { AnimatePresence } from 'framer-motion'
+import { useInfoModal } from '../../hooks/useInfoModal'
 
 export const Home = () => {
   const { currentGenre, isFetching } = useSelector(({ albums }) => albums)
   const { getAlbumsByGenre } = useAlbums()
+  const { isVisible } = useInfoModal()
 
   useEffect(() => {
     !isFetching && getAlbumsByGenre({ genreId: currentGenre })
@@ -17,6 +21,9 @@ export const Home = () => {
   }, [])
   return (
     <Main>
+      {/* {console.log('VISIBLE?', isVisible)}
+      <AnimatePresence>{isVisible && <InfoModal />}</AnimatePresence> */}
+
       <SectionWrapper bg='var(--lightDark)' id='albums'>
         <Genres />
         <AlbumsSection />

@@ -23,6 +23,7 @@ import formatedDate from '../../utils/formatedDate'
 import { addToCart } from '../../redux/cart/cartSlice'
 import { useAlbums } from '../../hooks/useAlbums'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const PreviewPlayer = (props) => {
   const { getAlbumsByGenre } = useAlbums()
@@ -129,6 +130,7 @@ const PreviewPlayer = (props) => {
           size='1.2'
           onClick={() => {
             dispatch(addToCart(album))
+            toast.success(`Album added`)
           }}
         >
           Add

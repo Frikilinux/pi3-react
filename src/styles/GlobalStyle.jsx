@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
     --dark: #201e20;
     --lightDark: #2c2d31;
     --grey: #989898;
+    --toastify-font-family: 'Montserrat';
   }
 
   html{

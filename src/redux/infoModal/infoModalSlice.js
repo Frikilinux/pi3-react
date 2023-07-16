@@ -1,0 +1,4 @@
+INITIAL_STATE = {
+  msg: [],
+  
+}

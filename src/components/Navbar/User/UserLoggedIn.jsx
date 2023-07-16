@@ -29,7 +29,7 @@ const UserLoggedIn = () => {
         />
       </UserImgContainer>
       <UserNameData>
-        <p>Hola, {nombre}</p>
+        <p>Hi, {nombre}</p>
         <p>@{nombre}</p>
       </UserNameData>
       <UserButtonsContainer>

@@ -6,26 +6,31 @@ import UserLoggedIn from '../Navbar/User/UserLoggedIn'
 import { toggleCart } from '../../redux/cart/cartSlice'
 import Cart from '../Cart/Cart'
 import { CartModal } from '../Cart/CartStd'
+import { AnimatePresence } from 'framer-motion'
+import SiteBrand from './Sitebrand/SiteBrand'
 
 export const Header = () => {
-  const isCartHidden = useSelector(({ cart }) => cart.hidden)
+  const isCartHidden = useSelector(({ cart }) => cart.cartHidden)
   const { user } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   return (
     <HeaderStyled>
-      {user ? <UserLoggedIn /> : <UserLoggedOut />}
+      <AnimatePresence>
+        <SiteBrand />
+        {user ? <UserLoggedIn /> : <UserLoggedOut />}
 
-      {!isCartHidden && (
-        <CartModal
-          initial={{ translateX: 600 }}
-          animate={{ translateX: 0 }}
-          exit={{ translateX: 600 }}
-          transition={{ type: 'spring', damping: 18, duration: 0.1 }}
-          key='cart'
-        >
-          <Cart />
-        </CartModal>
-      )}
+        {!isCartHidden && (
+          <CartModal
+            initial={{ translateX: 600 }}
+            animate={{ translateX: 0 }}
+            exit={{ translateX: 600 }}
+            transition={{ type: 'spring', damping: 18, duration: 0.1 }}
+            key='cart'
+          >
+            <Cart />
+          </CartModal>
+        )}
+      </AnimatePresence>
     </HeaderStyled>
   )
 }

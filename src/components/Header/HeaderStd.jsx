@@ -1,6 +1,10 @@
 import { styled } from 'styled-components'
 
 export const HeaderStyled = styled.header`
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   z-index: 99;
   position: fixed;
   display: flex;

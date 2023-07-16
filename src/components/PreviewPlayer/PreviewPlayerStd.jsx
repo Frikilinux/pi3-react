@@ -8,7 +8,7 @@ export const PreviewContainer = styled(motion.div)`
   padding: 20px;
   top: 10vh;
   position: fixed;
-  width: 100%;
+  width: 90%;
   max-width: 900px;
   height: 80vh;
   background: #fff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
@@ -35,8 +35,9 @@ export const PreviewContainer = styled(motion.div)`
   @media (max-width: 576px) {
     padding: 10px;
     border-radius: 0;
-    top: 70px;
-    height: calc(100vh - 70px);
+    top: 50px;
+    width:100%;
+    height: calc(100vh - 50px);
   }
 `
 
@@ -141,13 +142,16 @@ export const ExtraInfoContainer = styled.div`
 
 export const ExtraInfo = styled.div`
   display: flex;
-  gap: 20px;
-  @media (max-width: 576px) {
+  justify-content: flex-end;
+  gap: 15px;
+  flex-wrap: wrap;
+  @media (max-width: 992px) {
     gap: 5px;
   }
 `
 
 export const InfoFrame = styled.div`
+height: 18px;
   display: flex;
   align-items: center;
   opacity: 0.8;
@@ -157,8 +161,9 @@ export const InfoFrame = styled.div`
   color: var(--dark);
   background: var(--grey);
   border-radius: 2px;
-  text-transform: capitalize;
-  @media (max-width: 576px) {
+
+  white-space: nowrap;
+  @media (max-width: 992px) {
     font-size: 0.6rem;
   }
 `

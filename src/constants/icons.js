@@ -11,7 +11,7 @@ import {
   AiOutlineLogout,
   AiOutlineUser,
 } from 'react-icons/ai'
-
+import { SiMusicbrainz } from 'react-icons/si'
 const Icons = {
   mail: MdOutlineMail,
   password: MdPassword,
@@ -21,7 +21,8 @@ const Icons = {
   play: MdOutlinePlayCircle,
   pause: MdOutlinePauseCircle,
   Logout: AiOutlineLogout,
-  Cart: MdOutlineShoppingCart
+  Cart: MdOutlineShoppingCart,
+  LogoImg: SiMusicbrainz,
 }
 
 export default Icons

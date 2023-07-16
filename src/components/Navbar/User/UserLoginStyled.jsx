@@ -5,19 +5,19 @@ export const UserContainer = styled(motion.div)`
   display: flex;
   align-items: center;
   padding: 0 10px;
-  height: 80%;
+  height: 70%;
 `
 
 export const UserImgContainer = styled.div`
-  border: 2px solid var(--red);
+  /* border: 1px solid var(--red); */
   border-radius: 5px;
   height: 100%;
   /* width: 50px; */
   background: rgb(98, 231, 220);
   background: radial-gradient(
     circle,
-    rgba(98, 231, 220, 1) 0%,
-    rgba(106, 0, 255, 1) 100%
+    #788181 0%,
+    #313233 100%
   );
 `
 
@@ -34,18 +34,22 @@ export const UserNameData = styled.div`
   & p {
     padding: 0 10px;
     color: var(--white);
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: 700;
   }
   & p:last-child {
     color: var(--grey);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 12px;
   }
 `
 
 export const UserButtonsContainer = styled.div`
-  width: 500px;
   display: flex;
   align-items: center;
   gap: 10px;
+  @media (max-width: 576px) {
+    flex-direction: column;
+    gap: 5px;
+  }
 `

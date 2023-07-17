@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const AlbumsContainer = styled.div`
   padding: 20px;
@@ -7,10 +7,10 @@ export const AlbumsContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 30px;
-  @media(max-width: 576px){
+  @media (max-width: 576px) {
     gap: 22px;
     width: 98%;
     padding: 0;
   }
-  
 `
+

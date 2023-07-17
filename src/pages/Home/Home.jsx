@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux'
 import InfoModal from '../../components/InfoModal/InfoModal'
 import { AnimatePresence } from 'framer-motion'
 import { useInfoModal } from '../../hooks/useInfoModal'
+import Spinner from '../../components/Spinner/Spinner'
+import { LoadingContainer } from './HomeStd'
 
 export const Home = () => {
   const { currentGenre, isFetching } = useSelector(({ albums }) => albums)
@@ -21,6 +23,10 @@ export const Home = () => {
   }, [])
   return (
     <Main>
+      <LoadingContainer>
+        <Spinner />
+      </LoadingContainer>
+
       {/* {console.log('VISIBLE?', isVisible)}
       <AnimatePresence>{isVisible && <InfoModal />}</AnimatePresence> */}
 

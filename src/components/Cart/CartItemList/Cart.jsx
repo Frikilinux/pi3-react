@@ -1,14 +1,10 @@
 import React from 'react'
 import { CartContainer, ItemsContainer } from './CartStd'
 import { CartItem } from '../CartItem/CartItem'
-import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const Cart = () => {
   const { items } = useSelector((state) => state.cart)
-  const dispatch = useDispatch()
-
-
 
   return (
     <CartContainer>

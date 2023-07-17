@@ -4,10 +4,12 @@ import productos from '../../data/products.json'
 import { AlbumsContainer } from './AlbumsStd'
 import { useAlbums } from '../../hooks/useAlbums'
 import AlbumCard from './CardProduct/AlbumCard'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import Spinner from '../Spinner/Spinner'
 
 const Albums = () => {
-  const { albums, next, currentGenre, isFetching } = useSelector(
-    (state) => state.albums
+  const { albums, next, currentGenre, isFetching, total } = useSelector(
+    (state) => state.albums,
   )
   console.log('PRODUCTS IN JSX', albums)
 
@@ -21,11 +23,22 @@ const Albums = () => {
   }, [])
 
   return (
-    <AlbumsContainer>
-      {albums.map((album) => {
-        return <AlbumCard key={album.id} {...album} />
-      })}
-    </AlbumsContainer>
+    <InfiniteScroll
+      dataLength={albums ? albums.length : 0}
+      next={() => getAlbumsByGenre({ next })}
+      hasMore={next}
+      // loader={
+      //   <AlbumsLoadingContainer>
+      //     <Spinner />
+      //   </AlbumsLoadingContainer>
+      // }
+    >
+      <AlbumsContainer>
+        {albums.map((album) => {
+          return <AlbumCard key={album.id} {...album} />
+        })}
+      </AlbumsContainer>
+    </InfiniteScroll>
   )
 }
 

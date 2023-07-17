@@ -14,6 +14,7 @@ import cartReducer from './cart/cartSlice'
 import categoriesReducer from './categories/categoriesSlice'
 import previewPlayerReducer from './previewPlayer/previewPlayerSlice'
 import artistReducer from './artist/artistSlice'
+import ordersReducer from './orders/ordersSlice'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
 
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
   categories: categoriesReducer,
   cart: cartReducer,
   previewPlayer: previewPlayerReducer,
-  artist: artistReducer
+  artist: artistReducer,
+  orders: ordersReducer
 })
 
 const persistConfig = {

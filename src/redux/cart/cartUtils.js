@@ -22,5 +22,5 @@ export const removeAlbumHandler = (cartAlbums, albumId) => {
   } else {
     return cartAlbums.filter((album) => album.id !== albumId ) 
   }
-}
 
+}

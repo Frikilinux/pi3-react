@@ -21,7 +21,7 @@ const Icons = {
   play: MdOutlinePlayCircle,
   pause: MdOutlinePauseCircle,
   Logout: AiOutlineLogout,
-  Cart: MdOutlineShoppingCart,
+  CartIcon: MdOutlineShoppingCart,
   LogoImg: SiMusicbrainz,
 }
 

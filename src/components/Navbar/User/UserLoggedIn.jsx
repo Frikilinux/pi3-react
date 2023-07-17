@@ -11,11 +11,13 @@ import { logOut } from '../../../redux/user/userSlice'
 import { hideCart, toggleCart } from '../../../redux/cart/cartSlice'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
 import Icons from '../../../constants/icons'
+import { useLocation } from 'react-router-dom'
 
 const UserLoggedIn = () => {
-  const { Logout, Cart } = Icons
+  const { Logout, CartIcon } = Icons
   const { nombre } = useSelector((state) => state.user.user)
   const dispatch = useDispatch()
+  const { pathname } = useLocation()
   return (
     <UserContainer
       initial={{ opacity: 0, scale: 0.9 }}
@@ -41,9 +43,11 @@ const UserLoggedIn = () => {
         >
           <Logout />
         </ButtonPrimary>
-        <ButtonPrimary onClick={() => dispatch(toggleCart())}>
-          <Cart />
-        </ButtonPrimary>
+        {pathname !== '/checkout' && (
+          <ButtonPrimary onClick={() => dispatch(toggleCart())}>
+            <CartIcon />
+          </ButtonPrimary>
+        )}
       </UserButtonsContainer>
     </UserContainer>
   )

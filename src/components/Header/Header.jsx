@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import UserLoggedOut from '../Navbar/User/UseLoggedOut'
 import UserLoggedIn from '../Navbar/User/UserLoggedIn'
 import { toggleCart } from '../../redux/cart/cartSlice'
-import Cart from '../Cart/Cart'
-import { CartModal } from '../Cart/CartStd'
+
 import { AnimatePresence } from 'framer-motion'
 import SiteBrand from './Sitebrand/SiteBrand'
+import Cart from '../Cart/CartItemList/Cart'
+import { CartModal, ModalCartcontainer } from '../Cart/CartItemList/CartStd'
+import CartPrice from '../Cart/CartPrice/CartPrice'
+import CartButtons from '../Cart/CartButtons/CartButtons'
 
 export const Header = () => {
   const isCartHidden = useSelector(({ cart }) => cart.cartHidden)
@@ -27,7 +30,12 @@ export const Header = () => {
             transition={{ type: 'spring', damping: 18, duration: 0.1 }}
             key='cart'
           >
-            <Cart />
+            <ModalCartcontainer>
+              <Cart />
+            </ModalCartcontainer>
+
+            <CartPrice />
+            <CartButtons />
           </CartModal>
         )}
       </AnimatePresence>

@@ -93,6 +93,9 @@ export const InfoContainer = styled.div`
       font-family: 'Montserrat';
       font-size: 1.5rem;
       font-weight: 600;
+      @media (max-width: 576px) {
+      font-size: 1.2rem;
+    }
     }
   }
 `
@@ -117,14 +120,4 @@ color: var(--grey);
     opacity: 1;
     /* display: flex; */
   }
-`
-
-export const NextButton = styled.div`
-  cursor: pointer;
-  text-align: center;
-  background-color: #991658;
-  width: 60%;
-  border-radius: 5px;
-  font-size: 1.5rem;
-  font-weight: 700;
 `

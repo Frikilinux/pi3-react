@@ -11,6 +11,7 @@ import albumPrviewData from './data/albumProtoTest.json'
 import { Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import NotifyContainerStd from './styles/NotifyStd'
+import Footer from './components/Footer/Footer'
 
 function App() {
   const isPreviewHidden = useSelector(
@@ -39,8 +40,8 @@ function App() {
       />
       <AnimatePresence>
         <Header />
-
         <Routes />
+        <Footer />
       </AnimatePresence>
     </Layout>
   )

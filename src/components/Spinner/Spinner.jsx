@@ -2,9 +2,7 @@ import React from 'react'
 import Icons from '../../constants/icons'
 import { SpinnerContainer } from './SpinnerStd'
 
-const Spinner = () => {
-  const { SpinnerIcon } = Icons
-
+const Spinner = ({ children }) => {
   return (
     <SpinnerContainer
       animate={{ rotate: 360 }}
@@ -14,7 +12,7 @@ const Spinner = () => {
         ease: 'linear',
       }}
     >
-      <SpinnerIcon size='100%' />
+      {children}
     </SpinnerContainer>
   )
 }

@@ -14,6 +14,7 @@ import {
 import { SiMusicbrainz } from 'react-icons/si'
 import { LuTrash2 } from 'react-icons/lu'
 import { ImSpinner4 } from 'react-icons/im'
+import { TbBrandReactNative } from 'react-icons/tb'
 const Icons = {
   mail: MdOutlineMail,
   password: MdPassword,
@@ -26,7 +27,8 @@ const Icons = {
   CartIcon: MdOutlineShoppingCart,
   LogoImg: SiMusicbrainz,
   Trash: LuTrash2,
-  SpinnerIcon: ImSpinner4
+  SpinnerIcon: ImSpinner4,
+  ReactIcon: TbBrandReactNative
 }
 
 export default Icons

@@ -13,4 +13,3 @@ export const AlbumsContainer = styled.div`
     padding: 0;
   }
 `
-

@@ -1,6 +1,8 @@
+import { motion } from 'framer-motion'
 import { styled } from 'styled-components'
 
 export const ItemContainer = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,20 +12,25 @@ export const ItemContainer = styled.div`
   border-radius: 5px;
   padding: 10px;
   gap: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 `
 
 export const AlbumImage = styled.img`
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
-    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  box-shadow:
+    rgba(0, 0, 0, 0.07) 0px 1px 2px,
+    rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px,
+    rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px,
+    rgba(0, 0, 0, 0.07) 0px 32px 64px;
   border-radius: 5px;
   width: 110px;
   height: 110px;
   @media (max-width: 576px) {
     width: 80px;
-    height: auto
+    height: auto;
   }
 `
 
@@ -59,21 +66,6 @@ export const AlbumData = styled.div`
   font-size: 0.7rem;
 `
 
-export const QtyContainer = styled.div`
-  border: 1px solid var(--white);
-  border-radius: 5px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  /* align-items: ; */
-  align-self: flex-end;
-  background-color: #22a2ac6f;
-  min-width: 35px;
-  /* width: 60px; */
-  height: 100%;
-`
-
 export const PriceData = styled.div`
   font-size: 1.5rem;
   font-weight: 600;
@@ -87,14 +79,38 @@ export const PriceData = styled.div`
   }
 `
 
+export const QtyContainer = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  left: 0;
+  padding: 5px;
+  border-radius: 5px 0 0 5px;
+  height: 100%;
+  position: absolute;
+  background-color: #738286ef;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--dark);
+  /* backdrop-filter: blur(3px); */
+`
+
 export const QtyBtns = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const DeleteItem = styled.div`
+color: var(--red);
+&:hover {
+  cursor: pointer;
+}
   /* height: 25px; */
   /* line-height: 35px; */
   /* border: 1px solid var(--white); */

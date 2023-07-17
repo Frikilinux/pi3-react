@@ -9,10 +9,10 @@ const useButtons = () => {
 
   const handleAddToCart = (props) => {
     if (!user) {
-      toast.error('Plese login to start buying', { autoClose: 4000 })
+      toast.warning('Plese login to start buying', { autoClose: 4000 })
     } else {
       dispatch(addToCart(props))
-      toast.error(`Album added`)
+      toast.success(`Album added`)
     }
   }
 

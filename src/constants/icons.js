@@ -12,6 +12,7 @@ import {
   AiOutlineUser,
 } from 'react-icons/ai'
 import { SiMusicbrainz } from 'react-icons/si'
+import { LuTrash2 } from 'react-icons/lu'
 const Icons = {
   mail: MdOutlineMail,
   password: MdPassword,
@@ -23,6 +24,7 @@ const Icons = {
   Logout: AiOutlineLogout,
   CartIcon: MdOutlineShoppingCart,
   LogoImg: SiMusicbrainz,
+  Trash: LuTrash2
 }
 
 export default Icons

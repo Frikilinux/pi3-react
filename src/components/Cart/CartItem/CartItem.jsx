@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   AlbumArtist,
   AlbumData,
@@ -18,8 +18,24 @@ import {
   removeAlbum,
   removeFromCart,
 } from '../../../redux/cart/cartSlice'
+import Icons from '../../../constants/icons'
+import { toast } from 'react-toastify'
+import ButtonPrimary from '../../UI/Button/ButtonPrimary'
+import { AnimatePresence } from 'framer-motion'
+
+const { Trash } = Icons
 
 export const CartItem = (props) => {
+  const [isHover, setIsHovering] = useState(false)
+
+  const handleMouseOver = () => {
+    setIsHovering(true)
+  }
+
+  const handleMouseOut = () => {
+    setIsHovering(false)
+  }
+
   const {
     title,
     cover_medium: cover,
@@ -33,7 +49,37 @@ export const CartItem = (props) => {
   const dispatch = useDispatch()
 
   return (
-    <ItemContainer>
+    <ItemContainer
+      onMouseOver={() => setIsHovering(true)}
+      onMouseOut={() => setIsHovering(false)}
+    >
+      <AnimatePresence>
+        {' '}
+        {isHover && (
+          <QtyContainer
+            initial={{ translateX: -50 }}
+            animate={{ translateX: 0 }}
+            exit={{ translateX: -50 }}
+            transition={{ type: 'spring', damping: 18, duration: 0.1 }}
+            key='cart-qty'
+          >
+            <QtyBtns>
+              <div onClick={() => dispatch(addToCart(props))}>+</div>
+              {/* <div>{qty}</div> */}
+              <div onClick={() => dispatch(removeFromCart(id))}>-</div>
+            </QtyBtns>
+            <ButtonPrimary
+              onClick={() => {
+                dispatch(removeAlbum(id))
+                toast.info(`Album removed from cart`)
+              }}
+            >
+              <Trash />
+            </ButtonPrimary>
+          </QtyContainer>
+        )}
+      </AnimatePresence>
+
       <AlbumImage src={cover} alt={title} />
       <ItemInfoConatainer>
         <AlbumTitle>{title}</AlbumTitle>
@@ -48,14 +94,6 @@ export const CartItem = (props) => {
           <div>$ {price * qty}</div>
         </PriceData>
       </ItemInfoConatainer>
-      {/* <QtyContainer>
-        <QtyBtns>
-          <div onClick={() => dispatch(addToCart(props))}>+</div>
-          <div>{qty}</div>
-          <div onClick={() => dispatch(removeFromCart(id))}>-</div>
-        </QtyBtns>
-        <DeleteItem onClick={() => dispatch(removeAlbum(id))}>bor</DeleteItem>
-      </QtyContainer> */}
     </ItemContainer>
   )
 }

@@ -101,7 +101,7 @@ const PreviewPlayer = (props) => {
             {artist.name}
           </InfoArtist>
           <InfoContrib>
-            {contributors.length > 2 && 'Feat:'}
+            {contributors.length > 1 && 'Feat:'}
 
             {contributors?.slice(1).map(({ name, id }) => (
               <p

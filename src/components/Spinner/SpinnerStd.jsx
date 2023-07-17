@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { styled } from 'styled-components'
 
 export const SpinnerContainer = styled(motion.div)`
+  color: var(--grey);
   padding: 10px;
   display: flex;
   align-items: center;

@@ -12,7 +12,7 @@ const useButtons = () => {
       toast.warning('Plese login to start buying', { autoClose: 4000 })
     } else {
       dispatch(addToCart(props))
-      toast.success(`Album added`)
+      toast.success(`Album added`, { autoClose: 1000 })
     }
   }
 

@@ -4,6 +4,9 @@ export const Logo = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const BrandName = styled.div`

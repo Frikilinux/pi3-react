@@ -1,32 +1,41 @@
 import axios from 'axios'
 import { NUCBAZ_API } from '../constants/apiUrls'
 import { useDispatch, useSelector } from 'react-redux'
-import { fechingOrders, getOrderSuccess } from '../redux/orders/ordersSlice'
+import {
+  fechingOrders,
+  getOrderSuccess,
+  ordersActionFail,
+} from '../redux/orders/ordersSlice'
+import { useNavigate } from 'react-router-dom'
 
 const useOrder = () => {
   const { user } = useSelector(({ user }) => user)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { ROOT, ORDERS, API_PROXY } = NUCBAZ_API
 
   const postOrder = async (items) => {
     console.log(items)
     try {
-      dispatch(fechingOrders())
+      dispatch(fechingOrders(true))
       const res = await axios.post(API_PROXY + ROOT + ORDERS, items, {
         headers: {
           'x-token': user.token,
         },
       })
 
-      if (res.statusText === 'Created') console.log(res)
+      if (res.statusText === 'Created') {
+        navigate('/summary')
+        dispatch(fechingOrders(false))
+      }
     } catch (error) {
-      console.log(error)
+      console.log(error.response.data.msg)
+      dispatch(ordersActionFail(error.response.data.msg), fechingOrders(false))
     }
   }
 
   const getOrders = async () => {
-    dispatch(fechingOrders())
-
+    dispatch(fechingOrders(true))
     try {
       const res = await axios.get(API_PROXY + ROOT + ORDERS, {
         headers: {
@@ -36,9 +45,14 @@ const useOrder = () => {
       console.log(res)
       if (res) {
         dispatch(getOrderSuccess(res.data.data))
+        dispatch(fechingOrders(false))
       }
     } catch (error) {
-      console.log(error)
+      dispatch(
+        ordersActionFail(error.response.data.msg),
+        dispatch(fechingOrders(false)),
+      )
+      console.log(error.response.data.msg)
     }
   }
 

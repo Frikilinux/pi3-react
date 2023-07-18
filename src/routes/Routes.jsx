@@ -5,7 +5,8 @@ import { Home } from '../pages/Home/Home'
 import Register from '../pages/Register/Register'
 import Artist from '../pages/Artist/Artist'
 import Checkout from '../pages/checkout/Checkout'
-import History from '../pages/History/History'
+import Summary from '../pages/Summary/Summary'
+import NotFound from '../pages/NotFound/NotFound'
 
 const Routes = () => {
   return (
@@ -14,8 +15,9 @@ const Routes = () => {
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/checkout' element={<Checkout />} />
-      <Route path='/history' element={<History />} />
+      <Route path='/summary' element={<Summary />} />
       <Route path='/artist/:artistId' element={<Artist />} />
+      <Route path='*' element={<NotFound />} />
     </RoutesReact>
   )
 }

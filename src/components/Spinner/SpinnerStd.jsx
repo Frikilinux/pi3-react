@@ -9,5 +9,5 @@ export const SpinnerContainer = styled(motion.div)`
   justify-content: center;
   /* max-height: 50px; */
   height: 100%;
-  width: 100%;
+  /* width: 100%; */
 `

@@ -2,34 +2,34 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const INITIAL_STATE = {
   orders: null,
-  fetching: false,
-  error: null,
-  created: false
+  isFetchingOrders: false,
+  ordersError: null,
+  orderCreated: false
 }
 
 const ordersSlice = createSlice({
   name: 'orders',
   initialState: INITIAL_STATE,
   reducers: {
-    fechingOrders: (state) => {
+    fechingOrders: (state, action) => {
       return {
         ...state,
-        fetching: true,
+        isFetchingOrders: action.payload,
       }
     },
     getOrderSuccess: (state, action) => {
       return {
         ...state,
-        loading: false,
-        error: null,
+        isFetchingOrders: false,
+        ordersError: null,
         orders: [...action.payload],
       }
     },
     ordersActionFail: (state, action) => {
       return {
         ...state,
-        fetching: false,
-        error: action.payload,
+        isFetchingOrders: false,
+        ordersError: action.payload,
       }
     },
   },

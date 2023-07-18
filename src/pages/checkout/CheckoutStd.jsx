@@ -5,7 +5,7 @@ export const CheckoutContainer = styled.div`
   justify-content: space-around;
   max-width: 1300px;
   width: 100%;
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 130px);
   align-items: center;
 `
 
@@ -38,10 +38,13 @@ export const CheckoutButtonsContainer = styled.div`
 `
 
 export const CheckoutCartContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #00000034;
   border-radius: 10px;
   padding: 15px;
   width: 35%;
-  height: 75%;
+  min-height: 400px;
   /* height: 80%; */
 `

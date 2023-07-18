@@ -14,10 +14,13 @@ import { useSelector } from 'react-redux'
 import ButtonPrimary from '../../components/UI/Button/ButtonPrimary'
 import useOrder from '../../hooks/useOrder'
 import { getOrderSuccess } from '../../redux/orders/ordersSlice'
+import Spinner from '../../components/Spinner/Spinner'
+import Icons from '../../constants/icons'
 
 const Checkout = () => {
   const { user } = useSelector(({ user }) => user)
   const { items } = useSelector(({ cart }) => cart)
+  const { isFetchingOrders } = useSelector(({ orders }) => orders)
   const { postOrder, getOrders } = useOrder()
 
   const totalPrice = items
@@ -39,7 +42,7 @@ const Checkout = () => {
         location: ' ',
       },
       items: items.map(
-        ({ id, title, artist : desc, cover: img, price, qty: quantity }) => {
+        ({ id, title, artist: desc, cover: img, price, qty: quantity }) => {
           return {
             desc,
             id,
@@ -53,6 +56,8 @@ const Checkout = () => {
     })
   }
 
+  const { SpinnerIcon } = Icons
+
   return (
     <Main>
       <SectionWrapper bg='var(--lightDark)' id='checkout'>
@@ -64,14 +69,28 @@ const Checkout = () => {
                 All links to download your albums will be sent to {user?.email}
               </p>
               <p>Confirm the following data:</p>
-              <p>Total price $ {totalPrice} for {items.length} albums</p>
+              <p>
+                Total price $ {totalPrice} for {items.length} albums
+              </p>
             </CheckoutInfoText>
             <CheckoutButtonsContainer>
               <ButtonPrimary onClick={handleConfirm}>
-                Confirm order
+                {isFetchingOrders ? (
+                  <Spinner>
+                    <SpinnerIcon color='var(--dark)' />
+                  </Spinner>
+                ) : (
+                  'Confirm order'
+                )}
               </ButtonPrimary>
-              <ButtonPrimary onClick={() => getOrders()}>
-                Get ORDERS
+              <ButtonPrimary onClick={async () =>  getOrders()}>
+                {isFetchingOrders ? (
+                  <Spinner>
+                    <SpinnerIcon color='var(--dark)' />
+                  </Spinner>
+                ) : (
+                  'Get ORDERS'
+                )}
               </ButtonPrimary>
             </CheckoutButtonsContainer>
           </CheckoutInfo>

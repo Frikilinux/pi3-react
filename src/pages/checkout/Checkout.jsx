@@ -39,13 +39,13 @@ const Checkout = () => {
         location: ' ',
       },
       items: items.map(
-        ({ id, title, artist, cover_medium: img, price, qty }) => {
+        ({ id, title, artist : desc, cover: img, price, qty: quantity }) => {
           return {
-            desc: artist?.name || ' ',
+            desc,
             id,
             img,
             price,
-            quantity: qty,
+            quantity,
             title,
           }
         },

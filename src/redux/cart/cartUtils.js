@@ -1,3 +1,5 @@
+import { toast } from "react-toastify"
+
 export const addAlbumHandler = (cartAlbums, album) => {
   const { id } = album
 
@@ -20,7 +22,9 @@ export const removeAlbumHandler = (cartAlbums, albumId) => {
       album.id === albumId ? { ...album, qty: album.qty - 1 } : album
     )
   } else {
+    toast.warning(`Album removed`, { autoClose: 1000 })
     return cartAlbums.filter((album) => album.id !== albumId ) 
+
   }
 
 }

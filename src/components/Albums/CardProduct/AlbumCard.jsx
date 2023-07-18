@@ -18,18 +18,19 @@ const AlbumCard = (props) => {
   const {
     id,
     title,
-    cover_medium: coverMedium,
+    cover_medium: cover,
     release_date: releaseDate,
-    artist,
     price,
   } = props
+
   const noImg = 'https://cloud.ztec.ml/s/Y7G3JX4FxE5zKaz/download'
   const dispatch = useDispatch()
   const { fetchAlbumById } = useAlbums()
   const { user } = useSelector(({ user }) => user)
-  const {handleAddToCart} = useButtons()
+  const { artist: artistPage } = useSelector(({ artist }) => artist)
+  const { handleAddToCart } = useButtons()
 
-
+  const artist = props.artist ? props.artist.name : artistPage.name
   return (
     <CardContainer
       id={id}
@@ -45,16 +46,22 @@ const AlbumCard = (props) => {
         </OverlayPreview>
         <TitleContainer>
           <p>{title}</p>
-          <p>{artist?.name}</p>
+          <p>{artist}</p>
         </TitleContainer>
-        <MainImg imgsrc={coverMedium ?? noImg} />
+        <MainImg imgsrc={cover ?? noImg} />
         {/* {recordType === 'single' && <SingleFrame>S</SingleFrame>} */}
         {/* {explicit && <ExplicitFrame>E</ExplicitFrame>} */}
       </ImagesContainer>
       <InfoContainer>
         <div>
           <p>$ {price} </p>
-          <ButtonPrimary notLoggedIn={!user} size='1.2' onClick={() => handleAddToCart(props)}>
+          <ButtonPrimary
+            notLoggedIn={!user}
+            size='1.2'
+            onClick={() =>
+              handleAddToCart({ id, title, cover, artist, price })
+            }
+          >
             Add
           </ButtonPrimary>
         </div>

@@ -23,11 +23,9 @@ export const useAlbums = () => {
       dispatch(fetchingPreview())
       const { data } = await axios.get(`${API_PROXY + ROOT + ALBUM + '/' + id}`)
 
-      console.log('DATA IN LBUM BY ID', data)
-
       dispatch(setAlbumPreview({ ...data, price: createPrice(data.id) }))
     } catch (error) {
-      console.log(error)
+      dispatch(isError(error))
     }
   }
 
@@ -53,7 +51,6 @@ export const useAlbums = () => {
       dispatch(isFetching())
       const { data } = await axios.get(endpointUrl)
 
-      console.log('FETCH ALBUMS', data)
 
       const payload = {
         total: data.total,
@@ -66,7 +63,6 @@ export const useAlbums = () => {
 
       next ? dispatch(nextAlbumsPage(payload)) : dispatch(setAlbums(payload))
     } catch (error) {
-      console.log(error)
       // const msg = error.response.data.message
       dispatch(isError(error))
     }

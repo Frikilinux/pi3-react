@@ -15,10 +15,8 @@ export const useArtist = () => {
     try {
       dispatch(fetchingArtist())
       const { data } = await axios.get(
-        `${API_PROXY + ROOT + ARTIST + '/' + id}`
+        `${API_PROXY + ROOT + ARTIST + '/' + id}`,
       )
-
-      console.log('ARTIST', data)
 
       dispatch(setArtist(data))
     } catch (error) {

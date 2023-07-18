@@ -46,13 +46,14 @@ const PreviewPlayer = (props) => {
     explicit_lyrics: explicitLyrics,
     genres,
     contributors,
+    price,
   } = album
   const distpatch = useDispatch()
   const { h, m, s } = formatTime(duration)
   const { day, month, year } = formatedDate(release)
   const { user } = useSelector(({ user }) => user)
 
-  const {handleAddToCart} = useButtons()
+  const { handleAddToCart, handleArtistPage } = useButtons()
 
   return (
     <PreviewContainer
@@ -71,7 +72,6 @@ const PreviewPlayer = (props) => {
           ←
         </ButtonPrimary>
         <ExtraInfo>
-          {console.log('GENRES TRAKS', genres)}
           {explicitLyrics && <InfoFrame>Explicit</InfoFrame>}
           <InfoFrame>{recordType}</InfoFrame>
           {genres.data?.map(({ name, id }) => (
@@ -94,8 +94,7 @@ const PreviewPlayer = (props) => {
           <InfoTitle>{title}</InfoTitle>
           <InfoArtist
             onClick={() => {
-              navigate(`/artist/${artist.id}`)
-              distpatch(hidePreview(true))
+              handleArtistPage(artist.id)
             }}
           >
             {artist.name}
@@ -107,8 +106,7 @@ const PreviewPlayer = (props) => {
               <p
                 key={id}
                 onClick={() => {
-                  navigate(`/artist/${id}`)
-                  distpatch(hidePreview(true))
+                  handleArtistPage(id)
                 }}
               >
                 {name}
@@ -130,7 +128,13 @@ const PreviewPlayer = (props) => {
           {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`} -{' '}
           {day + '-' + month + '-' + year} - © {label}
         </div>
-        <ButtonPrimary notLoggedIn={!user} size='1.2' onClick={() => handleAddToCart(props)}>
+        <ButtonPrimary
+          notLoggedIn={!user}
+          size='1.2'
+          onClick={() =>
+            handleAddToCart({ id, title, cover, artist: artist.name, price })
+          }
+        >
           Add
         </ButtonPrimary>
       </ButtonsContainer>

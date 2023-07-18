@@ -5,6 +5,7 @@ import { Home } from '../pages/Home/Home'
 import Register from '../pages/Register/Register'
 import Artist from '../pages/Artist/Artist'
 import Checkout from '../pages/checkout/Checkout'
+import History from '../pages/History/History'
 
 const Routes = () => {
   return (
@@ -13,6 +14,7 @@ const Routes = () => {
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/checkout' element={<Checkout />} />
+      <Route path='/history' element={<History />} />
       <Route path='/artist/:artistId' element={<Artist />} />
     </RoutesReact>
   )

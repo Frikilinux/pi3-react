@@ -11,7 +11,6 @@ const Albums = () => {
   const { albums, next, currentGenre, isFetching, total } = useSelector(
     (state) => state.albums,
   )
-  console.log('PRODUCTS IN JSX', albums)
 
   // const { fetchProducts } = useProducts()
   const { getAlbumsByGenre } = useAlbums()

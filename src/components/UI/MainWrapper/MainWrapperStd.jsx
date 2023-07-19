@@ -1,6 +1,7 @@
 import { styled } from 'styled-components'
 
 export const MainWrapper = styled.main`
+  position: relative;
   margin-top: 50px;
   display: flex;
   flex-direction: column;

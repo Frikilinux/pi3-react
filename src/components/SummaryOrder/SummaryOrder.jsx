@@ -1,25 +1,27 @@
 import React from 'react'
+import { OrderAlbumQty, OrderContainer, OrderImgContainer, OrderItemsQty, OrederItemImg } from './SummaryOrderStd'
 
-const SummaryOrder = ({ _id, user, price, total, items }) => {
-  const totalItems = items.reduce((acc, item) => {
-    acc += item.quantity
-    return acc
-  }, 0)
-  
+const SummaryOrder = ({ _id, user, price, total, status, items }) => {
+  const totalItems = items?.reduce((acc, item) => acc + item.quantity, 0)
+
   return (
-    <div>
-      <div>
-        <img src={items[0].img} alt={`Album image of ${items[0].title}`} />
-        <img src={items[1].img} alt={`Album image of ${items[2].title}`} />
-        <img src={items[2].img} alt={`Album image of ${items[3].title}`} />
-      </div>
+    <OrderContainer>
+
+      <OrderImgContainer>
+        {
+          items?.slice(0,3).map(({img, id, title}) => {
+            return <OrederItemImg key={id} src={img} alt={`Album image of ${title}`}/>
+          })
+        }
+
+      </OrderImgContainer>
 
       <div>
-        <p></p>
-        <p></p>
+        <OrderAlbumQty>{items.length} albums</OrderAlbumQty>
+        <OrderItemsQty>{totalItems} items</OrderItemsQty>
         <p></p>
       </div>
-    </div>
+    </OrderContainer>
   )
 }
 

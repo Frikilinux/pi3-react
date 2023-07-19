@@ -10,18 +10,20 @@ import {
   CheckoutTitle,
 } from './CheckoutStd'
 import Cart from '../../components/Cart/CartItemList/Cart'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ButtonPrimary from '../../components/UI/Button/ButtonPrimary'
 import useOrder from '../../hooks/useOrder'
-import { getOrderSuccess } from '../../redux/orders/ordersSlice'
+import { getOrderSuccess, resetError } from '../../redux/orders/ordersSlice'
 import Spinner from '../../components/Spinner/Spinner'
 import Icons from '../../constants/icons'
+import { ErrorModal } from '../../components/ErrorModal/ErrorModal'
 
 const Checkout = () => {
   const { user } = useSelector(({ user }) => user)
   const { items } = useSelector(({ cart }) => cart)
-  const { isFetchingOrders } = useSelector(({ orders }) => orders)
-  const { postOrder, getOrders } = useOrder()
+  const { isFetchingOrders, ordersError  } = useSelector(({ orders }) => orders)
+  const { postOrder, getOrders} = useOrder()
+  const dispatch = useDispatch()
 
   const totalPrice = items
     .reduce((acc, item) => {
@@ -60,6 +62,7 @@ const Checkout = () => {
 
   return (
     <Main>
+      {ordersError && <ErrorModal >{ordersError}</ErrorModal>}
       <SectionWrapper bg='var(--lightDark)' id='checkout'>
         <CheckoutContainer>
           <CheckoutInfo>
@@ -83,7 +86,7 @@ const Checkout = () => {
                   'Confirm order'
                 )}
               </ButtonPrimary>
-              <ButtonPrimary onClick={async () =>  getOrders()}>
+              {/* <ButtonPrimary onClick={async () => getOrders()}>
                 {isFetchingOrders ? (
                   <Spinner>
                     <SpinnerIcon color='var(--dark)' />
@@ -91,11 +94,11 @@ const Checkout = () => {
                 ) : (
                   'Get ORDERS'
                 )}
-              </ButtonPrimary>
+              </ButtonPrimary> */}
             </CheckoutButtonsContainer>
           </CheckoutInfo>
           <CheckoutCartContainer>
-            <Cart />
+              <Cart />
           </CheckoutCartContainer>
         </CheckoutContainer>
       </SectionWrapper>

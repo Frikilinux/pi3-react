@@ -32,10 +32,11 @@ const ordersSlice = createSlice({
         ordersError: action.payload,
       }
     },
+    resetError: (state) => ({...state, ordersError: null})
   },
 })
 
-export const { getOrderSuccess, ordersActionFail, fechingOrders } =
+export const { getOrderSuccess, ordersActionFail, fechingOrders, resetError } =
   ordersSlice.actions
 
 export default ordersSlice.reducer

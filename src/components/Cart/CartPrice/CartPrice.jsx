@@ -4,10 +4,9 @@ import { PricesContainer } from './CartPriceStd'
 
 const CartPrice = () => {
   const { items } = useSelector((state) => state.cart)
-  const totalPrice = items.reduce((acc, item) => {
-    acc += item.price * item.qty
-    return acc
-  }, 0).toFixed(2)
+  const totalPrice = items
+    .reduce((acc, item) => acc + item.price * item.qty, 0)
+    .toFixed(2)
 
   return (
     <PricesContainer>
@@ -20,3 +19,5 @@ const CartPrice = () => {
 }
 
 export default CartPrice
+
+

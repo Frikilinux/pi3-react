@@ -45,6 +45,13 @@ export const CheckoutCartContainer = styled.div`
   border-radius: 10px;
   padding: 15px;
   width: 35%;
-  min-height: 400px;
-  /* height: 80%; */
+  /* min-height: 400px; */
+  height: 75vh;
+  overflow-y: scroll;
 `
+// export const CheckoutCartInner = styled.div`
+//   overflow-y: scroll;
+//   /* padding: 30px 10px; */
+//   /* width: 100%; */
+//   height: 70vh;
+// `

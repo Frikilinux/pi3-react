@@ -15,10 +15,10 @@ const InputUser = ({ inputIcon, placeholder, type, name }) => {
 
   return (
     <Field name={name}>
-      {({ field }) => {
+      {({ field, form: { errors, touched } }) => {
         return (
           <InputComponent>
-            <InputContainer>
+            <InputContainer isError={errors[field.name] && touched[field.name]}>
               <Icon size='30px' />
               <InputStd
                 name={name}

@@ -1,16 +1,16 @@
 import axios from 'axios'
-import { DUMMY_JSON, NUCBAZ_API } from '../constants/apiUrls'
+import {  NUCBAZ_API } from '../constants/apiUrls'
 import { useDispatch } from 'react-redux'
 import { isError, isLogin, loggedUser } from '../redux/user/userSlice'
 
 export const useUser = () => {
   const dispatch = useDispatch()
+  const { ROOT, LOGIN, API_PROXY, REGISTER } = NUCBAZ_API
 
   const loginUser = async ({ email, password }) => {
-    const { ROOT, LOGIN } = NUCBAZ_API
     try {
       dispatch(isLogin())
-      const res = await axios.post(ROOT + LOGIN, {
+      const res = await axios.post(API_PROXY + ROOT + LOGIN, {
         email,
         password,
       })
@@ -25,9 +25,8 @@ export const useUser = () => {
   }
 
   const registerUser = async ({ name, email, password }) => {
-    const { ROOT, REGISTER } = NUCBAZ_API
     try {
-      const res = await axios.post(ROOT + REGISTER, {
+      const res = await axios.post(API_PROXY + ROOT + REGISTER, {
         nombre: name,
         email,
         password,

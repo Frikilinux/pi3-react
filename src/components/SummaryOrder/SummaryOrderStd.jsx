@@ -22,10 +22,10 @@ export const OrderImgContainer = styled.div`
     left: 0px;
   }
   & img:nth-child(2) {
-    left: 30px;
+    left: 35px;
   }
   & img:nth-child(3) {
-    left: 60px;
+    left: 70px;
   }
 `
 
@@ -34,26 +34,26 @@ export const OrederItemImg = styled.img`
   /* right: 10%; */
   height: 80%;
   border-radius: 5px;
-  box-shadow: -16px 0px 19px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: -7px 0px 19px 3px rgba(0, 0, 0, 0.87);
 `
 
 export const OrderAlbumQty = styled.div`
   color: var(--green);
   position: relative;
-  left: -50px;
+  left: -0px;
   font-size: 2rem;
   font-weight: 600;
   text-shadow:
-    2px 7px 5px rgba(0, 0, 0, 0.452),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
+    2px 4px 5px rgba(0, 0, 0, 0.548),
+    0px -3px 5px rgba(255, 255, 255, 0.432);
 `
 
 export const OrderItemsQty = styled.div`
   position: relative;
-  left: -40px;
+  left: 30px;
   font-size: 1.5rem;
   font-weight: 500;
   text-shadow:
-    2px 7px 5px rgba(0, 0, 0, 0.3),
+    2px 7px 5px rgba(0, 0, 0, 0.411),
     0px -4px 10px rgba(255, 255, 255, 0.3);
 `

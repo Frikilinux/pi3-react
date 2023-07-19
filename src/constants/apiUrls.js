@@ -16,7 +16,8 @@ export const NUCBAZ_API = {
 }
 
 export const DEEZER_API = {
-  API_PROXY: 'https://cors.systec.ar:10300/',
+  API_PROXY: process.env.API_URL,
+  // API_PROXY: 'https://cors.systec.ar:10300/',
   // API_PROXY: 'https://cors.ztec.ml:10300/',
   ROOT: 'https://api.deezer.com',
   GENRES: '/genre',

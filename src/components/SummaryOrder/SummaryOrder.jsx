@@ -1,7 +1,7 @@
 import React from 'react'
 import { OrderAlbumQty, OrderContainer, OrderImgContainer, OrderItemsQty, OrederItemImg } from './SummaryOrderStd'
 
-const SummaryOrder = ({ _id, user, price, total, status, items }) => {
+const SummaryOrder = ({ _id, user, price, total, status, items, createdAt}) => {
   const totalItems = items?.reduce((acc, item) => acc + item.quantity, 0)
 
   return (
@@ -9,7 +9,7 @@ const SummaryOrder = ({ _id, user, price, total, status, items }) => {
 
       <OrderImgContainer>
         {
-          items?.slice(0,3).map(({img, id, title}) => {
+          items?.slice(0,3).map(({img, id, title }) => {
             return <OrederItemImg key={id} src={img} alt={`Album image of ${title}`}/>
           })
         }
@@ -17,9 +17,9 @@ const SummaryOrder = ({ _id, user, price, total, status, items }) => {
       </OrderImgContainer>
 
       <div>
-        <OrderAlbumQty>{items.length} albums</OrderAlbumQty>
-        <OrderItemsQty>{totalItems} items</OrderItemsQty>
-        <p></p>
+        <OrderAlbumQty>{items.length} Albums</OrderAlbumQty>
+        <OrderItemsQty>{totalItems} Items</OrderItemsQty>
+        <p>{createdAt}</p>
       </div>
     </OrderContainer>
   )

@@ -1,7 +1,7 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const SummaryContainer = styled.div`
-padding: 30px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
 
@@ -16,7 +16,7 @@ padding: 30px;
 export const OrdersContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px;
   align-items: center;
   justify-content: center;
 `

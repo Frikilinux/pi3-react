@@ -15,17 +15,13 @@ const Summary = () => {
 
   useEffect(() => {
     getOrders()
-
-    // return () => {
-    //   second
-    // }
   }, [])
 
   return (
     <Main>
       <SectionWrapper bg='var(--lightDark)' id='Artits'>
         <SummaryContainer>
-          <h1>Your history orders</h1>
+          <h1>Your summary of orders</h1>
           {isFetchingOrders ? (
             <Spinner>
               <SpinnerIcon size='5em' />

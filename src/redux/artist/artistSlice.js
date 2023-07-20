@@ -14,14 +14,17 @@ const artistSlice = createSlice({
       return {
         ...state,
         artist: action.payload,
-        fetchingArtist: false,
+        isFetchingArtist: false,
         isError: false,
       }
     },
-    fetchingArtist: (state) => ({ ...state, isFetchingArtist: true }),
-    setError: (state, action) => ({...state, isError: action.payload,})
+    setFetchingArtist: (state, action) => ({
+      ...state,
+      isFetchingArtist: action.payload,
+    }),
+    setError: (state, action) => ({ ...state, isError: action.payload }),
   },
 })
 
-export const { setArtist, fetchingArtist, setError } = artistSlice.actions
+export const { setArtist, setFetchingArtist, setError } = artistSlice.actions
 export default artistSlice.reducer

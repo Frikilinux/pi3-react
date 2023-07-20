@@ -18,12 +18,10 @@ export const useUser = () => {
         email,
         password,
       })
-      console.log(res)
       dispatch(loggedUser(res.data), setUserFetching(false))
       return res.data
     } catch (error) {
       const { msg } = error.response.data
-      // console.log('ERROR', error?.response.data.msg)
       dispatch(setUserError(msg), setUserFetching(false))
     }
   }
@@ -41,11 +39,9 @@ export const useUser = () => {
 
       setUserFetching(false)
 
-      console.log('RESPONSE OF REGISTER', res)
       return res
     } catch (error) {
       const { msg } = error.response.data
-      console.log(error.response.data.msg)
       dispatch(setUserError(msg), setUserFetching(false))
     }
   }

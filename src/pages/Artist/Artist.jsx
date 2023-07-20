@@ -6,10 +6,17 @@ import { useSelector } from 'react-redux'
 import { useArtist } from '../../hooks/useArtist'
 import { AlbumsSection } from '../../components/Albums/AlbumsSection/AlbumsSection'
 import { useAlbums } from '../../hooks/useAlbums'
-import { ArtistImg, ArtistInfoContainer, ArtistInfoName } from './ArtistStd'
+import {
+  ArtistContainer,
+  ArtistFans,
+  ArtistImg,
+  ArtistInfo,
+  ArtistInfoContainer,
+  ArtistInfoName,
+} from './ArtistStd'
 
 const Artist = () => {
-  const { artist, isError } = useSelector(({ artist }) => artist)
+  const { artist } = useSelector(({ artist }) => artist)
   const { artistId } = useParams()
   const { getArtistById } = useArtist()
   const { getArtistAlbums } = useAlbums()
@@ -22,17 +29,18 @@ const Artist = () => {
 
   return (
     <Main>
-      <ArtistInfoContainer imgsrc={pictureXl}>
-        <div>
-          <ArtistInfoName>{name}</ArtistInfoName>
-          <p>{nbFan} Followers </p>
-        </div>
-        <ArtistImg src={pictureXl} />
-      </ArtistInfoContainer>
-
-      <SectionWrapper bg='var(--lightDark)' id='Artits'>
-        {console.log('ARTIST PAGE', artist)}
-
+      <SectionWrapper bg='var(--dark)' id='artist-info'>
+        <ArtistContainer>
+          <ArtistInfoContainer imgsrc={pictureXl}>
+            <ArtistInfo>
+              <ArtistInfoName>{name}</ArtistInfoName>
+              <ArtistFans>{nbFan} Followers </ArtistFans>
+            </ArtistInfo>
+            <ArtistImg src={pictureXl} />
+          </ArtistInfoContainer>
+        </ArtistContainer>
+      </SectionWrapper>
+      <SectionWrapper bg='var(--lightDark)' id='artist-albums'>
         <AlbumsSection />
       </SectionWrapper>
     </Main>

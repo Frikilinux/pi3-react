@@ -3,6 +3,7 @@ import {
   AlbumHeaders,
   AlbumImg,
   AlbumInfoContainer,
+  AlbumPrice,
   AlbumTracksContainer,
   ButtonsContainer,
   ExtraInfo,
@@ -11,8 +12,11 @@ import {
   InfoArtist,
   InfoContrib,
   InfoFrame,
+  InfoLabel,
   InfoTitle,
+  InfoTitleContainer,
   PreviewContainer,
+  TracksInfo,
 } from './PreviewPlayerStd'
 import Track from './Track/Track'
 import { useDispatch, useSelector } from 'react-redux'
@@ -25,6 +29,7 @@ import { useAlbums } from '../../hooks/useAlbums'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import useButtons from '../../hooks/useButtons'
+import Icons from '../../constants/icons'
 
 const PreviewPlayer = (props) => {
   const { getAlbumsByGenre } = useAlbums()
@@ -52,8 +57,8 @@ const PreviewPlayer = (props) => {
   const { h, m, s } = formatTime(duration)
   const { day, month, year } = formatedDate(release)
   const { user } = useSelector(({ user }) => user)
-
   const { handleAddToCart, handleArtistPage } = useButtons()
+  const { BackArrow, Heart } = Icons
 
   return (
     <PreviewContainer
@@ -69,8 +74,9 @@ const PreviewPlayer = (props) => {
     >
       <ExtraInfoContainer>
         <ButtonPrimary onClick={() => distpatch(hidePreview(true))}>
-          ←
+          <BackArrow />
         </ButtonPrimary>
+
         <ExtraInfo>
           {explicitLyrics && <InfoFrame>Explicit</InfoFrame>}
           <InfoFrame>{recordType}</InfoFrame>
@@ -86,34 +92,41 @@ const PreviewPlayer = (props) => {
               {name}
             </GenreFrame>
           ))}
-          <div>♥ {fans}</div>
+          <div>
+            <Heart /> {fans}
+          </div>
         </ExtraInfo>
       </ExtraInfoContainer>
       <AlbumHeaders>
         <AlbumInfoContainer>
-          <InfoTitle>{title}</InfoTitle>
-          <InfoArtist
-            onClick={() => {
-              handleArtistPage(artist.id)
-            }}
-          >
-            {artist.name}
-          </InfoArtist>
-          <InfoContrib>
-            {contributors.length > 1 && 'Feat:'}
+          <InfoTitleContainer>
+            <InfoTitle>{title}</InfoTitle>
+            <InfoArtist
+              onClick={() => {
+                handleArtistPage(artist.id)
+              }}
+            >
+              {artist.name}
+            </InfoArtist>
+            <InfoContrib>
+              {contributors.length > 1 && 'Feat:'}
 
-            {contributors?.slice(1).map(({ name, id }) => (
-              <p
-                key={id}
-                onClick={() => {
-                  handleArtistPage(id)
-                }}
-              >
-                {name}
-              </p>
-            ))}
-          </InfoContrib>
-          <div></div>
+              {contributors?.slice(1).map(({ name, id }) => (
+                <p
+                  key={id}
+                  onClick={() => {
+                    handleArtistPage(id)
+                  }}
+                >
+                  {name}
+                </p>
+              ))}
+            </InfoContrib>
+          </InfoTitleContainer>
+          <TracksInfo>
+            {nbTracks} tr {h > 0 ? `${h} hr ` : null} {`${m} min`}{' '}
+            {day + '-' + month + '-' + year}{' '}
+          </TracksInfo>
         </AlbumInfoContainer>
         <AlbumImg src={cover} />
       </AlbumHeaders>
@@ -124,10 +137,8 @@ const PreviewPlayer = (props) => {
         ))}
       </AlbumTracksContainer>
       <ButtonsContainer>
-        <div>
-          {nbTracks} tracks - {h > 0 ? `${h} hr ` : null} {`${m} min`} -{' '}
-          {day + '-' + month + '-' + year} - © {label}
-        </div>
+        <InfoLabel>© {label}</InfoLabel>
+        <AlbumPrice>$ {price}</AlbumPrice>
         <ButtonPrimary
           notLoggedIn={!user}
           size='1.2'

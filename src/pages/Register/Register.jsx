@@ -48,7 +48,7 @@ const Register = () => {
                 <InputUser
                   name='name'
                   inputIcon='name'
-                  placeholder='Nombre'
+                  placeholder='Name'
                   type='text'
                 />
                 <InputUser
@@ -63,10 +63,10 @@ const Register = () => {
                   placeholder='Password'
                   type='password'
                 />
-                <ButtonPrimary type='submit'>Registrarse</ButtonPrimary>
+                <ButtonPrimary type='submit'>Register</ButtonPrimary>
               </Form>
               <LoginText>
-                Are you rgisterd,{' '}
+                Are you registered,{' '}
                 <Link style={{ color: 'var(--green)' }} to='/login'>
                   log in to start
                 </Link>

@@ -15,11 +15,10 @@ const Search = () => {
 
   return (
     <Main>
-      <div>
-        Resultados para {search}
-      </div>
-
-      <SectionWrapper bg='var(--lightDark)' id='Artits'>
+      <SectionWrapper bg='var(--lightDark)' id='search'>
+      </SectionWrapper>
+      <SectionWrapper bg='var(--lightDark)' id='search-albums'>
+        <h1>Search results for &ldquo; {search} &rdquo;</h1>
         <AlbumsSection />
       </SectionWrapper>
     </Main>

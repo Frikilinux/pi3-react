@@ -25,7 +25,7 @@ export const Home = () => {
       {/* {console.log('VISIBLE?', isVisible)}
       <AnimatePresence>{isVisible && <InfoModal />}</AnimatePresence> */}
 
-        <Hero/>
+      <Hero />
 
       <SectionWrapper bg='var(--lightDark)' id='albums'>
         <Genres />

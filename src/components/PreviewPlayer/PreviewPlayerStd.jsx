@@ -56,9 +56,12 @@ export const AlbumHeaders = styled.div`
 export const AlbumImg = styled.img`
   border-radius: 5px;
   opacity: 0.8;
-  width: 20%;
+  width: 22%;
   min-width: 150px;
   height: auto;
+  box-shadow:
+    0 29px 52px rgba(0, 0, 0, 0.4),
+    0 25px 16px rgba(0, 0, 0, 0.2);
   /* background: #ffffff url(${({ imgsrc }) =>
     `${imgsrc}`}) center/cover no-repeat; */
   @media (max-width: 576px) {
@@ -72,8 +75,8 @@ export const AlbumInfoContainer = styled.div`
   /* background-color: #e673737d; */
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* align-items: center; */
+  justify-content: space-between;
+  align-items: flex-start;
 
   width: 70%;
   height: 200px;
@@ -145,6 +148,7 @@ export const ExtraInfoContainer = styled.div`
 
 export const ExtraInfo = styled.div`
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   gap: 15px;
   flex-wrap: wrap;
@@ -164,6 +168,7 @@ export const InfoFrame = styled.div`
   color: var(--dark);
   background: var(--grey);
   border-radius: 2px;
+  text-transform: capitalize;
 
   white-space: nowrap;
   @media (max-width: 992px) {
@@ -179,6 +184,35 @@ export const GenreFrame = styled(InfoFrame)`
     /* border: 1px solid var(--dark); */
   }
 `
+
+export const InfoTitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+`
+
+export const TracksInfo = styled.div`
+  justify-self: flex-end;
+  font-size: 0.9rem;
+  font-weight: 500;
+  @media (max-width: 576px) {
+    font-size: 0.7rem;
+  }
+`
+export const InfoLabel = styled.div`
+width: 60%;
+color: var(--grey);
+font-weight: 500;
+`
+
+export const AlbumPrice = styled.div`
+  color: var(--grey);
+  font-size: 2rem;
+  font-weight: 600;
+`
+
+
 // export const SingleFrame = styled(ExplicitFrame)`
 //   right: 40px;
 //   /* color: #dddddb; */
@@ -203,7 +237,7 @@ export const AlbumTracksContainer = styled.div`
 export const ButtonsContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   height: 50px;
   width: 100%;
 `

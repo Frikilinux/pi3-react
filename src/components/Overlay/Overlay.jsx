@@ -1,9 +1,8 @@
 import React from 'react'
+import { OverlayContainer } from './OverlayStd'
 
 const Overlay = () => {
-  return (
-    <div>Overlay</div>
-  )
+  return <OverlayContainer />
 }
 
 export default Overlay

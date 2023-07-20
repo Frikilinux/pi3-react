@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Header } from './components/Header/Header'
 import Routes from './routes/Routes'
 import Layout from './components/Layout/Layout'
@@ -13,14 +13,23 @@ import 'react-toastify/dist/ReactToastify.css'
 import NotifyContainerStd from './styles/NotifyStd'
 import Footer from './components/Footer/Footer'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
+import Overlay from './components/Overlay/Overlay'
 
 function App() {
   const isPreviewHidden = useSelector(
     ({ previewPlayer }) => previewPlayer.isHidden,
   )
+  const { cartHidden } = useSelector(({ cart }) => cart)
+
+  useEffect(() => {
+    document.body.style.overflow =
+      !cartHidden || !isPreviewHidden ? 'hidden' : 'unset'
+  }, [cartHidden, isPreviewHidden])
 
   return (
     <Layout>
+      {(!isPreviewHidden || !cartHidden) && <Overlay />}
+
       <AnimatePresence>
         {!isPreviewHidden && <PreviewPlayer {...albumPrviewData} />}
       </AnimatePresence>

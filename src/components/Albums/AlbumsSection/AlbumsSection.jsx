@@ -1,9 +1,8 @@
 import React from 'react'
-import { Section } from '../../UI/SectionWrapper/SectionWrapperStd'
 import Albums from '../Albums'
 import { useSelector } from 'react-redux'
 import Spinner from '../../Spinner/Spinner'
-import { AlbumsLoadingContainer } from './AlbumsSectionStd'
+import { AlbumsLoadingContainer, AlbumsSectionContainer } from './AlbumsSectionStd'
 import Icons from '../../../constants/icons'
 
 export const AlbumsSection = () => {
@@ -11,13 +10,13 @@ export const AlbumsSection = () => {
   const { SpinnerIcon } = Icons
 
   return (
-    <Section>
+    <AlbumsSectionContainer>
       <Albums />
       <AlbumsLoadingContainer>
         {isFetching && <Spinner>
           <SpinnerIcon size='100%' />
           </Spinner>}
       </AlbumsLoadingContainer>
-    </Section>
+    </AlbumsSectionContainer>
   )
 }

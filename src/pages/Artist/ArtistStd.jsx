@@ -7,7 +7,7 @@ export const ArtistInfoContainer = styled.div`
   /* width: 100%; */
   /* max-width: 1300px; */
   background: var(--dark);
-  /* url(${({ imgsrc }) => `${imgsrc}`}) 0 20% / cover no-repeat; */
+  
 `
 
 export const ArtistImg = styled.img`

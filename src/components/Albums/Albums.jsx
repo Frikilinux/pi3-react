@@ -15,22 +15,17 @@ const Albums = () => {
   // const { fetchProducts } = useProducts()
   const { getAlbumsByGenre } = useAlbums()
 
-  useEffect(() => {
+  // useEffect(() => {
     // getAlbumsByGenre({})
     // fetchProducts()
     // dispatch(getProducts(productos.products))
-  }, [])
+  // }, [])
 
   return (
     <InfiniteScroll
       dataLength={albums ? albums.length : 0}
       next={() => getAlbumsByGenre({ next })}
       hasMore={next}
-      // loader={
-      //   <AlbumsLoadingContainer>
-      //     <Spinner />
-      //   </AlbumsLoadingContainer>
-      // }
     >
       <AlbumsContainer>
         {albums.map((album) => {

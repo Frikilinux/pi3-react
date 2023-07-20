@@ -1,12 +1,8 @@
 import React from 'react'
-import { Section, SectionContainer } from './SectionWrapperStd'
+import { SectionContainer } from './SectionWrapperStd'
 
-const SectionWrapper = ({ children, bg} ) => {
-  return (
-    <SectionContainer bg={bg}>
-      {children}
-    </SectionContainer>
-  )
+const SectionWrapper = ({ children, bg, img }) => {
+  return <SectionContainer img={img} bg={bg}>{children}</SectionContainer>
 }
 
 export default SectionWrapper

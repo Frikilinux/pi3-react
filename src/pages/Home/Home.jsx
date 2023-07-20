@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import InfoModal from '../../components/InfoModal/InfoModal'
 import { AnimatePresence } from 'framer-motion'
 import { useInfoModal } from '../../hooks/useInfoModal'
+import Hero from '../../components/Hero/Hero'
 
 export const Home = () => {
   const { currentGenre, isFetching } = useSelector(({ albums }) => albums)
@@ -24,11 +25,12 @@ export const Home = () => {
       {/* {console.log('VISIBLE?', isVisible)}
       <AnimatePresence>{isVisible && <InfoModal />}</AnimatePresence> */}
 
+        <Hero/>
+
       <SectionWrapper bg='var(--lightDark)' id='albums'>
         <Genres />
         <AlbumsSection />
       </SectionWrapper>
-      <SectionWrapper id='contact'></SectionWrapper>
     </Main>
   )
 }

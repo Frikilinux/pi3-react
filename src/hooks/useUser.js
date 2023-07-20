@@ -22,9 +22,9 @@ export const useUser = () => {
       dispatch(loggedUser(res.data), setUserFetching(false))
       return res.data
     } catch (error) {
-      // const { msg } = error.response.data
-      console.log('ERROR', error.response.data.msg)
-      dispatch(setUserError(error.response.data.msg), setUserFetching(false))
+      const { msg } = error.response.data
+      // console.log('ERROR', error?.response.data.msg)
+      dispatch(setUserError(msg), setUserFetching(false))
     }
   }
 
@@ -42,10 +42,10 @@ export const useUser = () => {
       setUserFetching(false)
 
       console.log('RESPONSE OF REGISTER', res)
-      return {}
+      return res
     } catch (error) {
       const { msg } = error.response.data
-      console.log(msg)
+      console.log(error.response.data.msg)
       dispatch(setUserError(msg), setUserFetching(false))
     }
   }

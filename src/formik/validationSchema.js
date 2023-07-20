@@ -6,7 +6,7 @@ export const loginValidationSchema = yup.object({
   email: yup
     .string()
     .trim()
-    // .matches(mailRegex, 'Mail no válido')
+    .matches(mailRegex, 'Mail no válido')
     .required('Campo requerido'),
   password: yup
     .string()

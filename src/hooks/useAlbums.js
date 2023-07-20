@@ -28,6 +28,12 @@ export const useAlbums = () => {
       dispatch(isError(error))
     }
   }
+  
+  const searchAlbums = ({search}) => {
+    fetchAlbums({
+      url: `${API_PROXY + ROOT + '/search/album?q=' + search + '&limit=20'}`,
+    })
+  } 
 
   const getArtistAlbums = ({ artistId, next }) => {
     fetchAlbums({
@@ -84,5 +90,5 @@ export const useAlbums = () => {
     }
   }
 
-  return { fetchAlbumsGenre, fetchAlbumById, getAlbumsByGenre, getArtistAlbums }
+  return { fetchAlbumsGenre, fetchAlbumById, getAlbumsByGenre, getArtistAlbums, searchAlbums, fetchAlbums }
 }

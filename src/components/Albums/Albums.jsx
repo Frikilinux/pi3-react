@@ -13,7 +13,7 @@ const Albums = () => {
   )
 
   // const { fetchProducts } = useProducts()
-  const { getAlbumsByGenre } = useAlbums()
+  const { getAlbumsByGenre, fetchAlbums } = useAlbums()
 
   // useEffect(() => {
     // getAlbumsByGenre({})
@@ -24,7 +24,7 @@ const Albums = () => {
   return (
     <InfiniteScroll
       dataLength={albums ? albums.length : 0}
-      next={() => getAlbumsByGenre({ next })}
+      next={() => fetchAlbums({ next })}
       hasMore={next}
     >
       <AlbumsContainer>

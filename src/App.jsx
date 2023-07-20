@@ -12,6 +12,7 @@ import { Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import NotifyContainerStd from './styles/NotifyStd'
 import Footer from './components/Footer/Footer'
+import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 
 function App() {
   const isPreviewHidden = useSelector(
@@ -43,6 +44,7 @@ function App() {
         <Routes />
         <Footer />
       </AnimatePresence>
+      <ScrollToTop />
     </Layout>
   )
 }

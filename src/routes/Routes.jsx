@@ -7,6 +7,7 @@ import Artist from '../pages/Artist/Artist'
 import Checkout from '../pages/checkout/Checkout'
 import Summary from '../pages/Summary/Summary'
 import NotFound from '../pages/NotFound/NotFound'
+import Search from '../pages/Search/Search'
 
 const Routes = () => {
   return (
@@ -17,6 +18,7 @@ const Routes = () => {
       <Route path='/checkout' element={<Checkout />} />
       <Route path='/summary' element={<Summary />} />
       <Route path='/artist/:artistId' element={<Artist />} />
+      <Route path='/search/:search' element={<Search />} />
       <Route path='*' element={<NotFound />} />
     </RoutesReact>
   )

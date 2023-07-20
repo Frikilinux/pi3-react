@@ -1,21 +1,43 @@
-import React from 'react'
-import { HeroSearchContainer, HeroSectionContainer, HeroTextContainer, SearchInput} from './HeroStd'
+import React, { useState } from 'react'
+import {
+  HeroLeft,
+  HeroSearchContainer,
+  HeroSectionContainer,
+  HeroTextContainer,
+  SearchInput,
+} from './HeroStd'
 import SectionWrapper from '../UI/SectionWrapper/SectionWrapper'
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import ButtonPrimary from '../UI/Button/ButtonPrimary'
 
 const Hero = () => {
   const [search, setsearch] = useState('')
+  const navigate = useNavigate()
   return (
-    <SectionWrapper img='https://cloud.systec.ar/s/pSnWqDJzXge9qDS/download'id='contact' bg='var(--lightDark)'>
+    <SectionWrapper
+      img='https://cloud.systec.ar/s/pSnWqDJzXge9qDS/download'
+      id='contact'
+      bg='var(--lightDark)'
+    >
       <HeroSectionContainer>
-        <div>
+        <HeroLeft>
           <HeroTextContainer>
-            Search your favorite artists, album or song between 90 million of song
+            Search for your favorite artist, album or song among 90 million
+            songs.
           </HeroTextContainer>
-          <HeroSearchContainer onSubmit={() => {}}>
-            <SearchInput onChange={(e) => setsearch(e.target.value)} placeholder='Search albums o artists' value={search}/>
+          <HeroSearchContainer
+            onSubmit={() => {
+              navigate(`/search/${search}`)
+            }}
+          >
+            <SearchInput
+              onChange={(e) => setsearch(e.target.value)}
+              placeholder='Search albums o artists'
+              value={search}
+            />
+            <ButtonPrimary>Search</ButtonPrimary>
           </HeroSearchContainer>
-        </div>
+        </HeroLeft>
         <div>hero</div>
       </HeroSectionContainer>
     </SectionWrapper>

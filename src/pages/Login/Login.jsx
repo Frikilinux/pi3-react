@@ -1,6 +1,6 @@
 import React from 'react'
-import InputUser from '../../components/UI/Input/InputUser'
-import { FormContainer } from '../../components/UI/Input/InputUserStd'
+import InputUser from '../../components/UI/InputUser/InputUser'
+import { FormContainer } from '../../components/UI/InputUser/InputUserStd'
 import { Form, Formik } from 'formik'
 import { loginInitialValues } from '../../formik/initialValues'
 import { loginValidationSchema } from '../../formik/validationSchema'
@@ -28,7 +28,11 @@ const Login = () => {
 
   return (
     <Main>
-      {userError && <ErrorModal onClick={() => dispatch(setUserError(false))}>{userError}</ErrorModal>}
+      {userError && (
+        <ErrorModal onClick={() => dispatch(setUserError(false))}>
+          {userError}
+        </ErrorModal>
+      )}
       <SectionWrapper bg='var(--Dark)' id='checkout'>
         <LoginContainer>
           <Formik

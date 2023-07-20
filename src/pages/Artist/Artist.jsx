@@ -14,6 +14,7 @@ import {
   ArtistInfoContainer,
   ArtistInfoName,
 } from './ArtistStd'
+import { formatQuantityNumber } from '../../utils/formatNumbers'
 
 const Artist = () => {
   const { artist } = useSelector(({ artist }) => artist)
@@ -29,12 +30,15 @@ const Artist = () => {
 
   return (
     <Main>
-      <SectionWrapper bg='var(--dark)' id='artist-info'>
+      <SectionWrapper
+        img='https://cloud.systec.ar/s/MzgkA9ZKQYmKXbN/download'
+        id='artist-info'
+      >
         <ArtistContainer>
           <ArtistInfoContainer imgsrc={pictureXl}>
             <ArtistInfo>
               <ArtistInfoName>{name}</ArtistInfoName>
-              <ArtistFans>{nbFan} Followers </ArtistFans>
+              <ArtistFans>{formatQuantityNumber(nbFan) } Fans </ArtistFans>
             </ArtistInfo>
             <ArtistImg src={pictureXl} />
           </ArtistInfoContainer>

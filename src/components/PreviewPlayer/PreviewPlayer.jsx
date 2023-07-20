@@ -24,12 +24,11 @@ import { hidePreview } from '../../redux/previewPlayer/previewPlayerSlice'
 import ButtonPrimary from '../UI/Button/ButtonPrimary'
 import formatTime from '../../utils/fomatedTime'
 import formatedDate from '../../utils/formatedDate'
-import { addToCart } from '../../redux/cart/cartSlice'
 import { useAlbums } from '../../hooks/useAlbums'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import useButtons from '../../hooks/useButtons'
 import Icons from '../../constants/icons'
+import { formatQuantityNumber } from '../../utils/formatNumbers'
 
 const PreviewPlayer = (props) => {
   const { getAlbumsByGenre } = useAlbums()
@@ -58,7 +57,7 @@ const PreviewPlayer = (props) => {
   const { day, month, year } = formatedDate(release)
   const { user } = useSelector(({ user }) => user)
   const { handleAddToCart, handleArtistPage } = useButtons()
-  const { BackArrow, Heart } = Icons
+  const { BackArrow } = Icons
 
   return (
     <PreviewContainer
@@ -93,7 +92,7 @@ const PreviewPlayer = (props) => {
             </GenreFrame>
           ))}
           <div>
-            <Heart /> {fans}
+          ♥ {formatQuantityNumber(fans)}
           </div>
         </ExtraInfo>
       </ExtraInfoContainer>

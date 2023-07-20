@@ -109,7 +109,7 @@ export const InfoArtist = styled(InfoTitle)`
   align-items: center;
   font-size: 2rem;
   @media (max-width: 576px) {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   &:hover {
     cursor: pointer;
@@ -210,6 +210,9 @@ export const AlbumPrice = styled.div`
   color: var(--grey);
   font-size: 2rem;
   font-weight: 600;
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+  }
 `
 
 

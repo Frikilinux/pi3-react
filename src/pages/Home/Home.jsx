@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Genres from '../../components/Albums/Categories/Genres'
 import SectionWrapper from '../../components/UI/SectionWrapper/SectionWrapper'
 import { AlbumsSection } from '../../components/Albums/AlbumsSection/AlbumsSection'
@@ -14,12 +14,18 @@ export const Home = () => {
   const { currentGenre, isFetching } = useSelector(({ albums }) => albums)
   const { getAlbumsByGenre } = useAlbums()
   const { isVisible } = useInfoModal()
+  const albumsSection = useRef(null)
 
   useEffect(() => {
     !isFetching && getAlbumsByGenre({ genreId: currentGenre })
     // fetchProducts()
     // dispatch(getProducts(productos.products))
   }, [])
+
+  const genreClick = () => {
+    albumsSection.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <Main>
       {/* {console.log('VISIBLE?', isVisible)}
@@ -27,8 +33,8 @@ export const Home = () => {
 
       <Hero />
 
-      <SectionWrapper bg='var(--lightDark)' id='albums'>
-        <Genres />
+      <SectionWrapper ref={albumsSection} bg='var(--lightDark)' id='albums'>
+        <Genres genreClick={genreClick} />
         <AlbumsSection />
       </SectionWrapper>
     </Main>

@@ -3,20 +3,21 @@ import { styled } from 'styled-components'
 export const HeroSectionContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 90%;
   max-width: 1300px;
-  height: 400px;
+  height: 350px;
   @media (max-width: 576px) {
     flex-direction: column;
     width: 100%;
-    gap: 30px;
+    gap: 20px;
   }
 `
 
 export const HeroLeft = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 10px;
 `

@@ -20,15 +20,16 @@ function App() {
     ({ previewPlayer }) => previewPlayer.isHidden,
   )
   const { cartHidden } = useSelector(({ cart }) => cart)
+  const { userError } = useSelector(({ user }) => user)
 
   useEffect(() => {
     document.body.style.overflow =
-      !cartHidden || !isPreviewHidden ? 'hidden' : 'unset'
-  }, [cartHidden, isPreviewHidden])
+      !cartHidden || !isPreviewHidden || userError ? 'hidden' : 'unset'
+  }, [cartHidden, isPreviewHidden, userError])
 
   return (
     <Layout>
-      {(!isPreviewHidden || !cartHidden) && <Overlay />}
+      {(!isPreviewHidden || !cartHidden || userError) && <Overlay />}
 
       <AnimatePresence>
         {!isPreviewHidden && <PreviewPlayer {...albumPrviewData} />}

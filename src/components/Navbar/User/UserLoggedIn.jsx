@@ -15,9 +15,13 @@ import { useLocation } from 'react-router-dom'
 
 const UserLoggedIn = () => {
   const { Logout, CartIcon } = Icons
-  const { nombre } = useSelector((state) => state.user.user)
+  const {
+    user: { nombre },
+    user: { email },
+  } = useSelector(({ user }) => user)
   const dispatch = useDispatch()
   const { pathname } = useLocation()
+  const firstName = nombre.split(' ').slice(0, 2).join(' ')
   return (
     <UserContainer
       initial={{ opacity: 0, scale: 0.9 }}
@@ -31,8 +35,8 @@ const UserLoggedIn = () => {
         />
       </UserImgContainer>
       <UserNameData>
-        <p>Hi, {nombre}</p>
-        <p>@{nombre}</p>
+        <p>Hi, {firstName}</p>
+        <p>{email}</p>
       </UserNameData>
       <UserButtonsContainer>
         <ButtonPrimary

@@ -7,6 +7,11 @@ export const CheckoutContainer = styled.div`
   width: 100%;
   min-height: calc(100vh - 130px);
   align-items: center;
+  @media (max-width: 576px) {
+    flex-direction: column;
+    width: 95%;
+    gap: 20px;
+  }
 `
 
 export const CheckoutInfo = styled.div`
@@ -16,6 +21,11 @@ export const CheckoutInfo = styled.div`
   align-items: center;
   width: 60%;
   height: 80%;
+  @media (max-width: 576px) {
+    text-align: center;
+    width: 100%;
+
+  }
 `
 
 export const CheckoutTitle = styled.div`
@@ -48,6 +58,9 @@ export const CheckoutCartContainer = styled.div`
   /* min-height: 400px; */
   height: 75vh;
   overflow-y: scroll;
+  @media (max-width: 576px) {
+    width: 100%;
+  }
 `
 // export const CheckoutCartInner = styled.div`
 //   overflow-y: scroll;

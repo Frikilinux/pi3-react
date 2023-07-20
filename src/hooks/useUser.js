@@ -15,7 +15,7 @@ export const useUser = () => {
     try {
       dispatch(setUserFetching(true))
       const res = await axios.post(API_PROXY + ROOT + LOGIN, {
-        email,
+        email: email.toLowerCase(),
         password,
       })
       dispatch(loggedUser(res.data), setUserFetching(false))

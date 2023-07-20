@@ -15,8 +15,8 @@ const Hero = () => {
   const navigate = useNavigate()
   return (
     <SectionWrapper
-      img='https://cloud.systec.ar/s/pSnWqDJzXge9qDS/download'
-      id='contact'
+      img='https://cloud.systec.ar/s/exACdtiRC6sQiPW/download'
+      id='hero'
       bg='var(--lightDark)'
     >
       <HeroSectionContainer>
@@ -38,7 +38,6 @@ const Hero = () => {
             <ButtonPrimary>Search</ButtonPrimary>
           </HeroSearchContainer>
         </HeroLeft>
-        <div>hero</div>
       </HeroSectionContainer>
     </SectionWrapper>
 

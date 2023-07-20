@@ -86,15 +86,6 @@ const Checkout = () => {
                   'Confirm order'
                 )}
               </ButtonPrimary>
-              {/* <ButtonPrimary onClick={async () => getOrders()}>
-                {isFetchingOrders ? (
-                  <Spinner>
-                    <SpinnerIcon color='var(--dark)' />
-                  </Spinner>
-                ) : (
-                  'Get ORDERS'
-                )}
-              </ButtonPrimary> */}
             </CheckoutButtonsContainer>
           </CheckoutInfo>
           <CheckoutCartContainer>
@@ -102,7 +93,6 @@ const Checkout = () => {
           </CheckoutCartContainer>
         </CheckoutContainer>
       </SectionWrapper>
-      <SectionWrapper id='contact'></SectionWrapper>
     </Main>
   )
 }

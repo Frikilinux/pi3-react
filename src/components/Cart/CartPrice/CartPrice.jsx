@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { PricesContainer } from './CartPriceStd'
+import { CartTotalPriceContainer, PricesContainer } from './CartPriceStd'
 
 const CartPrice = () => {
   const { items } = useSelector((state) => state.cart)
@@ -10,14 +10,13 @@ const CartPrice = () => {
 
   return (
     <PricesContainer>
-      <p>Tenés, {items.length} Albums en el carro!</p>
-      <p>Subtotal ------------- {totalPrice}</p>
-      <p>Descuentos ------------- 0.00</p>
-      <p>Total ------------- {totalPrice}</p>
+      <p>{items.length || 'No'} Albums in the cart</p>
+      <CartTotalPriceContainer>
+        <div>Total</div>
+        <div>$ {totalPrice}</div>
+      </CartTotalPriceContainer>
     </PricesContainer>
   )
 }
 
 export default CartPrice
-
-

@@ -11,6 +11,11 @@ export const OrderContainer = styled.div`
   box-shadow:
     0 19px 38px rgba(0, 0, 0, 0.3),
     0 15px 12px rgba(0, 0, 0, 0.22);
+  @media (max-width: 576px) {
+    width: 300px;
+    height: 120px;
+    padding: 5px 10px;
+  }
 `
 export const OrderImgContainer = styled.div`
   position: relative;
@@ -44,6 +49,9 @@ export const OrderCardInfo = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   height: 80%;
+  @media (max-width: 576px) {
+    height: 70%;
+  }
 `
 
 export const OrderAlbumQty = styled.div`
@@ -55,6 +63,9 @@ export const OrderAlbumQty = styled.div`
   text-shadow:
     2px 4px 5px rgba(0, 0, 0, 0.548),
     0px -3px 5px rgba(255, 255, 255, 0.432);
+  @media (max-width: 576px) {
+    font-size: 1.4rem;
+  }
 `
 
 export const OrderItemsQty = styled.div`
@@ -65,6 +76,9 @@ export const OrderItemsQty = styled.div`
   text-shadow:
     2px 7px 5px rgba(0, 0, 0, 0.411),
     0px -4px 10px rgba(255, 255, 255, 0.3);
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+  }
 `
 
 export const CreatedDate = styled.div`
@@ -72,4 +86,7 @@ export const CreatedDate = styled.div`
   position: relative;
   font-size: 0.8rem;
   font-weight: 600;
+  @media (max-width: 576px) {
+    font-size: 0.7rem;
+  }
 `

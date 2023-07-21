@@ -3,8 +3,6 @@ import { addAlbumHandler, removeAlbumHandler } from './cartUtils'
 
 const INITIAL_STATE = {
   items: [],
-  totalPrice: 0,
-  discount: 0,
   cartHidden: true,
 }
 
@@ -36,6 +34,12 @@ const cartSlice = createSlice({
   },
 })
 
-export const { addToCart, removeFromCart, removeAlbum, cleanCart, hideCart, toggleCart } =
-  cartSlice.actions
+export const {
+  addToCart,
+  removeFromCart,
+  removeAlbum,
+  cleanCart,
+  hideCart,
+  toggleCart,
+} = cartSlice.actions
 export default cartSlice.reducer

@@ -21,6 +21,7 @@ function App() {
   )
   const { cartHidden } = useSelector(({ cart }) => cart)
   const { userError } = useSelector(({ user }) => user)
+  const { ordersError } = useSelector(({ orders }) => orders)
 
   useEffect(() => {
     document.body.style.overflow =
@@ -29,7 +30,7 @@ function App() {
 
   return (
     <Layout>
-      {(!isPreviewHidden || !cartHidden || userError) && <Overlay />}
+      {(!isPreviewHidden || !cartHidden || userError || ordersError) && <Overlay />}
 
       <AnimatePresence>
         {!isPreviewHidden && <PreviewPlayer {...albumPrviewData} />}

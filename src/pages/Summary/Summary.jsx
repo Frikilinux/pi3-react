@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import SectionWrapper from '../../components/UI/SectionWrapper/SectionWrapper'
 import Main from '../../components/UI/MainWrapper/MainWrapper'
-import { OrdersContainer, SummaryContainer } from './SummaryStd'
+import { OrdersContainer, SummaryContainer, SummaryOrderTitle } from './SummaryStd'
 import useOrder from '../../hooks/useOrder'
 import { useSelector } from 'react-redux'
 import Spinner from '../../components/Spinner/Spinner'
@@ -21,14 +21,13 @@ const Summary = () => {
     <Main>
       <SectionWrapper bg='var(--lightDark)' id='Artits'>
         <SummaryContainer>
-          <h1>Your summary of orders</h1>
+          <SummaryOrderTitle>Your summary of orders</SummaryOrderTitle>
           {isFetchingOrders ? (
             <Spinner>
               <SpinnerIcon size='5em' />
             </Spinner>
           ) : (
             <OrdersContainer>
-              {console.log('ORDER', orders)}
               {orders?.map((order) => {
                 return <SummaryOrder {...order} key={order._id} />
               })}

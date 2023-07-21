@@ -13,7 +13,7 @@ import Cart from '../../components/Cart/CartItemList/Cart'
 import { useDispatch, useSelector } from 'react-redux'
 import ButtonPrimary from '../../components/UI/Button/ButtonPrimary'
 import useOrder from '../../hooks/useOrder'
-import { getOrderSuccess, resetError } from '../../redux/orders/ordersSlice'
+import { resetError } from '../../redux/orders/ordersSlice'
 import Spinner from '../../components/Spinner/Spinner'
 import Icons from '../../constants/icons'
 import { ErrorModal } from '../../components/ErrorModal/ErrorModal'
@@ -21,8 +21,8 @@ import { ErrorModal } from '../../components/ErrorModal/ErrorModal'
 const Checkout = () => {
   const { user } = useSelector(({ user }) => user)
   const { items } = useSelector(({ cart }) => cart)
-  const { isFetchingOrders, ordersError  } = useSelector(({ orders }) => orders)
-  const { postOrder, getOrders} = useOrder()
+  const { isFetchingOrders, ordersError } = useSelector(({ orders }) => orders)
+  const { postOrder } = useOrder()
   const dispatch = useDispatch()
 
   const totalPrice = items
@@ -30,7 +30,6 @@ const Checkout = () => {
       acc += item.price * item.qty
       return acc
     }, 0)
-    .toFixed(2)
 
   const handleConfirm = () => {
     postOrder({
@@ -62,7 +61,11 @@ const Checkout = () => {
 
   return (
     <Main>
-      {ordersError && <ErrorModal >{ordersError}</ErrorModal>}
+      {ordersError && (
+        <ErrorModal onClick={() => dispatch(resetError())}>
+          {ordersError}
+        </ErrorModal>
+      )}
       <SectionWrapper bg='var(--lightDark)' id='checkout'>
         <CheckoutContainer>
           <CheckoutInfo>
@@ -89,7 +92,7 @@ const Checkout = () => {
             </CheckoutButtonsContainer>
           </CheckoutInfo>
           <CheckoutCartContainer>
-              <Cart />
+            <Cart />
           </CheckoutCartContainer>
         </CheckoutContainer>
       </SectionWrapper>

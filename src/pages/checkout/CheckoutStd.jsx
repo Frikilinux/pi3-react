@@ -19,10 +19,10 @@ export const CheckoutInfo = styled.div`
   flex-direction: column;
   gap: 20px;
   align-items: center;
+  text-align: center;
   width: 60%;
   height: 80%;
   @media (max-width: 576px) {
-    text-align: center;
     width: 100%;
 
   }

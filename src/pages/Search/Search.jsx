@@ -4,6 +4,8 @@ import SectionWrapper from '../../components/UI/SectionWrapper/SectionWrapper'
 import Main from '../../components/UI/MainWrapper/MainWrapper'
 import { AlbumsSection } from '../../components/Albums/AlbumsSection/AlbumsSection'
 import { useAlbums } from '../../hooks/useAlbums'
+import SearchArtist from '../../components/SearchArtist/SearchArtist'
+import { SearchTitle } from './SearchStd'
 
 const Search = () => {
   const { search } = useParams()
@@ -16,9 +18,10 @@ const Search = () => {
   return (
     <Main>
       <SectionWrapper bg='var(--lightDark)' id='search'>
+        <SearchArtist />
       </SectionWrapper>
       <SectionWrapper bg='var(--lightDark)' id='search-albums'>
-        <h1>Search results for &ldquo; {search} &rdquo;</h1>
+        <SearchTitle>Search results for &ldquo; {search} &rdquo;</SearchTitle>
         <AlbumsSection />
       </SectionWrapper>
     </Main>

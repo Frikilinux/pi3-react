@@ -7,6 +7,7 @@ import {
   ordersActionFail,
 } from '../redux/orders/ordersSlice'
 import { useNavigate } from 'react-router-dom'
+import { cleanCart } from '../redux/cart/cartSlice'
 
 const useOrder = () => {
   const { user } = useSelector(({ user }) => user)
@@ -15,7 +16,6 @@ const useOrder = () => {
   const { ROOT, ORDERS, API_PROXY } = NUCBAZ_API
 
   const postOrder = async (items) => {
-    console.log(items)
     try {
       dispatch(fechingOrders(true))
       const res = await axios.post(API_PROXY + ROOT + ORDERS, items, {
@@ -27,9 +27,9 @@ const useOrder = () => {
       if (res.statusText === 'Created') {
         navigate('/summary')
         dispatch(fechingOrders(false))
+        dispatch(cleanCart())
       }
     } catch (error) {
-      console.log(error.response.data.msg)
       dispatch(ordersActionFail(error.response.data.msg), fechingOrders(false))
     }
   }
@@ -42,7 +42,6 @@ const useOrder = () => {
           'x-token': user.token,
         },
       })
-      console.log(res)
       if (res) {
         dispatch(getOrderSuccess(res.data.data))
         dispatch(fechingOrders(false))
@@ -52,7 +51,6 @@ const useOrder = () => {
         ordersActionFail(error.response.data.msg),
         dispatch(fechingOrders(false)),
       )
-      console.log(error.response.data.msg)
     }
   }
 

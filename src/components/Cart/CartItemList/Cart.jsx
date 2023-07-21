@@ -12,7 +12,7 @@ const Cart = () => {
         {items.length ? (
           items.map((item) => <CartItem key={item.id} {...item} />)
         ) : (
-          <p>Comprá algo loco</p>
+          <p>Buy something please</p>
         )}
       </ItemsContainer>
     </CartContainer>

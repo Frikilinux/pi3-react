@@ -1,5 +1,6 @@
 import React from 'react'
-import { OrderAlbumQty, OrderContainer, OrderImgContainer, OrderItemsQty, OrederItemImg } from './SummaryOrderStd'
+import { CreatedDate, OrderAlbumQty, OrderCardInfo, OrderContainer, OrderImgContainer, OrderItemsQty, OrederItemImg } from './SummaryOrderStd'
+import { formatOrderDate } from '../../utils/formatedDate'
 
 const SummaryOrder = ({ _id, user, price, total, status, items, createdAt}) => {
   const totalItems = items?.reduce((acc, item) => acc + item.quantity, 0)
@@ -15,12 +16,11 @@ const SummaryOrder = ({ _id, user, price, total, status, items, createdAt}) => {
         }
 
       </OrderImgContainer>
-
-      <div>
+      <OrderCardInfo>
         <OrderAlbumQty>{items.length} Albums</OrderAlbumQty>
         <OrderItemsQty>{totalItems} Items</OrderItemsQty>
-        <p>{createdAt}</p>
-      </div>
+        <CreatedDate>  {formatOrderDate(createdAt)}</CreatedDate>
+      </OrderCardInfo>
     </OrderContainer>
   )
 }

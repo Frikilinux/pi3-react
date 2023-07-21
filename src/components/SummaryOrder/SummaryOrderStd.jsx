@@ -37,10 +37,19 @@ export const OrederItemImg = styled.img`
   box-shadow: -7px 0px 19px 3px rgba(0, 0, 0, 0.87);
 `
 
+export const OrderCardInfo = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 80%;
+`
+
 export const OrderAlbumQty = styled.div`
   color: var(--green);
   position: relative;
-  left: -0px;
+  left: -35px;
   font-size: 2rem;
   font-weight: 600;
   text-shadow:
@@ -49,11 +58,18 @@ export const OrderAlbumQty = styled.div`
 `
 
 export const OrderItemsQty = styled.div`
+  color: var(--grey);
   position: relative;
-  left: 30px;
   font-size: 1.5rem;
   font-weight: 500;
   text-shadow:
     2px 7px 5px rgba(0, 0, 0, 0.411),
     0px -4px 10px rgba(255, 255, 255, 0.3);
+`
+
+export const CreatedDate = styled.div`
+  color: var(--grey);
+  position: relative;
+  font-size: 0.8rem;
+  font-weight: 600;
 `

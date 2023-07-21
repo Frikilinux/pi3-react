@@ -23,7 +23,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { hidePreview } from '../../redux/previewPlayer/previewPlayerSlice'
 import ButtonPrimary from '../UI/Button/ButtonPrimary'
 import formatTime from '../../utils/fomatedTime'
-import formatedDate from '../../utils/formatedDate'
+import { formatedDate } from '../../utils/formatedDate'
 import { useAlbums } from '../../hooks/useAlbums'
 import { useNavigate } from 'react-router-dom'
 import useButtons from '../../hooks/useButtons'
@@ -53,7 +53,7 @@ const PreviewPlayer = (props) => {
     price,
   } = album
   const distpatch = useDispatch()
-  const { h, m, s } = formatTime(duration)
+  const { h, m } = formatTime(duration)
   const { day, month, year } = formatedDate(release)
   const { user } = useSelector(({ user }) => user)
   const { handleAddToCart, handleArtistPage } = useButtons()
@@ -69,7 +69,7 @@ const PreviewPlayer = (props) => {
         duration: 0.5,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      // key='preview'
+      key='preview'
     >
       <ExtraInfoContainer>
         <ButtonPrimary onClick={() => distpatch(hidePreview(true))}>
@@ -91,9 +91,7 @@ const PreviewPlayer = (props) => {
               {name}
             </GenreFrame>
           ))}
-          <div>
-          ♥ {formatQuantityNumber(fans)}
-          </div>
+          <div>♥ {formatQuantityNumber(fans)}</div>
         </ExtraInfo>
       </ExtraInfoContainer>
       <AlbumHeaders>

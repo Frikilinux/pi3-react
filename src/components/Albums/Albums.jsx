@@ -1,25 +1,14 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import productos from '../../data/products.json'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { AlbumsContainer } from './AlbumsStd'
 import { useAlbums } from '../../hooks/useAlbums'
 import AlbumCard from './CardProduct/AlbumCard'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import Spinner from '../Spinner/Spinner'
 
 const Albums = () => {
-  const { albums, next, currentGenre, isFetching, total } = useSelector(
-    (state) => state.albums,
-  )
+  const { albums, next } = useSelector((state) => state.albums)
 
-  // const { fetchProducts } = useProducts()
-  const { getAlbumsByGenre, fetchAlbums } = useAlbums()
-
-  // useEffect(() => {
-    // getAlbumsByGenre({})
-    // fetchProducts()
-    // dispatch(getProducts(productos.products))
-  // }, [])
+  const { fetchAlbums } = useAlbums()
 
   return (
     <InfiniteScroll

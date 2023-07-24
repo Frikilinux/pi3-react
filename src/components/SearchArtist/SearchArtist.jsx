@@ -8,8 +8,10 @@ const SearchArtist = () => {
   const navigate = useNavigate()
   return (
     <SearchContainer
-      onSubmit={() => {
+      onSubmit={(e) => {
+        e.preventDefault()
         navigate(`/search/${search}`)
+        setsearch('')
       }}
     >
       <SearchInput

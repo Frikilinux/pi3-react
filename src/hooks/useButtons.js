@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../redux/cart/cartSlice'
+import { addToCart, hideCart } from '../redux/cart/cartSlice'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { hidePreview } from '../redux/previewPlayer/previewPlayerSlice'
+import { resetError } from '../redux/orders/ordersSlice'
+import { setUserError } from '../redux/user/userSlice'
 
 const useButtons = () => {
   const dispatch = useDispatch()
@@ -23,7 +25,13 @@ const useButtons = () => {
     dispatch(hidePreview(true))
   }
 
-  return { handleAddToCart, handleArtistPage }
+  const hideAllModals = () => {
+    dispatch(hidePreview(true))
+    dispatch(hideCart(true))
+    dispatch(setUserError(false))
+  }
+
+  return { handleAddToCart, handleArtistPage, hideAllModals }
 }
 
 export default useButtons

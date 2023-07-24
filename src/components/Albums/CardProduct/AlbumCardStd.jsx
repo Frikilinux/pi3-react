@@ -6,6 +6,7 @@ export const CardContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 30px
   /* background-color: #f0ffff29; */
   /* width: 250px; */
 `

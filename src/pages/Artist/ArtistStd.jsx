@@ -58,3 +58,20 @@ export const ArtistImg = styled.img`
     /* height: 20%; */
   }
 `
+
+export const ArtistSectionTitle = styled.div`
+  width: 95%;
+  max-width: 1300px;
+  color: var(--grey);
+  padding: 20px 0;
+  font-size: 1.7rem;
+  font-weight: 900;
+  & span {
+    color: var(--green);
+  }
+  @media (max-width: 576px) {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+`

@@ -13,6 +13,7 @@ import {
   ArtistInfo,
   ArtistInfoContainer,
   ArtistInfoName,
+  ArtistSectionTitle,
 } from './ArtistStd'
 import { formatQuantityNumber } from '../../utils/formatNumbers'
 
@@ -45,6 +46,9 @@ const Artist = () => {
         </ArtistContainer>
       </SectionWrapper>
       <SectionWrapper bg='var(--lightDark)' id='artist-albums'>
+        <ArtistSectionTitle>
+          All albums from <span>{name}</span> 
+        </ArtistSectionTitle>
         <AlbumsSection />
       </SectionWrapper>
     </Main>

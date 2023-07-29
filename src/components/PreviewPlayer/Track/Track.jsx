@@ -10,7 +10,7 @@ import {
 } from './TrackStd'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  hidePreview,
+  hideAlbumPreview,
   setPlaying,
 } from '../../../redux/previewPlayer/previewPlayerSlice'
 import Icons from '../../../constants/icons'
@@ -84,7 +84,7 @@ const Track = ({
         <TrackArtist
           onClick={() => {
             navigate(`/artist/${artist.id}`)
-            dispatch(hidePreview(true))
+            dispatch(hideAlbumPreview(true))
           }}
         >
           {(explicitLyrics > 2 || explicit) && <ExplicitTrack>E</ExplicitTrack>}

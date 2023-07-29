@@ -2,8 +2,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, hideCart } from '../redux/cart/cartSlice'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-import { hidePreview } from '../redux/previewPlayer/previewPlayerSlice'
-import { resetError } from '../redux/orders/ordersSlice'
+import {
+  hideAlbumPreview,
+  setImagePreview,
+} from '../redux/previewPlayer/previewPlayerSlice'
 import { setUserError } from '../redux/user/userSlice'
 
 const useButtons = () => {
@@ -22,13 +24,14 @@ const useButtons = () => {
 
   const handleArtistPage = (id) => {
     navigate(`/artist/${id}`)
-    dispatch(hidePreview(true))
+    dispatch(hideAlbumPreview(true))
   }
 
   const hideAllModals = () => {
-    dispatch(hidePreview(true))
+    dispatch(hideAlbumPreview(true))
     dispatch(hideCart(true))
     dispatch(setUserError(false))
+    dispatch(setImagePreview(false))
   }
 
   return { handleAddToCart, handleArtistPage, hideAllModals }

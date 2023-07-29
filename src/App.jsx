@@ -14,10 +14,11 @@ import NotifyContainerStd from './styles/NotifyStd'
 import Footer from './components/Footer/Footer'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import Overlay from './components/Overlay/Overlay'
+import ImgView from './components/ImgView/ImgView'
 
 function App() {
-  const isPreviewHidden = useSelector(
-    ({ previewPlayer }) => previewPlayer.isHidden,
+  const { albumPreviewHidden, imagePreview } = useSelector(
+    ({ previewPlayer }) => previewPlayer,
   )
   const { cartHidden } = useSelector(({ cart }) => cart)
   const { userError } = useSelector(({ user }) => user)
@@ -25,16 +26,22 @@ function App() {
 
   useEffect(() => {
     document.body.style.overflow =
-      !cartHidden || !isPreviewHidden || userError ? 'hidden' : 'unset'
-  }, [cartHidden, isPreviewHidden, userError])
+      !cartHidden || !albumPreviewHidden || imagePreview || userError
+        ? 'hidden'
+        : 'unset'
+  }, [cartHidden, albumPreviewHidden, userError, imagePreview])
 
   return (
     <Layout>
-      {(!isPreviewHidden || !cartHidden || userError || ordersError) && <Overlay />}
-
+      {(!albumPreviewHidden ||
+        !cartHidden ||
+        userError ||
+        ordersError ||
+        imagePreview) && <Overlay />}
       <AnimatePresence>
-        {!isPreviewHidden && <PreviewPlayer {...albumPrviewData} />}
+        {!albumPreviewHidden && <PreviewPlayer {...albumPrviewData} />}
       </AnimatePresence>
+      <AnimatePresence>{imagePreview && <ImgView />}</AnimatePresence>
       <NotifyContainerStd
         position='top-left'
         transition={Slide}

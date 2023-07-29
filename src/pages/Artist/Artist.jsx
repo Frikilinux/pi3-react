@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import SectionWrapper from '../../components/UI/SectionWrapper/SectionWrapper'
 import Main from '../../components/UI/MainWrapper/MainWrapper'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useArtist } from '../../hooks/useArtist'
 import { AlbumsSection } from '../../components/Albums/AlbumsSection/AlbumsSection'
 import { useAlbums } from '../../hooks/useAlbums'
@@ -16,6 +16,7 @@ import {
   ArtistSectionTitle,
 } from './ArtistStd'
 import { formatQuantityNumber } from '../../utils/formatNumbers'
+import { setImagePreview } from '../../redux/previewPlayer/previewPlayerSlice'
 
 const Artist = () => {
   const { artist } = useSelector(({ artist }) => artist)
@@ -23,6 +24,7 @@ const Artist = () => {
   const { getArtistById } = useArtist()
   const { getArtistAlbums } = useAlbums()
   const { picture_xl: pictureXl, name, nb_fan: nbFan } = artist
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getArtistById(artistId)
@@ -39,15 +41,18 @@ const Artist = () => {
           <ArtistInfoContainer imgsrc={pictureXl}>
             <ArtistInfo>
               <ArtistInfoName>{name}</ArtistInfoName>
-              <ArtistFans>{formatQuantityNumber(nbFan) } Fans </ArtistFans>
+              <ArtistFans>{formatQuantityNumber(nbFan)} Fans </ArtistFans>
             </ArtistInfo>
-            <ArtistImg src={pictureXl} />
+            <ArtistImg
+              onClick={() => dispatch(setImagePreview(pictureXl))}
+              src={pictureXl}
+            />
           </ArtistInfoContainer>
         </ArtistContainer>
       </SectionWrapper>
       <SectionWrapper bg='var(--lightDark)' id='artist-albums'>
         <ArtistSectionTitle>
-          All albums from <span>{name}</span> 
+          All albums from <span>{name}</span>
         </ArtistSectionTitle>
         <AlbumsSection />
       </SectionWrapper>

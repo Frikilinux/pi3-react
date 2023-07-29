@@ -10,7 +10,7 @@ const Cart = () => {
     <CartContainer>
       <ItemsContainer items={items.length}>
         {items.length ? (
-          items.map((item) => <CartItem key={item.id} {...item} />)
+          items?.map((item) => <CartItem key={item.id} {...item} />)
         ) : (
           <p>Buy something please</p>
         )}

@@ -20,7 +20,7 @@ import {
 } from './PreviewPlayerStd'
 import Track from './Track/Track'
 import { useDispatch, useSelector } from 'react-redux'
-import { hidePreview } from '../../redux/previewPlayer/previewPlayerSlice'
+import { hideAlbumPreview, setImagePreview } from '../../redux/previewPlayer/previewPlayerSlice'
 import ButtonPrimary from '../UI/Button/ButtonPrimary'
 import formatTime from '../../utils/fomatedTime'
 import { formatedDate } from '../../utils/formatedDate'
@@ -37,6 +37,7 @@ const PreviewPlayer = (props) => {
   const navigate = useNavigate()
   const {
     cover_medium: cover,
+    cover_xl: coverXl,
     tracks,
     artist,
     id,
@@ -72,7 +73,7 @@ const PreviewPlayer = (props) => {
       key='preview'
     >
       <ExtraInfoContainer>
-        <ButtonPrimary onClick={() => distpatch(hidePreview(true))}>
+        <ButtonPrimary onClick={() => distpatch(hideAlbumPreview(true))}>
           <BackArrow />
         </ButtonPrimary>
 
@@ -84,7 +85,7 @@ const PreviewPlayer = (props) => {
               key={id}
               onClick={() => {
                 getAlbumsByGenre({ genreId: id })
-                dispatch(hidePreview(true))
+                dispatch(hideAlbumPreview(true))
                 navigate('/')
               }}
             >
@@ -125,11 +126,11 @@ const PreviewPlayer = (props) => {
             {day + '-' + month + '-' + year}{' '}
           </TracksInfo>
         </AlbumInfoContainer>
-        <AlbumImg src={cover} />
+        <AlbumImg onClick={() => dispatch(setImagePreview(coverXl))} src={cover} />
       </AlbumHeaders>
 
       <AlbumTracksContainer>
-        {tracks.data?.map((track, i) => (
+        {tracks?.data.map((track, i) => (
           <Track key={track.id} {...track} number={i + 1} />
         ))}
       </AlbumTracksContainer>

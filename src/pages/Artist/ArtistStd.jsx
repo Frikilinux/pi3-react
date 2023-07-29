@@ -17,10 +17,8 @@ export const ArtistInfoContainer = styled.div`
   display: flex;
   gap: 30px;
   justify-content: space-between;
-  /* height: 200px; */
   width: 65%;
   max-width: 1000px;
-  /* background: var(--dark); */
   @media (max-width: 576px) {
     flex-direction: column-reverse;
     align-items: center;

@@ -6,5 +6,5 @@ export const SectionContainer = styled.section`
   align-items: center;
   width: 100vw;
   background: url(${({ img }) => `${img}`}) center / cover no-repeat;
-  background-color: ${({ bg }) => bg ?? 'var(--blue)'};
+  background-color: ${({ bg }) => bg ?? 'var(--dark)'};
 `

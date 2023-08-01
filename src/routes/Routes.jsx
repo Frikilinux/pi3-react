@@ -17,7 +17,7 @@ const Routes = () => {
       <Route path='/register' element={<Register />} />
       <Route path='/checkout' element={<Checkout />} />
       <Route path='/summary' element={<Summary />} />
-      <Route path='/artist/:artistId' element={<Artist />} />
+      <Route path='/artist/:artistId?' element={<Artist />} />
       <Route path='/search/:search' element={<Search />} />
       <Route path='*' element={<NotFound />} />
     </RoutesReact>

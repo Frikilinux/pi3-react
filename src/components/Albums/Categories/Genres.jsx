@@ -4,20 +4,21 @@ import { Genre, GenreImg, GenresContainer } from './GenresStd'
 import { useGenres } from '../../../hooks/useGenres'
 import { useAlbums } from '../../../hooks/useAlbums'
 import { useNavigate } from 'react-router-dom'
+import generos from '../../../data/genres.json'
 
 const Genres = ({ genreClick }) => {
   const { fetchGenres } = useGenres()
   const { getAlbumsByGenre } = useAlbums()
   const navigate = useNavigate()
 
-  const { categories } = useSelector((state) => state.categories)
-  useEffect(() => {
-    fetchGenres()
-  }, [])
+  // const { categories } = useSelector((state) => state.categories)
+  // useEffect(() => {
+  //   fetchGenres()
+  // }, [])
 
   return (
     <GenresContainer>
-      {categories?.map(({ id, name, picture_small: pictureSmall }) => {
+      {generos?.data.map(({ id, name, picture_small: pictureSmall }) => {
         return (
           <Genre
             id={id}

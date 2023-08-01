@@ -81,16 +81,6 @@
       "type": "genre"
     },
     {
-      "id": 106,
-      "name": "Electro",
-      "picture": "https://api.deezer.com/genre/106/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/15df4502c1c58137dae5bdd1cc6f0251/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/15df4502c1c58137dae5bdd1cc6f0251/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/15df4502c1c58137dae5bdd1cc6f0251/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/15df4502c1c58137dae5bdd1cc6f0251/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
-    },
-    {
       "id": 466,
       "name": "Folk",
       "picture": "https://api.deezer.com/genre/466/image",
@@ -151,46 +141,6 @@
       "type": "genre"
     },
     {
-      "id": 532,
-      "name": "Folklore Argentino",
-      "picture": "https://api.deezer.com/genre/532/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/f53d298e46c4722edc245f3b7232343a/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/f53d298e46c4722edc245f3b7232343a/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/f53d298e46c4722edc245f3b7232343a/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/f53d298e46c4722edc245f3b7232343a/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
-    },
-    {
-      "id": 528,
-      "name": "Romantica",
-      "picture": "https://api.deezer.com/genre/528/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/ab42659100a299a5326dbce8bbd70222/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/ab42659100a299a5326dbce8bbd70222/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/ab42659100a299a5326dbce8bbd70222/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/ab42659100a299a5326dbce8bbd70222/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
-    },
-    {
-      "id": 169,
-      "name": "Soul & Funk",
-      "picture": "https://api.deezer.com/genre/169/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/3d5e8aab99b95bfa7ac7e9e466e7781e/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/3d5e8aab99b95bfa7ac7e9e466e7781e/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/3d5e8aab99b95bfa7ac7e9e466e7781e/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/3d5e8aab99b95bfa7ac7e9e466e7781e/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
-    },
-    {
-      "id": 2,
-      "name": "African Music",
-      "picture": "https://api.deezer.com/genre/2/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/703413adf47ad8a6001b438f7608a2be/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/703413adf47ad8a6001b438f7608a2be/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/703413adf47ad8a6001b438f7608a2be/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/703413adf47ad8a6001b438f7608a2be/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
-    },
-    {
       "id": 16,
       "name": "Asian Music",
       "picture": "https://api.deezer.com/genre/16/image",
@@ -211,16 +161,6 @@
       "type": "genre"
     },
     {
-      "id": 75,
-      "name": "Brazilian Music",
-      "picture": "https://api.deezer.com/genre/75/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/01b12a3f3582899a13b664cea703a335/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/01b12a3f3582899a13b664cea703a335/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/01b12a3f3582899a13b664cea703a335/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/01b12a3f3582899a13b664cea703a335/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
-    },
-    {
       "id": 71,
       "name": "Cumbia",
       "picture": "https://api.deezer.com/genre/71/image",
@@ -228,26 +168,6 @@
       "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/ffd77feba2c8fda79b18183861e4e69f/250x250-000000-80-0-0.jpg",
       "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/ffd77feba2c8fda79b18183861e4e69f/500x500-000000-80-0-0.jpg",
       "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/ffd77feba2c8fda79b18183861e4e69f/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
-    },
-    {
-      "id": 81,
-      "name": "Indian Music",
-      "picture": "https://api.deezer.com/genre/81/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/b098161d9a824eef314bc38b985594a1/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/b098161d9a824eef314bc38b985594a1/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/b098161d9a824eef314bc38b985594a1/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/b098161d9a824eef314bc38b985594a1/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
-    },
-    {
-      "id": 95,
-      "name": "Kids",
-      "picture": "https://api.deezer.com/genre/95/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/b0b8efcbc3cb688864ce69da0061e525/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/b0b8efcbc3cb688864ce69da0061e525/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/b0b8efcbc3cb688864ce69da0061e525/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/b0b8efcbc3cb688864ce69da0061e525/1000x1000-000000-80-0-0.jpg",
       "type": "genre"
     },
     {

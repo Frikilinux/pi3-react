@@ -11,6 +11,7 @@ import Cart from '../Cart/CartItemList/Cart'
 import { CartModal, ModalCartcontainer } from '../Cart/CartItemList/CartStd'
 import CartPrice from '../Cart/CartPrice/CartPrice'
 import CartButtons from '../Cart/CartButtons/CartButtons'
+import NavLinks from '../Navbar/Links/NavLinks'
 
 export const Header = () => {
   const isCartHidden = useSelector(({ cart }) => cart.cartHidden)
@@ -20,6 +21,7 @@ export const Header = () => {
     <HeaderStyled>
       <AnimatePresence>
         <SiteBrand />
+        <NavLinks />
         {user ? <UserLoggedIn /> : <UserLoggedOut />}
 
         {!isCartHidden && (

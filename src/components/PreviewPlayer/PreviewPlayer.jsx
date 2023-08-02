@@ -138,7 +138,7 @@ const PreviewPlayer = (props) => {
       </AlbumHeaders>
 
       <AlbumTracksContainer>
-        {tracks?.data.map((track, i) => (
+        {tracks.data?.map((track, i) => (
           <Track key={track.id} {...track} number={i + 1} />
         ))}
       </AlbumTracksContainer>

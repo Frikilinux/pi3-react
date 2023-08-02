@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { AlbumsContainer } from './AlbumsStd'
 import { useAlbums } from '../../hooks/useAlbums'
-import AlbumCard from './CardProduct/AlbumCard'
+import AlbumCard from './AlbumCard/AlbumCard'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 const Albums = () => {

@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const ArtistContainer = styled.div`
-  padding: 30px;
+  padding: 10px;
   width: 100%;
   /* max-width: 1000px; */
   display: flex;
@@ -49,10 +49,13 @@ export const ArtistFans = styled.div`
 `
 
 export const ArtistImg = styled.img`
-  width: 180px;
-  height: 180px;
+  cursor: pointer;
+  width: 250px;
+  height: 250px;
   border-radius: 10px;
   @media (max-width: 576px) {
+    width: 200px;
+    height: 200px;
     /* height: 20%; */
   }
 `

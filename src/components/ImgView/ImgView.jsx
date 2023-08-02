@@ -23,7 +23,7 @@ const ImgView = () => {
       key='image-preview'
     >
       <ButtonPrimary onClick={() => dispatch(setImagePreview(false))}>
-        <BackArrow />
+        <BackArrow size='1.3em' />
       </ButtonPrimary>
     </PreviewContainer>
   )

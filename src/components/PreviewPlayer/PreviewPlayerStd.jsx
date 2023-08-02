@@ -10,7 +10,7 @@ export const PreviewContainer = styled(motion.div)`
   position: fixed;
   width: 90%;
   max-width: 900px;
-  height: 80vh;
+  height: 85vh;
   background: #fff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
   background-color: #201e20;
   z-index: 10;
@@ -54,6 +54,7 @@ export const AlbumHeaders = styled.div`
 `
 
 export const AlbumImg = styled.img`
+cursor: pointer;
   border-radius: 5px;
   opacity: 0.8;
   width: 22%;
@@ -166,7 +167,7 @@ export const InfoFrame = styled.div`
   font-weight: 500;
   padding: 0 5px;
   color: var(--dark);
-  background: var(--grey);
+  background: #d67070d3;
   border-radius: 2px;
   text-transform: capitalize;
 
@@ -176,7 +177,12 @@ export const InfoFrame = styled.div`
   }
 `
 
+export const RecordTypeFrame = styled(InfoFrame)`
+background-color: #83e6a9a4;
+`
+
 export const GenreFrame = styled(InfoFrame)`
+background-color: var(--grey);
   &:hover {
     cursor: pointer;
     color: var(--dark);
@@ -201,9 +207,9 @@ export const TracksInfo = styled.div`
   }
 `
 export const InfoLabel = styled.div`
-width: 60%;
-color: var(--grey);
-font-weight: 500;
+  width: 60%;
+  color: var(--grey);
+  font-weight: 500;
 `
 
 export const AlbumPrice = styled.div`
@@ -214,13 +220,6 @@ export const AlbumPrice = styled.div`
     font-size: 1.1rem;
   }
 `
-
-
-// export const SingleFrame = styled(ExplicitFrame)`
-//   right: 40px;
-//   /* color: #dddddb; */
-//   /* background: #0546f8; */
-// `
 
 export const AlbumTracksContainer = styled.div`
   display: flex;

@@ -17,14 +17,22 @@ const ArtistChart = () => {
 
   useEffect(() => {
     const fetchCharts = async () => {
-      const [popChart, generalChart, alternativeChart, rockChart] = await Promise.all([
-        getArtistChart({}),
-        getArtistChart({ genreId: '132' }),
-        getArtistChart({ genreId: '85' }),
-        getArtistChart({ genreId: '152' }),
-      ])
+      const [popChart, generalChart, alternativeChart, rockChart, danceChart] =
+        await Promise.all([
+          getArtistChart({}),
+          getArtistChart({ genreId: '132' }),
+          getArtistChart({ genreId: '85' }),
+          getArtistChart({ genreId: '152' }),
+          getArtistChart({ genreId: '113' }),
+        ])
 
-      setCharts({ popChart, generalChart, alternativeChart, rockChart })
+      setCharts({
+        popChart,
+        generalChart,
+        alternativeChart,
+        rockChart,
+        danceChart,
+      })
     }
 
     fetchCharts()
@@ -33,12 +41,12 @@ const ArtistChart = () => {
   return (
     <Main>
       <Main>
-        <SectionWrapper bg='var(--lightDark)' id='artists'>
+        <SectionWrapper bg='var(--lightDark)' id='search-artists'>
           <div>The most popular artist in the world</div>
           <SearchArtist />
         </SectionWrapper>
 
-        <SectionWrapper bg='var(--lightDark)' id='search-albums'>
+        <SectionWrapper bg='var(--lightDark)' id='artists-chart'>
           <ArtisthartContainer>
             <ArtistChartGenreContainer>
               <ArtistSectionTitle>Top 5 all artist</ArtistSectionTitle>
@@ -68,6 +76,14 @@ const ArtistChart = () => {
               <ArtistSectionTitle>Top 5 Rock artist</ArtistSectionTitle>
               <ChartContainer>
                 {charts.rockChart?.map((artist) => (
+                  <ArtistCard key={artist.id} {...artist} />
+                ))}
+              </ChartContainer>
+            </ArtistChartGenreContainer>
+            <ArtistChartGenreContainer>
+              <ArtistSectionTitle>Top 5 Dance artist</ArtistSectionTitle>
+              <ChartContainer>
+                {charts.danceChart?.map((artist) => (
                   <ArtistCard key={artist.id} {...artist} />
                 ))}
               </ChartContainer>

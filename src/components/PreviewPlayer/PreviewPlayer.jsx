@@ -16,11 +16,15 @@ import {
   InfoTitle,
   InfoTitleContainer,
   PreviewContainer,
+  RecordTypeFrame,
   TracksInfo,
 } from './PreviewPlayerStd'
 import Track from './Track/Track'
 import { useDispatch, useSelector } from 'react-redux'
-import { hideAlbumPreview, setImagePreview } from '../../redux/previewPlayer/previewPlayerSlice'
+import {
+  hideAlbumPreview,
+  setImagePreview,
+} from '../../redux/previewPlayer/previewPlayerSlice'
 import ButtonPrimary from '../UI/Button/ButtonPrimary'
 import formatTime from '../../utils/fomatedTime'
 import { formatedDate } from '../../utils/formatedDate'
@@ -74,12 +78,12 @@ const PreviewPlayer = (props) => {
     >
       <ExtraInfoContainer>
         <ButtonPrimary onClick={() => distpatch(hideAlbumPreview(true))}>
-          <BackArrow />
+          <BackArrow size='1.3em' />
         </ButtonPrimary>
 
         <ExtraInfo>
           {explicitLyrics && <InfoFrame>Explicit</InfoFrame>}
-          <InfoFrame>{recordType}</InfoFrame>
+          <RecordTypeFrame>{recordType}</RecordTypeFrame>
           {genres.data?.map(({ name, id }) => (
             <GenreFrame
               key={id}
@@ -122,11 +126,15 @@ const PreviewPlayer = (props) => {
             </InfoContrib>
           </InfoTitleContainer>
           <TracksInfo>
-            {nbTracks} tr {h > 0 ? `${h} hr ` : null} {`${m} min`}{' '}
-            {day + '-' + month + '-' + year}{' '}
+            {nbTracks} {nbTracks > 1 ? 'tracks' : 'track'} •{' '}
+            {h > 0 ? `${h} hr ` : null} {`${m} min`} •{' '}
+            {day + '/' + month + '/' + year}{' '}
           </TracksInfo>
         </AlbumInfoContainer>
-        <AlbumImg onClick={() => dispatch(setImagePreview(coverXl))} src={cover} />
+        <AlbumImg
+          onClick={() => dispatch(setImagePreview(coverXl))}
+          src={cover}
+        />
       </AlbumHeaders>
 
       <AlbumTracksContainer>

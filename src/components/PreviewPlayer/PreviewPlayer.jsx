@@ -90,7 +90,7 @@ const PreviewPlayer = (props) => {
               onClick={() => {
                 getAlbumsByGenre({ genreId: id })
                 dispatch(hideAlbumPreview(true))
-                navigate('/')
+                navigate('/albums')
               }}
             >
               {name}

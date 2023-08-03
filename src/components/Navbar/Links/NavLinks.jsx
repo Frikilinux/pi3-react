@@ -10,13 +10,16 @@ const NavLinks = () => {
           <NavLink to={'/'}>Home</NavLink>
         </SiteLinks>
         <SiteLinks>
+          <NavLink to={'/albums'}>Albums</NavLink>
+        </SiteLinks>
+        <SiteLinks>
+          <NavLink to={'/artist'}>Artists</NavLink>
+        </SiteLinks>
+        <SiteLinks>
           <NavLink to={'/login'}>Login</NavLink>
         </SiteLinks>
         <SiteLinks>
           <NavLink to={'/register'}>Register</NavLink>
-        </SiteLinks>
-        <SiteLinks>
-          <NavLink to={'/artist'}>Artist</NavLink>
         </SiteLinks>
       </ul>
     </SiteLinksContainer>

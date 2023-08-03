@@ -8,6 +8,7 @@ import Checkout from '../pages/checkout/Checkout'
 import Summary from '../pages/Summary/Summary'
 import NotFound from '../pages/NotFound/NotFound'
 import Search from '../pages/Search/Search'
+import AlbumsPage from '../pages/AlbumsPage/Albums'
 
 const Routes = () => {
   return (
@@ -18,7 +19,10 @@ const Routes = () => {
       <Route path='/checkout' element={<Checkout />} />
       <Route path='/summary' element={<Summary />} />
       <Route path='/artist/:artistId?' element={<Artist />} />
+      <Route path='/artist/:search?' element={<Artist />} />
       <Route path='/search/:search' element={<Search />} />
+      <Route path='/albums/:search?' element={<AlbumsPage />} />
+
       <Route path='*' element={<NotFound />} />
     </RoutesReact>
   )

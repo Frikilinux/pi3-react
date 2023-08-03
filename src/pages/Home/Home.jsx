@@ -19,8 +19,6 @@ export const Home = () => {
     <Main>
       <Hero />
       <SectionWrapper bg='var(--lightDark)' id='albums'>
-        <Genres />
-        <AlbumsSection />
       </SectionWrapper>
     </Main>
   )

@@ -10,9 +10,7 @@ import SearchArtist from '../../components/SearchArtist/SearchArtist'
 
 const AlbumsPage = () => {
   const { searchAlbums, getAlbumsByGenre } = useAlbums()
-  const { currentGenre, isFetching } = useSelector(
-    ({ albums }) => albums.albums,
-  )
+  const { currentGenre, isFetching } = useSelector(({ albums }) => albums)
   const { search } = useParams()
 
   useEffect(() => {

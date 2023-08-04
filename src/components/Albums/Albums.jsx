@@ -17,7 +17,7 @@ const Albums = () => {
       hasMore={next}
     >
       <AlbumsContainer>
-        {albums.map((album) => {
+        {albums?.map((album) => {
           return <AlbumCard key={album.id} {...album} />
         })}
       </AlbumsContainer>

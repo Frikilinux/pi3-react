@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Genre, GenreImg, GenresContainer } from './GenresStd'
-import { useGenres } from '../../../hooks/useGenres'
-import { useAlbums } from '../../../hooks/useAlbums'
+import { useGenres } from '../../hooks/useGenres'
+import { useAlbums } from '../../hooks/useAlbums'
 import { useNavigate } from 'react-router-dom'
-import generos from '../../../data/genres.json'
+import generos from '../../data/genres.json'
 
 const Genres = ({ genreClick }) => {
+  const { currentGenre } = useSelector(({ albums }) => albums)
   const { fetchGenres } = useGenres()
   const { getAlbumsByGenre } = useAlbums()
   const navigate = useNavigate()
@@ -29,8 +30,9 @@ const Genres = ({ genreClick }) => {
               })
             }
             key={id}
+            selected={id === currentGenre ? 1 : 0}
           >
-            <GenreImg src={pictureSmall} />
+            {/* <GenreImg src={pictureSmall} /> */}
             <p>{name}</p>
           </Genre>
         )

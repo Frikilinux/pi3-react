@@ -39,7 +39,6 @@ const ArtistChart = () => {
   }, [])
 
   return (
-    <Main>
       <Main>
         <SectionWrapper bg='var(--lightDark)' id='search-artists'>
           <div>The most popular artist in the world</div>
@@ -91,7 +90,6 @@ const ArtistChart = () => {
           </ArtisthartContainer>
         </SectionWrapper>
       </Main>
-    </Main>
   )
 }
 

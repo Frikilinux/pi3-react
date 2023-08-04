@@ -1,5 +1,4 @@
 import React, { useEffect} from 'react'
-import Genres from '../../components/Albums/Categories/Genres'
 import SectionWrapper from '../../components/UI/SectionWrapper/SectionWrapper'
 import { AlbumsSection } from '../../components/Albums/AlbumsSection/AlbumsSection'
 import Main from '../../components/UI/MainWrapper/MainWrapper'

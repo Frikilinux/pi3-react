@@ -2,6 +2,7 @@ import React from 'react'
 import {
   UserButtonsContainer,
   UserContainer,
+  UserIconContainer,
   UserImg,
   UserImgContainer,
   UserNameData,
@@ -14,47 +15,53 @@ import Icons from '../../../constants/icons'
 import { useLocation } from 'react-router-dom'
 
 const UserLoggedIn = () => {
-  const { Logout, CartIcon } = Icons
+  const { Logout, CartIcon, UserIcon } = Icons
   const {
     user: { nombre },
     user: { email },
   } = useSelector(({ user }) => user)
   const dispatch = useDispatch()
   const { pathname } = useLocation()
-  const firstName = nombre.split(' ').slice(0, 2).join(' ')
+  const firstName = nombre.split(' ').slice(0, 1).join(' ')
   return (
-    <UserContainer
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.2 }}
-      key={'user-data'}
-    >
-      <UserImgContainer>
-        <UserImg
-          src={`https://robohash.org/${nombre}?set=set3`}
-          alt={`Foto del usuario ${nombre}`}
-        />
-      </UserImgContainer>
-      <UserNameData>
-        <p>Hi, {firstName}</p>
-        <p>{email}</p>
-      </UserNameData>
-      <UserButtonsContainer>
-        <ButtonPrimary
-          onClick={() => {
-            dispatch(logOut())
-            dispatch(hideCart())
-          }}
-        >
-          <Logout />
-        </ButtonPrimary>
-        {pathname !== '/checkout' && (
-          <ButtonPrimary onClick={() => dispatch(toggleCart())}>
-            <CartIcon />
+    <>
+      <UserIconContainer>
+        <UserIcon />
+      </UserIconContainer>
+
+      <UserContainer
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.2 }}
+        key={'user-data'}
+      >
+        <UserImgContainer>
+          <UserImg
+            src={`https://robohash.org/${nombre}?set=set3`}
+            alt={`Foto del usuario ${nombre}`}
+          />
+        </UserImgContainer>
+        <UserNameData>
+          <p>Hi, {firstName}</p>
+          <p>{email}</p>
+        </UserNameData>
+        <UserButtonsContainer>
+          <ButtonPrimary
+            onClick={() => {
+              dispatch(logOut())
+              dispatch(hideCart())
+            }}
+          >
+            <Logout />
           </ButtonPrimary>
-        )}
-      </UserButtonsContainer>
-    </UserContainer>
+          {pathname !== '/checkout' && (
+            <ButtonPrimary onClick={() => dispatch(toggleCart())}>
+              <CartIcon />
+            </ButtonPrimary>
+          )}
+        </UserButtonsContainer>
+      </UserContainer>
+    </>
   )
 }
 

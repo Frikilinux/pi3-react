@@ -33,7 +33,8 @@ const Icons = {
   SpinnerIcon: ImSpinner4,
   ReactIcon: TbBrandReactNative,
   BackArrow: AiOutlineArrowLeft,
-  Heart: AiTwotoneHeart
+  Heart: AiTwotoneHeart,
+  UserIcon: AiOutlineUser,
 }
 
 export default Icons

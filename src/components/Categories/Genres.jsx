@@ -28,6 +28,7 @@ const Genres = ({ genreClick }) => {
               () => {
                 navigate('/albums')
                 getAlbumsByGenre({ genreId: id, genreName: name })
+                window.scrollTo(0,50)
               })
             }
             key={id}

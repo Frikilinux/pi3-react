@@ -6,6 +6,9 @@ export const UserContainer = styled(motion.div)`
   align-items: center;
   padding: 0 10px;
   height: 70%;
+  @media (max-width: 576px) {
+    display: none;
+  }
 `
 
 export const UserImgContainer = styled.div`
@@ -14,11 +17,7 @@ export const UserImgContainer = styled.div`
   height: 100%;
   /* width: 50px; */
   background: rgb(98, 231, 220);
-  background: radial-gradient(
-    circle,
-    #788181 0%,
-    #313233 100%
-  );
+  background: radial-gradient(circle, #788181 0%, #313233 100%);
 `
 
 export const UserImg = styled.img`
@@ -51,5 +50,11 @@ export const UserButtonsContainer = styled.div`
   @media (max-width: 576px) {
     flex-direction: column;
     gap: 5px;
+  }
+`
+export const UserIconContainer = styled.div`
+  display: none;
+  @media (max-width: 576px) {
+    display: flex;
   }
 `

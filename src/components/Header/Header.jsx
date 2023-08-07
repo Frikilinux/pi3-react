@@ -19,11 +19,11 @@ export const Header = () => {
   const dispatch = useDispatch()
   return (
     <HeaderStyled>
-      <AnimatePresence>
         <SiteBrand />
         <NavLinks />
         {user ? <UserLoggedIn /> : <UserLoggedOut />}
 
+      <AnimatePresence>
         {!isCartHidden && (
           <CartModal
             initial={{ translateX: 600 }}

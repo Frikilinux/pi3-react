@@ -11,6 +11,7 @@ const Spinner = ({ children }) => {
         repeat: Infinity,
         ease: 'linear',
       }}
+      key={'spinner'}
     >
       {children}
     </SpinnerContainer>

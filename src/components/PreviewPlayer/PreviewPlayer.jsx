@@ -88,7 +88,7 @@ const PreviewPlayer = (props) => {
             <GenreFrame
               key={id}
               onClick={() => {
-                getAlbumsByGenre({ genreId: id })
+                getAlbumsByGenre({ genreId: id, genreName: name })
                 dispatch(hideAlbumPreview(true))
                 navigate('/albums')
               }}

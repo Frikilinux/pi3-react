@@ -19,18 +19,19 @@ const Genres = ({ genreClick }) => {
 
   return (
     <GenresContainer>
-      {generos?.data.map(({ id, name, picture_small: pictureSmall }) => {
+      {generos?.data.map(({ id, name }) => {
         return (
           <Genre
             id={id}
             onClick={
               (genreClick,
               () => {
-                getAlbumsByGenre({ genreId: id })
+                navigate('/albums')
+                getAlbumsByGenre({ genreId: id, genreName: name })
               })
             }
             key={id}
-            selected={id === currentGenre ? 1 : 0}
+            selected={id === currentGenre.genreId ? 1 : 0}
           >
             {/* <GenreImg src={pictureSmall} /> */}
             <p>{name}</p>

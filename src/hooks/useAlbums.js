@@ -42,16 +42,16 @@ export const useAlbums = () => {
     })
   }
 
-  const getAlbumsByGenre = ({ genreId = '0', next }) => {
+  const getAlbumsByGenre = ({ genreId = 0, next, genreName }) => {
     fetchAlbums({
       url: `${
         API_PROXY + ROOT + '/editorial/' + genreId + '/releases?limit=20'
       }`,
-      next, genreId
+      next, genreId, genreName
     })
   }
 
-  const fetchAlbums = async ({ url, next, genreId }) => {
+  const fetchAlbums = async ({ url, next, genreId, genreName }) => {
     const endpointUrl = next ? `${API_PROXY + next}` : url
     try {
       dispatch(isFetching())
@@ -64,7 +64,7 @@ export const useAlbums = () => {
           return { ...album, price: createPrice(album.id) }
         }),
         next: data.next,
-        currentGenre: genreId,
+        currentGenre: {genreId, genreName},
       }
 
       next ? dispatch(nextAlbumsPage(payload)) : dispatch(setAlbums(payload))

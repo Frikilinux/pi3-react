@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import SearchArtist from '../../components/SearchArtist/SearchArtist'
 import { MenuBarContainer } from '../../components/MenuBar/MenuBarStd'
 import Genres from '../../components/Categories/Genres'
+import { AlbumsTitleType } from './AlbumsStd'
 
 const AlbumsPage = () => {
   const { searchAlbums, getAlbumsByGenre } = useAlbums()
@@ -17,7 +18,7 @@ const AlbumsPage = () => {
   useEffect(() => {
     search
       ? searchAlbums({ search })
-      : !isFetching && getAlbumsByGenre({ genreId: currentGenre })
+      : !isFetching && getAlbumsByGenre({ genreId: currentGenre.genreId, genreName: 'All' })
   }, [search])
 
   return (
@@ -29,6 +30,13 @@ const AlbumsPage = () => {
         <SearchArtist page={'albums'} placeholder='Search for any album' />
       </SectionWrapper>
       <SectionWrapper bg='var(--lightDark)' id='albums'>
+        <AlbumsTitleType>
+          {search
+            ? `Showing results for '${search}'`
+            : `Showing albums of ${currentGenre.genreName ?? ''}  ${
+                currentGenre.genreId?.toString() === '0' ? 'genres' : 'genre'
+              }`}
+        </AlbumsTitleType>
         <AlbumsSection />
       </SectionWrapper>
     </Main>

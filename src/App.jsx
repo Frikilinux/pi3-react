@@ -57,11 +57,9 @@ function App() {
         pauseOnHover
         theme='dark'
       />
-      <AnimatePresence>
         <Header />
         <Routes />
         <Footer />
-      </AnimatePresence>
       <ScrollToTop />
     </Layout>
   )

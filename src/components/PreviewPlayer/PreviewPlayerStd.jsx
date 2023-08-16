@@ -6,11 +6,11 @@ export const PreviewContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  top: 10vh;
+  top: 6vh;
   position: fixed;
   width: 90%;
-  max-width: 900px;
-  height: 85vh;
+  max-width: 875px;
+  height: 88vh;
   background: #fff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
   background-color: #201e20;
   z-index: 10;
@@ -25,6 +25,8 @@ export const PreviewContainer = styled(motion.div)`
     z-index: -1;
     width: 100%;
     height: 100%;
+    transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
     backdrop-filter: blur(3px);
     background-color: #201e20c7;
     border-radius: 15px;
@@ -54,7 +56,7 @@ export const AlbumHeaders = styled.div`
 `
 
 export const AlbumImg = styled.img`
-cursor: pointer;
+  cursor: pointer;
   border-radius: 5px;
   opacity: 0.8;
   width: 22%;
@@ -184,11 +186,11 @@ export const InfoFrame = styled.div`
 `
 
 export const RecordTypeFrame = styled(InfoFrame)`
-background-color: #83e6a9a4;
+  background-color: #83e6a9a4;
 `
 
 export const GenreFrame = styled(InfoFrame)`
-background-color: var(--grey);
+  background-color: var(--grey);
   &:hover {
     cursor: pointer;
     color: var(--dark);

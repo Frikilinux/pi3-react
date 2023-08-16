@@ -6,7 +6,7 @@ export const CardContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 30px
+  padding-top: 30px;
   /* background-color: #f0ffff29; */
   /* width: 250px; */
 `
@@ -44,6 +44,8 @@ export const MainImg = styled.div`
 export const TitleContainer = styled.div`
   position: absolute;
   z-index: 1;
+  transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
   backdrop-filter: blur(3px);
   font-family: 'Barlow Condensed';
   padding: 3px 5px;
@@ -95,16 +97,16 @@ export const InfoContainer = styled.div`
       font-size: 1.5rem;
       font-weight: 600;
       @media (max-width: 576px) {
-      font-size: 1.2rem;
-    }
+        font-size: 1.2rem;
+      }
     }
   }
 `
 
 export const OverlayPreview = styled(motion.div)`
-font-size: 3rem;
-font-weight: 400;
-color: var(--grey);
+  font-size: 3rem;
+  font-weight: 400;
+  color: var(--grey);
   position: absolute;
   z-index: 5;
   opacity: 0;
@@ -113,6 +115,8 @@ color: var(--grey);
   place-items: center;
   width: 100%;
   height: 100%;
+  transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
   backdrop-filter: blur(4px);
   background-color: #201e20b2;
   &:hover {

@@ -6,11 +6,11 @@ export const PreviewContainer = styled(motion.div)`
   justify-content: flex-start;
   align-items: flex-start;
   padding: 20px;
-  top: 10vh;
+  top: 6vh;
   position: fixed;
   width: 90%;
-  max-width: 900px;
-  height: 85vh;
+  max-width: 875px;
+  height: 90vh;
   background: #201e20 url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
   z-index: 10;
   border-radius: 15px;

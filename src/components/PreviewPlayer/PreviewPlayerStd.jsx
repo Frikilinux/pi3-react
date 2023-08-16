@@ -158,6 +158,12 @@ export const ExtraInfo = styled.div`
   }
 `
 
+export const LikesContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`
+
 export const InfoFrame = styled.div`
   height: 18px;
   display: flex;

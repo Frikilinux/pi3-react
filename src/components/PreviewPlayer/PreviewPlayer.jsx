@@ -15,6 +15,7 @@ import {
   InfoLabel,
   InfoTitle,
   InfoTitleContainer,
+  LikesContainer,
   PreviewContainer,
   RecordTypeFrame,
   TracksInfo,
@@ -33,6 +34,7 @@ import { useNavigate } from 'react-router-dom'
 import useButtons from '../../hooks/useButtons'
 import Icons from '../../constants/icons'
 import { formatQuantityNumber } from '../../utils/formatNumbers'
+import { IconHeartFilled, IconArrowLeft, IconPointFilled } from '@tabler/icons-react'
 
 const PreviewPlayer = (props) => {
   const { getAlbumsByGenre } = useAlbums()
@@ -78,7 +80,8 @@ const PreviewPlayer = (props) => {
     >
       <ExtraInfoContainer>
         <ButtonPrimary onClick={() => distpatch(hideAlbumPreview(true))}>
-          <BackArrow size='1.3em' />
+          <IconArrowLeft />
+          {/* <BackArrow size='1.3em' /> */}
         </ButtonPrimary>
 
         <ExtraInfo>
@@ -96,7 +99,9 @@ const PreviewPlayer = (props) => {
               {name}
             </GenreFrame>
           ))}
-          <div>♥ {formatQuantityNumber(fans)}</div>
+          <LikesContainer>
+            <IconHeartFilled size={11} /> {formatQuantityNumber(fans)}
+          </LikesContainer>
         </ExtraInfo>
       </ExtraInfoContainer>
       <AlbumHeaders>
@@ -126,8 +131,8 @@ const PreviewPlayer = (props) => {
             </InfoContrib>
           </InfoTitleContainer>
           <TracksInfo>
-            {nbTracks} {nbTracks > 1 ? 'tracks' : 'track'} •{' '}
-            {h > 0 ? `${h} hr ` : null} {`${m} min`} •{' '}
+            {nbTracks} {nbTracks > 1 ? 'tracks' : 'track'} <IconPointFilled size={10}/>{' '}
+            {h > 0 ? `${h} hr ` : null} {`${m} min`} <IconPointFilled size={10}/>{' '}
             {day + '/' + month + '/' + year}{' '}
           </TracksInfo>
         </AlbumInfoContainer>

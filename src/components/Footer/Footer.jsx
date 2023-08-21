@@ -23,9 +23,9 @@ const Footer = () => {
       <FootterPowered>
         Powered by
         <div>
-          <Spinner>
+          {/* <Spinner>
             <ReactIcon size='1.5em' />
-          </Spinner>
+          </Spinner> */}
         </div>
       </FootterPowered>
     </FooterStyled>

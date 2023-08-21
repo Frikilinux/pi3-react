@@ -44,8 +44,6 @@ export const MainImg = styled.div`
 export const TitleContainer = styled.div`
   position: absolute;
   z-index: 1;
-  transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
   backdrop-filter: blur(3px);
   font-family: 'Barlow Condensed';
   padding: 3px 5px;
@@ -115,8 +113,6 @@ export const OverlayPreview = styled(motion.div)`
   place-items: center;
   width: 100%;
   height: 100%;
-  transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
   backdrop-filter: blur(4px);
   background-color: #201e20b2;
   &:hover {

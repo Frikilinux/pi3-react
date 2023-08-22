@@ -6,7 +6,9 @@ export const CardContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 30px;
+  /* padding-top: 30px; */
+  box-shadow: 0px 0px 29px 2px rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
   /* background-color: #f0ffff29; */
   /* width: 250px; */
 `
@@ -16,16 +18,14 @@ export const ImagesContainer = styled.div`
   z-index: 5;
   /* display: flex; */
   gap: 10px;
-  border-radius: 10px;
 `
 
-export const MainImg = styled.div`
-  box-shadow: 0px 0px 29px 2px rgba(0, 0, 0, 0.55);
+export const MainImg = styled.div.attrs((props) => ({
+  style: {
+    background: `var(--grey) url(${props.imgsrc}) center/cover no-repeat`,
+  },
+}))`
   position: relative;
-  /* z-index: 4; */
-  /* border-radius: 10px; */
-  background: var(--grey) url(${({ imgsrc }) => `${imgsrc}`}) center/cover
-    no-repeat;
   height: 260px;
   width: 260px;
   @media (max-width: 576px) {
@@ -83,6 +83,7 @@ export const InfoContainer = styled.div`
   width: 100%;
   color: var(--grey);
   background-color: var(--dark);
+  border-radius: 0 0 10px 10px;
 
   padding: 5px;
   & div {

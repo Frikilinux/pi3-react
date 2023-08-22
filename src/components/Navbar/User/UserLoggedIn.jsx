@@ -6,16 +6,15 @@ import {
   UserImg,
   UserImgContainer,
   UserNameData,
-} from './UserLoginStyled'
+} from './UserLoginStd'
 import { useDispatch, useSelector } from 'react-redux'
 import { logOut } from '../../../redux/user/userSlice'
 import { hideCart, toggleCart } from '../../../redux/cart/cartSlice'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
-import Icons from '../../../constants/icons'
 import { useLocation } from 'react-router-dom'
+import { IconUser, IconShoppingCart, IconLogout } from '@tabler/icons-react'
 
 const UserLoggedIn = () => {
-  const { Logout, CartIcon, UserIcon } = Icons
   const {
     user: { nombre },
     user: { email },
@@ -26,7 +25,7 @@ const UserLoggedIn = () => {
   return (
     <>
       <UserIconContainer>
-        <UserIcon />
+        <IconUser />
       </UserIconContainer>
 
       <UserContainer
@@ -52,11 +51,11 @@ const UserLoggedIn = () => {
               dispatch(hideCart())
             }}
           >
-            <Logout />
+            <IconLogout />
           </ButtonPrimary>
           {pathname !== '/checkout' && (
             <ButtonPrimary onClick={() => dispatch(toggleCart())}>
-              <CartIcon />
+              <IconShoppingCart />
             </ButtonPrimary>
           )}
         </UserButtonsContainer>

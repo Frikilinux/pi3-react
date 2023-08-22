@@ -53,6 +53,7 @@ export const UserButtonsContainer = styled.div`
   }
 `
 export const UserIconContainer = styled.div`
+  color: var(--white);
   display: none;
   @media (max-width: 576px) {
     display: flex;

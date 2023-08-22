@@ -15,6 +15,7 @@ const Albums = () => {
       dataLength={albums ? albums.length : 0}
       next={() => fetchAlbums({ next })}
       hasMore={next}
+      // style={{width: '100%'}}
     >
       <AlbumsContainer>
         {albums?.map((album) => {

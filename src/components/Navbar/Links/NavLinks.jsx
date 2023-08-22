@@ -1,27 +1,34 @@
 import React from 'react'
-import { SiteLinks, SiteLinksContainer } from './NavLinksStd'
-import { NavLink } from 'react-router-dom'
+import { LinksList, NavlinkStyled, SiteLinks, SiteLinksContainer } from './NavLinksStd'
+// import { NavLink } from 'react-router-dom'
+import { useAlbums } from '../../../hooks/useAlbums'
 
 const NavLinks = () => {
+  const { getAlbumsByGenre } = useAlbums()
   return (
     <SiteLinksContainer>
-      <ul>
+      <LinksList>
         <SiteLinks>
-          <NavLink to={'/'}>Home</NavLink>
+          <NavlinkStyled to={'/'}>Home</NavlinkStyled>
         </SiteLinks>
         <SiteLinks>
-          <NavLink to={'/albums'}>Albums</NavLink>
+          <NavlinkStyled
+            to={'/albums'}
+            onClick={() => getAlbumsByGenre({ genreId: 0, genreName: 'All' })}
+          >
+            Albums
+          </NavlinkStyled>
         </SiteLinks>
         <SiteLinks>
-          <NavLink to={'/artist'}>Artists</NavLink>
+          <NavlinkStyled to={'/artist'}>Artists</NavlinkStyled>
         </SiteLinks>
-        <SiteLinks>
+        {/* <SiteLinks>
           <NavLink to={'/login'}>Login</NavLink>
         </SiteLinks>
         <SiteLinks>
           <NavLink to={'/register'}>Register</NavLink>
-        </SiteLinks>
-      </ul>
+        </SiteLinks> */}
+      </LinksList>
     </SiteLinksContainer>
   )
 }

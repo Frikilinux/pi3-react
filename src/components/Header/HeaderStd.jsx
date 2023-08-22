@@ -10,4 +10,8 @@ export const HeaderStyled = styled.header`
   background-color: var(--dark);
   width: 100%;
   height: 50px;
+  @media (max-width: 576px) {
+    justify-content: space-around;
+    height: 30px;
+  }
 `

@@ -11,7 +11,7 @@ export const Home = () => {
   const { getAlbumsByGenre } = useAlbums()
 
   useEffect(() => {
-    !isFetching && getAlbumsByGenre({ genreId: currentGenre })
+    // !isFetching && getAlbumsByGenre({ genreId: currentGenre })
   }, [])
 
   return (

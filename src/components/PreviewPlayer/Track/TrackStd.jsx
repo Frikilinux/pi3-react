@@ -44,7 +44,7 @@ export const TrackNumber = styled.div`
 
 export const TrackTitle = styled.div`
   width: 100%;
-  color: ${({ playing }) => (playing ? 'var(--green)' : 'var(--white)')};
+  color: ${({ $playing }) => ($playing ? 'var(--green)' : 'var(--white)')};
   display: flex;
   justify-content: flex-start;
   gap: 5px;

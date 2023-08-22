@@ -61,16 +61,6 @@
       "type": "genre"
     },
     {
-      "id": 165,
-      "name": "R&B",
-      "picture": "https://api.deezer.com/genre/165/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/68a43aec844708e693cb99f47814153b/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/68a43aec844708e693cb99f47814153b/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/68a43aec844708e693cb99f47814153b/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/68a43aec844708e693cb99f47814153b/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
-    },
-    {
       "id": 85,
       "name": "Alternative",
       "picture": "https://api.deezer.com/genre/85/image",
@@ -141,16 +131,6 @@
       "type": "genre"
     },
     {
-      "id": 16,
-      "name": "Asian Music",
-      "picture": "https://api.deezer.com/genre/16/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/dd6d2756465b22488dff5d8663e86688/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/dd6d2756465b22488dff5d8663e86688/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/dd6d2756465b22488dff5d8663e86688/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/dd6d2756465b22488dff5d8663e86688/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
-    },
-    {
       "id": 153,
       "name": "Blues",
       "picture": "https://api.deezer.com/genre/153/image",
@@ -168,16 +148,6 @@
       "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/ffd77feba2c8fda79b18183861e4e69f/250x250-000000-80-0-0.jpg",
       "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/ffd77feba2c8fda79b18183861e4e69f/500x500-000000-80-0-0.jpg",
       "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/ffd77feba2c8fda79b18183861e4e69f/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
-    },
-    {
-      "id": 197,
-      "name": "Latin Music",
-      "picture": "https://api.deezer.com/genre/197/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/069c9888538799748960781f098b5f4b/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/069c9888538799748960781f098b5f4b/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/069c9888538799748960781f098b5f4b/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/069c9888538799748960781f098b5f4b/1000x1000-000000-80-0-0.jpg",
       "type": "genre"
     }
   ]

@@ -25,7 +25,6 @@ const Hero = () => {
       </HeroSectionContainer>
     </SectionWrapper>
 
-    /* url(${({ imgsrc }) => `${imgsrc}`}) 0 20% / cover no-repeat; */
   )
 }
 

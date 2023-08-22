@@ -18,7 +18,7 @@ export const useArtist = () => {
       const { data } = await axios.get(
         `${API_PROXY + ROOT + CHART + '/' + genreId + '/artists?limit=5'}`,
       )
-      console.log('CHARTS', data.data)
+      // console.log('CHARTS', data.data)
       return data.data
     } catch (error) {
       console.log(error)

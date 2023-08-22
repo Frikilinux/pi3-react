@@ -48,7 +48,7 @@ const AlbumCard = (props) => {
           <p>{title}</p>
           <p>{artist}</p>
         </TitleContainer>
-        <MainImg imgsrc={cover ?? noImg} />
+        <MainImg $imgsrc={cover ?? noImg} />
         {/* {recordType === 'single' && <SingleFrame>S</SingleFrame>} */}
         {/* {explicit && <ExplicitFrame>E</ExplicitFrame>} */}
       </ImagesContainer>

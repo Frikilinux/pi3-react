@@ -38,7 +38,8 @@ const ArtistWithId = () => {
         id='artist-info'
       >
         <ArtistContainer>
-          <ArtistInfoContainer imgsrc={pictureXl}>
+          <ArtistInfoContainer>
+            {/* imgsrc={pictureXl} */}
             <ArtistInfo>
               <ArtistInfoName>{name}</ArtistInfoName>
               <ArtistFans>{formatQuantityNumber(nbFan)} Fans </ArtistFans>

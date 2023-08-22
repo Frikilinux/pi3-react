@@ -5,6 +5,6 @@ export const SectionContainer = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background: url(${({ img }) => `${img}`}) center / cover no-repeat;
-  background-color: ${({ bg }) => bg ?? 'var(--dark)'};
+  background: url(${(props) => `${props.$img}`}) center / cover no-repeat;
+  background-color: ${(props) => props.$bg ?? 'var(--dark)'};
 `

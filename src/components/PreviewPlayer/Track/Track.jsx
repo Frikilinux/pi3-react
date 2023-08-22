@@ -74,7 +74,7 @@ const Track = ({
       <TrackData>
         <TrackTitle
           onClick={() => handleClick(id)}
-          playing={currentTrack === id ? 1 : 0}
+          $playing={currentTrack === id ? 1 : 0}
         >
           <p>{title}</p>
           <NaTrack>{!readable && 'N/A'}</NaTrack>

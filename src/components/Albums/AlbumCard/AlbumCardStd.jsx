@@ -22,7 +22,7 @@ export const ImagesContainer = styled.div`
 
 export const MainImg = styled.div.attrs((props) => ({
   style: {
-    background: `var(--grey) url(${props.imgsrc}) center/cover no-repeat`,
+    background: `var(--grey) url(${props.$imgsrc}) center/cover no-repeat`,
   },
 }))`
   position: relative;

@@ -68,7 +68,7 @@ const PreviewPlayer = (props) => {
 
   return (
     <PreviewContainer
-      imgsrc={artist.picture_xl}
+      $imgsrc={artist.picture_xl}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}

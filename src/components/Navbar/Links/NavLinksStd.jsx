@@ -6,11 +6,12 @@ const SiteLinksContainer = styled.nav`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 30px;
+  background-color: var(--dark);
   @media (max-width: 576px) {
-    top: 30px;
-    background-color: var(--dark);
-    position: absolute;
-    height: 30px;
+    z-index: 8;
+    top: 50px;
+    position: fixed;
   }
 `
 

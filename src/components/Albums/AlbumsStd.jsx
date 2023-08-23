@@ -9,7 +9,7 @@ export const AlbumsContainer = styled.div`
   padding: 30px;
   gap: 30px;
   @media (max-width: 576px) {
-    padding: unset;
+    padding: 0 8px;
     gap: 20px;
   }
 `

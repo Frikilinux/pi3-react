@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   products: [],
   isFetching: false,
   isError: null,
+  isHiddenMenu: true
 }
 
 const categoriesSlice = createSlice({
@@ -30,9 +31,15 @@ const categoriesSlice = createSlice({
         isError: action.payload,
       }
     },
+    setIsHiddenMenu: (state, action) => {
+      return {
+        ...state,
+        isHiddenMenu: action.payload,
+      }
+    },
   },
 })
 
-export const { isFetching, isError, getCategories } = categoriesSlice.actions
+export const { isFetching, isError, getCategories, setIsHiddenMenu } = categoriesSlice.actions
 
 export default categoriesSlice.reducer

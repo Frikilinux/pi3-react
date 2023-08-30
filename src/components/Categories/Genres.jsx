@@ -5,11 +5,13 @@ import { useGenres } from '../../hooks/useGenres'
 import { useAlbums } from '../../hooks/useAlbums'
 import { useNavigate } from 'react-router-dom'
 import generos from '../../data/genres.json'
+import useButtons from '../../hooks/useButtons'
 
 const Genres = ({ genreClick }) => {
   const { currentGenre } = useSelector(({ albums }) => albums)
   const { fetchGenres } = useGenres()
   const { getAlbumsByGenre } = useAlbums()
+  const { hideAllModals } = useButtons()
   const navigate = useNavigate()
 
   // const { categories } = useSelector((state) => state.categories)
@@ -28,6 +30,7 @@ const Genres = ({ genreClick }) => {
               () => {
                 navigate('/albums')
                 getAlbumsByGenre({ genreId: id, genreName: name })
+                hideAllModals()
                 window.scrollTo(0,50)
               })
             }

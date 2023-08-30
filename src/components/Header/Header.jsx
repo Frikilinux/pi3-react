@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { GenreIcon, HeaderStyled } from './HeaderStd'
+import { GenreIcon, HeaderStyled, SideBarMenu } from './HeaderStd'
 import { useDispatch, useSelector } from 'react-redux'
-import UserLoggedOut from '../Navbar/User/UseLoggedOut'
+// import UserLoggedOut from '../Navbar/User/UseLoggedOut'
 import UserLoggedIn from '../Navbar/User/UserLoggedIn'
 import { toggleCart } from '../../redux/cart/cartSlice'
 
@@ -12,28 +12,35 @@ import { CartModal, ModalCartcontainer } from '../Cart/CartItemList/CartStd'
 import CartPrice from '../Cart/CartPrice/CartPrice'
 import CartButtons from '../Cart/CartButtons/CartButtons'
 import NavLinks from '../Navbar/Links/NavLinks'
-import { IconMenu } from '@tabler/icons-react'
+import { IconMenu, IconCross, IconCrossOff, IconX } from '@tabler/icons-react'
 import { useMediaPredicate } from 'react-media-hook'
 import Genres from '../Categories/Genres'
 import { MenuBarContainer } from '../MenuBar/MenuBarStd'
 import { useLocation } from 'react-router-dom'
+import { setIsHiddenMenu } from '../../redux/categories/categoriesSlice'
+import UserModal from '../Navbar/User/UserModal/UserModal'
 
 export const Header = () => {
-  const [open, setOpen] = useState(false)
   const isCartHidden = useSelector(({ cart }) => cart.cartHidden)
+  const isMenuHidden = useSelector(({ categories }) => categories.isHiddenMenu)
   const { user } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const max576 = useMediaPredicate('(max-width: 576px)')
+  const max992 = useMediaPredicate('(max-width: 992px)')
   const location = useLocation()
   return (
     <>
       <HeaderStyled>
         <SiteBrand />
-        {!max576 && <NavLinks />}
-        <GenreIcon>
-          <IconMenu />
-        </GenreIcon>
-        {user ? <UserLoggedIn /> : <UserLoggedOut />}
+        {!max992 && <NavLinks />}
+        {max992 && (
+          <GenreIcon onClick={() => dispatch(setIsHiddenMenu(!isMenuHidden))}>
+            {isMenuHidden ? <IconMenu /> : <IconX />}
+          </GenreIcon>
+        )}
+        {/* {user ? <UserLoggedIn /> : <UserLoggedOut />} */}
+        <UserLoggedIn />
+        <UserModal />
 
         <AnimatePresence>
           {!isCartHidden && (
@@ -54,15 +61,19 @@ export const Header = () => {
           )}
         </AnimatePresence>
       </HeaderStyled>
-      {<NavLinks />}
-      {(location.pathname === '/albums' && !max576) && (
-        <MenuBarContainer
-          initial={{ translateY: '0' }}
-          animate={{ translateY: '0' }}
-          exit={{ translateY: '-500px' }}
-        >
+      {location.pathname === '/albums' && !max992 && (
+        <MenuBarContainer>
           <Genres />
         </MenuBarContainer>
+      )}
+
+      {max992 && (
+        <SideBarMenu open={!isMenuHidden}>
+          <NavLinks />
+          {/* {user ? <UserLoggedIn /> : <UserLoggedOut />} */}
+          <h2>Genres</h2>
+          <Genres />
+        </SideBarMenu>
       )}
     </>
   )

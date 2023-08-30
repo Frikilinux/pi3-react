@@ -8,11 +8,11 @@ const SiteLinksContainer = styled.nav`
   width: 100%;
   height: 30px;
   background-color: var(--dark);
-  @media (max-width: 576px) {
+  /* @media (max-width: 576px) {
     z-index: 8;
     top: 50px;
     position: fixed;
-  }
+  } */
 `
 
 const LinksList = styled.ul`
@@ -33,9 +33,9 @@ const SiteLinks = styled.li`
   border-radius: 5px;
   /* background-color: var(--green); */
 
-  @media (max-width: 576px) {
+  /* @media (max-width: 576px) {
     font-size: 0.8rem;
-  }
+  } */
 `
 const NavlinkStyled = styled(NavLink)`
   padding: 2px 5px;

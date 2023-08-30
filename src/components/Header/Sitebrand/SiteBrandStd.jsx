@@ -7,6 +7,9 @@ export const Logo = styled.div`
   &:hover {
     cursor: pointer;
   }
+  @media (max-width: 992px) {
+    order: 2;
+  }
 `
 
 export const BrandName = styled.div`
@@ -16,7 +19,7 @@ export const BrandName = styled.div`
   &:hover {
     cursor: pointer;
   }
-  @media (max-width: 576px) {
+  @media (max-width: 992px) {
     display: none;
   }
 `

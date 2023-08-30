@@ -7,8 +7,9 @@ export const GenresContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  @media (max-width: 576px) {
-    width: 100%;
+  @media (max-width: 992px) {
+    flex-direction: column;
+    align-items: flex-start;
   }
 `
 
@@ -30,8 +31,8 @@ export const Genre = styled.div`
     padding: 2px 10px;
   }
 
-  @media (max-width: 576px) {
-    font-size: 0.8rem;
+  @media (max-width: 992px) {
+    font-size: 1.5rem;
   }
 `
 

@@ -139,16 +139,6 @@
       "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/1abb6810098d4015bdc860c91bcfd2b6/500x500-000000-80-0-0.jpg",
       "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/1abb6810098d4015bdc860c91bcfd2b6/1000x1000-000000-80-0-0.jpg",
       "type": "genre"
-    },
-    {
-      "id": 71,
-      "name": "Cumbia",
-      "picture": "https://api.deezer.com/genre/71/image",
-      "picture_small": "https://e-cdns-images.dzcdn.net/images/misc/ffd77feba2c8fda79b18183861e4e69f/56x56-000000-80-0-0.jpg",
-      "picture_medium": "https://e-cdns-images.dzcdn.net/images/misc/ffd77feba2c8fda79b18183861e4e69f/250x250-000000-80-0-0.jpg",
-      "picture_big": "https://e-cdns-images.dzcdn.net/images/misc/ffd77feba2c8fda79b18183861e4e69f/500x500-000000-80-0-0.jpg",
-      "picture_xl": "https://e-cdns-images.dzcdn.net/images/misc/ffd77feba2c8fda79b18183861e4e69f/1000x1000-000000-80-0-0.jpg",
-      "type": "genre"
     }
   ]
 }

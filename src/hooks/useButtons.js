@@ -7,6 +7,7 @@ import {
   setImagePreview,
 } from '../redux/previewPlayer/previewPlayerSlice'
 import { setUserError } from '../redux/user/userSlice'
+import { setIsHiddenMenu } from '../redux/categories/categoriesSlice'
 
 const useButtons = () => {
   const dispatch = useDispatch()
@@ -32,6 +33,7 @@ const useButtons = () => {
     dispatch(hideCart(true))
     dispatch(setUserError(false))
     dispatch(setImagePreview(false))
+    dispatch(setIsHiddenMenu(true))
   }
 
   return { handleAddToCart, handleArtistPage, hideAllModals }

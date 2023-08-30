@@ -23,13 +23,18 @@ function App() {
   const { cartHidden } = useSelector(({ cart }) => cart)
   const { userError } = useSelector(({ user }) => user)
   const { ordersError } = useSelector(({ orders }) => orders)
+  const { isHiddenMenu } = useSelector(({ categories }) => categories)
 
   useEffect(() => {
     document.body.style.overflow =
-      !cartHidden || !albumPreviewHidden || imagePreview || userError
+      !cartHidden ||
+      !albumPreviewHidden ||
+      imagePreview ||
+      userError ||
+      !isHiddenMenu
         ? 'hidden'
         : 'unset'
-  }, [cartHidden, albumPreviewHidden, userError, imagePreview])
+  }, [cartHidden, albumPreviewHidden, userError, imagePreview, isHiddenMenu])
 
   return (
     <Layout>
@@ -37,7 +42,8 @@ function App() {
         !cartHidden ||
         userError ||
         ordersError ||
-        imagePreview) && <Overlay />}
+        imagePreview ||
+        !isHiddenMenu) && <Overlay />}
       <AnimatePresence>
         {!albumPreviewHidden && <PreviewPlayer {...albumPrviewData} />}
       </AnimatePresence>
@@ -57,9 +63,9 @@ function App() {
         pauseOnHover
         theme='dark'
       />
-        <Header />
-        <Routes />
-        <Footer />
+      <Header />
+      <Routes />
+      <Footer />
       <ScrollToTop />
     </Layout>
   )

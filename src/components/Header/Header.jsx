@@ -40,7 +40,7 @@ export const Header = () => {
         )}
         {/* {user ? <UserLoggedIn /> : <UserLoggedOut />} */}
         <UserLoggedIn />
-        <UserModal />
+        {user && <UserModal />}
 
         <AnimatePresence>
           {!isCartHidden && (

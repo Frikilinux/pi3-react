@@ -15,6 +15,7 @@ import Footer from './components/Footer/Footer'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import Overlay from './components/Overlay/Overlay'
 import ImgView from './components/ImgView/ImgView'
+import { useMediaPredicate } from 'react-media-hook'
 
 function App() {
   const { albumPreviewHidden, imagePreview } = useSelector(
@@ -24,6 +25,7 @@ function App() {
   const { userError } = useSelector(({ user }) => user)
   const { ordersError } = useSelector(({ orders }) => orders)
   const { isHiddenMenu } = useSelector(({ categories }) => categories)
+  const max576 = useMediaPredicate('(max-width: 576px)')
 
   useEffect(() => {
     document.body.style.overflow =
@@ -43,7 +45,8 @@ function App() {
         userError ||
         ordersError ||
         imagePreview ||
-        !isHiddenMenu) && <Overlay />}
+        !isHiddenMenu) &&
+        !max576 && <Overlay />}
       <AnimatePresence>
         {!albumPreviewHidden && <PreviewPlayer {...albumPrviewData} />}
       </AnimatePresence>

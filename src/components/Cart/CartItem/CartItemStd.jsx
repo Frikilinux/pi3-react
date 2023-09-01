@@ -50,14 +50,14 @@ export const AlbumTitle = styled.div`
   overflow: hidden;
   white-space: nowrap;
 
-  font-family: 'Yanone Kaffeesatz';
+  font-family: 'Barlow Condensed';
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 `
 
 export const AlbumArtist = styled(AlbumTitle)`
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.1rem;
 `
 
 export const AlbumData = styled.div`

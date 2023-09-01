@@ -12,7 +12,7 @@ const UserModal = () => {
     <UserModalConatiner>
       <h2>{user?.nombre}</h2>
       <NavLink to={'/summary'}>Orders Summary</NavLink>
-      <NavLink onClick={() => dispatch(logOut())} to={'/summary'}>
+      <NavLink onClick={() => dispatch(logOut())} to={'/'}>
         Logout
       </NavLink>
     </UserModalConatiner>

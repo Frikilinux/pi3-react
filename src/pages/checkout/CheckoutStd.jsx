@@ -24,7 +24,6 @@ export const CheckoutInfo = styled.div`
   height: 80%;
   @media (max-width: 576px) {
     width: 100%;
-
   }
 `
 
@@ -58,6 +57,9 @@ export const CheckoutCartContainer = styled.div`
   /* min-height: 400px; */
   height: 75vh;
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   @media (max-width: 576px) {
     width: 100%;
   }

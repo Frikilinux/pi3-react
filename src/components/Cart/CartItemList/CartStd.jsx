@@ -22,6 +22,7 @@ export const CartModal = styled(motion.div)`
 export const ModalCartcontainer = styled.div`
   width: 100%;
   height: 80%;
+
 `
 
 export const CartContainer = styled.div`
@@ -44,4 +45,7 @@ export const ItemsContainer = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 5px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `

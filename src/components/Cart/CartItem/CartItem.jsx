@@ -22,6 +22,7 @@ import Icons from '../../../constants/icons'
 import { toast } from 'react-toastify'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
 import { AnimatePresence } from 'framer-motion'
+import { IconTrash } from '@tabler/icons-react'
 
 const { Trash } = Icons
 
@@ -36,16 +37,7 @@ export const CartItem = (props) => {
     setIsHovering(false)
   }
 
-  const {
-    title,
-    cover,
-    artist,
-    duration,
-    label,
-    price,
-    id,
-    qty,
-  } = props
+  const { title, cover, artist, duration, label, price, id, qty } = props
   const dispatch = useDispatch()
 
   return (
@@ -68,14 +60,15 @@ export const CartItem = (props) => {
               {/* <div>{qty}</div> */}
               <div onClick={() => dispatch(removeFromCart(id))}>-</div>
             </QtyBtns>
-            <ButtonPrimary
+            <IconTrash style={{cursor: 'pointer'}}
               onClick={() => {
                 dispatch(removeAlbum(id))
                 toast.info(`Album removed from cart`)
               }}
-            >
+            />
+            {/* <ButtonPrimary>
               <Trash />
-            </ButtonPrimary>
+            </ButtonPrimary> */}
           </QtyContainer>
         )}
       </AnimatePresence>

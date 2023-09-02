@@ -4,7 +4,7 @@ import { cleanCart, hideCart } from '../../../redux/cart/cartSlice'
 import { CartButtonsContainer } from './CartButtonsStd'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 
 const CartButtons = () => {
   const dispatch = useDispatch()
@@ -23,7 +23,7 @@ const CartButtons = () => {
       <ButtonPrimary
         onClick={() => {
           dispatch(cleanCart())
-          toast.info('Cart cleaned')
+          toast.success('Cart cleaned')
         }}
       >
         Clean Cart

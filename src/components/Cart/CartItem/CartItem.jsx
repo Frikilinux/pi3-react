@@ -19,7 +19,7 @@ import {
   removeFromCart,
 } from '../../../redux/cart/cartSlice'
 import Icons from '../../../constants/icons'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
 import { AnimatePresence } from 'framer-motion'
 import { IconTrash } from '@tabler/icons-react'
@@ -63,7 +63,7 @@ export const CartItem = (props) => {
             <IconTrash style={{cursor: 'pointer'}}
               onClick={() => {
                 dispatch(removeAlbum(id))
-                toast.info(`Album removed from cart`)
+                toast.error(`Album removed from cart`)
               }}
             />
             {/* <ButtonPrimary>

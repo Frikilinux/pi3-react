@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { GenreIcon, HeaderStyled, SideBarMenu } from './HeaderStd'
 import { useDispatch, useSelector } from 'react-redux'
 // import UserLoggedOut from '../Navbar/User/UseLoggedOut'
-import UserLoggedIn from '../Navbar/User/UserLoggedIn'
-import { toggleCart } from '../../redux/cart/cartSlice'
+// import UserLoggedIn from '../Navbar/User/UserLoggedIn'
+// import { toggleCart } from '../../redux/cart/cartSlice'
 
 import { AnimatePresence } from 'framer-motion'
 import SiteBrand from './Sitebrand/SiteBrand'
@@ -12,13 +12,14 @@ import { CartModal, ModalCartcontainer } from '../Cart/CartItemList/CartStd'
 import CartPrice from '../Cart/CartPrice/CartPrice'
 import CartButtons from '../Cart/CartButtons/CartButtons'
 import NavLinks from '../Navbar/Links/NavLinks'
-import { IconMenu, IconCross, IconCrossOff, IconX } from '@tabler/icons-react'
+import { IconMenu, IconX } from '@tabler/icons-react'
 import { useMediaPredicate } from 'react-media-hook'
 import Genres from '../Categories/Genres'
 import { MenuBarContainer } from '../MenuBar/MenuBarStd'
 import { useLocation } from 'react-router-dom'
 import { setIsHiddenMenu } from '../../redux/categories/categoriesSlice'
 import UserModal from '../Navbar/User/UserModal/UserModal'
+import User from '../Navbar/User/User'
 
 export const Header = () => {
   const isCartHidden = useSelector(({ cart }) => cart.cartHidden)
@@ -39,8 +40,7 @@ export const Header = () => {
           </GenreIcon>
         )}
         {/* {user ? <UserLoggedIn /> : <UserLoggedOut />} */}
-        <UserLoggedIn />
-        {user && <UserModal />}
+        <User />
 
         <AnimatePresence>
           {!isCartHidden && (

@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../../redux/cart/cartSlice'
 import { useAlbums } from '../../../hooks/useAlbums'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 import useButtons from '../../../hooks/useButtons'
 
 const AlbumCard = (props) => {

@@ -5,17 +5,13 @@ import Layout from './components/Layout/Layout'
 import { AnimatePresence } from 'framer-motion'
 import { useSelector } from 'react-redux'
 import PreviewPlayer from './components/PreviewPlayer/PreviewPlayer'
-
-import albumPrviewData from './data/albumProtoTest.json'
-
-import { Slide } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import NotifyContainerStd from './styles/NotifyStd'
+import albumPreviewData from './data/albumProtoTest.json'
 import Footer from './components/Footer/Footer'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import Overlay from './components/Overlay/Overlay'
 import ImgView from './components/ImgView/ImgView'
 import { useMediaPredicate } from 'react-media-hook'
+import { Toaster } from 'sonner'
 
 function App() {
   const { albumPreviewHidden, imagePreview } = useSelector(
@@ -40,6 +36,7 @@ function App() {
 
   return (
     <Layout>
+      <Toaster richColors position='top-right' theme='dark' offset='60px' />
       {(!albumPreviewHidden ||
         !cartHidden ||
         userError ||
@@ -48,24 +45,9 @@ function App() {
         !isHiddenMenu) &&
         !max576 && <Overlay />}
       <AnimatePresence>
-        {!albumPreviewHidden && <PreviewPlayer {...albumPrviewData} />}
+        {!albumPreviewHidden && <PreviewPlayer {...albumPreviewData} />}
       </AnimatePresence>
       <AnimatePresence>{imagePreview && <ImgView />}</AnimatePresence>
-      <NotifyContainerStd
-        position='top-left'
-        transition={Slide}
-        autoClose={2000}
-        hideProgressBar
-        limit={3}
-        closeButton={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='dark'
-      />
       <Header />
       <Routes />
       <Footer />

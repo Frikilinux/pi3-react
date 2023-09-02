@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, hideCart } from '../redux/cart/cartSlice'
-import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import {
   hideAlbumPreview,
@@ -8,6 +7,7 @@ import {
 } from '../redux/previewPlayer/previewPlayerSlice'
 import { setUserError } from '../redux/user/userSlice'
 import { setIsHiddenMenu } from '../redux/categories/categoriesSlice'
+import { toast } from "sonner";
 
 const useButtons = () => {
   const dispatch = useDispatch()
@@ -16,10 +16,12 @@ const useButtons = () => {
 
   const handleAddToCart = (props) => {
     if (!user) {
-      toast.warning('Plese login to start buying', { autoClose: 4000 })
+      // toast.warning('Plese login to start buying', { autoClose: 4000 })
+      toast.error('Plese login to start buying')
     } else {
       dispatch(addToCart(props))
-      toast.success(`Album added`, { autoClose: 1000 })
+     toast.success('Album added')
+      // toast.success(`Album added`, { autoClose: 1000 })
     }
   }
 

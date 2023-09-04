@@ -9,10 +9,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logOut } from '../../../../redux/user/userSlice'
 import { AnimatePresence } from 'framer-motion'
 import { IconLogout } from '@tabler/icons-react'
+import useButtons from '../../../../hooks/useButtons'
 
 const UserModal = () => {
   const dispatch = useDispatch()
   const { user } = useSelector(({ user }) => user)
+  const { hideAllModals } = useButtons()
 
   return (
     <UserModalConatiner
@@ -24,7 +26,7 @@ const UserModal = () => {
     >
       <h2>{user?.nombre}</h2>
       <UserModalData>
-        <NavLink to={'/summary'}>Orders Summary</NavLink>
+        <NavLink  onClick={() => hideAllModals()} to={'/summary'}>Orders Summary</NavLink>
         <UserModalLogoutContainer>
           <NavLink onClick={() => dispatch(logOut())} to={'/'}>
             Logout

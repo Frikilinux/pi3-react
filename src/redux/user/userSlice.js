@@ -34,9 +34,9 @@ const userSlice = createSlice({
         userError: action.payload,
       }
     },
-    setIsModalHidden: (state) => ({
+    setIsModalHidden: (state, action) => ({
       ...state,
-      isModalHidden: !state.isModalHidden,
+      isModalHidden: action.payload,
     }),
   },
 })

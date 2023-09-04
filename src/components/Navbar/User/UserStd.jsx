@@ -2,12 +2,16 @@ import { motion } from 'framer-motion'
 import { styled } from 'styled-components'
 
 export const UserContainer = styled(motion.div)`
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
   display: flex;
   align-items: center;
   padding: 0 10px;
   height: 70%;
   order: 3;
   gap: 10px;
+   margin-left: auto;
 `
 export const UserNameData = styled.div`
   color: var(--blue);
@@ -19,6 +23,9 @@ export const UserNameData = styled.div`
   height: 25px;
   background-color: var(--grey);
   border-radius: 50px;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const UserButtonsContainer = styled.div`

@@ -9,6 +9,7 @@ import { IconShoppingCart } from '@tabler/icons-react'
 import useButtons from '../../../hooks/useButtons'
 import UserModal from './UserModal/UserModal'
 import { setIsModalHidden } from '../../../redux/user/userSlice'
+import { AnimatePresence } from 'framer-motion'
 
 const User = () => {
   const [showModal, setShowModal] = useState(false)
@@ -24,17 +25,18 @@ const User = () => {
 
   return (
     <>
-      {user && isModalHidden && <UserModal />}
+      <AnimatePresence>
+        {(user && !isModalHidden) && <UserModal />}
+      </AnimatePresence>
+
       {user ? (
-        <UserContainer
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.2 }}
-          key={'user-data'}
-        >
-          <UserNameData onClick={() => dispatch(setIsModalHidden())}>
+        <UserContainer>
+          <UserNameData onClick={() => {
+            isModalHidden && hideAllModals()
+            dispatch(setIsModalHidden(!isModalHidden))}}>
             {firstName[0].toUpperCase()}
           </UserNameData>
+
           <UserButtonsContainer>
             {pathname !== '/checkout' && (
               <IconShoppingCart

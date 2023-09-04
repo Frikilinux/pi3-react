@@ -5,18 +5,20 @@ export const HeaderStyled = styled.header`
   z-index: 99;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   position: fixed;
   background-color: var(--dark);
   width: 100%;
   height: 50px;
   @media (max-width: 576px) {
-    justify-content: space-between;
     height: 50px;
   }
 `
 
 export const GenreIcon = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  margin-right: auto;
   &:hover {
     cursor: pointer;
   }

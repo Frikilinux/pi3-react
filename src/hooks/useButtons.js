@@ -5,9 +5,9 @@ import {
   hideAlbumPreview,
   setImagePreview,
 } from '../redux/previewPlayer/previewPlayerSlice'
-import { setUserError } from '../redux/user/userSlice'
+import { setIsModalHidden, setUserError } from '../redux/user/userSlice'
 import { setIsHiddenMenu } from '../redux/categories/categoriesSlice'
-import { toast } from "sonner";
+import { toast } from 'sonner'
 
 const useButtons = () => {
   const dispatch = useDispatch()
@@ -20,7 +20,7 @@ const useButtons = () => {
       toast.error('Plese login to start buying')
     } else {
       dispatch(addToCart(props))
-     toast.success('Album added')
+      toast.success('Album added')
       // toast.success(`Album added`, { autoClose: 1000 })
     }
   }
@@ -36,6 +36,7 @@ const useButtons = () => {
     dispatch(setUserError(false))
     dispatch(setImagePreview(false))
     dispatch(setIsHiddenMenu(true))
+    dispatch(setIsModalHidden(true))
   }
 
   return { handleAddToCart, handleArtistPage, hideAllModals }

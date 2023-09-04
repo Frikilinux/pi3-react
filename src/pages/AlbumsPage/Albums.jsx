@@ -31,9 +31,7 @@ const AlbumsPage = () => {
         <AlbumsTitleType>
           {search
             ? `Results for '${search}'`
-            : `Albums of ${currentGenre.genreName ?? ''}  ${
-                currentGenre.genreId?.toString() === '0' ? 'genres' : 'genre'
-              }`}
+            : `${currentGenre.genreName ?? ''}  Albums`}
         </AlbumsTitleType>
         <AlbumsSection />
       </SectionWrapper>

@@ -20,22 +20,30 @@ import { useLocation } from 'react-router-dom'
 import { setIsHiddenMenu } from '../../redux/categories/categoriesSlice'
 import UserModal from '../Navbar/User/UserModal/UserModal'
 import User from '../Navbar/User/User'
+import useButtons from '../../hooks/useButtons'
 
 export const Header = () => {
   const isCartHidden = useSelector(({ cart }) => cart.cartHidden)
   const isMenuHidden = useSelector(({ categories }) => categories.isHiddenMenu)
-  const { user } = useSelector((state) => state.user)
+  const { user, isModalHidden } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const max576 = useMediaPredicate('(max-width: 576px)')
   const max992 = useMediaPredicate('(max-width: 992px)')
   const location = useLocation()
+  const { hideAllModals } = useButtons()
+
   return (
     <>
       <HeaderStyled>
         <SiteBrand />
         {!max992 && <NavLinks />}
         {max992 && (
-          <GenreIcon onClick={() => dispatch(setIsHiddenMenu(!isMenuHidden))}>
+          <GenreIcon
+            onClick={() => {
+              isMenuHidden && hideAllModals()
+              dispatch(setIsHiddenMenu(!isMenuHidden))
+            }}
+          >
             {isMenuHidden ? <IconMenu /> : <IconX />}
           </GenreIcon>
         )}

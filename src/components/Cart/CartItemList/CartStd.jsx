@@ -10,6 +10,7 @@ export const CartModal = styled(motion.div)`
   z-index: 99;
   backdrop-filter: blur(5px);
   position: fixed;
+  top: 50px;
   height: calc(100vh - 50px);
   width: 100%;
   max-width: 500px;

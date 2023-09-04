@@ -36,7 +36,7 @@ export const SideBarMenu = styled.div`
   position: fixed;
   width: 60%;
   max-width: 350px;
-  height: 100vh;
+  height: calc(100vh - 50px) ;
   background-color: var(--dark);
   z-index: 10;
   @media (max-width: 576px) {

@@ -8,8 +8,7 @@ export const UserModalConatiner = styled(motion.div)`
   position: fixed;
   top: 50px;
   right: 0;
-  width: 40%;
-  max-width: 300px;
+width: 350px;
   height: 150px;
   background-color: var(--dark);
   border-radius: 0 0 0 10px;
@@ -31,6 +30,9 @@ export const UserModalData = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  & :hover {
+    color: var(--red);
+  }
 `
 export const UserModalLogoutContainer = styled.div`
   align-self: center;

@@ -1,8 +1,10 @@
 import React from 'react'
 import {
-  ArrtistChartposition,
+  ArtisChartArtistName,
   ArtistCardContainer,
   ArtistCardImg,
+  ArtistChartArtistStatus,
+  ArtistChartposition,
 } from './ArtistCardStd'
 import { useNavigate } from 'react-router-dom'
 
@@ -13,10 +15,10 @@ const ArtistCard = (props) => {
   return (
     <ArtistCardContainer onClick={() => navigate(`/artist/${id}`)}>
       <ArtistCardImg src={pictureMedium} />
-      {/* <div>{name}</div> */}
-      <ArrtistChartposition>
-        {position} <p>{name}</p>{' '}
-      </ArrtistChartposition>
+      <ArtistChartArtistStatus>
+        <ArtistChartposition>{position}</ArtistChartposition>
+        <ArtisChartArtistName>{name}</ArtisChartArtistName>
+      </ArtistChartArtistStatus>
     </ArtistCardContainer>
   )
 }

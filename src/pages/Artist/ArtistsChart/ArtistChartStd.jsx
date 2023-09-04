@@ -1,11 +1,16 @@
 import { styled } from 'styled-components'
 
-const ArtisthartContainer = styled.div`
+const ArtistChartContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
   max-width: 1300px;
   min-height: calc(100vh - 130px);
+  gap: 20px;
+  @media (max-width: 576px) {
+    width: 100%;
+    gap: 15px;
+  }
 `
 
 const ArtistChartGenreContainer = styled.div`
@@ -15,15 +20,26 @@ const ArtistChartGenreContainer = styled.div`
 `
 
 const ChartContainer = styled.div`
-  box-shadow:
-    rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   border-radius: 20px;
-  padding: 30px 0;
+  padding: 10px;
   display: flex;
-  gap: 5px;
+  gap: 50px;
   width: 100%;
   overflow: scroll;
+  &::-webkit-scrollbar {
+    height: 10px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--blue);
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar:vertical {
+    display: none;
+  }
+  @media (max-width: 576px) {
+    gap: 30px;
+  }
 `
 
-export { ArtisthartContainer, ArtistChartGenreContainer, ChartContainer }
+export { ArtistChartContainer, ArtistChartGenreContainer, ChartContainer }

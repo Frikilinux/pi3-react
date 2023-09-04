@@ -4,8 +4,8 @@ import Main from '../../../components/UI/MainWrapper/MainWrapper'
 import SearchArtist from '../../../components/SearchArtist/SearchArtist'
 import { ArtistSectionTitle } from '../ArtistStd'
 import {
+  ArtistChartContainer,
   ArtistChartGenreContainer,
-  ArtisthartContainer,
   ChartContainer,
 } from './ArtistChartStd'
 import { useArtist } from '../../../hooks/useArtist'
@@ -46,9 +46,9 @@ const ArtistChart = () => {
         </SectionWrapper>
 
         <SectionWrapper bg='var(--lightDark)' id='artists-chart'>
-          <ArtisthartContainer>
+          <ArtistChartContainer>
             <ArtistChartGenreContainer>
-              <ArtistSectionTitle>Top 5 all artist</ArtistSectionTitle>
+              <ArtistSectionTitle>Top 5 all Artist</ArtistSectionTitle>
               <ChartContainer>
                 {charts.generalChart?.map((artist) => (
                   <ArtistCard key={artist.id} {...artist} />
@@ -56,7 +56,7 @@ const ArtistChart = () => {
               </ChartContainer>
             </ArtistChartGenreContainer>
             <ArtistChartGenreContainer>
-              <ArtistSectionTitle>Top 5 Pop artist</ArtistSectionTitle>
+              <ArtistSectionTitle>Top 5 Pop Artist</ArtistSectionTitle>
               <ChartContainer>
                 {charts.popChart?.map((artist) => (
                   <ArtistCard key={artist.id} {...artist} />
@@ -87,7 +87,7 @@ const ArtistChart = () => {
                 ))}
               </ChartContainer>
             </ArtistChartGenreContainer>
-          </ArtisthartContainer>
+          </ArtistChartContainer>
         </SectionWrapper>
       </Main>
   )

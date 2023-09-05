@@ -7,7 +7,6 @@ export const UserContainer = styled(motion.div)`
   justify-content: flex-end;
   display: flex;
   align-items: center;
-  padding: 0 10px;
   height: 70%;
   order: 3;
   gap: 10px;

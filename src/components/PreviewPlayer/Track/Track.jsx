@@ -51,8 +51,6 @@ const Track = ({
     }
   }, [currentTrack, id])
 
-  // console.log('IS PLAYING???', songElement.current)
-
   return (
     <TrackContainer
       id={id}
@@ -61,12 +59,10 @@ const Track = ({
       onMouseOut={() => setMouseOver(false)}
     >
       <TrackNumber onClick={() => handleClick(id)}>
+
         {mouseHover || (currentTrack === id && (trackPlaying || paused)) ? (
-          <Play
-            
-            size='2em'
-            color='var(--grey)'
-          />
+          
+          <Play size='2em' color='var(--grey)' />
         ) : (
           <div>{number}</div>
         )}
@@ -78,8 +74,6 @@ const Track = ({
         >
           <p>{title}</p>
           <NaTrack>{!readable && 'N/A'}</NaTrack>
-          
-          
         </TrackTitle>
         <TrackArtist
           onClick={() => {

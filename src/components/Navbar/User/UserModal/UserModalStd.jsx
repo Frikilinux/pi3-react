@@ -23,6 +23,7 @@ width: 350px;
   @media (max-width: 576px) {
     max-width: unset;
     width: 100%;
+    border-radius: 0;
   }
 `
 export const UserModalData = styled.div`

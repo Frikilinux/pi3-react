@@ -34,7 +34,11 @@ import { useNavigate } from 'react-router-dom'
 import useButtons from '../../hooks/useButtons'
 import Icons from '../../constants/icons'
 import { formatQuantityNumber } from '../../utils/formatNumbers'
-import { IconHeartFilled, IconArrowLeft, IconPointFilled } from '@tabler/icons-react'
+import {
+  IconHeartFilled,
+  IconArrowLeft,
+  IconPointFilled,
+} from '@tabler/icons-react'
 
 const PreviewPlayer = (props) => {
   const { getAlbumsByGenre } = useAlbums()
@@ -64,7 +68,6 @@ const PreviewPlayer = (props) => {
   const { day, month, year } = formatedDate(release)
   const { user } = useSelector(({ user }) => user)
   const { handleAddToCart, handleArtistPage } = useButtons()
-  const { BackArrow } = Icons
 
   return (
     <PreviewContainer
@@ -81,7 +84,6 @@ const PreviewPlayer = (props) => {
       <ExtraInfoContainer>
         <ButtonPrimary onClick={() => distpatch(hideAlbumPreview(true))}>
           <IconArrowLeft />
-          {/* <BackArrow size='1.3em' /> */}
         </ButtonPrimary>
 
         <ExtraInfo>
@@ -131,8 +133,9 @@ const PreviewPlayer = (props) => {
             </InfoContrib>
           </InfoTitleContainer>
           <TracksInfo>
-            {nbTracks} {nbTracks > 1 ? 'songs' : 'song'} <IconPointFilled size={10}/>{' '}
-            {h > 0 ? `${h} hr ` : null} {`${m} min`} <IconPointFilled size={10}/>{' '}
+            {nbTracks} {nbTracks > 1 ? 'songs' : 'song'}{' '}
+            <IconPointFilled size={10} /> {h > 0 ? `${h} hr ` : null}{' '}
+            {`${m} min`} <IconPointFilled size={10} />{' '}
             {day + '/' + month + '/' + year}{' '}
           </TracksInfo>
         </AlbumInfoContainer>

@@ -6,11 +6,11 @@ export const PreviewContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  top: 6vh;
+  top: 55px;
   position: fixed;
-  width: 90%;
   max-width: 875px;
-  height: 88vh;
+  width: 90vh;
+  height: 90vh;
   background: #fff url(${({ $imgsrc }) => `${$imgsrc}`}) center/cover no-repeat;
   background-color: #201e20;
   z-index: 10;
@@ -28,11 +28,11 @@ export const PreviewContainer = styled(motion.div)`
     backdrop-filter: blur(3px);
     background-color: #201e20c7;
     border-radius: 15px;
-    @media (max-width: 576px) {
+    @media (max-width: 992px) {
       border-radius: 0;
     }
   }
-  @media (max-width: 576px) {
+  @media (max-width: 992px) {
     padding: 10px;
     border-radius: 0;
     top: 50px;
@@ -42,7 +42,7 @@ export const PreviewContainer = styled(motion.div)`
 `
 
 export const AlbumHeaders = styled.div`
-  width: 97%;
+  width: 96%;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -9,6 +9,7 @@ export const GenresContainer = styled.div`
   align-items: center;
   @media (max-width: 992px) {
     flex-direction: column;
+    gap: 3px;
     align-items: flex-start;
   }
 `
@@ -26,12 +27,14 @@ export const Genre = styled.div`
   text-transform: capitalize;
   cursor: pointer;
   & p {
-    background-color: ${({selected}) => selected && 'var(--green)'};
+    color: ${({ selected }) => selected && 'var(--dark)'};
+    background-color: ${({ selected }) => selected && 'var(--green)'};
     border-radius: 3px;
     padding: 2px 10px;
   }
-
+  
   @media (max-width: 992px) {
+    font-weight: 500;
     font-size: 1.5rem;
   }
 `

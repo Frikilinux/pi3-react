@@ -34,7 +34,8 @@ const ArtistWithId = () => {
   return (
     <Main>
       <SectionWrapper
-        img='https://cloud.systec.ar/s/MzgkA9ZKQYmKXbN/download'
+        bg='#79778d'
+        // img='https://cloud.systec.ar/s/MzgkA9ZKQYmKXbN/download'
         id='artist-info'
       >
         <ArtistContainer>

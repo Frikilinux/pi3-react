@@ -36,16 +36,19 @@ export const ArtistInfo = styled.div`
 export const ArtistInfoName = styled.div`
   font-size: 3rem;
   font-weight: 800;
-  color: var(--grey);
+  color: #15072b;
   @media (max-width: 992px) {
     text-align: center;
     font-size: 2rem;
   }
 `
 export const ArtistFans = styled.div`
-  color: var(--grey);
-  font-size: 0.9rem;
+  color: var(--dark);
+  font-size: 1.2rem;
   font-weight: 500;
+  @media (max-width: 992px) {
+    font-size: 0.9rem;
+  }
 `
 
 export const ArtistImg = styled.img`
@@ -53,6 +56,9 @@ export const ArtistImg = styled.img`
   width: 250px;
   height: 250px;
   border-radius: 10px;
+  box-shadow:
+    0 26px 58px 0 rgba(0, 0, 0, 0.22),
+    0 5px 14px 0 rgba(0, 0, 0, 0.18);
   @media (max-width: 576px) {
     width: 200px;
     height: 200px;

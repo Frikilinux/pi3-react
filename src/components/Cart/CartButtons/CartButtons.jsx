@@ -5,6 +5,10 @@ import { CartButtonsContainer } from './CartButtonsStd'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
+import {
+  IconShoppingCartCancel,
+  IconShoppingCartCheck,
+} from '@tabler/icons-react'
 
 const CartButtons = () => {
   const dispatch = useDispatch()
@@ -18,7 +22,8 @@ const CartButtons = () => {
           dispatch(hideCart())
         }}
       >
-        Checkout
+        <IconShoppingCartCheck size={20} />
+        <p style={{ marginLeft: '5px' }}>Checkout</p>
       </ButtonPrimary>
       <ButtonPrimary
         onClick={() => {
@@ -26,7 +31,8 @@ const CartButtons = () => {
           toast.success('Cart cleaned')
         }}
       >
-        Clean Cart
+        <IconShoppingCartCancel size={20} />
+        <p style={{ marginLeft: '5px' }}>Clean Cart</p>
       </ButtonPrimary>
     </CartButtonsContainer>
   )

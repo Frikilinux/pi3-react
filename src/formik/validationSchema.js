@@ -20,7 +20,7 @@ export const registerValidationSchema = yup.object({
   password: yup
     .string()
     .min(8, 'At least 8 characters or more')
-    .matches(passwordRegex, 'Allowed 0-9, a-z, A-Z, !@#$%^&*')
+    .matches(passwordRegex, 'Should contain 0-9, a-z, A-Z, !@#$%^&*')
     .required('Password is required'),
   name: yup.string().trim().required('Name is required'),
 })

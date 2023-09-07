@@ -22,4 +22,12 @@ export const OrdersContainer = styled.div`
   gap: 40px;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  & div {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--red);
+    padding: 100px;
+    font-weight: 700;
+  }
 `

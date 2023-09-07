@@ -12,7 +12,6 @@ import Spinner from '../../components/Spinner/Spinner'
 import Icons from '../../constants/icons'
 import SummaryOrder from '../../components/SummaryOrder/SummaryOrder'
 import { ErrorModal } from '../../components/ErrorModal/ErrorModal'
-import { setUserError } from '../../redux/user/userSlice'
 import { resetError } from '../../redux/orders/ordersSlice'
 
 const Summary = () => {
@@ -43,7 +42,10 @@ const Summary = () => {
               <SpinnerIcon size='5em' />
             </Spinner>
           ) : (
-            <OrdersContainer>
+            <OrdersContainer className='orders'>
+              {!orders.length && (
+                <div>You don&apos;t have orders to show yet</div>
+              )}
               {orders?.map((order) => {
                 return <SummaryOrder {...order} key={order._id} />
               })}

@@ -3,16 +3,15 @@ import { styled } from 'styled-components'
 
 const SiteLinksContainer = styled.nav`
   display: flex;
+  flex: 1;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   height: 30px;
   background-color: var(--dark);
-  /* @media (max-width: 576px) {
-    z-index: 8;
-    top: 50px;
-    position: fixed;
-  } */
+  @media (max-width: 992px) {
+    flex: unset;
+  }
 `
 
 const LinksList = styled.ul`
@@ -21,26 +20,15 @@ const LinksList = styled.ul`
   justify-content: center;
   gap: 15px;
   width: 100%;
-  /* @media (max-width: 576px) {
-    flex-direction: column;
-    position: absolute;
-  } */
 `
 
 const SiteLinks = styled.li`
   padding: 2px 5px;
   font-size: 1rem;
   border-radius: 5px;
-  /* background-color: var(--green); */
-
-  /* @media (max-width: 576px) {
-    font-size: 0.8rem;
-  } */
 `
 const NavlinkStyled = styled(NavLink)`
   padding: 2px 5px;
-  /* border-radius: 5px; */
-  /* background-color: var(--blue); */
   &.active {
     font-weight: 500;
     color: var(--dark);

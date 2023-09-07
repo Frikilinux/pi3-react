@@ -27,14 +27,37 @@ export const UserNameData = styled.div`
   }
 `
 
-export const UserButtonsContainer = styled.div`
+export const UserCartIconContainer = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2px 5px;
+  background-color: var(--green);
+  border-radius: 2px;
+  color: var(--dark);
+  gap: 5px;
+  transition: 0.5 all ease;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--celeste);
+    transition: 0.5 all ease;
+  }
+  &:active {
+    /* transform: scale(0.95); */
+  }
+  @media (max-width: 576px) {
+  }
+`
+
+export const CartItemsBubble = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
-  @media (max-width: 576px) {
-    flex-direction: column;
-    gap: 5px;
-  }
+  text-align: center;
+  /* flex-wrap: nowrap; */
+  /* width: 20px; */
+  font-size: 18px;
+  font-weight: 600;
 `
 
 export const LoginBtnContainer = styled.div`

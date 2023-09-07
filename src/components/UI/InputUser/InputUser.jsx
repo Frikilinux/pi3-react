@@ -5,13 +5,12 @@ import {
   InputContainer,
   InputStd,
 } from './InputUserStd'
-import Icons from '../../../constants/icons'
 import { ErrorMessage, Field } from 'formik'
+import { IconEye, IconEyeClosed } from '@tabler/icons-react'
 
-const InputUser = ({ inputIcon, placeholder, type, name }) => {
+const InputUser = ({ placeholder, type, name, icon }) => {
   const [showPass, setShowPass] = useState(false)
-  const Icon = Icons[inputIcon]
-  const Eye = Icons[!showPass ? 'showPass' : 'hidePass']
+  const Eye = !showPass ? IconEye : IconEyeClosed
 
   return (
     <Field name={name}>
@@ -19,7 +18,7 @@ const InputUser = ({ inputIcon, placeholder, type, name }) => {
         return (
           <InputComponent>
             <InputContainer isError={errors[field.name] && touched[field.name]}>
-              <Icon size='30px' />
+              {icon}
               <InputStd
                 name={name}
                 placeholder={placeholder}
@@ -27,7 +26,11 @@ const InputUser = ({ inputIcon, placeholder, type, name }) => {
                 {...field}
               />
               {type === 'password' && (
-                <Eye size='30px' onClick={() => setShowPass(!showPass)} />
+                <Eye
+                  style={{ cursor: 'pointer' }}
+                  size='30px'
+                  onClick={() => setShowPass(!showPass)}
+                />
               )}
             </InputContainer>
             <ErrorMessage name={field.name}>

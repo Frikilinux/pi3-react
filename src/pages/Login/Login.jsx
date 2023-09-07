@@ -19,12 +19,15 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ErrorModal } from '../../components/ErrorModal/ErrorModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUserError } from '../../redux/user/userSlice'
+import { IconAt, IconLock } from '@tabler/icons-react'
+import { useMediaPredicate } from 'react-media-hook'
 
 const Login = () => {
   const { userError } = useSelector(({ user }) => user)
   const { loginUser } = useUser()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const max576 = useMediaPredicate('(max-width: 576px)')
 
   return (
     <Main>
@@ -47,13 +50,13 @@ const Login = () => {
               <Form>
                 <InputUser
                   name='email'
-                  inputIcon='mail'
+                  icon={<IconAt />}
                   placeholder='Email'
                   type='text'
                 />
                 <InputUser
                   name='password'
-                  inputIcon='password'
+                  icon={<IconLock />}
                   placeholder='Password'
                   type='password'
                 />
@@ -67,10 +70,12 @@ const Login = () => {
               </RegisterText>
             </FormContainer>
           </Formik>
-          <LoginInfoContainer>
-            <SiteBrand />
-            <LoginInfo>Start donwloading from 90 Million of songs</LoginInfo>
-          </LoginInfoContainer>
+          {!max576 && (
+            <LoginInfoContainer>
+              <SiteBrand />
+              <LoginInfo>Start donwloading from 90 Million of songs</LoginInfo>
+            </LoginInfoContainer>
+          )}
         </LoginContainer>
       </SectionWrapper>
     </Main>

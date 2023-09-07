@@ -19,12 +19,15 @@ import ButtonPrimary from '../../components/UI/Button/ButtonPrimary'
 import { useDispatch, useSelector } from 'react-redux'
 import { ErrorModal } from '../../components/ErrorModal/ErrorModal'
 import { setUserError } from '../../redux/user/userSlice'
+import { IconAt, IconUser, IconLock } from '@tabler/icons-react'
+import { useMediaPredicate } from 'react-media-hook'
 
 const Register = () => {
   const { registerUser } = useUser()
   const { userError } = useSelector(({ user }) => user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const max576 = useMediaPredicate('(max-width: 576px)')
 
   return (
     <Main>
@@ -47,19 +50,19 @@ const Register = () => {
               <Form>
                 <InputUser
                   name='name'
-                  inputIcon='name'
+                  icon={<IconUser />}
                   placeholder='Name'
                   type='text'
                 />
                 <InputUser
                   name='email'
-                  inputIcon='mail'
+                  icon={<IconAt />}
                   placeholder='Email'
                   type='text'
                 />
                 <InputUser
                   name='password'
-                  inputIcon='password'
+                  icon={<IconLock />}
                   placeholder='Password'
                   type='password'
                 />
@@ -73,12 +76,14 @@ const Register = () => {
               </LoginText>
             </FormContainer>
           </Formik>
-          <RegisterInfoContainer>
-            <SiteBrand />
-            <RegisterInfo>
-              Start donwloading from 90 Million of songs
-            </RegisterInfo>
-          </RegisterInfoContainer>
+          {!max576 && (
+            <RegisterInfoContainer>
+              <SiteBrand />
+              <RegisterInfo>
+                Start donwloading from 90 Million of songs
+              </RegisterInfo>
+            </RegisterInfoContainer>
+          )}
         </RegisterContainer>
       </SectionWrapper>
     </Main>

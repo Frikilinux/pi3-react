@@ -8,6 +8,7 @@ import {
 import SiteBrand from '../Header/Sitebrand/SiteBrand'
 import Spinner from '../Spinner/Spinner'
 import Icons from '../../constants/icons'
+import { IconBrandReact } from '@tabler/icons-react'
 
 const Footer = () => {
   const { ReactIcon } = Icons
@@ -23,9 +24,7 @@ const Footer = () => {
       <FootterPowered>
         Powered by
         <div>
-          {/* <Spinner>
-            <ReactIcon size='1.5em' />
-          </Spinner> */}
+          <IconBrandReact/>
         </div>
       </FootterPowered>
     </FooterStyled>

@@ -54,7 +54,7 @@ const Track = ({
   return (
     <TrackContainer
       id={id}
-      playing={currentTrack === id ? 1 : 0}
+      $playing={currentTrack === id ? 1 : 0}
       onMouseOver={() => setMouseOver(true)}
       onMouseOut={() => setMouseOver(false)}
     >

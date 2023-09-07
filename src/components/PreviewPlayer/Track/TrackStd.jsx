@@ -6,7 +6,7 @@ export const TrackContainer = styled.div`
   align-items: center;
   gap: 5px;
   padding: 5px;
-  background-color: ${({ playing }) => (playing ? '#282e36a0' : '#6b6a6a7d')};
+  background-color: ${({ $playing }) => ($playing ? '#282e36a0' : '#6b6a6a7d')};
   border-radius: 5px;
   width: 98%;
   font-size: 1rem;

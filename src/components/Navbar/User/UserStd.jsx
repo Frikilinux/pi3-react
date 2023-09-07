@@ -10,7 +10,7 @@ export const UserContainer = styled(motion.div)`
   height: 70%;
   order: 3;
   gap: 10px;
-   margin-left: auto;
+  margin-left: auto;
 `
 export const UserNameData = styled.div`
   color: var(--blue);
@@ -35,4 +35,13 @@ export const UserButtonsContainer = styled.div`
     flex-direction: column;
     gap: 5px;
   }
+`
+
+export const LoginBtnContainer = styled.div`
+  flex: 1;
+  order: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  white-space: nowrap;
 `

@@ -8,7 +8,7 @@ const Cart = () => {
 
   return (
     <CartContainer>
-      <ItemsContainer items={items?.length}>
+      <ItemsContainer $items={items?.length}>
         {items?.length ? (
           items?.map((item) => <CartItem key={item.id} {...item} />)
         ) : (

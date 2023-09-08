@@ -93,10 +93,12 @@ export const QtyContainer = styled(motion.div)`
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--dark);
+  user-select: none;
   /* backdrop-filter: blur(3px); */
 `
 
 export const QtyBtns = styled.div`
+  /* color: var(--red); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,14 +107,6 @@ export const QtyBtns = styled.div`
     cursor: pointer;
   }
 `
-
-export const DeleteItem = styled.div`
-color: var(--red);
-&:hover {
-  cursor: pointer;
-}
-  /* height: 25px; */
-  /* line-height: 35px; */
-  /* border: 1px solid var(--white); */
-  /* border-radius: 0 0 5px 5px; */
+export const QtyBtn = styled.div`
+  visibility: ${({ $qty }) => ($qty === 1 ? 'hidden' : 'visible')};
 `

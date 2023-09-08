@@ -44,7 +44,7 @@ const Summary = () => {
             </Spinner>
           ) : (
             <OrdersContainer>
-              {!orders.length && (
+              {!orders?.length && (
                 <OrdersEmpty>
                   You don&apos;t have orders to show yet
                 </OrdersEmpty>

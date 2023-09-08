@@ -13,7 +13,7 @@ export const SummaryContainer = styled.div`
 `
 
 export const SummaryOrderTitle = styled.h1`
- text-align : center;
+  text-align: center;
 `
 
 export const OrdersContainer = styled.div`
@@ -22,12 +22,13 @@ export const OrdersContainer = styled.div`
   gap: 40px;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  & div {
-    text-align: center;
-    font-size: 1.5rem;
-    color: var(--red);
-    padding: 100px;
-    font-weight: 700;
-  }
+  /* height: 100%; */
+`
+
+export const OrdersEmpty = styled.div`
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--red);
+  padding: 100px;
+  font-weight: 700;
 `

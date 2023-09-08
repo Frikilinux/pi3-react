@@ -3,6 +3,7 @@ import SectionWrapper from '../../components/UI/SectionWrapper/SectionWrapper'
 import Main from '../../components/UI/MainWrapper/MainWrapper'
 import {
   OrdersContainer,
+  OrdersEmpty,
   SummaryContainer,
   SummaryOrderTitle,
 } from './SummaryStd'
@@ -42,9 +43,11 @@ const Summary = () => {
               <SpinnerIcon size='5em' />
             </Spinner>
           ) : (
-            <OrdersContainer className='orders'>
+            <OrdersContainer>
               {!orders.length && (
-                <div>You don&apos;t have orders to show yet</div>
+                <OrdersEmpty>
+                  You don&apos;t have orders to show yet
+                </OrdersEmpty>
               )}
               {orders?.map((order) => {
                 return <SummaryOrder {...order} key={order._id} />

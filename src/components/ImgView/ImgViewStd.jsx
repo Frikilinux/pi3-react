@@ -9,7 +9,7 @@ export const PreviewContainer = styled(motion.div)`
   top: 55px;
   position: fixed;
   width: 90vh;
-  max-width: 875px;
+  /* max-width: 875px; */
   height: 90vh;
   background: #201e20 url(${({ $imgsrc }) => `${$imgsrc}`}) center/cover no-repeat;
   z-index: 10;

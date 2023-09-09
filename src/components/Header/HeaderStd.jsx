@@ -6,7 +6,8 @@ export const HeaderStyled = styled.header`
   display: flex;
   align-items: center;
   position: fixed;
-  background-color: var(--dark);
+  /* background-color: var(--dark); */
+  background-color: #201e20f4;
   width: 100%;
   height: 50px;
   @media (max-width: 576px) {

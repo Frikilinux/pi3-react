@@ -6,10 +6,11 @@ import { useParams } from 'react-router-dom'
 import { useAlbums } from '../../hooks/useAlbums'
 import { useSelector } from 'react-redux'
 import SearchArtist from '../../components/SearchArtist/SearchArtist'
-import { MenuBarContainer } from '../../components/MenuBar/MenuBarStd'
-import Genres from '../../components/Categories/Genres'
-import { AlbumsTitleType } from './AlbumsStd'
-import { useMediaPredicate } from 'react-media-hook'
+import {
+  AlbumsSearchContainer,
+  AlbumsSearchTitle,
+  AlbumsTitleType,
+} from './AlbumsStd'
 
 const AlbumsPage = () => {
   const { searchAlbums, getAlbumsByGenre } = useAlbums()
@@ -19,19 +20,29 @@ const AlbumsPage = () => {
   useEffect(() => {
     search
       ? searchAlbums({ search })
-      : !isFetching && getAlbumsByGenre({ genreId: currentGenre.genreId, genreName: 'All' })
+      : !isFetching &&
+        getAlbumsByGenre({ genreId: currentGenre.genreId, genreName: 'All' })
   }, [search])
 
   return (
     <Main>
-      <SectionWrapper bg='var(--lightDark)' id='search' padding={'50px 0 0 0'}>
-        <SearchArtist page={'albums'} placeholder='Search for any album' />
+      <SectionWrapper bg='#0f4481' id='albums-search'>
+        <AlbumsSearchContainer>
+          <AlbumsSearchTitle>Search your preferred album</AlbumsSearchTitle>
+          <SearchArtist page={'albums'} placeholder='Ie.: Eye in the sky' />
+        </AlbumsSearchContainer>
       </SectionWrapper>
       <SectionWrapper bg='var(--lightDark)' id='albums'>
         <AlbumsTitleType>
-          {search
-            ? `Results for '${search}'`
-            : `${currentGenre.genreName ?? ''}  Albums`}
+          {search ? (
+            <>
+              Results for <span>{search}</span>
+            </>
+          ) : (
+            <>
+              <span>{currentGenre.genreName ?? ''}</span> Albums
+            </>
+          )}
         </AlbumsTitleType>
         <AlbumsSection />
       </SectionWrapper>

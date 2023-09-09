@@ -6,14 +6,20 @@ import AlbumCard from './AlbumCard/AlbumCard'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 const Albums = () => {
-  const { albums, next } = useSelector((state) => state.albums)
+  const { albums, next, currentGenre } = useSelector((state) => state.albums)
 
   const { fetchAlbums } = useAlbums()
 
   return (
     <InfiniteScroll
       dataLength={albums ? albums.length : 0}
-      next={() => fetchAlbums({ next })}
+      next={() =>
+        fetchAlbums({
+          next,
+          genreId: currentGenre.genreId,
+          genreName: currentGenre.genreName,
+        })
+      }
       hasMore={next}
       // style={{width: '100%'}}
     >

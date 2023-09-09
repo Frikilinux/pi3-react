@@ -8,9 +8,10 @@ const SiteLinksContainer = styled.nav`
   justify-content: center;
   width: 100%;
   height: 30px;
-  background-color: var(--dark);
+  /* background-color: var(--dark); */
   @media (max-width: 992px) {
     flex: unset;
+    background-color: var(--dark);
   }
 `
 

@@ -63,7 +63,7 @@ export const Header = () => {
           )}
         </AnimatePresence>
       </HeaderStyled>
-      {location.pathname === '/albums' && !max992 && (
+      {location.pathname.includes('/albums') && !max992 && (
         <MenuBarContainer>
           <Genres />
         </MenuBarContainer>

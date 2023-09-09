@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const ArtistContainer = styled.div`
-  padding: 10px;
+  padding: 70px 10px 20px 10px;
   width: 100%;
   /* max-width: 1000px; */
   display: flex;

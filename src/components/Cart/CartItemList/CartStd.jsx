@@ -15,15 +15,17 @@ export const CartModal = styled(motion.div)`
   width: 100%;
   max-width: 500px;
   min-width: 320px;
-  background-color: #454b5fee;
+  background-color: #333847f6;
   bottom: 0;
   right: 0;
   padding: 15px;
+  @media (max-width: 576px) {
+    max-width: unset;
+  }
 `
 export const ModalCartcontainer = styled.div`
   width: 100%;
   height: 80%;
-
 `
 
 export const CartContainer = styled.div`

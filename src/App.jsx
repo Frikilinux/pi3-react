@@ -37,6 +37,7 @@ function App() {
   return (
     <Layout>
       <Toaster richColors position='top-right' theme='dark' offset='60px' />
+      <AnimatePresence>
       {(!albumPreviewHidden ||
         !cartHidden ||
         userError ||
@@ -44,7 +45,6 @@ function App() {
         imagePreview ||
         !isHiddenMenu) &&
         !max576 && <Overlay />}
-      <AnimatePresence>
         {!albumPreviewHidden && <PreviewPlayer {...albumPreviewData} />}
       </AnimatePresence>
       <AnimatePresence>{imagePreview && <ImgView />}</AnimatePresence>

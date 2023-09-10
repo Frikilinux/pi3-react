@@ -31,10 +31,26 @@ const ChartTitle = styled.h2`
     cursor: pointer;
     color: var(--green);
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    background-color: #100f1167;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
     &:hover {
-      color: var(--red);
+      /* color: var(--red); */
+      background-color: #5a0730d5;
     }
+    @media (max-width: 576px) {
+      font-size: 1rem;
+    }
+  }
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 5px;
   }
 `
 

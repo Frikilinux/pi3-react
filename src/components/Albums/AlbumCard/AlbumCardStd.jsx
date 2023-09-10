@@ -44,12 +44,12 @@ export const MainImg = styled.div.attrs((props) => ({
 export const TitleContainer = styled.div`
   position: absolute;
   z-index: 1;
-  backdrop-filter: blur(3px);
+  /* backdrop-filter: blur(3px); */
   font-family: 'Barlow Condensed';
   padding: 3px 5px;
   color: var(--white);
   width: 100%;
-  background-color: #201e20b2;
+  background-color: #201e20d6;
 
   & p {
     width: 100%;

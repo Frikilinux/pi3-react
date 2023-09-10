@@ -8,6 +8,7 @@ export const HeaderStyled = styled.header`
   position: fixed;
   /* background-color: var(--dark); */
   background-color: #201e20f4;
+  backdrop-filter: blur(5px);
   width: 100%;
   height: 50px;
   @media (max-width: 576px) {
@@ -37,7 +38,7 @@ export const SideBarMenu = styled.div`
   position: fixed;
   width: 60%;
   max-width: 350px;
-  height: calc(100vh - 50px) ;
+  height: calc(100vh - 50px);
   background-color: var(--dark);
   z-index: 10;
   @media (max-width: 576px) {

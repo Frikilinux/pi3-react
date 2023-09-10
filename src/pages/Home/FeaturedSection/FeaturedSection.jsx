@@ -52,7 +52,7 @@ const FeaturedSection = () => {
                 navigate('/albums')
               }}
             >
-              Discover more <IconArrowBigRightLinesFilled size={18} />
+              Discover more
             </span>
           </ChartTitle>
           <ChartContainer>
@@ -70,7 +70,7 @@ const FeaturedSection = () => {
                 navigate('/albums')
               }}
             >
-              Discover more <IconArrowBigRightLinesFilled size={18} />
+              Discover more
             </span>
           </ChartTitle>
           <ChartContainer>
@@ -88,7 +88,7 @@ const FeaturedSection = () => {
                 navigate('/albums')
               }}
             >
-              Discover more <IconArrowBigRightLinesFilled size={18} />
+              Discover more
             </span>
           </ChartTitle>
           <ChartContainer>

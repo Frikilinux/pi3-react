@@ -13,6 +13,7 @@ import { useAlbums } from '../../../hooks/useAlbums'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
 import { toast } from 'sonner'
 import useButtons from '../../../hooks/useButtons'
+import { IconInfoSquareRounded } from '@tabler/icons-react'
 
 const AlbumCard = (props) => {
   const {
@@ -32,17 +33,14 @@ const AlbumCard = (props) => {
 
   const artist = props.artist ? props.artist.name : artistPage.name
   return (
-    <CardContainer
-      id={id}
-      // whileHover={{ scale: 1.01, transition: { duration: 0.05 } }}
-    >
+    <CardContainer id={id}>
       <ImagesContainer>
         <OverlayPreview
           onClick={() => fetchAlbumById(id)}
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1, transition: { duration: 0.5 } }}
         >
-          🛈
+          <IconInfoSquareRounded size={45}/>
         </OverlayPreview>
         <TitleContainer>
           <p>{title}</p>

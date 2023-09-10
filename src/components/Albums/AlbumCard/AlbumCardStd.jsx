@@ -79,7 +79,7 @@ export const InfoContainer = styled.div`
   justify-content: center;
   font-size: 0.8rem;
   font-weight: 300;
-  height: 50px;
+  height: 40px;
   width: 100%;
   color: var(--grey);
   background-color: var(--dark);

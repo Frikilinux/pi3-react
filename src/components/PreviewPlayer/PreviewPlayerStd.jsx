@@ -25,7 +25,7 @@ export const PreviewContainer = styled(motion.div)`
     z-index: -1;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(3px);
+    /* backdrop-filter: blur(3px); */
     background-color: #201e20c7;
     border-radius: 15px;
     @media (max-width: 992px) {

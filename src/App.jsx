@@ -38,13 +38,17 @@ function App() {
     <Layout>
       <Toaster richColors position='top-right' theme='dark' offset='60px' />
       <AnimatePresence>
-      {(!albumPreviewHidden ||
-        !cartHidden ||
-        userError ||
-        ordersError ||
-        imagePreview ||
-        !isHiddenMenu) &&
-        !max576 && <Overlay />}
+        {' '}
+        {(!albumPreviewHidden ||
+          !cartHidden ||
+          userError ||
+          ordersError ||
+          imagePreview ||
+          !isHiddenMenu) &&
+          !max576 && <Overlay />}
+      </AnimatePresence>
+
+      <AnimatePresence>
         {!albumPreviewHidden && <PreviewPlayer {...albumPreviewData} />}
       </AnimatePresence>
       <AnimatePresence>{imagePreview && <ImgView />}</AnimatePresence>

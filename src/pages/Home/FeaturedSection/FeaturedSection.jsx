@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import SectionWrapper from '../../../components/UI/SectionWrapper/SectionWrapper'
-import { ArtistSectionTitle } from '../../Artist/ArtistStd'
-// import {
-//   ArtistChartContainer,
-//   ArtistChartGenreContainer,
-//   ChartContainer,
-// } from '../../Artist/ArtistsChart/ArtistChartStd'
 import { useAlbums } from '../../../hooks/useAlbums'
 import AlbumCard from '../../../components/Albums/AlbumCard/AlbumCard'
 import {
@@ -14,24 +8,28 @@ import {
   ChartContainer,
   ChartTitle,
 } from './FeaturedSectionStd'
-import { IconArrowBigRightLinesFilled } from '@tabler/icons-react'
 import { useNavigate } from 'react-router-dom'
+import { useArtist } from '../../../hooks/useArtist'
+import ArtistCard from '../../../components/Artist/ArtistCard/ArtistCard'
 
 const FeaturedSection = () => {
   const [charts, setCharts] = useState({})
   const { getAlbumsChart, getAlbumsByGenre } = useAlbums()
+  const { getArtistChart } = useArtist()
   const navigate = useNavigate()
 
   useEffect(() => {
     const fetchCharts = async () => {
-      const [allChart, popChart, rockChart] = await Promise.all([
+      const [allChart, artistChart, popChart, rockChart] = await Promise.all([
         getAlbumsChart({}),
+        getArtistChart({ genreId: '132' }),
         getAlbumsChart({ genreId: '132' }),
         getAlbumsChart({ genreId: '152' }),
       ])
 
       setCharts({
         allChart,
+        artistChart,
         popChart,
         rockChart,
       })
@@ -61,42 +59,25 @@ const FeaturedSection = () => {
             ))}
           </ChartContainer>
         </AlbumsChartGenreContainer>
+
         <AlbumsChartGenreContainer>
           <ChartTitle>
-            Most wanted Pop albums
+            Most wanted Artist
             <span
               onClick={() => {
-                getAlbumsByGenre({ genreId: 132, genreName: 'Pop' })
-                navigate('/albums')
+                navigate('/artist')
               }}
             >
               Discover more
             </span>
           </ChartTitle>
           <ChartContainer>
-            {charts.popChart?.map((album) => (
-              <AlbumCard key={album.id} {...album} />
+            {charts.artistChart?.map((artist) => (
+              <ArtistCard key={artist.id} {...artist} />
             ))}
           </ChartContainer>
         </AlbumsChartGenreContainer>
-        <AlbumsChartGenreContainer>
-          <ChartTitle>
-            Most wanted Rock albums
-            <span
-              onClick={() => {
-                getAlbumsByGenre({ genreId: 152, genreName: 'Rock' })
-                navigate('/albums')
-              }}
-            >
-              Discover more
-            </span>
-          </ChartTitle>
-          <ChartContainer>
-            {charts.rockChart?.map((album) => (
-              <AlbumCard key={album.id} {...album} />
-            ))}
-          </ChartContainer>
-        </AlbumsChartGenreContainer>
+
       </AlbumsChartContainer>
     </SectionWrapper>
   )

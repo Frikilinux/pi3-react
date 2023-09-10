@@ -96,7 +96,6 @@ export const useAlbums = () => {
       const chart = data.data.map((album) => {
         return { ...album, price: createPrice(album.id) }
       })
-      console.log(chart)
       return chart
     } catch (error) {
       console.log(error)

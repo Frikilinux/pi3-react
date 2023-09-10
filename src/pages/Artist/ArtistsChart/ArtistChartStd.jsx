@@ -1,5 +1,21 @@
 import { styled } from 'styled-components'
 
+const ArtistSearchSectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1300px;
+  padding: 80px 0 40px;
+  gap: 50px;
+`
+
+const ArtistSearchTitle = styled.h1`
+  color: var(--dark);
+  font-size: 2rem;
+`
+
 const ArtistChartContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,6 +30,7 @@ const ArtistChartContainer = styled.div`
 `
 
 const ArtistChartGenreContainer = styled.div`
+  padding: 20px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -21,7 +38,7 @@ const ArtistChartGenreContainer = styled.div`
 
 const ChartContainer = styled.div`
   border-radius: 20px;
-  padding: 10px;
+  padding: 20px 30px;
   display: flex;
   gap: 50px;
   width: 100%;
@@ -42,4 +59,10 @@ const ChartContainer = styled.div`
   }
 `
 
-export { ArtistChartContainer, ArtistChartGenreContainer, ChartContainer }
+export {
+  ArtistChartContainer,
+  ArtistChartGenreContainer,
+  ChartContainer,
+  ArtistSearchSectionContainer,
+  ArtistSearchTitle,
+}

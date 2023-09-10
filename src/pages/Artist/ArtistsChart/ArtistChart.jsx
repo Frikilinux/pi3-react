@@ -6,11 +6,12 @@ import { ArtistSectionTitle } from '../ArtistStd'
 import {
   ArtistChartContainer,
   ArtistChartGenreContainer,
+  ArtistSearchSectionContainer,
+  ArtistSearchTitle,
   ChartContainer,
 } from './ArtistChartStd'
 import { useArtist } from '../../../hooks/useArtist'
 import ArtistCard from '../../../components/Artist/ArtistCard/ArtistCard'
-// import ArtistCard from '../ArtistCard/ArtistCard'
 
 const ArtistChart = () => {
   const [charts, setCharts] = useState({})
@@ -41,9 +42,21 @@ const ArtistChart = () => {
 
   return (
     <Main>
-      <SectionWrapper bg='var(--lightDark)' id='search-artists'>
-        <div>The most popular artist in the world</div>
-        <SearchArtist />
+      {/* <SectionWrapper bg='#ce4a76' id='search-artists'>
+        <ArtistSearchSectionContainer>
+          <ArtistSearchTitle>
+            Search between the most popular artist in the world
+          </ArtistSearchTitle>
+          <SearchArtist placeholder={'Artist name'} />
+        </ArtistSearchSectionContainer>
+      </SectionWrapper> */}
+      <SectionWrapper bg='#ce4a76' id='search-artists'>
+        <ArtistSearchSectionContainer>
+          <ArtistSearchTitle>
+            The most popular artist in the world
+          </ArtistSearchTitle>
+          {/* <SearchArtist placeholder={'Artist name'} /> */}
+        </ArtistSearchSectionContainer>
       </SectionWrapper>
 
       <SectionWrapper bg='var(--lightDark)' id='artists-chart'>

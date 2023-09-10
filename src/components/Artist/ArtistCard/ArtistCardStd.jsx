@@ -2,10 +2,18 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 const ArtistCardContainer = styled.div`
-  width: 260px;
+  /* width: 260px; */
   position: relative;
   box-shadow: 0px 0px 29px 2px rgba(0, 0, 0, 0.55);
   border-radius: 10px 10px 0 0;
+  @media (max-width: 576px) {
+    /* height: 160px; */
+    width: 160px;
+  }
+  @media (max-width: 380px) {
+    /* height: 140px; */
+    width: 140px;
+  }
 `
 
 const ArtistCardImg = styled.div.attrs((props) => ({
@@ -16,6 +24,14 @@ const ArtistCardImg = styled.div.attrs((props) => ({
   width: 260px;
   height: 260px;
   border-radius: 10px 10px 0 0;
+  @media (max-width: 576px) {
+    height: 160px;
+    width: 160px;
+  }
+  @media (max-width: 380px) {
+    height: 140px;
+    width: 140px;
+  }
 `
 
 const ArtistInfo = styled.div`

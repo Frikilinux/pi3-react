@@ -11,7 +11,7 @@ const SearchSectionContainer = styled.div`
 `
 
 const SearchSectionTitle = styled.div`
-text-align: right;
+  text-align: right;
   color: var(--dark);
   & p {
     font-weight: 700;

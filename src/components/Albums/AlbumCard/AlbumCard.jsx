@@ -58,9 +58,7 @@ const AlbumCard = (props) => {
           <ButtonPrimary
             notLoggedIn={!user}
             size='1.2'
-            onClick={() =>
-              handleAddToCart({ id, title, cover, artist, price })
-            }
+            onClick={() => handleAddToCart({ id, title, cover, artist, price })}
           >
             Add
           </ButtonPrimary>

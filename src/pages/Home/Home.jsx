@@ -5,6 +5,7 @@ import Main from '../../components/UI/MainWrapper/MainWrapper'
 import { useAlbums } from '../../hooks/useAlbums'
 import { useSelector } from 'react-redux'
 import Hero from '../../components/Hero/Hero'
+import FeaturedSection from './FeaturedSection/FeaturedSection'
 
 export const Home = () => {
   const { currentGenre, isFetching } = useSelector(({ albums }) => albums)
@@ -17,6 +18,7 @@ export const Home = () => {
   return (
     <Main>
       <Hero />
+      <FeaturedSection />
       <SectionWrapper bg='var(--lightDark)' id='albums'>
       </SectionWrapper>
     </Main>

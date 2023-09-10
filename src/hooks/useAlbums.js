@@ -1,5 +1,4 @@
 import axios from 'axios'
-// import { DUMMY_JSON } from '../constants/apiUrls'
 import { useDispatch } from 'react-redux'
 import {
   isError,
@@ -16,7 +15,7 @@ import {
 
 export const useAlbums = () => {
   const dispatch = useDispatch()
-  const { ROOT, ALBUM, API_PROXY } = DEEZER_API
+  const { ROOT, ALBUM, API_PROXY, CHART } = DEEZER_API
 
   const fetchAlbumById = async (id) => {
     try {
@@ -28,12 +27,12 @@ export const useAlbums = () => {
       dispatch(isError(error))
     }
   }
-  
-  const searchAlbums = ({search}) => {
+
+  const searchAlbums = ({ search }) => {
     fetchAlbums({
       url: `${API_PROXY + ROOT + '/search/album?q=' + search + '&limit=20'}`,
     })
-  } 
+  }
 
   const getArtistAlbums = ({ artistId, next }) => {
     fetchAlbums({
@@ -47,7 +46,9 @@ export const useAlbums = () => {
       url: `${
         API_PROXY + ROOT + '/editorial/' + genreId + '/releases?limit=20'
       }`,
-      next, genreId, genreName
+      next,
+      genreId,
+      genreName,
     })
   }
 
@@ -57,14 +58,13 @@ export const useAlbums = () => {
       dispatch(isFetching())
       const { data } = await axios.get(endpointUrl)
 
-
       const payload = {
         total: data.total,
         albums: data.data.map((album) => {
           return { ...album, price: createPrice(album.id) }
         }),
         next: data.next,
-        currentGenre: {genreId, genreName},
+        currentGenre: { genreId, genreName },
       }
 
       next ? dispatch(nextAlbumsPage(payload)) : dispatch(setAlbums(payload))
@@ -74,21 +74,44 @@ export const useAlbums = () => {
     }
   }
 
-  const fetchAlbumsGenre = async ({ genreId }) => {
+  // const fetchAlbumsGenre = async ({ genreId }) => {
+  //   try {
+  //     dispatch(isFetching())
+  //     const { data } = await axios.get(
+  //       `${API_PROXY + ROOT + '/editorial/' + genreId + '/releases?index=0'}`,
+  //     )
+
+  //     dispatch(setAlbums(data))
+  //   } catch (error) {
+  //     const msg = error.response.data.message
+  //     dispatch(isError(msg))
+  //   }
+  // }
+
+  const getAlbumsChart = async ({ genreId = '0' }) => {
     try {
-      dispatch(isFetching())
       const { data } = await axios.get(
-        `${API_PROXY + ROOT + '/editorial/' + genreId + '/releases?index=0'}`
+        `${API_PROXY + ROOT + CHART + '/' + genreId + '/albums'}`,
       )
-
-      // console.log('AXIOS CATEGORIES PRODUTCS', data.products)
-
-      dispatch(setAlbums(data))
+      const chart = data.data.map((album) => {
+        return { ...album, price: createPrice(album.id) }
+      })
+      console.log(chart)
+      return chart
     } catch (error) {
-      const msg = error.response.data.message
-      dispatch(isError(msg))
+      console.log(error)
+      // const msg = error.response.data.message
+      // dispatch(setError(error), setFetchingArtist(true))
     }
   }
 
-  return { fetchAlbumsGenre, fetchAlbumById, getAlbumsByGenre, getArtistAlbums, searchAlbums, fetchAlbums }
+  return {
+    // fetchAlbumsGenre,
+    fetchAlbumById,
+    getAlbumsByGenre,
+    getArtistAlbums,
+    searchAlbums,
+    fetchAlbums,
+    getAlbumsChart,
+  }
 }

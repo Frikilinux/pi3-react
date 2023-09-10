@@ -8,8 +8,7 @@ export const FormContainer = styled.div`
   align-items: center;
   gap: 50px;
   min-width: 300px;
-  width: 90%;
-  max-width: 400px;
+  width: 50%;
 `
 
 export const InputComponent = styled.div`
@@ -22,8 +21,9 @@ export const InputComponent = styled.div`
 export const InputContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 15px;
   justify-content: center;
+  gap: 15px;
+  width: 100%;
   padding: 10px 20px;
   background-color: var(--lightDark);
   border-radius: ${({ isError }) => (isError ? '5px 5px 0 0' : '5px')};
@@ -38,10 +38,10 @@ export const InputStd = styled.input`
 `
 
 export const ErrorMsg = styled.div`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
   padding: 0 10px;
-  background-color:var(--red) ;
+  background-color: var(--red);
   color: var(--dark);
   height: 20px;
   font-size: 0.7rem;

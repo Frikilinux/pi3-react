@@ -9,12 +9,13 @@ export const SearchContainer = styled.form`
   height: 45px;
   padding: 0px 15px;
   gap: 30px;
+  min-width: 300px;
   & button {
     background-color: transparent;
   }
-  /* @media (max-width: 576px) {
-    flex-direction: column;
-  } */
+  @media (max-width: 576px) {
+  width: 95%;
+  }
 `
 
 export const SearchInput = styled.input`
@@ -23,6 +24,7 @@ export const SearchInput = styled.input`
   font-size: 1.3rem;
   color: var(--grey);
   height: 30px;
+  width: 100%;
   /* border-radius: 20px; */
   background-color: var(--dark);
   padding: 0 30px;

@@ -30,7 +30,7 @@ const ArtistChartContainer = styled.div`
 `
 
 const ArtistChartGenreContainer = styled.div`
-  padding: 20px;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
   width: 100%;

@@ -24,7 +24,7 @@ const Genres = ({ genreClick }) => {
                 navigate('/albums')
                 getAlbumsByGenre({ genreId: id, genreName: name })
                 hideAllModals()
-                window.scrollTo(0, 50)
+                window.scrollTo(0, 0)
               })
             }
             key={id}

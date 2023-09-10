@@ -96,6 +96,7 @@ const PreviewPlayer = (props) => {
                 getAlbumsByGenre({ genreId: id, genreName: name })
                 dispatch(hideAlbumPreview(true))
                 navigate('/albums')
+                window.scrollTo(0, 0)
               }}
             >
               {name}

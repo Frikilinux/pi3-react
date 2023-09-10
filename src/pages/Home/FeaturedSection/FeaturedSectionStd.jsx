@@ -6,7 +6,6 @@ const AlbumsChartContainer = styled.div`
   padding: 30px 0;
   width: 90%;
   max-width: 1300px;
-  min-height: calc(100vh - 130px);
   gap: 20px;
   @media (max-width: 576px) {
     width: 100%;
@@ -48,7 +47,7 @@ const ChartTitle = styled.h2`
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: center;
     border-radius: 5px;
   }

@@ -23,6 +23,7 @@ const SearchArtist = ({ page, placeholder }) => {
       {/* <ButtonPrimary>Search</ButtonPrimary> */}
       <button>
         <IconSearch
+          style={{ cursor: 'pointer' }}
           color='var(--green'
           onClick={() => navigate(`/${page}/${search}`)}
         />

@@ -8,6 +8,9 @@ const SearchSectionContainer = styled.div`
   max-width: 1300px;
   padding: 50px 0;
   gap: 50px;
+  @media (max-width: 992px) {
+    flex-direction: column-reverse;
+  }
 `
 
 const SearchSectionTitle = styled.div`
@@ -20,6 +23,9 @@ const SearchSectionTitle = styled.div`
   & span {
     font-size: 2rem;
     font-weight: 400;
+  }
+  @media (max-width: 992px) {
+    text-align: center;
   }
 `
 

@@ -1,6 +1,10 @@
 import { styled } from 'styled-components'
 
 const AlbumsSearchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
   padding: 100px 10px 20px 10px;
 `
 

@@ -21,10 +21,14 @@ const Routes = () => {
       <Route path='/artist/:search?' element={<Artist />} />
       <Route path='/search/:search' element={<Search />} />
       <Route path='/albums/:search?' element={<AlbumsPage />} />
-      <Route path='/summary'         element={
+      <Route
+        path='/summary'
+        element={
           <ProtectedRoute goTo={'/login'}>
             <Summary />
-          </ProtectedRoute>} />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path='/checkout'
         element={

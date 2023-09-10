@@ -2,9 +2,10 @@ import React from 'react'
 import { ButtonStyled } from './ButtonPrimaryStd'
 
 const ButtonPrimary = (props) => {
-  const { onClick, size, notLoggedIn, type } = props
+  const { onClick, size, notLoggedIn, type, disabled } = props
   return (
     <ButtonStyled
+      disabled={disabled}
       type={type}
       size={size}
       onClick={onClick}

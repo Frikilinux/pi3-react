@@ -58,7 +58,7 @@ const Register = () => {
                   name='email'
                   icon={<IconAt />}
                   placeholder='Email'
-                  type='text'
+                  type='email'
                 />
                 <InputUser
                   name='password'

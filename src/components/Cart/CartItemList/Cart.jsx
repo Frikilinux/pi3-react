@@ -8,9 +8,9 @@ const Cart = () => {
 
   return (
     <CartContainer>
-      <ItemsContainer items={items.length}>
-        {items.length ? (
-          items.map((item) => <CartItem key={item.id} {...item} />)
+      <ItemsContainer $items={items?.length}>
+        {items?.length ? (
+          items?.map((item) => <CartItem key={item.id} {...item} />)
         ) : (
           <p>Buy something please</p>
         )}

@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const SummaryContainer = styled.div`
-  padding: 30px;
+  padding: 80px 0 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +13,8 @@ export const SummaryContainer = styled.div`
 `
 
 export const SummaryOrderTitle = styled.h1`
- text-align : center;
+  font-size: 2.5rem;
+  text-align: center;
 `
 
 export const OrdersContainer = styled.div`
@@ -22,4 +23,13 @@ export const OrdersContainer = styled.div`
   gap: 40px;
   align-items: center;
   justify-content: center;
+  /* height: 100%; */
+`
+
+export const OrdersEmpty = styled.div`
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--red);
+  padding: 100px;
+  font-weight: 700;
 `

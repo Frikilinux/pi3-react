@@ -15,28 +15,38 @@ import {
   InfoLabel,
   InfoTitle,
   InfoTitleContainer,
+  LikesContainer,
   PreviewContainer,
+  RecordTypeFrame,
   TracksInfo,
 } from './PreviewPlayerStd'
 import Track from './Track/Track'
 import { useDispatch, useSelector } from 'react-redux'
-import { hidePreview } from '../../redux/previewPlayer/previewPlayerSlice'
+import {
+  hideAlbumPreview,
+  setImagePreview,
+} from '../../redux/previewPlayer/previewPlayerSlice'
 import ButtonPrimary from '../UI/Button/ButtonPrimary'
 import formatTime from '../../utils/fomatedTime'
 import { formatedDate } from '../../utils/formatedDate'
 import { useAlbums } from '../../hooks/useAlbums'
 import { useNavigate } from 'react-router-dom'
 import useButtons from '../../hooks/useButtons'
-import Icons from '../../constants/icons'
 import { formatQuantityNumber } from '../../utils/formatNumbers'
+import {
+  IconHeartFilled,
+  IconArrowLeft,
+  IconPointFilled,
+} from '@tabler/icons-react'
 
-const PreviewPlayer = (props) => {
+const PreviewPlayer = () => {
   const { getAlbumsByGenre } = useAlbums()
   const dispatch = useDispatch()
   const { album } = useSelector((state) => state.previewPlayer)
   const navigate = useNavigate()
   const {
     cover_medium: cover,
+    cover_xl: coverXl,
     tracks,
     artist,
     id,
@@ -57,41 +67,45 @@ const PreviewPlayer = (props) => {
   const { day, month, year } = formatedDate(release)
   const { user } = useSelector(({ user }) => user)
   const { handleAddToCart, handleArtistPage } = useButtons()
-  const { BackArrow } = Icons
+  const noImg =
+    'https://res.cloudinary.com/dixlr2ujp/image/upload/v1687388809/Integrador/no_image_available.jpg'
 
   return (
     <PreviewContainer
-      imgsrc={artist.picture_xl}
+      $imgsrc={artist.picture_xl}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
       transition={{
-        duration: 0.5,
+        duration: 0.3,
         ease: [0, 0.71, 0.2, 1.01],
       }}
       key='preview'
     >
       <ExtraInfoContainer>
-        <ButtonPrimary onClick={() => distpatch(hidePreview(true))}>
-          <BackArrow />
+        <ButtonPrimary onClick={() => distpatch(hideAlbumPreview(true))}>
+          <IconArrowLeft />
         </ButtonPrimary>
 
         <ExtraInfo>
           {explicitLyrics && <InfoFrame>Explicit</InfoFrame>}
-          <InfoFrame>{recordType}</InfoFrame>
+          <RecordTypeFrame>{recordType}</RecordTypeFrame>
           {genres.data?.map(({ name, id }) => (
             <GenreFrame
               key={id}
               onClick={() => {
-                getAlbumsByGenre({ genreId: id })
-                dispatch(hidePreview(true))
-                navigate('/')
+                getAlbumsByGenre({ genreId: id, genreName: name })
+                dispatch(hideAlbumPreview(true))
+                navigate('/albums')
+                window.scrollTo(0, 0)
               }}
             >
               {name}
             </GenreFrame>
           ))}
-          <div>♥ {formatQuantityNumber(fans)}</div>
+          <LikesContainer>
+            <IconHeartFilled size={11} /> {formatQuantityNumber(fans)}
+          </LikesContainer>
         </ExtraInfo>
       </ExtraInfoContainer>
       <AlbumHeaders>
@@ -121,11 +135,16 @@ const PreviewPlayer = (props) => {
             </InfoContrib>
           </InfoTitleContainer>
           <TracksInfo>
-            {nbTracks} tr {h > 0 ? `${h} hr ` : null} {`${m} min`}{' '}
-            {day + '-' + month + '-' + year}{' '}
+            {nbTracks} {nbTracks > 1 ? 'songs' : 'song'}{' '}
+            <IconPointFilled size={10} /> {h > 0 ? `${h} hr ` : null}{' '}
+            {`${m} min`} <IconPointFilled size={10} />{' '}
+            {day + '/' + month + '/' + year}{' '}
           </TracksInfo>
         </AlbumInfoContainer>
-        <AlbumImg src={cover} />
+        <AlbumImg
+          onClick={() => cover && dispatch(setImagePreview(coverXl))}
+          src={cover ?? noImg}
+        />
       </AlbumHeaders>
 
       <AlbumTracksContainer>

@@ -4,7 +4,8 @@ import albumData from '../../data/albumProtoTest.json'
 const INTIAL_STATE = {
   album: albumData,
   fetchingPreview: false,
-  isHidden: true,
+  albumPreviewHidden: true,
+  imagePreview: false,
   isPlaying: false,
   currentTrack: null,
 }
@@ -18,11 +19,19 @@ const previewPlayerSlice = createSlice({
         ...state,
         album: action.payload,
         fetchingPreview: false,
-        isHidden: false,
+        albumPreviewHidden: false,
       }
     },
     fetchingPreview: (state) => ({ ...state, fetchingPreview: true }),
-    hidePreview: (state, action) => ({ ...state, isHidden: action.payload, isPlaying: false }),
+    hideAlbumPreview: (state, action) => ({
+      ...state,
+      albumPreviewHidden: action.payload,
+      isPlaying: false,
+    }),
+    setImagePreview: (state, action) => ({
+      ...state,
+      imagePreview: action.payload,
+    }),
     setPlaying: (state, action) => ({
       ...state,
       currentTrack: action.payload,
@@ -36,6 +45,11 @@ const previewPlayerSlice = createSlice({
   },
 })
 
-export const { setAlbumPreview, fetchingPreview, hidePreview, setPlaying } =
-  previewPlayerSlice.actions
+export const {
+  setAlbumPreview,
+  fetchingPreview,
+  hideAlbumPreview,
+  setImagePreview,
+  setPlaying,
+} = previewPlayerSlice.actions
 export default previewPlayerSlice.reducer

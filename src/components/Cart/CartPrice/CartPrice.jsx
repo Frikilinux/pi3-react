@@ -10,7 +10,7 @@ const CartPrice = () => {
 
   return (
     <PricesContainer>
-      <p>{items.length || 'No'} Albums in the cart</p>
+      <p>{items?.length || 'No'} Albums in the cart</p>
       <CartTotalPriceContainer>
         <div>Total</div>
         <div>$ {totalPrice}</div>

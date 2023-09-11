@@ -1,4 +1,0 @@
-INITIAL_STATE = {
-  msg: [],
-  
-}

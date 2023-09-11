@@ -37,6 +37,7 @@ export const FootterPowered = styled.div`
   display: flex;
   align-items: center;
   & div {
+    padding: 10px;
     color: var(--celeste);
   }
 `

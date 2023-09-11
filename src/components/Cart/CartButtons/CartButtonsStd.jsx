@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 
-
 export const CartButtonsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -8,3 +7,4 @@ export const CartButtonsContainer = styled.div`
   height: 20px;
   width: 100%;
 `
+

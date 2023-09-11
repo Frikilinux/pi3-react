@@ -4,12 +4,28 @@ import {
   setFetchingArtist,
   setArtist,
   setError,
+  setArtistList,
 } from '../redux/artist/artistSlice'
 import axios from 'axios'
 
 export const useArtist = () => {
   const dispatch = useDispatch()
-  const { ROOT, API_PROXY, ARTIST } = DEEZER_API
+  const { ROOT, API_PROXY, ARTIST, CHART } = DEEZER_API
+
+  const getArtistChart = async ({ genreId = '0' }) => {
+    try {
+      dispatch(setFetchingArtist(true))
+      const { data } = await axios.get(
+        `${API_PROXY + ROOT + CHART + '/' + genreId + '/artists?limit=5'}`,
+      )
+      // console.log('CHARTS', data.data)
+      return data.data
+    } catch (error) {
+      console.log(error)
+      // const msg = error.response.data.message
+      dispatch(setError(error), setFetchingArtist(true))
+    }
+  }
 
   const getArtistById = async (id) => {
     try {
@@ -26,5 +42,5 @@ export const useArtist = () => {
     }
   }
 
-  return { getArtistById }
+  return { getArtistById, getArtistChart }
 }

@@ -10,14 +10,18 @@ export const CartModal = styled(motion.div)`
   z-index: 99;
   backdrop-filter: blur(5px);
   position: fixed;
+  top: 50px;
   height: calc(100vh - 50px);
   width: 100%;
   max-width: 500px;
   min-width: 320px;
-  background-color: #454b5fee;
+  background-color: #333847f6;
   bottom: 0;
   right: 0;
   padding: 15px;
+  @media (max-width: 576px) {
+    max-width: unset;
+  }
 `
 export const ModalCartcontainer = styled.div`
   width: 100%;
@@ -29,7 +33,6 @@ export const CartContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  /* background-color: #ffa60058; */
   height: 100%;
   width: 100%;
 `
@@ -39,9 +42,12 @@ export const ItemsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: ${({ items }) => (items ? 'flex-start' : 'center')};
+  justify-content: ${({ $items }) => ($items ? 'flex-start' : 'center')};
   gap: 15px;
   width: 100%;
   height: 100%;
   border-radius: 5px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `

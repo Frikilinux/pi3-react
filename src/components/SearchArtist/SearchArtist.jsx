@@ -2,22 +2,32 @@ import React, { useState } from 'react'
 import { SearchContainer, SearchInput } from './SearchArtistStd'
 import ButtonPrimary from '../UI/Button/ButtonPrimary'
 import { useNavigate } from 'react-router-dom'
+import { IconSearch } from '@tabler/icons-react'
 
-const SearchArtist = () => {
+const SearchArtist = ({ page, placeholder }) => {
   const [search, setsearch] = useState('')
   const navigate = useNavigate()
   return (
     <SearchContainer
-      onSubmit={() => {
-        navigate(`/search/${search}`)
+      onSubmit={(e) => {
+        e.preventDefault()
+        navigate(`/${page}/${search}`)
+        setsearch('')
       }}
     >
       <SearchInput
         onChange={(e) => setsearch(e.target.value)}
-        placeholder='Search albums o artists'
+        placeholder={placeholder}
         value={search}
       />
-      <ButtonPrimary>Search</ButtonPrimary>
+      {/* <ButtonPrimary>Search</ButtonPrimary> */}
+      <button>
+        <IconSearch
+          style={{ cursor: 'pointer' }}
+          color='var(--green'
+          onClick={() => navigate(`/${page}/${search}`)}
+        />
+      </button>
     </SearchContainer>
   )
 }

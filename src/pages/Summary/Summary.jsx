@@ -1,17 +1,27 @@
 import React, { useEffect } from 'react'
 import SectionWrapper from '../../components/UI/SectionWrapper/SectionWrapper'
 import Main from '../../components/UI/MainWrapper/MainWrapper'
-import { OrdersContainer, SummaryContainer, SummaryOrderTitle } from './SummaryStd'
+import {
+  OrdersContainer,
+  OrdersEmpty,
+  SummaryContainer,
+  SummaryOrderTitle,
+} from './SummaryStd'
 import useOrder from '../../hooks/useOrder'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Spinner from '../../components/Spinner/Spinner'
 import Icons from '../../constants/icons'
 import SummaryOrder from '../../components/SummaryOrder/SummaryOrder'
+import { ErrorModal } from '../../components/ErrorModal/ErrorModal'
+import { resetError } from '../../redux/orders/ordersSlice'
 
 const Summary = () => {
-  const { isFetchingOrders, orders } = useSelector(({ orders }) => orders)
+  const { isFetchingOrders, orders, ordersError } = useSelector(
+    ({ orders }) => orders,
+  )
   const { getOrders } = useOrder()
   const { SpinnerIcon } = Icons
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getOrders()
@@ -19,6 +29,12 @@ const Summary = () => {
 
   return (
     <Main>
+      {ordersError && (
+        <ErrorModal onClick={() => dispatch(resetError())}>
+          {ordersError}
+        </ErrorModal>
+      )}
+
       <SectionWrapper bg='var(--lightDark)' id='Artits'>
         <SummaryContainer>
           <SummaryOrderTitle>Your summary of orders</SummaryOrderTitle>
@@ -28,6 +44,11 @@ const Summary = () => {
             </Spinner>
           ) : (
             <OrdersContainer>
+              {!orders?.length && (
+                <OrdersEmpty>
+                  You don&apos;t have orders to show yet
+                </OrdersEmpty>
+              )}
               {orders?.map((order) => {
                 return <SummaryOrder {...order} key={order._id} />
               })}

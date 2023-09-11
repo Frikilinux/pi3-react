@@ -7,24 +7,16 @@ import {
   OverlayPreview,
   TitleContainer,
 } from './AlbumCardStd'
-import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../../../redux/cart/cartSlice'
 import { useAlbums } from '../../../hooks/useAlbums'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
-import { toast } from 'react-toastify'
 import useButtons from '../../../hooks/useButtons'
+import { IconInfoSquareRounded } from '@tabler/icons-react'
+import { useSelector } from 'react-redux'
 
 const AlbumCard = (props) => {
-  const {
-    id,
-    title,
-    cover_medium: cover,
-    release_date: releaseDate,
-    price,
-  } = props
+  const { id, title, cover_medium: cover, price } = props
 
-  const noImg = 'https://cloud.ztec.ml/s/Y7G3JX4FxE5zKaz/download'
-  const dispatch = useDispatch()
+  const noImg = 'https://res.cloudinary.com/dixlr2ujp/image/upload/v1687388809/Integrador/no_image_available.jpg'
   const { fetchAlbumById } = useAlbums()
   const { user } = useSelector(({ user }) => user)
   const { artist: artistPage } = useSelector(({ artist }) => artist)
@@ -32,25 +24,20 @@ const AlbumCard = (props) => {
 
   const artist = props.artist ? props.artist.name : artistPage.name
   return (
-    <CardContainer
-      id={id}
-      // whileHover={{ scale: 1.01, transition: { duration: 0.05 } }}
-    >
+    <CardContainer id={id}>
       <ImagesContainer>
         <OverlayPreview
           onClick={() => fetchAlbumById(id)}
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1, transition: { duration: 0.5 } }}
         >
-          🛈
+          <IconInfoSquareRounded size={45} />
         </OverlayPreview>
         <TitleContainer>
           <p>{title}</p>
           <p>{artist}</p>
         </TitleContainer>
-        <MainImg imgsrc={cover ?? noImg} />
-        {/* {recordType === 'single' && <SingleFrame>S</SingleFrame>} */}
-        {/* {explicit && <ExplicitFrame>E</ExplicitFrame>} */}
+        <MainImg $imgsrc={cover ?? noImg} />
       </ImagesContainer>
       <InfoContainer>
         <div>
@@ -58,9 +45,7 @@ const AlbumCard = (props) => {
           <ButtonPrimary
             notLoggedIn={!user}
             size='1.2'
-            onClick={() =>
-              handleAddToCart({ id, title, cover, artist, price })
-            }
+            onClick={() => handleAddToCart({ id, title, cover, artist, price })}
           >
             Add
           </ButtonPrimary>

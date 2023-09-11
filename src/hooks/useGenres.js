@@ -1,9 +1,7 @@
 import axios from 'axios'
-import { DUMMY_JSON } from '../constants/apiUrls'
 import { useDispatch } from 'react-redux'
 import {
   getCategories,
-  isError,
   isFetching,
 } from '../redux/categories/categoriesSlice'
 // data harcodeada

@@ -6,12 +6,12 @@ export const PreviewContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  top: 10vh;
+  top: 55px;
   position: fixed;
-  width: 90%;
-  max-width: 900px;
-  height: 80vh;
-  background: #fff url(${({ imgsrc }) => `${imgsrc}`}) center/cover no-repeat;
+  /* max-width: 875px; */
+  width: 90vh;
+  height: 90vh;
+  background: #fff url(${({ $imgsrc }) => `${$imgsrc}`}) center/cover no-repeat;
   background-color: #201e20;
   z-index: 10;
   border-radius: 15px;
@@ -25,14 +25,14 @@ export const PreviewContainer = styled(motion.div)`
     z-index: -1;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(3px);
+    /* backdrop-filter: blur(3px); */
     background-color: #201e20c7;
     border-radius: 15px;
-    @media (max-width: 576px) {
+    @media (max-width: 992px) {
       border-radius: 0;
     }
   }
-  @media (max-width: 576px) {
+  @media (max-width: 992px) {
     padding: 10px;
     border-radius: 0;
     top: 50px;
@@ -42,7 +42,7 @@ export const PreviewContainer = styled(motion.div)`
 `
 
 export const AlbumHeaders = styled.div`
-  width: 97%;
+  width: 96%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -54,6 +54,7 @@ export const AlbumHeaders = styled.div`
 `
 
 export const AlbumImg = styled.img`
+  cursor: pointer;
   border-radius: 5px;
   opacity: 0.8;
   width: 22%;
@@ -157,6 +158,12 @@ export const ExtraInfo = styled.div`
   }
 `
 
+export const LikesContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`
+
 export const InfoFrame = styled.div`
   height: 18px;
   display: flex;
@@ -166,7 +173,7 @@ export const InfoFrame = styled.div`
   font-weight: 500;
   padding: 0 5px;
   color: var(--dark);
-  background: var(--grey);
+  background: #d67070d3;
   border-radius: 2px;
   text-transform: capitalize;
 
@@ -176,7 +183,12 @@ export const InfoFrame = styled.div`
   }
 `
 
+export const RecordTypeFrame = styled(InfoFrame)`
+  background-color: #83e6a9a4;
+`
+
 export const GenreFrame = styled(InfoFrame)`
+  background-color: var(--grey);
   &:hover {
     cursor: pointer;
     color: var(--dark);
@@ -201,9 +213,9 @@ export const TracksInfo = styled.div`
   }
 `
 export const InfoLabel = styled.div`
-width: 60%;
-color: var(--grey);
-font-weight: 500;
+  width: 60%;
+  color: var(--grey);
+  font-weight: 500;
 `
 
 export const AlbumPrice = styled.div`
@@ -214,13 +226,6 @@ export const AlbumPrice = styled.div`
     font-size: 1.1rem;
   }
 `
-
-
-// export const SingleFrame = styled(ExplicitFrame)`
-//   right: 40px;
-//   /* color: #dddddb; */
-//   /* background: #0546f8; */
-// `
 
 export const AlbumTracksContainer = styled.div`
   display: flex;

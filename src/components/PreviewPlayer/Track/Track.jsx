@@ -10,7 +10,7 @@ import {
 } from './TrackStd'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  hidePreview,
+  hideAlbumPreview,
   setPlaying,
 } from '../../../redux/previewPlayer/previewPlayerSlice'
 import Icons from '../../../constants/icons'
@@ -51,22 +51,18 @@ const Track = ({
     }
   }, [currentTrack, id])
 
-  // console.log('IS PLAYING???', songElement.current)
-
   return (
     <TrackContainer
       id={id}
-      playing={currentTrack === id ? 1 : 0}
+      $playing={currentTrack === id ? 1 : 0}
       onMouseOver={() => setMouseOver(true)}
       onMouseOut={() => setMouseOver(false)}
     >
       <TrackNumber onClick={() => handleClick(id)}>
+
         {mouseHover || (currentTrack === id && (trackPlaying || paused)) ? (
-          <Play
-            
-            size='2em'
-            color='var(--grey)'
-          />
+          
+          <Play size='2em' color='var(--grey)' />
         ) : (
           <div>{number}</div>
         )}
@@ -74,17 +70,15 @@ const Track = ({
       <TrackData>
         <TrackTitle
           onClick={() => handleClick(id)}
-          playing={currentTrack === id ? 1 : 0}
+          $playing={currentTrack === id ? 1 : 0}
         >
           <p>{title}</p>
           <NaTrack>{!readable && 'N/A'}</NaTrack>
-          
-          
         </TrackTitle>
         <TrackArtist
           onClick={() => {
             navigate(`/artist/${artist.id}`)
-            dispatch(hidePreview(true))
+            dispatch(hideAlbumPreview(true))
           }}
         >
           {(explicitLyrics > 2 || explicit) && <ExplicitTrack>E</ExplicitTrack>}

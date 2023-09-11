@@ -1,32 +1,38 @@
 import * as yup from 'yup'
 import { mailRegex, passwordRegex } from '../constants/regexs'
-// import { mailRegex, passwordRegex } from '../constants/regexs'
 
 export const loginValidationSchema = yup.object({
   email: yup
     .string()
     .trim()
-    .matches(mailRegex, 'Mail no válido')
-    .required('Campo requerido'),
-  password: yup
-    .string()
-    // .min(8, 'Mínimo de 8 caracteres')
-    .required('Campo requerido'),
-  // .matches(
-  //   passwordRegex,
-  //   'Permitidos 0-9, a-z, A-Z, !@#$%^&*'
-  // ),
+    .matches(mailRegex, 'Email not valid')
+    .required('Email is required'),
+  password: yup.string().required('Password is required'),
 })
+
 export const registerValidationSchema = yup.object({
   email: yup
     .string()
     .trim()
-    .matches(mailRegex, 'Mail no válido')
-    .required('Campo requerido'),
+    .matches(mailRegex, 'Email not valid')
+    .required('Email is required'),
   password: yup
     .string()
-    .min(8, 'Mínimo de 8 caracteres')
-    .matches(passwordRegex, 'Permitidos 0-9, a-z, A-Z, !@#$%^&*')
-    .required('Campo requerido'),
-  name: yup.string().trim().required('Campo requerido'),
+    .min(8, 'At least 8 characters or more')
+    .matches(passwordRegex, 'Should contain 0-9, a-z, A-Z, !@#$%^&*')
+    .required('Password is required'),
+  name: yup.string().trim().required('Name is required'),
+})
+
+export const contactValidationSchema = yup.object({
+  name: yup.string().trim().required('Name is required'),
+  email: yup
+    .string()
+    .trim()
+    .matches(mailRegex, 'Email not valid')
+    .required('Email is required'),
+  message: yup
+    .string()
+    .min(100, 'At least 100 characters or more')
+    .required('Some message is required'),
 })

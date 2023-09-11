@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 
 export const AlbumsSectionContainer = styled.div`
   min-height: calc(100vh - 130px);
-  padding: 30px 0;
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +10,7 @@ export const AlbumsSectionContainer = styled.div`
   max-width: 1300px;
   @media (max-width: 576px) {
     width: 100%;
+    padding: 10px 0;
   }
 `
 

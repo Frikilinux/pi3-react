@@ -10,11 +10,13 @@ export const GlobalStyles = createGlobalStyle`
     --dark: #201e20;
     --lightDark: #2c2d31;
     --grey: #989898;
-    --green: #13c581;
+    --green: #87a825;
     --toastify-font-family: 'Montserrat';
+    color-scheme: dark;
   }
 
   html{
+    /* scrollbar-gutter: stable both-edges; */
     scroll-behavior: smooth;
   }
 
@@ -32,7 +34,12 @@ export const GlobalStyles = createGlobalStyle`
   color: var(--white);
     -webkit-tap-highlight-color: transparent;
   overflow-x: hidden;
+  overflow-y: hidden; /* Hide vertical scrollbar */
   }
+
+  body::-webkit-scrollbar {
+  display: none;
+}
 
   a {
   text-decoration: none;

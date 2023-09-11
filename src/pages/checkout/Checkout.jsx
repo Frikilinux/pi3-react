@@ -25,11 +25,10 @@ const Checkout = () => {
   const { postOrder } = useOrder()
   const dispatch = useDispatch()
 
-  const totalPrice = items
-    .reduce((acc, item) => {
-      acc += item.price * item.qty
-      return acc
-    }, 0)
+  const totalPrice = items.reduce((acc, item) => {
+    acc += item.price * item.qty
+    return acc
+  }, 0)
 
   const handleConfirm = () => {
     postOrder({
@@ -70,25 +69,35 @@ const Checkout = () => {
         <CheckoutContainer>
           <CheckoutInfo>
             <CheckoutTitle>Confim your order</CheckoutTitle>
-            <CheckoutInfoText>
-              <p>
-                All links to download your albums will be sent to {user?.email}
-              </p>
-              <p>Confirm the following data:</p>
-              <p>
-                Total price $ {totalPrice} for {items.length} albums
-              </p>
-            </CheckoutInfoText>
+
+            {items.length === 0 ? (
+              <p>Please, add some items to your cart !!</p>
+            ) : (
+              <CheckoutInfoText>
+                <p>
+                  All links to download your albums will be sent to{' '}
+                  <strong>{user?.email}</strong>
+                </p>
+                <p>Confirm the following data:</p>
+                <p>
+                  Total price <strong>$ {totalPrice}</strong> for {items.length}{' '}
+                  albums
+                </p>
+              </CheckoutInfoText>
+            )}
+
             <CheckoutButtonsContainer>
-              <ButtonPrimary onClick={handleConfirm}>
-                {isFetchingOrders ? (
-                  <Spinner>
-                    <SpinnerIcon color='var(--dark)' />
-                  </Spinner>
-                ) : (
-                  'Confirm order'
-                )}
-              </ButtonPrimary>
+              {items.length !== 0 && (
+                <ButtonPrimary onClick={handleConfirm}>
+                  {isFetchingOrders ? (
+                    <Spinner>
+                      <SpinnerIcon color='var(--dark)' />
+                    </Spinner>
+                  ) : (
+                    'Confirm order'
+                  )}
+                </ButtonPrimary>
+              )}
             </CheckoutButtonsContainer>
           </CheckoutInfo>
           <CheckoutCartContainer>

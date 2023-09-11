@@ -4,6 +4,7 @@ export const OrderContainer = styled.div`
   padding: 10px 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 400px;
   height: 150px;
   background-color: var(--dark);
@@ -48,21 +49,21 @@ export const OrderCardInfo = styled.div`
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
-  height: 80%;
+  height: 85%;
   @media (max-width: 576px) {
     height: 70%;
   }
 `
 
 export const OrderAlbumQty = styled.div`
-  color: var(--green);
+  color: #c7123f;
   position: relative;
   left: -35px;
   font-size: 2rem;
-  font-weight: 600;
-  text-shadow:
+  font-weight: 700;
+  /* text-shadow:
     2px 4px 5px rgba(0, 0, 0, 0.548),
-    0px -3px 5px rgba(255, 255, 255, 0.432);
+    0px -3px 5px rgba(255, 255, 255, 0.432); */
   @media (max-width: 576px) {
     font-size: 1.4rem;
   }
@@ -73,9 +74,9 @@ export const OrderItemsQty = styled.div`
   position: relative;
   font-size: 1.5rem;
   font-weight: 500;
-  text-shadow:
-    2px 7px 5px rgba(0, 0, 0, 0.411),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
+  /* text-shadow:
+  2px 7px 5px rgba(0, 0, 0, 0.411),
+  0px -4px 10px rgba(255, 255, 255, 0.3); */
   @media (max-width: 576px) {
     font-size: 1.2rem;
   }
@@ -86,7 +87,8 @@ export const CreatedDate = styled.div`
   position: relative;
   font-size: 0.8rem;
   font-weight: 600;
+  white-space: nowrap;
   @media (max-width: 576px) {
     font-size: 0.7rem;
   }
-`
+  `

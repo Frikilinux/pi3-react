@@ -6,6 +6,7 @@ import {
   setUserError,
   setUserFetching,
 } from '../redux/user/userSlice'
+import { toast } from 'sonner'
 
 export const useUser = () => {
   const dispatch = useDispatch()
@@ -18,31 +19,32 @@ export const useUser = () => {
         email: email.toLowerCase(),
         password,
       })
-      dispatch(loggedUser(res.data), setUserFetching(false))
+      dispatch(loggedUser(res.data))
+      toast.success('User logged')
       return res.data
     } catch (error) {
       const { msg } = error.response.data
-      dispatch(setUserError(msg), setUserFetching(false))
+      dispatch(setUserError(msg))
+    } finally {
+      dispatch(setUserFetching(false))
     }
   }
 
   const registerUser = async ({ name, email, password }) => {
     try {
-      setUserFetching(true)
+      dispatch(setUserFetching(true))
       const res = await axios.post(API_PROXY + ROOT + REGISTER, {
         nombre: name,
         email,
         password,
-        // como para probar
-        img: `https://robohash.org/${name}?set=set3`,
       })
-
-      setUserFetching(false)
-
+      toast.success('User registered')
       return res
     } catch (error) {
       const { msg } = error.response.data
-      dispatch(setUserError(msg), setUserFetching(false))
+      dispatch(setUserError(msg))
+    } finally {
+      dispatch(setUserFetching(false))
     }
   }
 

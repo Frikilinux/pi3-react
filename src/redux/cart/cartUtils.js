@@ -1,5 +1,3 @@
-import { toast } from "react-toastify"
-
 export const addAlbumHandler = (cartAlbums, album) => {
   const { id } = album
 
@@ -7,7 +5,7 @@ export const addAlbumHandler = (cartAlbums, album) => {
 
   if (itemExist) {
     return cartAlbums.map((album) =>
-      album.id === id ? { ...album, qty: album.qty + 1 } : album
+      album.id === id ? { ...album, qty: album.qty + 1 } : album,
     )
   } else {
     return [...cartAlbums, { ...album, qty: 1 }]
@@ -16,15 +14,12 @@ export const addAlbumHandler = (cartAlbums, album) => {
 
 export const removeAlbumHandler = (cartAlbums, albumId) => {
   const itemExist = cartAlbums.find((album) => album.id === albumId)
-  
+
   if (itemExist.qty > 1) {
     return cartAlbums.map((album) =>
-      album.id === albumId ? { ...album, qty: album.qty - 1 } : album
+      album.id === albumId ? { ...album, qty: album.qty - 1 } : album,
     )
   } else {
-    toast.warning(`Album removed`, { autoClose: 1000 })
-    return cartAlbums.filter((album) => album.id !== albumId ) 
-
+    return cartAlbums
   }
-
 }

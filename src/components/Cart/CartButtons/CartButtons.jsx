@@ -1,32 +1,44 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { cleanCart, hideCart } from '../../../redux/cart/cartSlice'
 import { CartButtonsContainer } from './CartButtonsStd'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
+import {
+  IconShoppingCartCancel,
+  IconShoppingCartCheck,
+} from '@tabler/icons-react'
 
 const CartButtons = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { items } = useSelector(({ cart }) => cart)
 
   return (
     <CartButtonsContainer>
       <ButtonPrimary
+        disabled={items.length === 0}
         onClick={() => {
+          if (items.length === 0) return
           navigate('/checkout')
           dispatch(hideCart())
+          window.scrollTo(0, 0)
         }}
       >
-        Checkout
+        <IconShoppingCartCheck size={20} />
+        <p style={{ marginLeft: '5px' }}>Checkout</p>
       </ButtonPrimary>
       <ButtonPrimary
+        disabled={items.length === 0}
         onClick={() => {
+          if (items.length === 0) return
           dispatch(cleanCart())
-          toast.info('Cart cleaned')
+          toast.success('Cart cleaned')
         }}
       >
-        Clean Cart
+        <IconShoppingCartCancel size={20} />
+        <p style={{ marginLeft: '5px' }}>Clean Cart</p>
       </ButtonPrimary>
     </CartButtonsContainer>
   )

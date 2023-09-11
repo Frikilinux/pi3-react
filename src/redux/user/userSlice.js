@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   user: null,
   isUserFetching: false,
   userError: null,
+  isModalHidden: true,
 }
 
 const userSlice = createSlice({
@@ -25,7 +26,7 @@ const userSlice = createSlice({
       }
     },
     logOut: () => {
-      return {...INITIAL_STATE}
+      return { ...INITIAL_STATE }
     },
     setUserError: (state, action) => {
       return {
@@ -33,9 +34,19 @@ const userSlice = createSlice({
         userError: action.payload,
       }
     },
+    setIsModalHidden: (state, action) => ({
+      ...state,
+      isModalHidden: action.payload,
+    }),
   },
 })
 
-export const { loggedUser, setUserError, setUserFetching, logOut } = userSlice.actions
+export const {
+  loggedUser,
+  setUserError,
+  setUserFetching,
+  logOut,
+  setIsModalHidden,
+} = userSlice.actions
 
 export default userSlice.reducer

@@ -16,7 +16,18 @@ const useButtons = () => {
 
   const handleAddToCart = (props) => {
     if (!user) {
-      toast.error('Plese login to start buying')
+      toast.error(
+        'Plese login to start buying',
+        {
+          action: {
+            label: 'Login',
+            onClick: () => navigate('/login'),
+          },
+        },
+        {
+          duration: 3000,
+        },
+      )
     } else {
       dispatch(addToCart(props))
       toast.success('Album added')

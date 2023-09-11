@@ -6,10 +6,10 @@ const AlbumsChartContainer = styled.div`
   padding: 30px 0;
   width: 90%;
   max-width: 1300px;
-  gap: 20px;
+  gap: 60px;
   @media (max-width: 576px) {
     width: 100%;
-    gap: 15px;
+    gap: 40px;
   }
 `
 

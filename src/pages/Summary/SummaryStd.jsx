@@ -13,6 +13,7 @@ export const SummaryContainer = styled.div`
 `
 
 export const SummaryOrderTitle = styled.h1`
+  padding: 0 10px;
   font-size: 2.5rem;
   text-align: center;
 `

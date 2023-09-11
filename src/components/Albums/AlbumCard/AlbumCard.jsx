@@ -16,7 +16,7 @@ import { useSelector } from 'react-redux'
 const AlbumCard = (props) => {
   const { id, title, cover_medium: cover, price } = props
 
-  const noImg = 'https://cloud.ztec.ml/s/Y7G3JX4FxE5zKaz/download'
+  const noImg = 'https://res.cloudinary.com/dixlr2ujp/image/upload/v1687388809/Integrador/no_image_available.jpg'
   const { fetchAlbumById } = useAlbums()
   const { user } = useSelector(({ user }) => user)
   const { artist: artistPage } = useSelector(({ artist }) => artist)

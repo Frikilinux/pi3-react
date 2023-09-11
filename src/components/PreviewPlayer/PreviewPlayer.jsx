@@ -32,7 +32,6 @@ import { formatedDate } from '../../utils/formatedDate'
 import { useAlbums } from '../../hooks/useAlbums'
 import { useNavigate } from 'react-router-dom'
 import useButtons from '../../hooks/useButtons'
-import Icons from '../../constants/icons'
 import { formatQuantityNumber } from '../../utils/formatNumbers'
 import {
   IconHeartFilled,
@@ -40,7 +39,7 @@ import {
   IconPointFilled,
 } from '@tabler/icons-react'
 
-const PreviewPlayer = (props) => {
+const PreviewPlayer = () => {
   const { getAlbumsByGenre } = useAlbums()
   const dispatch = useDispatch()
   const { album } = useSelector((state) => state.previewPlayer)
@@ -68,6 +67,8 @@ const PreviewPlayer = (props) => {
   const { day, month, year } = formatedDate(release)
   const { user } = useSelector(({ user }) => user)
   const { handleAddToCart, handleArtistPage } = useButtons()
+  const noImg =
+    'https://res.cloudinary.com/dixlr2ujp/image/upload/v1687388809/Integrador/no_image_available.jpg'
 
   return (
     <PreviewContainer
@@ -141,8 +142,8 @@ const PreviewPlayer = (props) => {
           </TracksInfo>
         </AlbumInfoContainer>
         <AlbumImg
-          onClick={() => dispatch(setImagePreview(coverXl))}
-          src={cover}
+          onClick={() => cover && dispatch(setImagePreview(coverXl))}
+          src={cover ?? noImg}
         />
       </AlbumHeaders>
 

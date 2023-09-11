@@ -14,7 +14,7 @@ export const UserContainer = styled(motion.div)`
 `
 
 export const UserDataContainer = styled.div`
-  border-radius: 15px 4px 4px 15px;
+  border-radius: 15px;
   display: flex;
   gap: 10px;
   background-color: var(--green);

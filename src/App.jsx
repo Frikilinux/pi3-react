@@ -41,7 +41,11 @@ function App() {
         position='top-right'
         offset='60px'
         toastOptions={{
-          style: { background: 'var(--lightDark)', border: 'none' },
+          style: {
+            background: 'var(--lightDark)',
+            border: '2px solid var(--dark)',
+            fontFamily: 'Montserrat',
+          },
         }}
       />
       <AnimatePresence>

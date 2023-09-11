@@ -14,6 +14,9 @@ const ArtistSearchSectionContainer = styled.div`
 const ArtistSearchTitle = styled.h1`
   color: var(--dark);
   font-size: 2rem;
+  @media (max-width: 576px) {
+    text-align: center;
+  }
 `
 
 const ArtistChartContainer = styled.div`

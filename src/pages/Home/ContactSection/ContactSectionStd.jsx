@@ -43,6 +43,7 @@ const MessageBox = styled.textarea`
   background-color: var(--lightDark);
   height: 150px;
   border-radius: ${({ $isError }) => ($isError ? '5px 5px 0 0' : '5px')};
+  border: 1px solid ${({ $isError }) => ($isError ? 'var(--red)' : 'transparent')};
   &::placeholder {
   }
 `
@@ -65,6 +66,7 @@ const ContactData = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  font-weight: 500;
   & div {
     display: flex;
     flex-direction: column;

@@ -4,10 +4,9 @@ import {
   UserModalData,
   UserModalLogoutContainer,
 } from './UserModalStd'
-import { useNavigate, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logOut } from '../../../../redux/user/userSlice'
-import { AnimatePresence } from 'framer-motion'
 import { IconLogout } from '@tabler/icons-react'
 import useButtons from '../../../../hooks/useButtons'
 

@@ -4,6 +4,7 @@ import {
   LoginBtnContainer,
   UserCartIconContainer,
   UserContainer,
+  UserDataContainer,
   UserNameData,
 } from './UserStd'
 import { useDispatch, useSelector } from 'react-redux'
@@ -37,28 +38,30 @@ const User = () => {
 
       {user ? (
         <UserContainer>
-          <UserNameData
-            onClick={() => {
-              isModalHidden && hideAllModals()
-              dispatch(setIsModalHidden(!isModalHidden))
-            }}
-          >
-            {firstName[0].toUpperCase()}
-          </UserNameData>
-
-          {pathname !== '/checkout' && (
-            <UserCartIconContainer
+          <UserDataContainer>
+            <UserNameData
               onClick={() => {
-                cartHidden && hideAllModals()
-                dispatch(toggleCart())
+                isModalHidden && hideAllModals()
+                dispatch(setIsModalHidden(!isModalHidden))
               }}
             >
-              <IconShoppingCart size={20} />
-              <CartItemsBubble>
-                {itemsInCart || <IconMoodSad size={20} />}
-              </CartItemsBubble>
-            </UserCartIconContainer>
-          )}
+              {firstName[0].toUpperCase()}
+            </UserNameData>
+
+            {pathname !== '/checkout' && (
+              <UserCartIconContainer
+                onClick={() => {
+                  cartHidden && hideAllModals()
+                  dispatch(toggleCart())
+                }}
+              >
+                <IconShoppingCart size={20} />
+                <CartItemsBubble>
+                  {itemsInCart || <IconMoodSad size={20} />}
+                </CartItemsBubble>
+              </UserCartIconContainer>
+            )}
+          </UserDataContainer>
         </UserContainer>
       ) : (
         <LoginBtnContainer>

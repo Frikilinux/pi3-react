@@ -17,7 +17,7 @@ const InputUser = ({ placeholder, type, name, icon }) => {
       {({ field, form: { setFieldValues, errors, touched } }) => {
         return (
           <InputComponent>
-            <InputContainer isError={errors[field.name] && touched[field.name]}>
+            <InputContainer $isError={errors[field.name] && touched[field.name]}>
               {icon}
               <InputStd
                 name={name}

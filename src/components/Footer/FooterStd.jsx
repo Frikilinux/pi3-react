@@ -10,8 +10,9 @@ export const FooterStyled = styled.footer`
   width: 100%;
   /* height: 50px; */
   @media (max-width: 576px) {
-    height: 160px;
-    flex-direction: column;
+    /* padding: 5px; */
+    /* height: 160px; */
+    /* flex-direction: column; */
   }
 `
 
@@ -26,18 +27,7 @@ export const FooterBrand = styled.div`
 `
 
 export const FooterCopy = styled.div`
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--grey);
-`
-
-export const FootterPowered = styled.div`
-  color: var(--grey);
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  & div {
-    padding: 10px;
-    color: var(--celeste);
-  }
 `

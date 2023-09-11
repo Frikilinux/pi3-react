@@ -11,14 +11,11 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 import InputUser from '../../../components/UI/InputUser/InputUser'
 import {
   IconAt,
-  IconLock,
   IconUser,
-  IconGps,
   IconMapPin,
   IconPhone,
   IconMail,
 } from '@tabler/icons-react'
-import { Link } from 'react-router-dom'
 import { contactInitialValues } from '../../../formik/initialValues'
 import { contactValidationSchema } from '../../../formik/validationSchema'
 import ButtonPrimary from '../../../components/UI/Button/ButtonPrimary'
@@ -86,7 +83,7 @@ const ContactSection = () => {
           </div>
           <div>
             <IconMail />
-            <p>info@zmusic.com</p>
+            <p>info@brainsdamage.com</p>
           </div>
         </ContactData>
       </ContactContainer>

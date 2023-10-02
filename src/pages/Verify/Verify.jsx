@@ -1,38 +1,64 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useVerify } from '../../hooks/useVerify'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link } from 'react-router-dom'
 import Main from '../../components/UI/MainWrapper/MainWrapper'
+import { VerifyContainer, VerifyError, VerifyText } from './VerifyStd'
+import ButtonPrimary from '../../components/UI/Button/ButtonPrimary'
 
 const Verify = () => {
-  const { emailVerify, error } = useVerify()
+  const { emailVerify, genVerifyToken, error, success, fetching } = useVerify()
   const [searchParams] = useSearchParams()
-  const [verifiying, setVerifying] = useState(false)
-  const [data, setData] = useState()
 
   useEffect(() => {
-    setVerifying(true)
-
     const verify = async () => {
-      const response = await emailVerify(searchParams.get('token'))
-      setData(response)
-      setVerifying(false)
+      await emailVerify(searchParams.get('token'))
     }
     verify()
   }, [])
 
   return (
     <Main>
-      {verifiying && <h1>Verifying...</h1>}
-      {error && <h1>Error: {error?.message}</h1>}
-      {error?.name === 'TokenExpiredError' && (
-        <h1>Token expired. Please generate a new one.</h1>
-      )}
-      {error?.name === 'JsonWebTokenError' && (
-        <h1>Token Error. Please generate a new one.</h1>
-      )}
-      {console.log(data, 'STATE DATA')}
-      {console.log(verifiying, 'STATE')}
-      {/* // <div>Verify TOKEN {console.log(searchParams.get('token'))}</div> */}
+      <VerifyContainer>
+        {fetching && <h1>Verifying...</h1>}
+        {error?.name === 'TokenExpiredError' && (
+          <VerifyText>
+            <p>Token expired. Please generate a new one. {error?.email}</p>
+            <ButtonPrimary
+              onClick={async () => {
+                await genVerifyToken(error?.email)
+              }}
+            >
+              Send new verification email
+            </ButtonPrimary>
+          </VerifyText>
+        )}
+        {error?.name === 'JsonWebTokenError' && (
+          <VerifyText>Token Error. Please generate a new one.</VerifyText>
+        )}
+
+        {success?.name === 'new_token_generated' && (
+          <VerifyText>
+            <p>
+              New verification email was sent to {success?.user.email}. Please
+              check your email and follow the verification link.
+            </p>
+
+            <p>
+              After that you can <Link to='/login'>login</Link>.
+            </p>
+          </VerifyText>
+        )}
+        {success?.name === 'email_verified' && (
+          <VerifyText>
+            <p>Email {success?.user.email} verified.</p>
+            <p>
+              You can now <Link to='/login'>login</Link>.{' '}
+            </p>
+            <p>Enjoy the music.</p>
+          </VerifyText>
+        )}
+        {error && <VerifyError>Error: {error?.message}</VerifyError>}
+      </VerifyContainer>
     </Main>
   )
 }

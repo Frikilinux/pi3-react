@@ -14,7 +14,7 @@ const userSlice = createSlice({
     loggedUser: (state, action) => {
       return {
         ...state,
-        user: { ...action.payload.usuario, token: action.payload.token },
+        user: { ...action.payload.user, token: action.payload.token },
         isUserFetching: false,
         userError: null,
       }

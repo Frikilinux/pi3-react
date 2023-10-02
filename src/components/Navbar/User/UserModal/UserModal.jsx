@@ -23,7 +23,7 @@ const UserModal = () => {
       transition={{ type: 'spring', damping: 18, duration: 0.1 }}
       key='user-modal'
     >
-      <h2>{user?.nombre}</h2>
+      <h2>{user?.name}</h2>
       <UserModalData>
         <NavLink  onClick={() => hideAllModals()} to={'/summary'}>Orders Summary</NavLink>
         <UserModalLogoutContainer>

@@ -23,7 +23,7 @@ const User = () => {
   const dispatch = useDispatch()
   const { pathname } = useLocation()
   const navigate = useNavigate()
-  const firstName = user?.nombre.split(' ').slice(0, 1).join(' ')
+  const firstName = user?.name.split(' ').slice(0, 1).join(' ')
   const { hideAllModals } = useButtons()
 
   const itemsInCart = items?.reduce((acc, item) => {

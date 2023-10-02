@@ -18,6 +18,9 @@ width: 350px;
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
     rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   & h2 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     color: var(--celeste);
   }
   @media (max-width: 576px) {

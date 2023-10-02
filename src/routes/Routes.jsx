@@ -10,6 +10,7 @@ import NotFound from '../pages/NotFound/NotFound'
 import Search from '../pages/Search/Search'
 import AlbumsPage from '../pages/AlbumsPage/Albums'
 import ProtectedRoute from '../components/ProctectedRoute/ProtectedRoute'
+import Verify from '../pages/Verify/Verify'
 
 const Routes = () => {
   return (
@@ -21,6 +22,7 @@ const Routes = () => {
       <Route path='/artist/:search?' element={<Artist />} />
       <Route path='/search/:search' element={<Search />} />
       <Route path='/albums/:search?' element={<AlbumsPage />} />
+      <Route path='/verify' element={<Verify />} />
       <Route
         path='/summary'
         element={

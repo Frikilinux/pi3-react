@@ -36,7 +36,18 @@ function App() {
 
   return (
     <Layout>
-      <Toaster richColors position='top-right' theme='dark' offset='60px' />
+      <Toaster
+        richColors
+        position='top-right'
+        offset='60px'
+        toastOptions={{
+          style: {
+            background: 'var(--lightDark)',
+            border: '2px solid var(--dark)',
+            fontFamily: 'Montserrat',
+          },
+        }}
+      />
       <AnimatePresence>
         {' '}
         {(!albumPreviewHidden ||

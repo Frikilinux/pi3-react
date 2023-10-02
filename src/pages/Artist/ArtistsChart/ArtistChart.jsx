@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SectionWrapper from '../../../components/UI/SectionWrapper/SectionWrapper'
 import Main from '../../../components/UI/MainWrapper/MainWrapper'
-import SearchArtist from '../../../components/SearchArtist/SearchArtist'
+// import SearchArtist from '../../../components/SearchArtist/SearchArtist'
 import { ArtistSectionTitle } from '../ArtistStd'
 import {
   ArtistChartContainer,

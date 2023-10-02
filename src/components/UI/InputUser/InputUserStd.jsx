@@ -26,8 +26,8 @@ export const InputContainer = styled.div`
   width: 100%;
   padding: 10px 20px;
   background-color: var(--lightDark);
-  border-radius: ${({ isError }) => (isError ? '5px 5px 0 0' : '5px')};
-  /* border: ${({ isError }) => (isError ? '2px solid var(--red)' : 'none')}; */
+  border-radius: ${({ $isError }) => ($isError ? '5px 5px 0 0' : '5px')};
+  border: 1px solid ${({ $isError }) => ($isError ? 'var(--red)' : 'transparent')};
 `
 
 export const InputStd = styled.input`

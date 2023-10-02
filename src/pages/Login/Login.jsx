@@ -21,21 +21,55 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setUserError } from '../../redux/user/userSlice'
 import { IconAt, IconLock } from '@tabler/icons-react'
 import { useMediaPredicate } from 'react-media-hook'
+import { useVerify } from '../../hooks/useVerify'
 
 const Login = () => {
   const { userError } = useSelector(({ user }) => user)
   const { loginUser } = useUser()
+  const { genVerifyToken } = useVerify()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const max576 = useMediaPredicate('(max-width: 576px)')
 
   return (
     <Main>
-      {userError && (
-        <ErrorModal onClick={() => dispatch(setUserError(false))}>
-          {userError}
-        </ErrorModal>
-      )}
+      {userError &&
+        (userError.error === 'not_verified' ? (
+          <ErrorModal onClick={() => dispatch(setUserError(false))}>
+            <p>The email {userError?.email} are not verified.</p>
+            <p>
+              Please check your email and follow the verification link or send a
+              new one
+            </p>
+
+            <ButtonPrimary
+              onClick={async () => {
+                await genVerifyToken(userError?.email)
+                dispatch(setUserError(false))
+              }}
+            >
+              Send verification email
+            </ButtonPrimary>
+          </ErrorModal>
+        ) : (
+          <ErrorModal onClick={() => dispatch(setUserError(false))}>
+            {userError?.message}
+          </ErrorModal>
+        ))}
+
+      {/* {(userError && userError.error === 'not_verified') && (
+        <ErrorModal
+          onClick={async () => {
+            await genVerifyToken(userError?.email)
+            dispatch(setUserError(false))
+          }}
+        >
+          Token expired. Please generate a new one for {userError?.email}
+        </ErrorModal>}
+    {userError}
+
+      )} */}
+
       <SectionWrapper bg='var(--Dark)' id='checkout'>
         <LoginContainer>
           <Formik

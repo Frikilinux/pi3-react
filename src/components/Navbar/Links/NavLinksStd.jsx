@@ -30,8 +30,9 @@ const SiteLinks = styled.li`
 `
 const NavlinkStyled = styled(NavLink)`
   padding: 2px 5px;
+  font-weight: 500;
   &.active {
-    font-weight: 500;
+    font-weight: 600;
     color: var(--dark);
     padding: 2px 5px;
     border-radius: 5px;

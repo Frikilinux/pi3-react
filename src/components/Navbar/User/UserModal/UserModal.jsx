@@ -4,10 +4,9 @@ import {
   UserModalData,
   UserModalLogoutContainer,
 } from './UserModalStd'
-import { useNavigate, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logOut } from '../../../../redux/user/userSlice'
-import { AnimatePresence } from 'framer-motion'
 import { IconLogout } from '@tabler/icons-react'
 import useButtons from '../../../../hooks/useButtons'
 
@@ -24,7 +23,7 @@ const UserModal = () => {
       transition={{ type: 'spring', damping: 18, duration: 0.1 }}
       key='user-modal'
     >
-      <h2>{user?.nombre}</h2>
+      <h2>{user?.name}</h2>
       <UserModalData>
         <NavLink  onClick={() => hideAllModals()} to={'/summary'}>Orders Summary</NavLink>
         <UserModalLogoutContainer>

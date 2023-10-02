@@ -12,17 +12,27 @@ export const UserContainer = styled(motion.div)`
   gap: 10px;
   margin-left: auto;
 `
+
+export const UserDataContainer = styled.div`
+  border-radius: 15px;
+  display: flex;
+  gap: 10px;
+  background-color: var(--green);
+`
+
 export const UserNameData = styled.div`
-  color: var(--blue);
-  font-weight: 600;
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25px;
-  height: 25px;
-  background-color: var(--grey);
+  width: 26px;
+  height: 26px;
+  background-color: #345007;
   border-radius: 50px;
   &:hover {
+    color: var(--red);
     cursor: pointer;
   }
 `
@@ -33,14 +43,13 @@ export const UserCartIconContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   padding: 2px 5px;
-  background-color: var(--green);
-  border-radius: 2px;
   color: var(--dark);
   gap: 5px;
   transition: 0.5 all ease;
   &:hover {
     cursor: pointer;
-    background-color: var(--celeste);
+    /* background-color: var(--celeste); */
+    color: #b40e4d;
     transition: 0.5 all ease;
   }
   &:active {

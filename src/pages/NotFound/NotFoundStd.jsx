@@ -8,6 +8,7 @@ const NotFoundContainer = styled.div`
   padding-top: 80px;
   width: 90%;
   max-width: 1300px;
+  min-height: calc(100vh - 80px);
   @media (max-width: 576px) {
     flex-direction: column;
     width: 100%;
@@ -18,6 +19,11 @@ const NotFoundContainer = styled.div`
 const NotFoundTitle = styled.h1`
   color: var(--dark);
   font-size: 3rem;
+  @media (max-width: 576px) {
+    text-align: center;
+    width: 100%;
+    gap: 15px;
+  }
 `
 
 const ImgContainer404 = styled.div`

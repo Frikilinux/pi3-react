@@ -31,29 +31,7 @@ const Checkout = () => {
   }, 0)
 
   const handleConfirm = () => {
-    postOrder({
-      price: ' ',
-      shippingCost: ' ',
-      total: totalPrice,
-      shippingDetails: {
-        name: user.nombre,
-        address: user.email,
-        cellphone: ' ',
-        location: ' ',
-      },
-      items: items.map(
-        ({ id, title, artist: desc, cover: img, price, qty: quantity }) => {
-          return {
-            desc,
-            id,
-            img,
-            price,
-            quantity,
-            title,
-          }
-        },
-      ),
-    })
+    postOrder({ items })
   }
 
   const { SpinnerIcon } = Icons

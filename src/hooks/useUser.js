@@ -16,7 +16,7 @@ export const useUser = () => {
   const loginUser = async ({ email, password }) => {
     try {
       dispatch(setUserFetching(true))
-      const { data } = await axios.post(VITE_API_URL + '/user/login', {
+      const { data } = await axios.post(VITE_API_URL + '/users/login', {
         email: email.toLowerCase(),
         password,
       })
@@ -33,7 +33,7 @@ export const useUser = () => {
   const registerUser = async ({ name, email, password }) => {
     try {
       dispatch(setUserFetching(true))
-      const res = await axios.post(VITE_API_URL + '/user/register', {
+      const res = await axios.post(VITE_API_URL + '/users/register', {
         name,
         email,
         password,

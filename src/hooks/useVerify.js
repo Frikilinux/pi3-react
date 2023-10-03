@@ -12,7 +12,7 @@ export const useVerify = () => {
 
     try {
       setFetching(true)
-      const { data } = await axios.patch(VITE_API_URL + '/user/verify/' + token)
+      const { data } = await axios.patch(VITE_API_URL + '/users/verify/' + token)
 
       setSuccess(data)
     } catch (error) {
@@ -25,7 +25,7 @@ export const useVerify = () => {
   const genVerifyToken = async (email) => {
     try {
       setError(null)
-      const {data} = await axios.post(VITE_API_URL + '/user/verify/new', {
+      const {data} = await axios.post(VITE_API_URL + '/users/verify/new', {
         email,
       })
       setSuccess(data)

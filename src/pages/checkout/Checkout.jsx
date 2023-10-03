@@ -30,9 +30,7 @@ const Checkout = () => {
     return acc
   }, 0)
 
-  const handleConfirm = () => {
-    postOrder({ items })
-  }
+  const handleConfirm = () => postOrder({ items })
 
   const { SpinnerIcon } = Icons
 

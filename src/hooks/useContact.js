@@ -2,13 +2,13 @@ import axios from 'axios'
 import { useState } from 'react'
 
 const useContact = () => {
+  const { VITE_API_PROXY, VITE_API_URL } = import.meta.env
   const [sending, setSending] = useState(false)
 
   const sendContactMsg = async ({ email, name, message }) => {
     try {
-      // const res = await axios.post(VITE_API_URL + '/conctact', {
       setSending(true)
-      await axios.post('http://localhost:9001/contact', {
+      await axios.post(VITE_API_URL + '/conctact', {
         name,
         email,
         message,

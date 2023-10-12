@@ -15,13 +15,18 @@ import {
   IconMapPin,
   IconPhone,
   IconMail,
+  IconWhirl,
 } from '@tabler/icons-react'
 import { contactInitialValues } from '../../../formik/initialValues'
 import { contactValidationSchema } from '../../../formik/validationSchema'
 import ButtonPrimary from '../../../components/UI/Button/ButtonPrimary'
 import { ErrorMsg } from '../../../components/UI/InputUser/InputUserStd'
+import { useContact } from '../../../hooks/useContact'
+import Spinner from '../../../components/Spinner/Spinner'
 
 const ContactSection = () => {
+  const { sendContactMsg, sending } = useContact()
+
   return (
     <SectionWrapper bg='#0b0d18' id='contact'>
       <h2 style={{ padding: '20px' }}>Please contact us</h2>
@@ -29,9 +34,10 @@ const ContactSection = () => {
         <Formik
           initialValues={contactInitialValues}
           validationSchema={contactValidationSchema}
-          // onSubmit={async (values) =>
-          //   (await loginUser(values)) && navigate('/')
-          // }
+          onSubmit={async (values, { resetForm }) => {
+            await sendContactMsg(values)
+            resetForm()
+          }}
         >
           <ContactFormContainer>
             <Form>
@@ -66,7 +72,15 @@ const ContactSection = () => {
                 }}
               </Field>
 
-              <ButtonPrimary type='submit'>Send message</ButtonPrimary>
+              <ButtonPrimary type='submit'>
+                {sending ? (
+                  <Spinner>
+                    <IconWhirl color='var(--dark)' />
+                  </Spinner>
+                ) : (
+                  'Send message'
+                )}
+              </ButtonPrimary>
             </Form>
           </ContactFormContainer>
         </Formik>

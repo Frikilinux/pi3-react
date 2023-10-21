@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const VerifyContainer = styled.div`
@@ -28,4 +29,10 @@ const VerifyError = styled.div`
   font-family: 'Courier New', Courier, monospace;
 `
 
-export { VerifyText, VerifyError, VerifyContainer }
+const LinkVerifyStd = styled(Link)`
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 600;
+`
+
+export { VerifyText, VerifyError, VerifyContainer, LinkVerifyStd }

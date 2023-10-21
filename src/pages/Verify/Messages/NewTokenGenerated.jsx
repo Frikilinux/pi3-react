@@ -1,6 +1,5 @@
 import React from 'react'
-import { VerifyText } from '../VerifyStd'
-import { Link } from 'react-router-dom'
+import { LinkVerifyStd, VerifyText } from '../VerifyStd'
 
 const NewTokenGenerated = ({ email }) => {
   return (
@@ -9,7 +8,7 @@ const NewTokenGenerated = ({ email }) => {
       <p>Please check your email and follow the verification link.</p>
 
       <p>
-        After that you can <Link to='/login'>login</Link>.
+        After that you can <LinkVerifyStd to='/login'>login</LinkVerifyStd>.
       </p>
     </VerifyText>
   )

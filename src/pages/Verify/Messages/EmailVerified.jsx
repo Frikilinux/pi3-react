@@ -1,13 +1,12 @@
 import React from 'react'
-import { VerifyText } from '../VerifyStd'
-import { Link } from 'react-router-dom'
+import { LinkVerifyStd, VerifyText } from '../VerifyStd'
 
 const EmailVerified = ({ email }) => {
   return (
     <VerifyText>
       <p>Email {email} verified.</p>
       <p>
-        You can now <Link to='/login'>login</Link>.{' '}
+        You can now <LinkVerifyStd to='/login'>login</LinkVerifyStd>.{' '}
       </p>
       <p>Enjoy the music.</p>
     </VerifyText>

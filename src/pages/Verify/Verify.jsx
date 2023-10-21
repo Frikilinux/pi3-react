@@ -9,6 +9,7 @@ import JsonWebTokenError from './Messages/JsonWebTokenError'
 import NewTokenGenerated from './Messages/NewTokenGenerated'
 import EmailVerified from './Messages/EmailVerified'
 import EmailAlreadyVerified from './Messages/EmailAlreadyVerified'
+import UserNotFound from './Messages/UserNotFound'
 
 const Verify = () => {
   const { emailVerify, verifyError, success, fetching, genVerifyToken } =
@@ -37,6 +38,7 @@ const Verify = () => {
     NewTokenGenerated: <NewTokenGenerated email={success?.data?.email} />,
     EmailVerified: <EmailVerified email={success?.data?.email} />,
     EmailAlreadyVerified: <EmailAlreadyVerified />,
+    UserNotFound: <UserNotFound />,
   }
 
   return (

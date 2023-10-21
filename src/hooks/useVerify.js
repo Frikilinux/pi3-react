@@ -9,16 +9,19 @@ export const useVerify = () => {
   const [fetching, setFetching] = useState(false)
 
   const emailVerify = async (token) => {
-
     try {
       setVerifyError(null)
       setSuccess(null)
       setFetching(true)
-      const { data } = await axios.patch(VITE_API_URL + '/users/verify/' + token)
+      const { data } = await axios.patch(VITE_API_URL + '/users/verify', null, {
+        headers: {
+          'x-token': token,
+        },
+      })
 
       setSuccess(data)
     } catch (error) {
-      console.log(error);
+      console.log(error)
       setVerifyError(error.response.data)
     } finally {
       setFetching(false)
@@ -29,13 +32,13 @@ export const useVerify = () => {
     try {
       setVerifyError(null)
       setSuccess(null)
-      const {data} = await axios.post(VITE_API_URL + '/users/verify/new', {
+      const { data } = await axios.post(VITE_API_URL + '/users/verify/new', {
         email,
       })
       setSuccess(data)
       toast.success('Email sended, please check your email')
     } catch (error) {
-      console.log(error);
+      console.log(error)
       setVerifyError(error.response.data)
     } finally {
       setFetching(false)

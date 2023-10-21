@@ -8,42 +8,47 @@ import {
 } from '../redux/orders/ordersSlice'
 import { useNavigate } from 'react-router-dom'
 import { cleanCart } from '../redux/cart/cartSlice'
+import { toast } from 'sonner'
 
 const useOrder = () => {
   const { user } = useSelector(({ user }) => user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { ROOT, ORDERS, API_PROXY } = NUCBAZ_API
+  const { VITE_API_PROXY, VITE_API_URL } = import.meta.env
 
   const postOrder = async (items) => {
     try {
       dispatch(fechingOrders(true))
-      const res = await axios.post(API_PROXY + ROOT + ORDERS, items, {
+      await axios.post(VITE_API_URL + '/orders', items, {
         headers: {
           'x-token': user.token,
         },
       })
-
-      if (res.statusText === 'Created') {
-        navigate('/summary')
-        dispatch(fechingOrders(false))
-        dispatch(cleanCart())
-      }
+      navigate('/summary')
+      dispatch(cleanCart())
+      toast.success('Order created')
     } catch (error) {
-      dispatch(ordersActionFail(error.response.data.msg), fechingOrders(false))
+      dispatch(
+        ordersActionFail(error.response.data.message),
+        fechingOrders(false),
+      )
+    } finally {
+      dispatch(fechingOrders(false))
     }
   }
 
   const getOrders = async () => {
     dispatch(fechingOrders(true))
     try {
-      const res = await axios.get(API_PROXY + ROOT + ORDERS, {
+      const res = await axios.get(VITE_API_URL + '/orders', {
         headers: {
           'x-token': user.token,
         },
       })
+      console.log(res)
       if (res) {
-        dispatch(getOrderSuccess(res.data.data))
+        dispatch(getOrderSuccess(res.data))
         dispatch(fechingOrders(false))
       }
     } catch (error) {

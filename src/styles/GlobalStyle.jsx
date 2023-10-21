@@ -46,7 +46,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   a:visited {
-  color: white;
+  color: none;
   }
 
   li {

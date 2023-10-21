@@ -1,8 +1,6 @@
 import React from 'react'
 import { ErrorModalContainer } from './ErrorModalStd'
 import ButtonPrimary from '../UI/Button/ButtonPrimary'
-import { useDispatch } from 'react-redux'
-import { resetError } from '../../redux/orders/ordersSlice'
 
 export const ErrorModal = (props) => {
 
@@ -10,8 +8,8 @@ export const ErrorModal = (props) => {
 
   return (
     <ErrorModalContainer>
-      <p>{children}</p>
-      <ButtonPrimary onClick={onClick}>Ok</ButtonPrimary>
+      {children}
+      {onClick && <ButtonPrimary onClick={onClick}>Close</ButtonPrimary>}
     </ErrorModalContainer>
   )
 }

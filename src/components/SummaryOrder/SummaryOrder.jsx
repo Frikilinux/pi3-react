@@ -10,23 +10,19 @@ import {
 } from './SummaryOrderStd'
 import { formatOrderDate } from '../../utils/formatedDate'
 
-const SummaryOrder = ({
-  _id,
-  user,
-  price,
-  total,
-  status,
-  items,
-  createdAt,
-}) => {
-  const totalItems = items?.reduce((acc, item) => acc + item.quantity, 0)
+const SummaryOrder = ({ items, createdAt }) => {
+  const totalItems = items?.reduce((acc, item) => acc + item.qty, 0)
 
   return (
     <OrderContainer>
       <OrderImgContainer>
-        {items?.slice(0, 3).map(({ img, id, title }) => {
+        {items?.slice(0, 3).map(({ cover, id, title }) => {
           return (
-            <OrederItemImg key={id} src={img} alt={`Album image of ${title}`} />
+            <OrederItemImg
+              key={id}
+              src={cover}
+              alt={`Album image of ${title}`}
+            />
           )
         })}
       </OrderImgContainer>

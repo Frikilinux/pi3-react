@@ -38,7 +38,9 @@ export const useUser = () => {
         email,
         password,
       })
-      toast.success('User registered')
+      toast.success('User registered, please check your email to verify', {
+        autoclose: 4000,
+      })
       return res
     } catch (error) {
       const { message } = error

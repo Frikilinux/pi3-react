@@ -11,12 +11,13 @@ export const PreviewContainer = styled(motion.div)`
   width: 90vh;
   /* max-width: 875px; */
   height: 90vh;
-  background: #201e20 url(${({ $imgsrc }) => `${$imgsrc}`}) center/cover no-repeat;
+  background: #201e20 url(${({ $imgsrc }) => `${$imgsrc}`}) center/cover
+    no-repeat;
   z-index: 10;
   border-radius: 15px;
   gap: 10px;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 80px 4px;
-  @media (max-width: 576px) {
+  @media (max-width: 992px) {
     padding: 10px;
     border-radius: 0;
     top: 50px;

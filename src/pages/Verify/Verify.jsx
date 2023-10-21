@@ -4,9 +4,15 @@ import { useSearchParams, Link } from 'react-router-dom'
 import Main from '../../components/UI/MainWrapper/MainWrapper'
 import { VerifyContainer, VerifyError, VerifyText } from './VerifyStd'
 import ButtonPrimary from '../../components/UI/Button/ButtonPrimary'
+import TokenExpiredError from './Messages/TokenExpiredError'
+import JsonWebTokenError from './Messages/JsonWebTokenError'
+import NewTokenGenerated from './Messages/NewTokenGenerated'
+import EmailVerified from './Messages/EmailVerified'
+import EmailAlreadyVerified from './Messages/EmailAlreadyVerified'
 
 const Verify = () => {
-  const { emailVerify, genVerifyToken, error, success, fetching } = useVerify()
+  const { emailVerify, verifyError, success, fetching, genVerifyToken } =
+    useVerify()
   const [searchParams] = useSearchParams()
 
   useEffect(() => {
@@ -16,48 +22,32 @@ const Verify = () => {
     verify()
   }, [])
 
+  const handleGenVerifyToken = async () => {
+    await genVerifyToken(verifyError?.email)
+  }
+
+  const tokenResponses = {
+    TokenExpiredError: (
+      <TokenExpiredError email={verifyError?.email} onClick={handleGenVerifyToken} />
+    ),
+    JsonWebTokenError: <JsonWebTokenError />,
+    SyntaxError: (
+      <JsonWebTokenError email={verifyError?.email} onClick={handleGenVerifyToken} />
+    ),
+    NewTokenGenerated: <NewTokenGenerated email={success?.data?.email} />,
+    EmailVerified: <EmailVerified email={success?.data?.email} />,
+    EmailAlreadyVerified: <EmailAlreadyVerified />,
+  }
+
   return (
     <Main>
       <VerifyContainer>
-        {fetching && <h1>Verifying...</h1>}
-        {error?.name === 'TokenExpiredError' && (
-          <VerifyText>
-            <p>Token expired. Please generate a new one. {error?.email}</p>
-            <ButtonPrimary
-              onClick={async () => {
-                await genVerifyToken(error?.email)
-              }}
-            >
-              Send new verification email
-            </ButtonPrimary>
-          </VerifyText>
+        {fetching && <h1>Verifying...</h1>}{' '}
+        {tokenResponses[verifyError?.code] && tokenResponses[verifyError?.code]}
+        {tokenResponses[success?.code] && tokenResponses[success?.code]}
+        {verifyError && (
+          <VerifyError>Error: {verifyError?.message}</VerifyError>
         )}
-        {error?.name === 'JsonWebTokenError' && (
-          <VerifyText>Token Error. Please generate a new one.</VerifyText>
-        )}
-
-        {success?.name === 'new_token_generated' && (
-          <VerifyText>
-            <p>
-              New verification email was sent to {success?.user.email}. Please
-              check your email and follow the verification link.
-            </p>
-
-            <p>
-              After that you can <Link to='/login'>login</Link>.
-            </p>
-          </VerifyText>
-        )}
-        {success?.name === 'email_verified' && (
-          <VerifyText>
-            <p>Email {success?.user.email} verified.</p>
-            <p>
-              You can now <Link to='/login'>login</Link>.{' '}
-            </p>
-            <p>Enjoy the music.</p>
-          </VerifyText>
-        )}
-        {error && <VerifyError>Error: {error?.message}</VerifyError>}
       </VerifyContainer>
     </Main>
   )

@@ -35,8 +35,8 @@ const ContactSection = () => {
           initialValues={contactInitialValues}
           validationSchema={contactValidationSchema}
           onSubmit={async (values, { resetForm }) => {
-            await sendContactMsg(values)
-            resetForm()
+            const res = await sendContactMsg(values)
+            res === 'OK' && resetForm()
           }}
         >
           <ContactFormContainer>

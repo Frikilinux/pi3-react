@@ -8,7 +8,7 @@ const useContact = () => {
   const sendContactMsg = async ({ email, name, message }) => {
     try {
       setSending(true)
-      const res = await axios.post(VITE_API_URL + '/conctact', {
+      const res = await axios.post(VITE_API_URL + '/contact', {
         name,
         email,
         message,

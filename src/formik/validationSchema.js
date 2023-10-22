@@ -33,7 +33,7 @@ export const contactValidationSchema = yup.object({
     .required('Email is required'),
   message: yup
     .string()
-    .min(100, 'At least 100 characters or more')
+    .min(50, 'At least 50 characters or more')
     .max(255, 'Max chars 255')
     .required('Some message is required'),
 })

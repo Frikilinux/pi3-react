@@ -44,7 +44,7 @@ export const ErrorMsg = styled.div`
   background-color: var(--red);
   color: var(--dark);
   height: 20px;
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   border-radius: 0 0 5px 5px;
 `

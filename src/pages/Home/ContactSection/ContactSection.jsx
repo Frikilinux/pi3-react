@@ -36,6 +36,7 @@ const ContactSection = () => {
           validationSchema={contactValidationSchema}
           onSubmit={async (values, { resetForm }) => {
             const res = await sendContactMsg(values)
+            console.log(res);
             res === 'OK' && resetForm()
           }}
         >

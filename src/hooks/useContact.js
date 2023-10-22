@@ -15,7 +15,7 @@ const useContact = () => {
         message,
       })
       toast.success('Message sended successfully')
-      return res.statusText
+      return 'OK'
     } catch (error) {
       toast.success('Cant send the message. Try again later')
     } finally {

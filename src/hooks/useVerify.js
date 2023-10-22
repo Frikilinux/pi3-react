@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 
 export const useVerify = () => {
-  const { VITE_API_PROXY, VITE_API_URL } = import.meta.env
+  const { VITE_API_URL } = import.meta.env
   const [verifyError, setVerifyError] = useState(null)
   const [success, setSuccess] = useState(null)
   const [fetching, setFetching] = useState(false)
@@ -21,7 +21,6 @@ export const useVerify = () => {
 
       setSuccess(data)
     } catch (error) {
-      console.log(error)
       setVerifyError(error.response.data)
     } finally {
       setFetching(false)
@@ -38,7 +37,6 @@ export const useVerify = () => {
       setSuccess(data)
       toast.success('Email sended, please check your email')
     } catch (error) {
-      console.log(error)
       setVerifyError(error.response.data)
     } finally {
       setFetching(false)

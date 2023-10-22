@@ -9,7 +9,6 @@ export const Home = () => {
   return (
     <Main>
       <Hero />
-      {console.log(import.meta.env.VITE_HELO)}
       <SearchSection />
       <FeaturedSection />
       <ContactSection />

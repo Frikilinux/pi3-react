@@ -98,9 +98,8 @@ export const useAlbums = () => {
       })
       return chart
     } catch (error) {
-      console.log(error)
       // const msg = error.response.data.message
-      // dispatch(setError(error), setFetchingArtist(true))
+      // dispatch(isError(error))
     }
   }
 

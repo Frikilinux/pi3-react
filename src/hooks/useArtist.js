@@ -4,7 +4,7 @@ import {
   setFetchingArtist,
   setArtist,
   setError,
-  setArtistList,
+  // setArtistList,
 } from '../redux/artist/artistSlice'
 import axios from 'axios'
 
@@ -18,11 +18,8 @@ export const useArtist = () => {
       const { data } = await axios.get(
         `${API_PROXY + ROOT + CHART + '/' + genreId + '/artists?limit=5'}`,
       )
-      // console.log('CHARTS', data.data)
       return data.data
     } catch (error) {
-      console.log(error)
-      // const msg = error.response.data.message
       dispatch(setError(error), setFetchingArtist(true))
     }
   }
@@ -36,8 +33,6 @@ export const useArtist = () => {
 
       dispatch(setArtist(data), setFetchingArtist(false))
     } catch (error) {
-      console.log(error)
-      // const msg = error.response.data.message
       dispatch(setError(error), setFetchingArtist(true))
     }
   }

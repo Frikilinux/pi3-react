@@ -17,8 +17,6 @@ export const useCategories = () => {
         `${DUMMY_JSON.ROOT}${DUMMY_JSON.PRODUCTS}${DUMMY_JSON.CATEGORIES}`
       )
 
-      console.log('AXIOS CATEGORIES', data)
-
       dispatch(getCategories(data))
     } catch (error) {
       // const msg = error.response.data.message

@@ -3,13 +3,13 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 
 const useContact = () => {
-  const { VITE_API_PROXY, VITE_API_URL } = import.meta.env
+  const { VITE_API_URL } = import.meta.env
   const [sending, setSending] = useState(false)
 
   const sendContactMsg = async ({ email, name, message }) => {
     try {
       setSending(true)
-      const res = await axios.post(VITE_API_URL + '/contact', {
+      await axios.post(VITE_API_URL + '/contact', {
         name,
         email,
         message,

@@ -1,12 +1,3 @@
-export const NUCBAZ_API = {
-  API_PROXY: 'https://znc.systec.ar:10300/',
-  // API_PROXY: import.meta.env.REACT_APP_API_PROXY,
-  ROOT: 'https://nucbaz-api.vercel.app',
-  REGISTER: '/auth/register',
-  LOGIN: '/auth/login',
-  ORDERS: '/orders',
-}
-
 export const DEEZER_API = {
   API_PROXY: 'https://znc.systec.ar:10300/',
   // API_PROXY: import.meta.env.VITE_API_PROXY,

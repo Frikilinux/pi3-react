@@ -8,12 +8,23 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { cleanCart } from '../redux/cart/cartSlice'
 import { toast } from 'sonner'
+import { logOut } from '../redux/user/userSlice'
 
 const useOrder = () => {
   const { user } = useSelector(({ user }) => user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { VITE_API_URL } = import.meta.env
+
+  const checkError = (message) => {
+    if (message === 'TokenExpiredError') {
+      toast.error('Session expired. Please login again')
+      dispatch(logOut())
+      navigate('/login')
+      return
+    }
+    dispatch(ordersActionFail(message))
+  }
 
   const postOrder = async (items) => {
     try {
@@ -27,10 +38,8 @@ const useOrder = () => {
       dispatch(cleanCart())
       toast.success('Order created')
     } catch (error) {
-      dispatch(
-        ordersActionFail(error.response.data.message),
-        fechingOrders(false),
-      )
+      checkError(error.response.data.code)
+
     } finally {
       dispatch(fechingOrders(false))
     }
@@ -46,13 +55,11 @@ const useOrder = () => {
       })
       if (res) {
         dispatch(getOrderSuccess(res.data))
-        dispatch(fechingOrders(false))
       }
     } catch (error) {
-      dispatch(
-        ordersActionFail(error.response.data.msg),
-        dispatch(fechingOrders(false)),
-      )
+      checkError(error.response.data.code)
+    } finally {
+      dispatch(fechingOrders(false))
     }
   }
 

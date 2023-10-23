@@ -50,7 +50,6 @@ export const UserCartIconContainer = styled.div`
     cursor: pointer;
     /* background-color: var(--celeste); */
     color: #b40e4d;
-    transition: 0.5 all ease;
   }
   &:active {
     /* transform: scale(0.95); */
@@ -63,8 +62,7 @@ export const CartItemsBubble = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  /* flex-wrap: nowrap; */
-  /* width: 20px; */
+  margin-right: 5px;
   font-size: 18px;
   font-weight: 600;
 `

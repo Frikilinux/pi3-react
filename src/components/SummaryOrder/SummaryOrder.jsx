@@ -10,7 +10,7 @@ import {
 } from './SummaryOrderStd'
 import { formatOrderDate } from '../../utils/formatedDate'
 
-const SummaryOrder = ({ items, createdAt }) => {
+const SummaryOrder = ({ items, created }) => {
   const totalItems = items?.reduce((acc, item) => acc + item.qty, 0)
 
   return (
@@ -29,7 +29,7 @@ const SummaryOrder = ({ items, createdAt }) => {
       <OrderCardInfo>
         <OrderAlbumQty>{items.length} Albums</OrderAlbumQty>
         <OrderItemsQty>{totalItems} Items</OrderItemsQty>
-        <CreatedDate> {formatOrderDate(createdAt)}</CreatedDate>
+        <CreatedDate> {formatOrderDate(created)}</CreatedDate>
       </OrderCardInfo>
     </OrderContainer>
   )

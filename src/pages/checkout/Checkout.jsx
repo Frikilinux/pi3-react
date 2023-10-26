@@ -64,7 +64,7 @@ const Checkout = () => {
 
             <CheckoutButtonsContainer>
               {items.length !== 0 && (
-                <ButtonPrimary onClick={handleConfirm}>
+                <ButtonPrimary onClick={ isFetchingOrders ? null : handleConfirm}>
                   {isFetchingOrders ? (
                     <Spinner>
                       <SpinnerIcon color='var(--dark)' />

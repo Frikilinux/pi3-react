@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 
-export const OrderContainer = styled.div`
+export const SummaryOrderContainer = styled.div`
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -12,6 +12,9 @@ export const OrderContainer = styled.div`
   box-shadow:
     0 19px 38px rgba(0, 0, 0, 0.3),
     0 15px 12px rgba(0, 0, 0, 0.22);
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 576px) {
     width: 300px;
     height: 120px;
@@ -91,4 +94,4 @@ export const CreatedDate = styled.div`
   @media (max-width: 576px) {
     font-size: 0.7rem;
   }
-  `
+`

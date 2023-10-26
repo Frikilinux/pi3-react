@@ -11,6 +11,7 @@ import Search from '../pages/Search/Search'
 import AlbumsPage from '../pages/AlbumsPage/Albums'
 import ProtectedRoute from '../components/ProctectedRoute/ProtectedRoute'
 import Verify from '../pages/Verify/Verify'
+import Order from '../pages/Order/Order'
 
 const Routes = () => {
   return (
@@ -28,6 +29,14 @@ const Routes = () => {
         element={
           <ProtectedRoute goTo={'/login'}>
             <Summary />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path='/summary/order/:id'
+        element={
+          <ProtectedRoute goTo={'/login'}>
+            <Order />
           </ProtectedRoute>
         }
       />

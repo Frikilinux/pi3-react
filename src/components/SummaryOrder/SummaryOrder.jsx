@@ -3,18 +3,19 @@ import {
   CreatedDate,
   OrderAlbumQty,
   OrderCardInfo,
-  OrderContainer,
   OrderImgContainer,
   OrderItemsQty,
   OrederItemImg,
+  SummaryOrderContainer,
 } from './SummaryOrderStd'
 import { formatOrderDate } from '../../utils/formatedDate'
+import { useNavigate } from 'react-router-dom'
 
-const SummaryOrder = ({ items, created }) => {
+const SummaryOrder = ({ items, created, _id }) => {
   const totalItems = items?.reduce((acc, item) => acc + item.qty, 0)
-
+  const navigate = useNavigate()
   return (
-    <OrderContainer>
+    <SummaryOrderContainer onClick={() => navigate(`/summary/order/${_id}`)}>
       <OrderImgContainer>
         {items?.slice(0, 3).map(({ cover, id, title }) => {
           return (
@@ -31,7 +32,7 @@ const SummaryOrder = ({ items, created }) => {
         <OrderItemsQty>{totalItems} Items</OrderItemsQty>
         <CreatedDate> {formatOrderDate(created)}</CreatedDate>
       </OrderCardInfo>
-    </OrderContainer>
+    </SummaryOrderContainer>
   )
 }
 

@@ -10,17 +10,16 @@ import {
 import useOrder from '../../hooks/useOrder'
 import { useDispatch, useSelector } from 'react-redux'
 import Spinner from '../../components/Spinner/Spinner'
-import Icons from '../../constants/icons'
 import SummaryOrder from '../../components/SummaryOrder/SummaryOrder'
 import { ErrorModal } from '../../components/ErrorModal/ErrorModal'
 import { resetError } from '../../redux/orders/ordersSlice'
+import { IconWhirl } from '@tabler/icons-react'
 
 const Summary = () => {
   const { isFetchingOrders, orders, ordersError } = useSelector(
     ({ orders }) => orders,
   )
   const { getOrders } = useOrder()
-  const { SpinnerIcon } = Icons
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -40,7 +39,7 @@ const Summary = () => {
           <SummaryOrderTitle>Your summary of orders</SummaryOrderTitle>
           {isFetchingOrders ? (
             <Spinner>
-              <SpinnerIcon size='5em' />
+              <IconWhirl size='5em' />
             </Spinner>
           ) : (
             <OrdersContainer>

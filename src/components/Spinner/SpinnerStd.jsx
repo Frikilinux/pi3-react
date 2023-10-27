@@ -3,7 +3,7 @@ import { styled } from 'styled-components'
 
 export const SpinnerContainer = styled(motion.div)`
   color: var(--grey);
-  padding: 10px;
+  margin-left: 10px;
   display: flex;
   align-items: center;
   justify-content: center;

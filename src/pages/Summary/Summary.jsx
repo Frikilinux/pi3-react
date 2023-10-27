@@ -16,7 +16,7 @@ import { resetError } from '../../redux/orders/ordersSlice'
 import { IconWhirl } from '@tabler/icons-react'
 
 const Summary = () => {
-  const { isFetchingOrders, orders, ordersError } = useSelector(
+  const { fetchingOrders, orders, ordersError } = useSelector(
     ({ orders }) => orders,
   )
   const { getOrders } = useOrder()
@@ -37,7 +37,7 @@ const Summary = () => {
       <SectionWrapper bg='var(--lightDark)' id='Artits'>
         <SummaryContainer>
           <SummaryOrderTitle>Your summary of orders</SummaryOrderTitle>
-          {isFetchingOrders ? (
+          {fetchingOrders ? (
             <Spinner>
               <IconWhirl size='5em' />
             </Spinner>

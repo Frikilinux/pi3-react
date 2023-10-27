@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const INITIAL_STATE = {
   user: null,
-  isUserFetching: false,
+  fetchingUser: false,
   userError: null,
   isModalHidden: true,
 }
@@ -15,14 +15,13 @@ const userSlice = createSlice({
       return {
         ...state,
         user: { ...action.payload.user, token: action.payload.token },
-        isUserFetching: false,
         userError: null,
       }
     },
-    setUserFetching: (state) => {
+    setFechingUser: (state, action) => {
       return {
         ...state,
-        isUserFetching: true,
+        fetchingUser: action.payload,
       }
     },
     logOut: () => {
@@ -44,7 +43,7 @@ const userSlice = createSlice({
 export const {
   loggedUser,
   setUserError,
-  setUserFetching,
+  setFechingUser,
   logOut,
   setIsModalHidden,
 } = userSlice.actions

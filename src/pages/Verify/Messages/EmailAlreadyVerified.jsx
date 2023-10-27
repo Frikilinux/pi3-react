@@ -1,12 +1,12 @@
 import React from 'react'
-import { LinkVerifyStd } from '../VerifyStd'
+import { LinkVerifyStd, VerifyText } from '../VerifyStd'
 
 const EmailAlreadyVerified = () => {
   return (
-    <div>
+    <VerifyText>
       The email is already verified. you can go to the
       <LinkVerifyStd to='/login'>login page</LinkVerifyStd>
-    </div>
+    </VerifyText>
   )
 }
 

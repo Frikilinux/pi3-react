@@ -31,6 +31,7 @@ export const useVerify = () => {
     try {
       setVerifyError(null)
       setSuccess(null)
+      setFetching(true)
       const { data } = await axios.post(VITE_API_URL + '/users/verify/new', {
         email,
       })

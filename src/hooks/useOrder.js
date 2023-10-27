@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  fechingOrders,
-  getOrderSuccess,
-  ordersActionFail,
+  setFetchingOrders,
+  setOrderError,
+  setOrders,
 } from '../redux/orders/ordersSlice'
 import { useNavigate } from 'react-router-dom'
 import { cleanCart } from '../redux/cart/cartSlice'
@@ -23,12 +23,12 @@ const useOrder = () => {
       navigate('/login')
       return
     }
-    dispatch(ordersActionFail(message))
+    dispatch(setOrderError(message))
   }
 
   const postOrder = async (items) => {
     try {
-      dispatch(fechingOrders(true))
+      dispatch(setFetchingOrders(true))
       await axios.post(VITE_API_URL + '/orders', items, {
         headers: {
           'x-token': user.token,
@@ -39,14 +39,13 @@ const useOrder = () => {
       toast.success('Order created')
     } catch (error) {
       checkError(error.response.data.code)
-
     } finally {
-      dispatch(fechingOrders(false))
+      dispatch(setFetchingOrders(false))
     }
   }
 
   const getOrders = async () => {
-    dispatch(fechingOrders(true))
+    dispatch(setFetchingOrders(true))
     try {
       const res = await axios.get(VITE_API_URL + '/orders', {
         headers: {
@@ -54,12 +53,12 @@ const useOrder = () => {
         },
       })
       if (res) {
-        dispatch(getOrderSuccess(res.data))
+        dispatch(setOrders(res.data))
       }
     } catch (error) {
       checkError(error.response.data.code)
     } finally {
-      dispatch(fechingOrders(false))
+      dispatch(setFetchingOrders(false))
     }
   }
 

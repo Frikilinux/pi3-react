@@ -22,53 +22,35 @@ import { setUserError } from '../../redux/user/userSlice'
 import { IconAt, IconLock } from '@tabler/icons-react'
 import { useMediaPredicate } from 'react-media-hook'
 import { useVerify } from '../../hooks/useVerify'
+import UserNotFound from './Messages/UserNotFound'
+import NotVerified from './Messages/NotVerified'
+import LoginError from './Messages/LoginError'
+
+const LoginResponses = {
+  NotVerified: <NotVerified />,
+  // EmailVerified: <EmailVerified />,
+  // EmailAlreadyVerified: <EmailAlreadyVerified />,
+  UserNotFound: <UserNotFound />,
+  LoginError: <LoginError />,
+}
 
 const Login = () => {
-  const { userError } = useSelector(({ user }) => user)
+  const { userError, fetchingUser } = useSelector(({ user }) => user)
   const { loginUser } = useUser()
-  const { genVerifyToken } = useVerify()
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const max576 = useMediaPredicate('(max-width: 576px)')
 
   return (
     <Main>
-      {userError &&
-        (userError.error === 'not_verified' ? (
-          <ErrorModal onClick={() => dispatch(setUserError(false))}>
-            <p>The email {userError?.email} are not verified.</p>
-            <p>
-              Please check your email and follow the verification link or send a
-              new one
-            </p>
-
-            <ButtonPrimary
-              onClick={async () => {
-                await genVerifyToken(userError?.email)
-                dispatch(setUserError(false))
-              }}
-            >
-              Send verification email
-            </ButtonPrimary>
-          </ErrorModal>
-        ) : (
-          <ErrorModal onClick={() => dispatch(setUserError(false))}>
-            {userError?.message}
-          </ErrorModal>
-        ))}
-
-      {/* {(userError && userError.error === 'not_verified') && (
-        <ErrorModal
-          onClick={async () => {
-            await genVerifyToken(userError?.email)
-            dispatch(setUserError(false))
-          }}
-        >
-          Token expired. Please generate a new one for {userError?.email}
-        </ErrorModal>}
-    {userError}
-
-      )} */}
+      {userError && (
+        <ErrorModal onClick={() => dispatch(setUserError(false))}>
+          {(LoginResponses[userError?.code] &&
+            LoginResponses[userError?.code]) ||
+            LoginResponses.LoginError}
+        </ErrorModal>
+      )}
 
       <SectionWrapper bg='var(--Dark)' id='checkout'>
         <LoginContainer>
@@ -94,7 +76,9 @@ const Login = () => {
                   placeholder='Password'
                   type='password'
                 />
-                <ButtonPrimary type='submit'>Log in</ButtonPrimary>
+                <ButtonPrimary type='submit' fetching={fetchingUser} disabled={fetchingUser}>
+                  Log in
+                </ButtonPrimary>
               </Form>
               <RegisterText>
                 Don&apos;t have an account?,{' '}

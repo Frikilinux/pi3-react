@@ -3,8 +3,8 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import {
   loggedUser,
+  setFechingUser,
   setUserError,
-  setUserFetching,
 } from '../redux/user/userSlice'
 import { toast } from 'sonner'
 
@@ -15,7 +15,7 @@ export const useUser = () => {
 
   const loginUser = async ({ email, password }) => {
     try {
-      dispatch(setUserFetching(true))
+      dispatch(setFechingUser(true))
       const { data } = await axios.post(VITE_API_URL + '/users/login', {
         email: email.toLowerCase(),
         password,
@@ -26,13 +26,13 @@ export const useUser = () => {
     } catch (error) {
       dispatch(setUserError(error.response.data))
     } finally {
-      dispatch(setUserFetching(false))
+      dispatch(setFechingUser(false))
     }
   }
 
   const registerUser = async ({ name, email, password }) => {
     try {
-      dispatch(setUserFetching(true))
+      dispatch(setFechingUser(true))
       const res = await axios.post(VITE_API_URL + '/users/register', {
         name,
         email,
@@ -46,7 +46,7 @@ export const useUser = () => {
       const { message } = error
       dispatch(setUserError(message))
     } finally {
-      dispatch(setUserFetching(false))
+      dispatch(setFechingUser(false))
     }
   }
 

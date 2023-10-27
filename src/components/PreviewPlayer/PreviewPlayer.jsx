@@ -77,8 +77,8 @@ const PreviewPlayer = () => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
       transition={{
-        duration: 0.3,
-        ease: [0, 0.71, 0.2, 1.01],
+        type: 'spring',
+        duration: 0.5,
       }}
       key='preview'
     >

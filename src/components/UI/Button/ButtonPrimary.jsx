@@ -4,7 +4,7 @@ import Spinner from '../../Spinner/Spinner'
 import { IconWhirl } from '@tabler/icons-react'
 
 const ButtonPrimary = (props) => {
-  const { onClick, size, notLoggedIn, type, disabled, fetching } = props
+  const { onClick, size, notLoggedIn, type, disabled, fetching, children } = props
   return (
     <ButtonStyled
       disabled={disabled}
@@ -17,7 +17,7 @@ const ButtonPrimary = (props) => {
       whileTap={!notLoggedIn && { scale: 0.98, transition: { duration: 0.05 } }}
       notLoggedIn={notLoggedIn}
     >
-      {props.children}{' '}
+      {children}
       {fetching && (
         <Spinner>
           <IconWhirl size={size ? `${size}rem` : '1rem'} color='var(--dark)' />

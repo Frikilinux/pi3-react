@@ -12,22 +12,38 @@ import AlbumsPage from '../pages/AlbumsPage/Albums'
 import ProtectedRoute from '../components/ProctectedRoute/ProtectedRoute'
 import Verify from '../pages/Verify/Verify'
 import Order from '../pages/Order/Order'
+import { useSelector } from 'react-redux'
 
 const Routes = () => {
+  const { user } = useSelector(({ user }) => user)
   return (
     <RoutesReact>
-      <Route path='/' element={<Home />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/register' element={<Register />} />
       <Route path='/artist/:artistId?' element={<Artist />} />
       <Route path='/artist/:search?' element={<Artist />} />
       <Route path='/search/:search' element={<Search />} />
       <Route path='/albums/:search?' element={<AlbumsPage />} />
       <Route path='/verify' element={<Verify />} />
+      <Route path='/' element={<Home />} />
+      <Route
+        path='/login'
+        element={
+          <ProtectedRoute goTo={'/'} user={!user}>
+            <Login />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path='/register'
+        element={
+          <ProtectedRoute goTo={'/'} user={!user}>
+            <Register />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path='/summary'
         element={
-          <ProtectedRoute goTo={'/login'}>
+          <ProtectedRoute goTo={'/login'} user={user}>
             <Summary />
           </ProtectedRoute>
         }
@@ -35,7 +51,7 @@ const Routes = () => {
       <Route
         path='/summary/order/:id'
         element={
-          <ProtectedRoute goTo={'/login'}>
+          <ProtectedRoute goTo={'/login'} user={user}>
             <Order />
           </ProtectedRoute>
         }

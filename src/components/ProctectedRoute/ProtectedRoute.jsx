@@ -1,10 +1,7 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
-const ProtectedRoute = ({ children, goTo }) => {
-  const { user } = useSelector(({ user }) => user)
-
+const ProtectedRoute = ({ children, goTo, user }) => {
   return user ? children : <Navigate to={goTo} />
 }
 

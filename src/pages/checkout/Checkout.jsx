@@ -63,6 +63,7 @@ const Checkout = () => {
                 <ButtonPrimary
                   onClick={handleConfirm}
                   fetching={fetchingOrders}
+                  disabled={fetchingOrders}
                 >
                   Confirm order
                 </ButtonPrimary>

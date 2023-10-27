@@ -13,7 +13,7 @@ const SiteLinksContainer = styled.nav`
     flex: unset;
     background-color: var(--dark);
   }
-`
+  `
 
 const LinksList = styled.ul`
   display: flex;
@@ -21,6 +21,9 @@ const LinksList = styled.ul`
   justify-content: center;
   gap: 15px;
   width: 100%;
+  @media (max-width: 992px) {
+    gap: unset;
+  }
 `
 
 const SiteLinks = styled.li`

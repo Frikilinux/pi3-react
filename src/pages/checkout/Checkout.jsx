@@ -65,7 +65,7 @@ const Checkout = () => {
                   fetching={fetchingOrders}
                   disabled={fetchingOrders}
                 >
-                  Confirm order
+                  {fetchingOrders ? 'Creating order...' : 'Confirm order'}
                 </ButtonPrimary>
               )}
             </CheckoutButtonsContainer>

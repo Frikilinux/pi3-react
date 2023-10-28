@@ -16,21 +16,26 @@ import {
   IconPhone,
   IconMail,
 } from '@tabler/icons-react'
-import { contactInitialValues } from '../../../formik/initialValues'
 import { contactValidationSchema } from '../../../formik/validationSchema'
 import ButtonPrimary from '../../../components/UI/Button/ButtonPrimary'
 import { ErrorMsg } from '../../../components/UI/InputUser/InputUserStd'
 import { useContact } from '../../../hooks/useContact'
+import { useSelector } from 'react-redux'
 
 const ContactSection = () => {
   const { sendContactMsg, sending } = useContact()
+  const { user } = useSelector(({ user }) => user)
 
   return (
     <SectionWrapper bg='#0b0d18' id='contact'>
       <h2 style={{ padding: '20px' }}>Please contact us</h2>
       <ContactContainer>
         <Formik
-          initialValues={contactInitialValues}
+          initialValues={{
+            name: user?.name || '',
+            email: user?.email || '',
+            message: '',
+          }}
           validationSchema={contactValidationSchema}
           onSubmit={async (values, { resetForm }) => {
             const res = await sendContactMsg(values)
@@ -48,7 +53,7 @@ const ContactSection = () => {
               <InputUser
                 name='email'
                 icon={<IconAt />}
-                placeholder='Email'
+                placeholder='Your email'
                 type='text'
               />
 

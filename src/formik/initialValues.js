@@ -8,9 +8,3 @@ export const registerInitialValues = {
   password: '',
   name: '',
 }
-
-export const contactInitialValues = {
-  name: '',
-  email: '',
-  message: '',
-}

@@ -59,7 +59,7 @@ const Routes = () => {
       <Route
         path='/checkout'
         element={
-          <ProtectedRoute goTo={'/login'}>
+          <ProtectedRoute goTo={'/login'} user={user}>
             <Checkout />
           </ProtectedRoute>
         }

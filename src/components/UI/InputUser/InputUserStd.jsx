@@ -14,6 +14,7 @@ export const FormContainer = styled.div`
 export const InputComponent = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   /* justify-content: center; */
   height: 90px;
 `

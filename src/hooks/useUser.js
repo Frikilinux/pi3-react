@@ -43,8 +43,16 @@ export const useUser = () => {
       })
       return res
     } catch (error) {
-      const { message } = error
-      dispatch(setUserError(message))
+      if (error.response.data.errors) {
+        const err = error.response.data.errors
+          .map((err) => {
+            return err.msg
+          })
+          .join(', ')
+        dispatch(setUserError(err))
+        return
+      }
+      dispatch(setUserError(error.message))
     } finally {
       dispatch(setFechingUser(false))
     }

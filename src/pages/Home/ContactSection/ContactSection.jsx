@@ -15,14 +15,12 @@ import {
   IconMapPin,
   IconPhone,
   IconMail,
-  IconWhirl,
 } from '@tabler/icons-react'
 import { contactInitialValues } from '../../../formik/initialValues'
 import { contactValidationSchema } from '../../../formik/validationSchema'
 import ButtonPrimary from '../../../components/UI/Button/ButtonPrimary'
 import { ErrorMsg } from '../../../components/UI/InputUser/InputUserStd'
 import { useContact } from '../../../hooks/useContact'
-import Spinner from '../../../components/Spinner/Spinner'
 
 const ContactSection = () => {
   const { sendContactMsg, sending } = useContact()
@@ -40,7 +38,7 @@ const ContactSection = () => {
           }}
         >
           <ContactFormContainer>
-            <Form>
+            <Form style={{ width: '80%' }}>
               <InputUser
                 name='name'
                 icon={<IconUser />}
@@ -55,7 +53,7 @@ const ContactSection = () => {
               />
 
               <Field name='message'>
-                {({ field, form: { setFieldValues, errors, touched } }) => {
+                {({ field, form: { errors, touched } }) => {
                   return (
                     <MessageBoxContainer>
                       <MessageBox
@@ -72,14 +70,12 @@ const ContactSection = () => {
                 }}
               </Field>
 
-              <ButtonPrimary type='submit'>
-                {sending ? (
-                  <Spinner>
-                    <IconWhirl color='var(--dark)' />
-                  </Spinner>
-                ) : (
-                  'Send message'
-                )}
+              <ButtonPrimary
+                type='submit'
+                disabled={sending}
+                fetching={sending}
+              >
+                {sending ? 'Sending...' : 'Send'}
               </ButtonPrimary>
             </Form>
           </ContactFormContainer>

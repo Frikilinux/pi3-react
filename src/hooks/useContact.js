@@ -11,13 +11,13 @@ const useContact = () => {
       setSending(true)
       await axios.post(VITE_API_URL + '/contact', {
         name,
-        email,
+        email: email.toLowerCase().trim(),
         message,
       })
       toast.success('Message sended successfully')
       return 'OK'
     } catch (error) {
-      toast.success('Cant send the message. Try again later')
+      toast.error('Cant send the message. Try again later')
     } finally {
       setSending(false)
     }

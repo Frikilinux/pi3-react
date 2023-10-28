@@ -4,7 +4,6 @@ import { mailRegex, passwordRegex } from '../constants/regexs'
 export const loginValidationSchema = yup.object({
   email: yup
     .string()
-    .trim()
     .matches(mailRegex, 'Email not valid')
     .required('Email is required'),
   password: yup.string().required('Password is required'),
@@ -13,7 +12,6 @@ export const loginValidationSchema = yup.object({
 export const registerValidationSchema = yup.object({
   email: yup
     .string()
-    .trim()
     .matches(mailRegex, 'Email not valid')
     .required('Email is required'),
   password: yup
@@ -25,10 +23,9 @@ export const registerValidationSchema = yup.object({
 })
 
 export const contactValidationSchema = yup.object({
-  name: yup.string().trim().required('Name is required'),
+  name: yup.string().required('Name is required'),
   email: yup
     .string()
-    .trim()
     .matches(mailRegex, 'Email not valid')
     .required('Email is required'),
   message: yup

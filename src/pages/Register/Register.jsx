@@ -24,7 +24,7 @@ import { useMediaPredicate } from 'react-media-hook'
 
 const Register = () => {
   const { registerUser } = useUser()
-  const { userError } = useSelector(({ user }) => user)
+  const { userError, fetchingUser } = useSelector(({ user }) => user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const max576 = useMediaPredicate('(max-width: 576px)')
@@ -66,7 +66,13 @@ const Register = () => {
                   placeholder='Password'
                   type='password'
                 />
-                <ButtonPrimary type='submit'>Register</ButtonPrimary>
+                <ButtonPrimary
+                  type='submit'
+                  fetching={fetchingUser}
+                  disabled={fetchingUser}
+                >
+                  {fetchingUser ? 'Registering...' : 'Register'}
+                </ButtonPrimary>
               </Form>
               <LoginText>
                 Are you registered,{' '}

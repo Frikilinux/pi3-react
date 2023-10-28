@@ -78,7 +78,9 @@ const Login = () => {
                   type='password'
                 />
                 <ButtonPrimary type='submit' fetching={fetchingUser} disabled={fetchingUser}>
-                  Log in
+                  {
+                    fetchingUser ? 'Logging in...' : 'Login'
+                  }
                 </ButtonPrimary>
               </Form>
               <RegisterText>

@@ -12,11 +12,11 @@ export const useArtist = () => {
   const dispatch = useDispatch()
   const { ROOT, API_PROXY, ARTIST, CHART } = DEEZER_API
 
-  const getArtistChart = async ({ genreId = '0' }) => {
+  const getArtistChart = async ({ genreId = '0', limit='5' }) => {
     try {
       dispatch(setFetchingArtist(true))
       const { data } = await axios.get(
-        `${API_PROXY + ROOT + CHART + '/' + genreId + '/artists?limit=5'}`,
+        `${API_PROXY + ROOT + CHART + '/' + genreId + '/artists?limit=' + limit}`,
       )
       return data.data
     } catch (error) {

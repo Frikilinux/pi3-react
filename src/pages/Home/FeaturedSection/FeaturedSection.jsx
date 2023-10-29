@@ -22,16 +22,16 @@ const FeaturedSection = () => {
     const fetchCharts = async () => {
       const [allChart, artistChart, popChart, rockChart] = await Promise.all([
         getAlbumsChart({}),
-        getArtistChart({ genreId: '132' }),
-        getAlbumsChart({ genreId: '132' }),
-        getAlbumsChart({ genreId: '152' }),
+        getArtistChart({ genreId: '132', limit: '10' }),
+        // getAlbumsChart({ genreId: '132' }),
+        // getAlbumsChart({ genreId: '152' }),
       ])
 
       setCharts({
         allChart,
         artistChart,
-        popChart,
-        rockChart,
+        // popChart,
+        // rockChart,
       })
     }
 

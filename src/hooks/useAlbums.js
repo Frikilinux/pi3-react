@@ -74,20 +74,6 @@ export const useAlbums = () => {
     }
   }
 
-  // const fetchAlbumsGenre = async ({ genreId }) => {
-  //   try {
-  //     dispatch(isFetching())
-  //     const { data } = await axios.get(
-  //       `${API_PROXY + ROOT + '/editorial/' + genreId + '/releases?index=0'}`,
-  //     )
-
-  //     dispatch(setAlbums(data))
-  //   } catch (error) {
-  //     const msg = error.response.data.message
-  //     dispatch(isError(msg))
-  //   }
-  // }
-
   const getAlbumsChart = async ({ genreId = '0' }) => {
     try {
       const { data } = await axios.get(

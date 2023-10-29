@@ -13,7 +13,7 @@ const OrderCard = (item) => {
   const { cover, id, title, artist, qty, price } = item
   return (
     <OrderCardContainer>
-      <div># {id}</div>
+      <div>#{id}</div>
       <AlbumCardData>
         <OrderCardImg src={cover} alt={title} />
         <OrderCardDataInfo>
@@ -23,7 +23,7 @@ const OrderCard = (item) => {
       </AlbumCardData>
 
       <p>
-        U. price: ${price} <IconPointFilled size={10} /> Quatity: {qty}{' '}
+        Price: ${price} <IconPointFilled size={10} /> Quatity: {qty}{' '}
         <IconPointFilled size={10} /> total: ${qty * price}
       </p>
     </OrderCardContainer>

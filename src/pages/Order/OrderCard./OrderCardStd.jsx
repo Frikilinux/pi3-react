@@ -21,7 +21,7 @@ const OrderCardContainer = styled.div`
 
 const OrderCardImg = styled.img`
   border-radius: 5px;
-  width: 100px;
+  width: 80px;
   @media (max-width: 576px) {
     width: 60px;
   }

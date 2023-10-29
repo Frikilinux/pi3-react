@@ -16,6 +16,9 @@ export const Logo = styled.div`
     order: 2;
   }
 `
+export const LogoImg = styled.img`
+width: 25px;
+`
 
 export const BrandName = styled.div`
   font-weight: 700;

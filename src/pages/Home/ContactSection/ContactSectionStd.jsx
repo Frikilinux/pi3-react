@@ -3,13 +3,14 @@ import styled from 'styled-components'
 const ContactContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 30px 0;
   width: 90%;
   max-width: 1300px;
   gap: 40px;
   @media (max-width: 576px) {
     flex-direction: column;
+    align-items: center;
     width: 100%;
     gap: 15px;
   }

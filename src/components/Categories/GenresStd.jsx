@@ -35,7 +35,7 @@ export const Genre = styled.div`
   
   @media (max-width: 992px) {
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 `
 

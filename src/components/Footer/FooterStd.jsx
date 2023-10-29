@@ -9,8 +9,8 @@ export const FooterStyled = styled.footer`
   height: 80px;
   width: 100%;
   /* height: 50px; */
-  @media (max-width: 576px) {
-    /* padding: 5px; */
+  @media (max-width: 992px) {
+    justify-content: center;
     /* height: 160px; */
     /* flex-direction: column; */
   }
@@ -20,7 +20,7 @@ export const FooterBrand = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  @media (max-width: 576px) {
+  @media (max-width: 992px) {
     text-align: center;
     align-items: center;
   }

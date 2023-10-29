@@ -1,13 +1,12 @@
 import React from 'react'
-import { BrandName, Logo } from './SiteBrandStd'
-import Icons from '../../../constants/icons'
+import { BrandName, Logo, LogoImg } from './SiteBrandStd'
 import { useNavigate } from 'react-router-dom'
 import useButtons from '../../../hooks/useButtons'
+import siteLogo from '../../../assets/brainsdamage-logo.svg'
 
 const SiteBrand = () => {
   const { hideAllModals } = useButtons()
   const navigate = useNavigate()
-  const { LogoImg } = Icons
   return (
     <Logo
       onClick={() => {
@@ -15,7 +14,7 @@ const SiteBrand = () => {
         navigate('/')
       }}
     >
-      <LogoImg size='1.5em' color='var(--celeste)' />
+      <LogoImg src={siteLogo} alt='Brainsdamage Logo' />
       <BrandName>Brainsdamage</BrandName>
     </Logo>
   )

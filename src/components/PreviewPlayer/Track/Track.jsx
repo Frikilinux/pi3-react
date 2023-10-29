@@ -13,8 +13,11 @@ import {
   hideAlbumPreview,
   setPlaying,
 } from '../../../redux/previewPlayer/previewPlayerSlice'
-import Icons from '../../../constants/icons'
 import { useNavigate } from 'react-router-dom'
+import {
+  IconPlayerPlayFilled,
+  IconPlayerPauseFilled,
+} from '@tabler/icons-react'
 
 const Track = ({
   id,
@@ -35,7 +38,8 @@ const Track = ({
   const [mouseHover, setMouseOver] = useState(false)
   const [trackPlaying, setTrackPlaying] = useState(false)
   const [paused, setPaused] = useState(false)
-  const Play = Icons[trackPlaying || mouseHover ? 'play' : 'pause']
+  const Play =
+    trackPlaying || mouseHover ? IconPlayerPlayFilled : IconPlayerPauseFilled
 
   const handleClick = (id) => {
     if (readable) {
@@ -59,10 +63,8 @@ const Track = ({
       onMouseOut={() => setMouseOver(false)}
     >
       <TrackNumber onClick={() => handleClick(id)}>
-
         {mouseHover || (currentTrack === id && (trackPlaying || paused)) ? (
-          
-          <Play size='2em' color='var(--grey)' />
+          <Play size='1.2em' color='var(--grey)' />
         ) : (
           <div>{number}</div>
         )}

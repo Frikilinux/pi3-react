@@ -72,7 +72,7 @@ export const Header = () => {
       {max992 && (
         <SideBarMenu open={!isMenuHidden}>
           <NavLinks />
-          <h2>Genres</h2>
+          <h3>Genres</h3>
           <Genres />
         </SideBarMenu>
       )}

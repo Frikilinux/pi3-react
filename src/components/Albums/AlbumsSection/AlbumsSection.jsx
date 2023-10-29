@@ -2,20 +2,24 @@ import React from 'react'
 import Albums from '../Albums'
 import { useSelector } from 'react-redux'
 import Spinner from '../../Spinner/Spinner'
-import { AlbumsLoadingContainer, AlbumsSectionContainer } from './AlbumsSectionStd'
-import Icons from '../../../constants/icons'
+import {
+  AlbumsLoadingContainer,
+  AlbumsSectionContainer,
+} from './AlbumsSectionStd'
+import { IconWhirl } from '@tabler/icons-react'
 
 export const AlbumsSection = () => {
   const { isFetching } = useSelector((state) => state.albums)
-  const { SpinnerIcon } = Icons
 
   return (
     <AlbumsSectionContainer>
       <Albums />
       <AlbumsLoadingContainer>
-        {isFetching && <Spinner>
-          <SpinnerIcon size='100%' />
-          </Spinner>}
+        {isFetching && (
+          <Spinner>
+            <IconWhirl size='5em' />
+          </Spinner>
+        )}
       </AlbumsLoadingContainer>
     </AlbumsSectionContainer>
   )

@@ -10,8 +10,7 @@ import { toast } from 'sonner'
 
 export const useUser = () => {
   const dispatch = useDispatch()
-  const { VITE_API_PROXY, VITE_API_URL } = import.meta.env
-  // const { ROOT, LOGIN, API_PROXY, REGISTER } = NUCBAZ_API
+  const { VITE_API_URL } = import.meta.env
 
   const loginUser = async ({ email, password }) => {
     try {
@@ -21,7 +20,7 @@ export const useUser = () => {
         password,
       })
       dispatch(loggedUser(data))
-      toast.success('User logged')
+      toast.success(`You are logged in, nice to see you ${data.user.name?.split(' ')[0]}`)
       return data
     } catch (error) {
       dispatch(setUserError(error.response.data))

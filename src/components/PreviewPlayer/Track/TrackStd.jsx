@@ -35,7 +35,6 @@ export const TrackNumber = styled.div`
   & div {
     display: flex;
     justify-content: center;
-    width: 36px;
   }
   &:hover {
     cursor: pointer;

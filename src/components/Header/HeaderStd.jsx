@@ -6,7 +6,6 @@ export const HeaderStyled = styled.header`
   display: flex;
   align-items: center;
   position: fixed;
-  /* background-color: var(--dark); */
   background-color: #201e20f4;
   backdrop-filter: blur(5px);
   width: 100%;
@@ -29,12 +28,12 @@ export const GenreIcon = styled.div`
 export const SideBarMenu = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0 10px;
   gap: 15px;
   top: 50px;
   left: 0;
   transition: transform 0.3s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
-  /* transform: translateX(-600px); */
   position: fixed;
   width: 60%;
   max-width: 350px;

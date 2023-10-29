@@ -42,6 +42,9 @@ const NavlinkStyled = styled(NavLink)`
     border-radius: 5px;
     background-color: var(--green);
   }
+  @media (max-width: 992px) {
+    font-size: 0.9rem;
+  }
 `
 
 export { SiteLinks, SiteLinksContainer, LinksList, NavlinkStyled }

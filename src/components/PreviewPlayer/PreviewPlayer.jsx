@@ -156,7 +156,7 @@ const PreviewPlayer = () => {
         <InfoLabel>© {label}</InfoLabel>
         <AlbumPrice>$ {price}</AlbumPrice>
         <ButtonPrimary
-          notLoggedIn={!user}
+          disabled={!user}
           size='1.2'
           onClick={() =>
             handleAddToCart({ id, title, cover, artist: artist.name, price })

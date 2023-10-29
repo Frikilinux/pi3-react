@@ -1,5 +1,4 @@
 import React from 'react'
-import Icons from '../../constants/icons'
 import { SpinnerContainer } from './SpinnerStd'
 
 const Spinner = ({ children }) => {

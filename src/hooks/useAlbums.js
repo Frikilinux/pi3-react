@@ -42,10 +42,11 @@ export const useAlbums = () => {
   }
 
   const getAlbumsByGenre = ({ genreId = 0, next, genreName }) => {
+    const { VITE_API_NEW_LOCAL } = import.meta.env
     fetchAlbums({
       url: `${
-        API_PROXY + ROOT + '/editorial/' + genreId + '/releases?limit=20'
-      }`,
+        // VITE_API_NEW_LOCAL}/albums/editorial/?genreId=${genreId}&limit=20`,
+      API_PROXY}${ROOT}/editorial/${genreId}/releases?limit=20`,
       next,
       genreId,
       genreName,
@@ -66,6 +67,8 @@ export const useAlbums = () => {
         next: data.next,
         currentGenre: { genreId, genreName },
       }
+
+      console.log(payload);
 
       next ? dispatch(nextAlbumsPage(payload)) : dispatch(setAlbums(payload))
     } catch (error) {

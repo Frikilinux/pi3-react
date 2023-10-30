@@ -16,11 +16,15 @@ import {
 export const useAlbums = () => {
   const dispatch = useDispatch()
   const { ROOT, ALBUM, API_PROXY, CHART } = DEEZER_API
+  const { VITE_API_NEW_LOCAL, VITE_API_URL } = import.meta.env
 
   const fetchAlbumById = async (id) => {
     try {
       dispatch(fetchingPreview())
-      const { data } = await axios.get(`${API_PROXY + ROOT + ALBUM + '/' + id}`)
+      // const { data } = await axios.get(`${API_PROXY + ROOT + ALBUM + '/' + id}`)
+      const { data } = await axios.get(`${VITE_API_URL}/albums/${id}`)
+
+      console.log(data)
 
       dispatch(setAlbumPreview({ ...data, price: createPrice(data.id) }))
     } catch (error) {
@@ -42,11 +46,9 @@ export const useAlbums = () => {
   }
 
   const getAlbumsByGenre = ({ genreId = 0, next, genreName }) => {
-    const { VITE_API_NEW_LOCAL } = import.meta.env
     fetchAlbums({
-      url: `${
-        // VITE_API_NEW_LOCAL}/albums/editorial/?genreId=${genreId}&limit=20`,
-      API_PROXY}${ROOT}/editorial/${genreId}/releases?limit=20`,
+      url: `${VITE_API_URL}/albums/?genreId=${genreId}&limit=20`,
+      // url: `${API_PROXY}${ROOT}/editorial/${genreId}/releases?limit=20`,
       next,
       genreId,
       genreName,
@@ -54,10 +56,13 @@ export const useAlbums = () => {
   }
 
   const fetchAlbums = async ({ url, next, genreId, genreName }) => {
-    const endpointUrl = next ? `${API_PROXY + next}` : url
+    // const endpointUrl = next ? `${API_PROXY + next}` : url
+    const endpointUrl = next ?? url
     try {
       dispatch(isFetching())
       const { data } = await axios.get(endpointUrl)
+
+      console.log(data)
 
       const payload = {
         total: data.total,
@@ -68,7 +73,7 @@ export const useAlbums = () => {
         currentGenre: { genreId, genreName },
       }
 
-      console.log(payload);
+      console.log(payload)
 
       next ? dispatch(nextAlbumsPage(payload)) : dispatch(setAlbums(payload))
     } catch (error) {

@@ -24,8 +24,6 @@ export const useAlbums = () => {
       // const { data } = await axios.get(`${API_PROXY + ROOT + ALBUM + '/' + id}`)
       const { data } = await axios.get(`${VITE_API_URL}/albums/${id}`)
 
-      console.log(data)
-
       dispatch(setAlbumPreview({ ...data, price: createPrice(data.id) }))
     } catch (error) {
       dispatch(isError(error))
@@ -33,8 +31,11 @@ export const useAlbums = () => {
   }
 
   const searchAlbums = ({ search }) => {
+    // fetchAlbums({
+    //   url: `${API_PROXY + ROOT + '/search/album?q=' + search + '&limit=20'}`,
+    // })
     fetchAlbums({
-      url: `${API_PROXY + ROOT + '/search/album?q=' + search + '&limit=20'}`,
+      url: `${VITE_API_URL}/search/albums?q=${search}`,
     })
   }
 
@@ -72,8 +73,6 @@ export const useAlbums = () => {
         next: data.next,
         currentGenre: { genreId, genreName },
       }
-
-      console.log(payload)
 
       next ? dispatch(nextAlbumsPage(payload)) : dispatch(setAlbums(payload))
     } catch (error) {

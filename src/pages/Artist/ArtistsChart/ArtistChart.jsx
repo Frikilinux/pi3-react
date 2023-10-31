@@ -18,7 +18,7 @@ const ArtistChart = () => {
   const { getArtistChart } = useArtist()
 
   useEffect(() => {
-    const fetchCharts = async () => {
+    ;(async () => {
       const [generalChart, popChart, alternativeChart, rockChart, danceChart] =
         await Promise.all([
           getArtistChart({ limit: '5' }),
@@ -35,9 +35,7 @@ const ArtistChart = () => {
         rockChart,
         danceChart,
       })
-    }
-
-    fetchCharts()
+    })()
   }, [])
 
   return (

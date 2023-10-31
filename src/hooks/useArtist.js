@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { DEEZER_API } from '../constants/apiUrls'
+// import { DEEZER_API } from '../constants/apiUrls'
 import {
   setFetchingArtist,
   setArtist,
@@ -10,8 +10,8 @@ import axios from 'axios'
 
 export const useArtist = () => {
   const dispatch = useDispatch()
-  const { ROOT, API_PROXY, ARTIST, CHART } = DEEZER_API
-  const { VITE_API_NEW_LOCAL, VITE_API_URL } = import.meta.env
+  // const { ROOT, API_PROXY, ARTIST, CHART } = DEEZER_API
+  const { VITE_API_URL } = import.meta.env
 
   const getArtistChart = async ({ genreId = '0', limit = '10' }) => {
     try {
@@ -27,6 +27,8 @@ export const useArtist = () => {
       return data.data
     } catch (error) {
       dispatch(setError(error), setFetchingArtist(true))
+    } finally {
+      dispatch(setFetchingArtist(false))
     }
   }
 
@@ -41,6 +43,8 @@ export const useArtist = () => {
       dispatch(setArtist(data), setFetchingArtist(false))
     } catch (error) {
       dispatch(setError(error), setFetchingArtist(true))
+    } finally {
+      dispatch(setFetchingArtist(false))
     }
   }
 

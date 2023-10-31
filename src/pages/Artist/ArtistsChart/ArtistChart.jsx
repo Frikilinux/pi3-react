@@ -21,11 +21,11 @@ const ArtistChart = () => {
     const fetchCharts = async () => {
       const [generalChart, popChart, alternativeChart, rockChart, danceChart] =
         await Promise.all([
-          getArtistChart({}),
-          getArtistChart({ genreId: '132' }),
-          getArtistChart({ genreId: '85' }),
-          getArtistChart({ genreId: '152' }),
-          getArtistChart({ genreId: '113' }),
+          getArtistChart({ limit: '5' }),
+          getArtistChart({ genreId: '132', limit: '5' }),
+          getArtistChart({ genreId: '85', limit: '5' }),
+          getArtistChart({ genreId: '152', limit: '5' }),
+          getArtistChart({ genreId: '113', limit: '5' }),
         ])
 
       setCharts({

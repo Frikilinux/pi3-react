@@ -15,8 +15,8 @@ import {
 
 export const useAlbums = () => {
   const dispatch = useDispatch()
-  const { ROOT, ALBUM, API_PROXY, CHART } = DEEZER_API
-  const { VITE_API_NEW_LOCAL, VITE_API_URL } = import.meta.env
+  // const { ROOT, ALBUM, API_PROXY, CHART } = DEEZER_API
+  const { VITE_API_URL } = import.meta.env
 
   const fetchAlbumById = async (id) => {
     try {
@@ -85,10 +85,13 @@ export const useAlbums = () => {
     }
   }
 
-  const getAlbumsChart = async ({ genreId = '0' }) => {
+  const getAlbumsChart = async ({ genreId = 0, limit = 10}) => {
     try {
+      // const { data } = await axios.get(
+      //   `${API_PROXY + ROOT + CHART + '/' + genreId + '/albums'}`,
+      // )
       const { data } = await axios.get(
-        `${API_PROXY + ROOT + CHART + '/' + genreId + '/albums'}`,
+        `${VITE_API_URL}/charts/albums/${genreId}/?limit=${limit}`,
       )
       const chart = data.data.map((album) => {
         return { ...album, price: createPrice(album.id) }

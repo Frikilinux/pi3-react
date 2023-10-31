@@ -41,9 +41,13 @@ export const useAlbums = () => {
 
   const getArtistAlbums = ({ artistId, next }) => {
     fetchAlbums({
-      url: `${API_PROXY + ROOT + '/artist/' + artistId + '/albums?limit=20'}`,
+      url: `${VITE_API_URL}/artists/albums/${artistId}?limit=20`,
       next,
     })
+    // fetchAlbums({
+    //   url: `${API_PROXY + ROOT + '/artist/' + artistId + '/albums?limit=20'}`,
+    //   next,
+    // })
   }
 
   const getAlbumsByGenre = ({ genreId = 0, next, genreName }) => {

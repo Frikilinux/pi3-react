@@ -2,23 +2,20 @@ import React, { useEffect, useState } from 'react'
 import SectionWrapper from '../../../components/UI/SectionWrapper/SectionWrapper'
 import Main from '../../../components/UI/MainWrapper/MainWrapper'
 // import SearchArtist from '../../../components/SearchArtist/SearchArtist'
-import { ArtistSectionTitle } from '../ArtistStd'
 import {
   ArtistChartContainer,
-  ArtistChartGenreContainer,
   ArtistSearchSectionContainer,
   ArtistSearchTitle,
-  ChartContainer,
 } from './ArtistChartStd'
 import { useArtist } from '../../../hooks/useArtist'
-import ArtistCard from '../../../components/Artist/ArtistCard/ArtistCard'
+import Chart from './Chart'
 
 const ArtistChart = () => {
   const [charts, setCharts] = useState({})
   const { getArtistChart } = useArtist()
 
   useEffect(() => {
-    ;(async () => {
+    const getCharts = async () => {
       const [generalChart, popChart, alternativeChart, rockChart, danceChart] =
         await Promise.all([
           getArtistChart({ limit: '5' }),
@@ -35,7 +32,8 @@ const ArtistChart = () => {
         rockChart,
         danceChart,
       })
-    })()
+    }
+    getCharts()
   }, [])
 
   return (
@@ -59,46 +57,11 @@ const ArtistChart = () => {
 
       <SectionWrapper bg='var(--lightDark)' id='artists-chart'>
         <ArtistChartContainer>
-          <ArtistChartGenreContainer>
-            <ArtistSectionTitle>Top 5 all Artist</ArtistSectionTitle>
-            <ChartContainer>
-              {charts.generalChart?.map((artist) => (
-                <ArtistCard key={artist.id} {...artist} />
-              ))}
-            </ChartContainer>
-          </ArtistChartGenreContainer>
-          <ArtistChartGenreContainer>
-            <ArtistSectionTitle>Top 5 Pop Artist</ArtistSectionTitle>
-            <ChartContainer>
-              {charts.popChart?.map((artist) => (
-                <ArtistCard key={artist.id} {...artist} />
-              ))}
-            </ChartContainer>
-          </ArtistChartGenreContainer>
-          <ArtistChartGenreContainer>
-            <ArtistSectionTitle>Top 5 Alternative artist</ArtistSectionTitle>
-            <ChartContainer>
-              {charts.alternativeChart?.map((artist) => (
-                <ArtistCard key={artist.id} {...artist} />
-              ))}
-            </ChartContainer>
-          </ArtistChartGenreContainer>
-          <ArtistChartGenreContainer>
-            <ArtistSectionTitle>Top 5 Rock artist</ArtistSectionTitle>
-            <ChartContainer>
-              {charts.rockChart?.map((artist) => (
-                <ArtistCard key={artist.id} {...artist} />
-              ))}
-            </ChartContainer>
-          </ArtistChartGenreContainer>
-          <ArtistChartGenreContainer>
-            <ArtistSectionTitle>Top 5 Dance artist</ArtistSectionTitle>
-            <ChartContainer>
-              {charts.danceChart?.map((artist) => (
-                <ArtistCard key={artist.id} {...artist} />
-              ))}
-            </ChartContainer>
-          </ArtistChartGenreContainer>
+          <Chart chart={charts.generalChart} title={'Top 5 All'} />
+          <Chart chart={charts.popChart} title={'Top 5 Pop'} />
+          <Chart chart={charts.alternativeChart} title={'Top 5 Alternative'} />
+          <Chart chart={charts.rockChart} title={'Top 5 Rock'} />
+          <Chart chart={charts.danceChart} title={'Top 5 Dance'} />
         </ArtistChartContainer>
       </SectionWrapper>
     </Main>

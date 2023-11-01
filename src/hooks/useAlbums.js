@@ -15,12 +15,14 @@ import {
 
 export const useAlbums = () => {
   const dispatch = useDispatch()
-  const { ROOT, ALBUM, API_PROXY, CHART } = DEEZER_API
+  // const { ROOT, ALBUM, API_PROXY, CHART } = DEEZER_API
+  const { VITE_API_URL } = import.meta.env
 
   const fetchAlbumById = async (id) => {
     try {
       dispatch(fetchingPreview())
-      const { data } = await axios.get(`${API_PROXY + ROOT + ALBUM + '/' + id}`)
+      // const { data } = await axios.get(`${API_PROXY + ROOT + ALBUM + '/' + id}`)
+      const { data } = await axios.get(`${VITE_API_URL}/albums/${id}`)
 
       dispatch(setAlbumPreview({ ...data, price: createPrice(data.id) }))
     } catch (error) {
@@ -29,23 +31,29 @@ export const useAlbums = () => {
   }
 
   const searchAlbums = ({ search }) => {
+    // fetchAlbums({
+    //   url: `${API_PROXY + ROOT + '/search/album?q=' + search + '&limit=20'}`,
+    // })
     fetchAlbums({
-      url: `${API_PROXY + ROOT + '/search/album?q=' + search + '&limit=20'}`,
+      url: `${VITE_API_URL}/search/albums?q=${search}`,
     })
   }
 
   const getArtistAlbums = ({ artistId, next }) => {
     fetchAlbums({
-      url: `${API_PROXY + ROOT + '/artist/' + artistId + '/albums?limit=20'}`,
+      url: `${VITE_API_URL}/artists/albums/${artistId}?limit=20`,
       next,
     })
+    // fetchAlbums({
+    //   url: `${API_PROXY + ROOT + '/artist/' + artistId + '/albums?limit=20'}`,
+    //   next,
+    // })
   }
 
   const getAlbumsByGenre = ({ genreId = 0, next, genreName }) => {
     fetchAlbums({
-      url: `${
-        API_PROXY + ROOT + '/editorial/' + genreId + '/releases?limit=20'
-      }`,
+      url: `${VITE_API_URL}/albums/?genreId=${genreId}&limit=20`,
+      // url: `${API_PROXY}${ROOT}/editorial/${genreId}/releases?limit=20`,
       next,
       genreId,
       genreName,
@@ -53,10 +61,13 @@ export const useAlbums = () => {
   }
 
   const fetchAlbums = async ({ url, next, genreId, genreName }) => {
-    const endpointUrl = next ? `${API_PROXY + next}` : url
+    // const endpointUrl = next ? `${API_PROXY + next}` : url
+    const endpointUrl = next ?? url
     try {
       dispatch(isFetching())
       const { data } = await axios.get(endpointUrl)
+
+      console.log(data)
 
       const payload = {
         total: data.total,
@@ -74,10 +85,13 @@ export const useAlbums = () => {
     }
   }
 
-  const getAlbumsChart = async ({ genreId = '0' }) => {
+  const getAlbumsChart = async ({ genreId = 0, limit = 10}) => {
     try {
+      // const { data } = await axios.get(
+      //   `${API_PROXY + ROOT + CHART + '/' + genreId + '/albums'}`,
+      // )
       const { data } = await axios.get(
-        `${API_PROXY + ROOT + CHART + '/' + genreId + '/albums'}`,
+        `${VITE_API_URL}/charts/albums/${genreId}/?limit=${limit}`,
       )
       const chart = data.data.map((album) => {
         return { ...album, price: createPrice(album.id) }

@@ -14,7 +14,6 @@ const artistSlice = createSlice({
     setArtist: (state, action) => ({
       ...state,
       artist: action.payload,
-      isFetchingArtist: false,
       isError: false,
     }),
     setFetchingArtist: (state, action) => ({
@@ -24,7 +23,6 @@ const artistSlice = createSlice({
     setArtistList: (state, action) => ({
       ...state,
       artistList: action.payload,
-      isFetchingArtist: false,
     }),
     setError: (state, action) => ({ ...state, isError: action.payload }),
   },

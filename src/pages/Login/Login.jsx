@@ -77,17 +77,27 @@ const Login = () => {
                   placeholder='Password'
                   type='password'
                 />
-                <ButtonPrimary type='submit' fetching={fetchingUser} disabled={fetchingUser}>
-                  {
-                    fetchingUser ? 'Logging in...' : 'Login'
-                  }
+                <ButtonPrimary
+                  type='submit'
+                  fetching={fetchingUser}
+                  disabled={fetchingUser}
+                >
+                  {fetchingUser ? 'Logging in...' : 'Login'}
                 </ButtonPrimary>
               </Form>
               <RegisterText>
-                Don&apos;t have an account?,{' '}
-                <Link style={{ color: 'var(--green)' }} to='/register'>
-                  register for free
-                </Link>
+                <p style={{ padding: '0 0 10px 0' }}>
+                  You forgot your password?{' '}
+                  <Link style={{ color: 'var(--green)' }} to='/recover'>
+                    Recover it now!
+                  </Link>
+                </p>
+                <p>
+                  Don&apos;t have an account?,{' '}
+                  <Link style={{ color: 'var(--green)' }} to='/register'>
+                    register for free
+                  </Link>
+                </p>
               </RegisterText>
             </FormContainer>
           </Formik>

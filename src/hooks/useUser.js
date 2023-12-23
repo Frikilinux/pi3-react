@@ -57,5 +57,23 @@ export const useUser = () => {
     }
   }
 
-  return { loginUser, registerUser }
+  const recoverPassword = async ({ email, password }) => {
+    try {
+      dispatch(setFechingUser(true))
+      const { data } = await axios.post(VITE_API_URL + '/users/login', {
+        email: email.toLowerCase(),
+        password,
+      })
+      dispatch(loggedUser(data))
+      toast.success(`You are logged in, nice to see you ${data.user.name?.split(' ')[0]}`)
+      return data
+    } catch (error) {
+      dispatch(setUserError(error.response.data))
+    } finally {
+      dispatch(setFechingUser(false))
+    }
+  }
+
+
+  return { loginUser, registerUser, recoverPassword }
 }

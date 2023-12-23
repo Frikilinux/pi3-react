@@ -9,6 +9,13 @@ export const loginValidationSchema = yup.object({
   password: yup.string().required('Password is required'),
 })
 
+export const recoverValidationSchema = yup.object({
+  email: yup
+    .string()
+    .matches(mailRegex, 'Email not valid')
+    .required('Email is required'),
+})
+
 export const registerValidationSchema = yup.object({
   email: yup
     .string()

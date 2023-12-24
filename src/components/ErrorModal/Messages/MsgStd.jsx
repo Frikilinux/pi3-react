@@ -29,10 +29,10 @@ const VerifyError = styled.div`
   font-family: 'Courier New', Courier, monospace;
 `
 
-const LinkVerifyStd = styled(Link)`
+const LinkMsgStd = styled(Link)`
   color: var(--red);
   text-decoration: none;
   font-weight: 600;
 `
 
-export { MsgText, VerifyError, VerifyContainer, LinkVerifyStd }
+export { MsgText, VerifyError, VerifyContainer, LinkMsgStd }

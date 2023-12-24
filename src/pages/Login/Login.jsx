@@ -21,10 +21,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setUserError } from '../../redux/user/userSlice'
 import { IconAt, IconLock } from '@tabler/icons-react'
 import { useMediaPredicate } from 'react-media-hook'
-import UserNotFound from './Messages/UserNotFound'
-import NotVerified from './Messages/NotVerified'
-import LoginError from './Messages/LoginError'
-import InvalidPassword from './Messages/InvalidPassword'
+import NotVerified from '../../components/ErrorModal/Messages/NotVerified'
+import UserNotFound from '../../components/ErrorModal/Messages/UserNotFound'
+import LoginError from '../../components/ErrorModal/Messages/LoginError'
+import InvalidPassword from '../../components/ErrorModal/Messages/InvalidPassword'
 
 const LoginResponses = {
   NotVerified: <NotVerified />,

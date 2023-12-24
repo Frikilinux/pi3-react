@@ -14,6 +14,8 @@ import { setUserError } from '../../redux/user/userSlice'
 import ResetPassTokenExpiredError from '../../components/ErrorModal/Messages/ResetPassTokenExpiredError'
 import NotVerified from '../../components/ErrorModal/Messages/NotVerified'
 import UserNotFound from '../../components/ErrorModal/Messages/UserNotFound'
+import MsgError from '../../components/ErrorModal/Messages/LoginError'
+import EmailAlreadyVerified from '../../components/ErrorModal/Messages/EmailAlreadyVerified'
 
 export const ResetPass = () => {
   const { userError, fetchingUser } = useSelector(({ user }) => user)
@@ -24,9 +26,11 @@ export const ResetPass = () => {
   const navigate = useNavigate()
 
   const handleResetPassword = async () => {
-    await resetPassword({ email: userError?.email })
-    dispatch(setUserError(false))
-    navigate('/login')
+    const res = await resetPassword({ email: userError?.email })
+    if (res) {
+      dispatch(setUserError(false))
+      navigate('/login')
+    }
   }
 
   const ResetResponses = {
@@ -38,15 +42,15 @@ export const ResetPass = () => {
       />
     ),
     UserNotFound: <UserNotFound />,
+    MsgError: <MsgError />,
+    EmailAlreadyVerified: <EmailAlreadyVerified />,
   }
 
   return (
     <Main>
       {userError && (
         <ErrorModal onClick={() => dispatch(setUserError(false))}>
-          {(ResetResponses[userError?.code] &&
-            ResetResponses[userError?.code]) ||
-            ResetResponses.LoginError}
+          {ResetResponses[userError?.code] ?? ResetResponses.MsgError}
         </ErrorModal>
       )}
 

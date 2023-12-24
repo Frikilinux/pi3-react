@@ -9,6 +9,12 @@ import { recoverValidationSchema } from '../../formik/validationSchema'
 import { useDispatch, useSelector } from 'react-redux'
 import { useUser } from '../../hooks/useUser'
 import { useNavigate } from 'react-router-dom'
+import { ErrorModal } from '../../components/ErrorModal/ErrorModal'
+import { setUserError } from '../../redux/user/userSlice'
+import NotVerified from '../../components/ErrorModal/Messages/NotVerified'
+import UserNotFound from '../../components/ErrorModal/Messages/UserNotFound'
+import MsgError from '../../components/ErrorModal/Messages/LoginError'
+import EmailAlreadyVerified from '../../components/ErrorModal/Messages/EmailAlreadyVerified'
 
 export const Recover = () => {
   const { userError, fetchingUser } = useSelector(({ user }) => user)
@@ -17,8 +23,21 @@ export const Recover = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const RecoverResponses = {
+    NotVerified: <NotVerified />,
+    UserNotFound: <UserNotFound />,
+    EmailAlreadyVerified: <EmailAlreadyVerified />,
+    MsgError: <MsgError />,
+  }
+
   return (
     <Main>
+      {userError && (
+        <ErrorModal onClick={() => dispatch(setUserError(false))}>
+          {RecoverResponses[userError?.code] ?? RecoverResponses.MsgError}
+        </ErrorModal>
+      )}
+
       <RecoverContainer>
         <Formik
           initialValues={{ email: '' }}

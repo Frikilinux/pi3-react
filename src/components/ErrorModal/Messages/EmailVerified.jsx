@@ -1,15 +1,15 @@
 import React from 'react'
-import { LinkVerifyStd, VerifyText } from '../VerifyStd'
+import { LinkMsgStd, MsgText } from './MsgStd'
 
 const EmailVerified = ({ email }) => {
   return (
-    <VerifyText>
+    <MsgText>
       <p>Email {email} verified.</p>
       <p>
-        You can now <LinkVerifyStd to='/login'>login</LinkVerifyStd>.{' '}
+        You can now <LinkMsgStd to='/login'>login</LinkMsgStd>.{' '}
       </p>
       <p>Enjoy the music.</p>
-    </VerifyText>
+    </MsgText>
   )
 }
 

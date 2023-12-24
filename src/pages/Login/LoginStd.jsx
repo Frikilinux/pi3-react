@@ -35,10 +35,10 @@ export const LoginInfo = styled.div`
   font-size: 1.5rem;
 `
 
-export const ResponseMessages = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  font-weight: 500;
-`
+// export const ResponseMessages = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 10px;
+//   font-weight: 500;
+// `

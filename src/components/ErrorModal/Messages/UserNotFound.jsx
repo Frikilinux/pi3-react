@@ -1,13 +1,11 @@
 import React from 'react'
-import { LinkVerifyStd } from '../VerifyStd'
+import { LinkMsgStd } from './MsgStd'
 
 const UserNotFound = () => {
   return (
     <p>
       Cant find user. Please create a new account on{' '}
-      <LinkVerifyStd to='/register'>
-        register page
-      </LinkVerifyStd>
+      <LinkMsgStd to='/register'>register page</LinkMsgStd>
     </p>
   )
 }

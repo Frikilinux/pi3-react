@@ -1,13 +1,13 @@
 import React from 'react'
-import { ResponseMessages } from '../LoginStd'
+import { MsgText } from './MsgStd'
 
-const LoginError = () => {
+const MsgError = () => {
   return (
-    <ResponseMessages>
+    <MsgText>
       <p>An unknown error occurred while logging in.</p>
       <p>Please try again later</p>
-    </ResponseMessages>
+    </MsgText>
   )
 }
 
-export default LoginError
+export default MsgError

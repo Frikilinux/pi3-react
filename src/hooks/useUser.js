@@ -20,7 +20,9 @@ export const useUser = () => {
         password,
       })
       dispatch(loggedUser(data))
-      toast.success(`You are logged in, nice to see you ${data.user.name?.split(' ')[0]}`)
+      toast.success(
+        `You are logged in, nice to see you ${data.user.name?.split(' ')[0]}`,
+      )
       return data
     } catch (error) {
       dispatch(setUserError(error.response.data))
@@ -57,15 +59,16 @@ export const useUser = () => {
     }
   }
 
-  const recoverPassword = async ({ email, password }) => {
+  const resetPassword = async ({ email }) => {
     try {
       dispatch(setFechingUser(true))
-      const { data } = await axios.post(VITE_API_URL + '/users/login', {
-        email: email.toLowerCase(),
-        password,
-      })
-      dispatch(loggedUser(data))
-      toast.success(`You are logged in, nice to see you ${data.user.name?.split(' ')[0]}`)
+      const { data } = await axios.post(
+        VITE_API_URL + '/users/verify/new/reset',
+        {
+          email: email.toLowerCase(),
+        },
+      )
+      toast.success(`Reset link sended to ${email}, please check your email`)
       return data
     } catch (error) {
       dispatch(setUserError(error.response.data))
@@ -74,6 +77,26 @@ export const useUser = () => {
     }
   }
 
+  const changePassword = async ({ password, token }) => {
+    try {
+      dispatch(setFechingUser(true))
+      const { data } = await axios.patch(
+        VITE_API_URL + '/users/pass',
+        { password },
+        {
+          headers: {
+            'x-token': token,
+          },
+        },
+      )
+      toast.success(`Password changed successfully, you can login now`)
+      return data
+    } catch (error) {
+      dispatch(setUserError(error.response.data))
+    } finally {
+      dispatch(setFechingUser(false))
+    }
+  }
 
-  return { loginUser, registerUser, recoverPassword }
+  return { loginUser, registerUser, resetPassword, changePassword }
 }

@@ -13,7 +13,13 @@ export const LoginContainer = styled.div`
 `
 
 export const RegisterText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 1rem;
+  & p {
+    text-align: center;
+  }
 `
 
 export const LoginInfoContainer = styled.div`

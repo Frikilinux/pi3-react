@@ -3,8 +3,14 @@ import { ButtonStyled } from './ButtonPrimaryStd'
 import Spinner from '../../Spinner/Spinner'
 import { IconWhirl } from '@tabler/icons-react'
 
-const ButtonPrimary = (props) => {
-  const { onClick, size, type, disabled, fetching, children } = props
+const ButtonPrimary = ({
+  onClick,
+  size,
+  type,
+  disabled,
+  fetching,
+  children,
+}) => {
   return (
     <ButtonStyled
       disabled={disabled}

@@ -2,7 +2,6 @@ import React from 'react'
 import Main from '../../components/UI/MainWrapper/MainWrapper'
 import { RecoverContainer, RecoverFormContainer } from './RecoverStd'
 import { Form, Formik } from 'formik'
-import { FormContainer } from '../../components/UI/InputUser/InputUserStd'
 import InputUser from '../../components/UI/InputUser/InputUser'
 import { IconAt } from '@tabler/icons-react'
 import ButtonPrimary from '../../components/UI/Button/ButtonPrimary'
@@ -13,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const Recover = () => {
   const { userError, fetchingUser } = useSelector(({ user }) => user)
-  const { recoverPassword } = useUser()
+  const { resetPassword } = useUser()
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -22,10 +21,10 @@ export const Recover = () => {
     <Main>
       <RecoverContainer>
         <Formik
-          // initialValues={loginInitialValues}
+          initialValues={{ email: '' }}
           validationSchema={recoverValidationSchema}
           onSubmit={async (values) =>
-            (await recoverPassword(values)) && navigate('/login')
+            (await resetPassword(values)) && navigate('/login')
           }
         >
           <RecoverFormContainer>
@@ -46,10 +45,7 @@ export const Recover = () => {
               </ButtonPrimary>
             </Form>
             <p style={{ padding: '0 0 10px 0' }}>
-              You forgot your password?{' '}
-              {/* <Link style={{ color: 'var(--green)' }} to='/recover'>
-                Recover it now!
-              </Link> */}
+              Recovering your password is easy.
             </p>
           </RecoverFormContainer>
         </Formik>

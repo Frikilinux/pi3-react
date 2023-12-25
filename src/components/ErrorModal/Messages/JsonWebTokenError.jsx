@@ -1,7 +1,5 @@
 import React from 'react'
 import { LinkVerifyStd, VerifyText } from '../VerifyStd'
-import ButtonPrimary from '../../../components/UI/Button/ButtonPrimary'
-import { Link } from 'react-router-dom'
 
 const JsonWebTokenError = () => {
   return (

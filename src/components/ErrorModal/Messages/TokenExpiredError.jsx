@@ -1,6 +1,5 @@
 import React from 'react'
 import ButtonPrimary from '../../../components/UI/Button/ButtonPrimary'
-import { useVerify } from '../../../hooks/useVerify'
 import { MsgText } from './MsgStd'
 
 const TokenExpiredError = ({ email, onClick }) => {

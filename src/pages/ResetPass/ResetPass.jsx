@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Main from '../../components/UI/MainWrapper/MainWrapper'
 import { RecoverContainer, RecoverFormContainer } from './ResetPassStd'
 import { Form, Formik } from 'formik'
@@ -14,16 +14,23 @@ import { setUserError } from '../../redux/user/userSlice'
 import ResetPassTokenExpiredError from '../../components/ErrorModal/Messages/ResetPassTokenExpiredError'
 import NotVerified from '../../components/ErrorModal/Messages/NotVerified'
 import UserNotFound from '../../components/ErrorModal/Messages/UserNotFound'
-import MsgError from '../../components/ErrorModal/Messages/LoginError'
 import EmailAlreadyVerified from '../../components/ErrorModal/Messages/EmailAlreadyVerified'
+import MsgError from '../../components/ErrorModal/Messages/UnknowError'
 
 export const ResetPass = () => {
   const { userError, fetchingUser } = useSelector(({ user }) => user)
   const { resetPassword, changePassword } = useUser()
-  const [searchParams] = useSearchParams()
-
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const [searchParams] = useSearchParams()
+  const token = searchParams.get('token')
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/login')
+    }
+  }, [navigate, token]) 
 
   const handleResetPassword = async () => {
     const res = await resetPassword({ email: userError?.email })

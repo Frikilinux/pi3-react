@@ -1,6 +1,5 @@
 import React from 'react'
 import ButtonPrimary from '../../UI/Button/ButtonPrimary'
-import { useNavigate } from 'react-router-dom'
 import { MsgText } from './MsgStd'
 import { useSelector } from 'react-redux'
 

@@ -23,15 +23,15 @@ import { IconAt, IconLock } from '@tabler/icons-react'
 import { useMediaPredicate } from 'react-media-hook'
 import NotVerified from '../../components/ErrorModal/Messages/NotVerified'
 import UserNotFound from '../../components/ErrorModal/Messages/UserNotFound'
-import LoginError from '../../components/ErrorModal/Messages/LoginError'
 import InvalidPassword from '../../components/ErrorModal/Messages/InvalidPassword'
+import MsgError from '../../components/ErrorModal/Messages/UnknowError'
 
 const LoginResponses = {
   NotVerified: <NotVerified />,
   // EmailVerified: <EmailVerified />,
   // EmailAlreadyVerified: <EmailAlreadyVerified />,
   UserNotFound: <UserNotFound />,
-  LoginError: <LoginError />,
+  LoginError: <MsgError />,
   InvalidPassword: <InvalidPassword />,
 }
 
@@ -80,7 +80,6 @@ const Login = () => {
                 <ButtonPrimary
                   type='submit'
                   fetching={fetchingUser}
-                  disabled={fetchingUser}
                 >
                   {fetchingUser ? 'Logging in...' : 'Login'}
                 </ButtonPrimary>

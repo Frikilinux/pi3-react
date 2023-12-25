@@ -13,8 +13,7 @@ const ButtonPrimary = ({
 }) => {
   return (
     <ButtonStyled
-      disabled={disabled}
-      type={type}
+      disabled={disabled || fetching}
       size={size}
       onClick={!fetching ? onClick : null}
       whileHover={!disabled && { scale: 1.05, transition: { duration: 0.05 } }}

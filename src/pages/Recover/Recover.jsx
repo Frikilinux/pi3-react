@@ -13,8 +13,9 @@ import { ErrorModal } from '../../components/ErrorModal/ErrorModal'
 import { setUserError } from '../../redux/user/userSlice'
 import NotVerified from '../../components/ErrorModal/Messages/NotVerified'
 import UserNotFound from '../../components/ErrorModal/Messages/UserNotFound'
-import MsgError from '../../components/ErrorModal/Messages/LoginError'
+import MsgError from '../../components/ErrorModal/Messages/UnknowError'
 import EmailAlreadyVerified from '../../components/ErrorModal/Messages/EmailAlreadyVerified'
+import SendMailError from '../../components/ErrorModal/Messages/SendMailError'
 
 export const Recover = () => {
   const { userError, fetchingUser } = useSelector(({ user }) => user)
@@ -28,6 +29,7 @@ export const Recover = () => {
     UserNotFound: <UserNotFound />,
     EmailAlreadyVerified: <EmailAlreadyVerified />,
     MsgError: <MsgError />,
+    ErrorSendingEmail: <SendMailError />,
   }
 
   return (

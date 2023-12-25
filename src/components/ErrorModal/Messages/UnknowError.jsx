@@ -4,7 +4,7 @@ import { MsgText } from './MsgStd'
 const MsgError = () => {
   return (
     <MsgText>
-      <p>An unknown error occurred while logging in.</p>
+      <p>An unknown error occurred.</p>
       <p>Please try again later</p>
     </MsgText>
   )

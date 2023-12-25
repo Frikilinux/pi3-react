@@ -38,7 +38,7 @@ const LoginResponses = {
 const Login = () => {
   const { userError, fetchingUser } = useSelector(({ user }) => user)
   const { loginUser } = useUser()
-
+  
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const max576 = useMediaPredicate('(max-width: 576px)')
@@ -47,9 +47,7 @@ const Login = () => {
     <Main>
       {userError && (
         <ErrorModal onClick={() => dispatch(setUserError(false))}>
-          {(LoginResponses[userError?.code] &&
-            LoginResponses[userError?.code]) ||
-            LoginResponses.LoginError}
+          {LoginResponses[userError?.code] || LoginResponses.LoginError}
         </ErrorModal>
       )}
 
@@ -65,8 +63,8 @@ const Login = () => {
             <FormContainer>
               <h1>Login with your email</h1>
               <Form>
-                <InputUser
-                  name='email'
+                                <InputUser
+                                    name='email'
                   icon={<IconAt />}
                   placeholder='Email'
                   type='email'

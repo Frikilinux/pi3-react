@@ -13,6 +13,7 @@ const ButtonPrimary = ({
 }) => {
   return (
     <ButtonStyled
+      type={type}
       disabled={disabled || fetching}
       size={size}
       onClick={!fetching ? onClick : null}

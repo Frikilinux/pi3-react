@@ -13,7 +13,13 @@ export const LoginContainer = styled.div`
 `
 
 export const RegisterText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 1rem;
+  & p {
+    text-align: center;
+  }
 `
 
 export const LoginInfoContainer = styled.div`
@@ -29,10 +35,10 @@ export const LoginInfo = styled.div`
   font-size: 1.5rem;
 `
 
-export const ResponseMessages = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  font-weight: 500;
-`
+// export const ResponseMessages = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 10px;
+//   font-weight: 500;
+// `

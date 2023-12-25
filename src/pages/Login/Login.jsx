@@ -21,24 +21,24 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setUserError } from '../../redux/user/userSlice'
 import { IconAt, IconLock } from '@tabler/icons-react'
 import { useMediaPredicate } from 'react-media-hook'
-import UserNotFound from './Messages/UserNotFound'
-import NotVerified from './Messages/NotVerified'
-import LoginError from './Messages/LoginError'
-import InvalidPassword from './Messages/InvalidPassword'
+import NotVerified from '../../components/ErrorModal/Messages/NotVerified'
+import UserNotFound from '../../components/ErrorModal/Messages/UserNotFound'
+import InvalidPassword from '../../components/ErrorModal/Messages/InvalidPassword'
+import MsgError from '../../components/ErrorModal/Messages/UnknowError'
 
 const LoginResponses = {
   NotVerified: <NotVerified />,
   // EmailVerified: <EmailVerified />,
   // EmailAlreadyVerified: <EmailAlreadyVerified />,
   UserNotFound: <UserNotFound />,
-  LoginError: <LoginError />,
+  LoginError: <MsgError />,
   InvalidPassword: <InvalidPassword />,
 }
 
 const Login = () => {
   const { userError, fetchingUser } = useSelector(({ user }) => user)
   const { loginUser } = useUser()
-
+  
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const max576 = useMediaPredicate('(max-width: 576px)')
@@ -47,9 +47,7 @@ const Login = () => {
     <Main>
       {userError && (
         <ErrorModal onClick={() => dispatch(setUserError(false))}>
-          {(LoginResponses[userError?.code] &&
-            LoginResponses[userError?.code]) ||
-            LoginResponses.LoginError}
+          {LoginResponses[userError?.code] || LoginResponses.LoginError}
         </ErrorModal>
       )}
 
@@ -65,8 +63,8 @@ const Login = () => {
             <FormContainer>
               <h1>Login with your email</h1>
               <Form>
-                <InputUser
-                  name='email'
+                                <InputUser
+                                    name='email'
                   icon={<IconAt />}
                   placeholder='Email'
                   type='email'
@@ -77,17 +75,26 @@ const Login = () => {
                   placeholder='Password'
                   type='password'
                 />
-                <ButtonPrimary type='submit' fetching={fetchingUser} disabled={fetchingUser}>
-                  {
-                    fetchingUser ? 'Logging in...' : 'Login'
-                  }
+                <ButtonPrimary
+                  type='submit'
+                  fetching={fetchingUser}
+                >
+                  {fetchingUser ? 'Logging in...' : 'Login'}
                 </ButtonPrimary>
               </Form>
               <RegisterText>
-                Don&apos;t have an account?,{' '}
-                <Link style={{ color: 'var(--green)' }} to='/register'>
-                  register for free
-                </Link>
+                <p style={{ padding: '0 0 10px 0' }}>
+                  You forgot your password?{' '}
+                  <Link style={{ color: 'var(--green)' }} to='/recover'>
+                    Recover it now!
+                  </Link>
+                </p>
+                <p>
+                  Don&apos;t have an account?,{' '}
+                  <Link style={{ color: 'var(--green)' }} to='/register'>
+                    register for free
+                  </Link>
+                </p>
               </RegisterText>
             </FormContainer>
           </Formik>

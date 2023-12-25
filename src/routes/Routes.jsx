@@ -13,6 +13,8 @@ import ProtectedRoute from '../components/ProctectedRoute/ProtectedRoute'
 import Verify from '../pages/Verify/Verify'
 import Order from '../pages/Order/Order'
 import { useSelector } from 'react-redux'
+import { Recover } from '../pages/Recover/Recover'
+import { ResetPass } from '../pages/ResetPass/ResetPass'
 
 const Routes = () => {
   const { user } = useSelector(({ user }) => user)
@@ -23,6 +25,8 @@ const Routes = () => {
       <Route path='/search/:search' element={<Search />} />
       <Route path='/albums/:search?' element={<AlbumsPage />} />
       <Route path='/verify' element={<Verify />} />
+      <Route path='/recover' element={<Recover />} />
+      <Route path='/reset' element={<ResetPass />} />
       <Route path='/' element={<Home />} />
       <Route
         path='/login'

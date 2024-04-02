@@ -1,6 +1,6 @@
 # Proyecto integrador 3 React
 
-## Herramientas usadas
+## Herramientas usadas.
 
 - React
 - Redux toolkit
